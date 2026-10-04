@@ -6,7 +6,7 @@
 > and [`../supported_versions.md`](../supported_versions.md).
 
 **Tarih:** 2 Temmuz 2026
-**Proje:** 6DOF_Robotic_Arm (github.com/eemreinceer/6DOF_Robotic_Arm)
+**Proje:** Robot Arm (legacy 6-DOF phase)
 **Donanım:** Jetson Nano (P3450, JetPack 4.6) + STM32F103C6T6A + 6x Servo
 
 ---

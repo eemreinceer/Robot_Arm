@@ -67,4 +67,6 @@ ros2 launch arm_bringup pick_and_place.launch.py
   — bu oturumda yapılmadı.
 - `arm_tests/benchmarks/benchmark_ik_comparison.py` `arm_kinematics` ve
   `arm_ml`'e bakıyor; ignore ile bu benchmark koşmaz.
-- `benchmarks/` içindeki `~/ROBOTKOL/...` sabit yolları hâlâ bozuk.
+- Legacy benchmark raporları artık script konumundan türetilen repo-relative
+  `src/arm_tests/benchmark_results/` dizinine yazılır; kullanıcıya özel sabit
+  workspace yolu kullanılmaz.

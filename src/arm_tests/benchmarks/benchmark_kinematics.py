@@ -4,6 +4,7 @@ from rclpy.node import Node
 import numpy as np
 import time
 import os
+from pathlib import Path
 import threading
 from geometry_msgs.msg import Pose
 from moveit_msgs.srv import GetPositionFK, GetPositionIK
@@ -181,12 +182,11 @@ Number of samples: {num_samples}
 2. **IK Robustness & Latency:** Custom numerical Jacobian (Damped Least Squares) method success rates vs. OMPL/MoveIt2's solver configuration.
 """
         # Save report
-        workspace_dir = os.path.expanduser('~/ROBOTKOL/6DOF_Robotic_Arm')
-        report_dir = os.path.join(workspace_dir, 'src/arm_tests/benchmark_results')
-        os.makedirs(report_dir, exist_ok=True)
-        report_path = os.path.join(report_dir, 'kinematics_report.md')
+        report_dir = Path(__file__).resolve().parents[1] / 'benchmark_results'
+        report_dir.mkdir(parents=True, exist_ok=True)
+        report_path = report_dir / 'kinematics_report.md'
         
-        with open(report_path, 'w', encoding='utf-8') as f:
+        with report_path.open('w', encoding='utf-8') as f:
             f.write(report)
             
         print(f"\n--- Benchmark Results Report generated at: {report_path} ---")

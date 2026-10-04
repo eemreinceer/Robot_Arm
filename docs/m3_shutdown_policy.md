@@ -1,6 +1,6 @@
 # M3 Mock Bringup Shutdown Policy
 
-Issue: [#14](https://github.com/eemreinceer/6DOF_Robotic_Arm/issues/14)  
+Source: retained shutdown investigation from the pre-portfolio engineering log
 Decision date: 2026-08-25 (identity remeasured 2026-10-02)
 Scope: ROS 2 Jazzy, `real_hardware.launch.py mock_serial:=true`, no robot or simulation
 

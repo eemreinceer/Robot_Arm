@@ -18,7 +18,7 @@
 
   Kullanim (robot_arm_hw konteynerinde):
     export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-    export CYCLONEDDS_URI=file:///workspace/src/6DOF_Robotic_Arm/config/dds/cyclonedds_nano.xml
+    export CYCLONEDDS_URI=file:///workspace/src/Robot_Arm/config/dds/cyclonedds_nano.xml
 -->
 <CycloneDDS xmlns="https://cdds.io/config">
   <Domain id="any">

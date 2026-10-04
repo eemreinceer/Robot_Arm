@@ -47,16 +47,17 @@ yoktu. `robot-arm-camera.service` birebir aynıydı.
 
 ## Release kesme ve geri alma
 
-Yeni release (Pi üzerinde, `~/6DOF_Robotic_Arm` istenen commit'te ve temizken):
+Yeni release (Pi üzerinde, `ROBOT_ARM_SOURCE` istenen commit'te ve temizken):
 
 ```bash
 ROBOT_ARM_RUNTIME_ROOT=${ROBOT_ARM_RUNTIME_ROOT:-/opt/robot_arm}
-REL=$ROBOT_ARM_RUNTIME_ROOT/releases/$(git -C "$PWD" rev-parse HEAD | cut -c1-12)
+ROBOT_ARM_SOURCE=${ROBOT_ARM_SOURCE:-$HOME/Robot_Arm}
+REL=$ROBOT_ARM_RUNTIME_ROOT/releases/$(git -C "$ROBOT_ARM_SOURCE" rev-parse HEAD | cut -c1-12)
 mkdir -p "$REL/src" "$REL/scripts"
 for p in arm_interfaces arm_moveit_config arm_perception arm_tests robot_arm_description; do
-  cp -a ~/6DOF_Robotic_Arm/src/$p "$REL/src/"
+  cp -a "$ROBOT_ARM_SOURCE/src/$p" "$REL/src/"
 done
-cp -a ~/6DOF_Robotic_Arm/scripts/{capture_calib_images.py,solve_camera_intrinsics.py} "$REL/scripts/"
+cp -a "$ROBOT_ARM_SOURCE"/scripts/{capture_calib_images.py,solve_camera_intrinsics.py} "$REL/scripts/"
 cd "$REL" && source /opt/ros/jazzy/setup.bash && colcon build --packages-up-to arm_perception
 ```
 

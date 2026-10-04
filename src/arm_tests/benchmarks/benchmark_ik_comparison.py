@@ -20,6 +20,7 @@ dataset). Run the three services first (see launch_phase3_test.sh).
 """
 import math
 import os
+from pathlib import Path
 import sys
 import threading
 import time
@@ -238,12 +239,10 @@ position error of each solver's returned joints: `/ik_solve` and `/dl_ik_solve` 
   refinement for precise picks (mean error well above the {ACCURACY_THRESHOLD_MM:.0f} mm gate).
 - Frames are Link_6 throughout; grasp offset is applied in the Phase 4 pick layer.
 """
-        report_dir = os.path.join(
-            os.path.expanduser("~/ROBOTKOL/6DOF_Robotic_Arm"), "src/arm_tests/benchmark_results"
-        )
-        os.makedirs(report_dir, exist_ok=True)
-        report_path = os.path.join(report_dir, "ik_comparison_report.md")
-        with open(report_path, "w", encoding="utf-8") as f:
+        report_dir = Path(__file__).resolve().parents[1] / "benchmark_results"
+        report_dir.mkdir(parents=True, exist_ok=True)
+        report_path = report_dir / "ik_comparison_report.md"
+        with report_path.open("w", encoding="utf-8") as f:
             f.write(report)
         print(f"\n--- IK Comparison Report generated at: {report_path} ---")
         print(report)

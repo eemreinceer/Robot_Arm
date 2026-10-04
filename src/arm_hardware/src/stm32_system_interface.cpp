@@ -80,7 +80,15 @@ STM32SystemInterface::~STM32SystemInterface()
 hardware_interface::CallbackReturn STM32SystemInterface::on_init(
   const hardware_interface::HardwareInfo & info)
 {
-  if (hardware_interface::SystemInterface::on_init(info) !=
+#if defined(__GNUC__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+#endif
+  const auto base_result = hardware_interface::SystemInterface::on_init(info);
+#if defined(__GNUC__)
+#pragma GCC diagnostic pop
+#endif
+  if (base_result !=
     hardware_interface::CallbackReturn::SUCCESS)
   {
     return hardware_interface::CallbackReturn::ERROR;
