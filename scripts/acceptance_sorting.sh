@@ -6,7 +6,7 @@
 # kurar (demo_sorting), ayırmanın oturmasını bekler ve her nesnenin doğru kutuda
 # bitip bitmediğini hakem (acceptance_check) ile ölçer.
 #
-# GEÇTİ ölçütü (codex Faz 4B spec): tüm koşular PASS — her koşuda
+# GEÇTİ ölçütü: tüm koşular PASS — her koşuda
 # correct >= eşik (vars. 6) ve wrong == 0.
 #
 # ÖN KOŞUL: eğitilmiş YOLO modeli `src/arm_perception/models/yolo_arm.pt`.
@@ -17,15 +17,15 @@
 #   bash scripts/acceptance_sorting.sh --runs 3
 #   bash scripts/acceptance_sorting.sh --wire-check    # modelsiz tel/önkoşul kontrolü
 #
-# NOT: set -u KULLANMA — ROS2 setup.bash tanımsız değişkene dokunur (skill gotcha).
+# NOT: set -u KULLANMA — ROS2 setup.bash tanımsız değişkene dokunur.
 set -eo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO_ROOT"
-DRIVER=".claude/skills/run-6dof-arm/driver.sh"
 WORLD="${WORLD:-pick_and_place_world}"
 MODEL="src/arm_perception/models/yolo_arm.pt"
 LOG="/tmp/acceptance_sorting.log"
+LAUNCH_PID=""
 
 RUNS=5
 WIRE_CHECK=0
@@ -56,7 +56,42 @@ ws_source() {
   source install/setup.bash
 }
 
-teardown() { bash "$DRIVER" down >/dev/null 2>&1 || true; }
+process_group_alive() {
+  [ -n "$LAUNCH_PID" ] && kill -0 -- "-$LAUNCH_PID" 2>/dev/null
+}
+
+teardown() {
+  local stop_deadline
+
+  if ! process_group_alive; then
+    [ -z "$LAUNCH_PID" ] || wait "$LAUNCH_PID" 2>/dev/null || true
+    return
+  fi
+
+  say "stack kapatılıyor..."
+  kill -TERM -- "-$LAUNCH_PID" 2>/dev/null || true
+  stop_deadline=$((SECONDS + 15))
+  while process_group_alive && [ "$SECONDS" -lt "$stop_deadline" ]; do
+    sleep 1
+  done
+  if process_group_alive; then
+    say "stack 15 saniyede kapanmadı; process group zorla sonlandırılıyor."
+    kill -KILL -- "-$LAUNCH_PID" 2>/dev/null || true
+  fi
+  wait "$LAUNCH_PID" 2>/dev/null || true
+}
+
+assert_no_existing_stack() {
+  local active_nodes
+
+  active_nodes="$(ros2 node list 2>/dev/null || true)"
+  if grep -Eq '(^|/)(controller_manager|move_group|perception_node|autonomous_pick_node)$' \
+      <<<"$active_nodes"; then
+    say "Başka bir Robot Arm stack'i çalışıyor; önce onu kontrollü biçimde kapat."
+    printf '%s\n' "$active_nodes"
+    return 1
+  fi
+}
 
 # ---- Önkoşullar ----
 ws_source
@@ -91,13 +126,18 @@ if [ "$WIRE_CHECK" -eq 1 ]; then
 fi
 
 # ---- Tam stack ----
+command -v setsid >/dev/null 2>&1 || {
+  say "setsid bulunamadı; güvenli process-group cleanup kurulamadı."
+  exit 4
+}
+assert_no_existing_stack || exit 4
 trap teardown EXIT
 say "stack başlatılıyor (perception + sort_all)... log: $LOG"
-teardown
-nohup ros2 launch arm_bringup perception.launch.py \
+setsid ros2 launch arm_bringup perception.launch.py \
   autonomous:=true sort_all:=true use_rviz:=false \
-  >"$LOG" 2>&1 &
-say "launch PID $!"
+  >"$LOG" 2>&1 </dev/null &
+LAUNCH_PID=$!
+say "launch PID $LAUNCH_PID"
 
 # hazırlık: controller_manager + move_group + perception_node + /detected_objects
 say "stack hazırlığı bekleniyor (max ${READY_TIMEOUT}s)..."
@@ -109,7 +149,7 @@ while [ "$(date +%s)" -lt "$deadline" ]; do
      && ros2 topic list 2>/dev/null | grep -q "/detected_objects"; then
     ready=1; break
   fi
-  # skill gotcha: ağır yükte broadcaster inactive kalabilir → zorla aktive et
+  # Ağır yükte broadcaster inactive kalabilir; gerekirse aktive et.
   ros2 control set_controller_state joint_state_broadcaster active >/dev/null 2>&1 || true
   sleep 3
 done

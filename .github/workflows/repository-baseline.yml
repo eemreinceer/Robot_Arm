@@ -20,6 +20,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - name: Verify public commit identity
+        if: github.event_name == 'push'
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          HEAD_SHA: ${{ github.sha }}
+        run: |
+          if [[ "$BEFORE_SHA" =~ ^0+$ ]]; then
+            revision_range="$HEAD_SHA"
+          else
+            revision_range="$BEFORE_SHA..$HEAD_SHA"
+          fi
+          ./scripts/verify_commit_identity.sh "$revision_range"
       - name: Install static tools
         run: sudo apt-get update && sudo apt-get install -y shellcheck
       - name: Verify repository baseline

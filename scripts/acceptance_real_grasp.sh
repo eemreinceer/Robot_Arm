@@ -12,10 +12,10 @@ set -eo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO_ROOT"
-DRIVER=".claude/skills/run-6dof-arm/driver.sh"
 MODEL="src/arm_perception/models/yolo_arm.pt"
 LOG="/tmp/acceptance_real_grasp.log"
 REPORT="reports/real_grasp_acceptance.md"
+LAUNCH_PID=""
 
 RUNS=3
 WIRE_CHECK=0
@@ -45,7 +45,42 @@ ws_source() {
   source install/setup.bash
 }
 
-teardown() { bash "$DRIVER" down >/dev/null 2>&1 || true; }
+process_group_alive() {
+  [ -n "$LAUNCH_PID" ] && kill -0 -- "-$LAUNCH_PID" 2>/dev/null
+}
+
+teardown() {
+  local stop_deadline
+
+  if ! process_group_alive; then
+    [ -z "$LAUNCH_PID" ] || wait "$LAUNCH_PID" 2>/dev/null || true
+    return
+  fi
+
+  say "stack kapatılıyor..."
+  kill -TERM -- "-$LAUNCH_PID" 2>/dev/null || true
+  stop_deadline=$((SECONDS + 15))
+  while process_group_alive && [ "$SECONDS" -lt "$stop_deadline" ]; do
+    sleep 1
+  done
+  if process_group_alive; then
+    say "stack 15 saniyede kapanmadı; process group zorla sonlandırılıyor."
+    kill -KILL -- "-$LAUNCH_PID" 2>/dev/null || true
+  fi
+  wait "$LAUNCH_PID" 2>/dev/null || true
+}
+
+assert_no_existing_stack() {
+  local active_nodes
+
+  active_nodes="$(ros2 node list 2>/dev/null || true)"
+  if grep -Eq '(^|/)(controller_manager|move_group|perception_node|autonomous_pick_node)$' \
+      <<<"$active_nodes"; then
+    say "Başka bir Robot Arm stack'i çalışıyor; önce onu kontrollü biçimde kapat."
+    printf '%s\n' "$active_nodes"
+    return 1
+  fi
+}
 
 # ---- Önkoşullar ----
 ws_source
@@ -75,13 +110,18 @@ if [ "$WIRE_CHECK" -eq 1 ]; then
 fi
 
 # ---- Tam stack ----
+command -v setsid >/dev/null 2>&1 || {
+  say "setsid bulunamadı; güvenli process-group cleanup kurulamadı."
+  exit 4
+}
+assert_no_existing_stack || exit 4
 trap teardown EXIT
 say "stack başlatılıyor (perception + sort_all + fast_sort:=false)... log: $LOG"
-teardown
-nohup ros2 launch arm_bringup perception.launch.py \
+setsid ros2 launch arm_bringup perception.launch.py \
   autonomous:=true sort_all:=true fast_sort:=false use_rviz:=false \
-  >"$LOG" 2>&1 &
-say "launch PID $!"
+  >"$LOG" 2>&1 </dev/null &
+LAUNCH_PID=$!
+say "launch PID $LAUNCH_PID"
 
 # hazırlık: controller_manager + move_group + perception_node + /detected_objects
 say "stack hazırlığı bekleniyor (max ${READY_TIMEOUT}s)..."

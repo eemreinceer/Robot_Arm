@@ -56,6 +56,12 @@ that could not be executed instead of hiding them.
 
 - Prefer small, logically complete commits.
 - Describe the outcome in the commit message, not only the filename.
+- Every commit published to `main` must use
+  `Emre Inceer <inceer22@gmail.com>` for both Author and Committer.
+- Recreate dependency or automation updates under that identity; do not retain
+  bot authors, bot committers or `Co-authored-by` trailers in public history.
+- Before pushing, run `./scripts/verify_commit_identity.sh <revision-range>`;
+  for example, `./scripts/verify_commit_identity.sh portfolio-public/main..HEAD`.
 - Avoid force-pushing shared work.
 - A pull request should state the problem, solution, risk, verification result
   and rollback approach.

@@ -75,10 +75,6 @@ runs/**
 *.key
 credentials.json
 
-# Yerel gelistirme araci yapilandirmalari makineye ozeldir ve credential
-# tasiyabilir; `git add -A` ile kazara repoya girmemelidir.
-.agents/
-.codex/
 export.log
 
 # Egitim taban modelleri: upstream Ultralytics dagitimindan indirilir.

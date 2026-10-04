@@ -56,6 +56,7 @@ echo "bash syntax PASS"
 shellcheck_files=(
   launch_phase3_test.sh
   launch_phase4_test.sh
+  scripts/verify_commit_identity.sh
   scripts/verify_workspace.sh
 )
 
@@ -122,6 +123,18 @@ if [[ "$git_metadata_available" == true ]]; then
   legacy_repo_pattern='6DOF[_]Robotic[_]Arm'
   if git -C "$repo_root" grep -nE "$legacy_repo_pattern" -- .; then
     echo "stale pre-portfolio repository identifier is still tracked" >&2
+    exit 1
+  fi
+
+  internal_tool_pattern='\.clau''de[/]|\.co''dex[/]|\.ag''ents[/]|co''dex|skill[[:space:]]+gotcha'
+  if git -C "$repo_root" grep -niE "$internal_tool_pattern" -- .; then
+    echo "internal development-tool metadata is still tracked" >&2
+    exit 1
+  fi
+
+  internal_path_pattern='(^|/)(AGENTS\.md|\.clau''de|\.co''dex|\.ag''ents)(/|$)'
+  if git -C "$repo_root" ls-files | grep -Ei "$internal_path_pattern"; then
+    echo "internal agent or coordination files must not be tracked" >&2
     exit 1
   fi
 
