@@ -14,9 +14,10 @@ kaplıyorlardı. Dosyalar diskte duruyor, yalnız git takibi bırakıldı.
 python3 -m arm_perception.train_yolo --help   # eğitim/doğrulama parametreleri
 ```
 
-Doğrulama, dağıtıma giren `src/arm_perception/models/yolo_arm.pt` ağırlığı ve
-ilgili veri seti ile tekrarlanır; Ultralytics çıktıyı yine `runs/detect/`
-altına yazar.
+Doğrulama, yerel olarak provision edilen
+`src/arm_perception/models/yolo_arm.pt` ağırlığı ve ilgili veri seti ile
+tekrarlanır; ağırlık public repoda dağıtılmaz. Ultralytics çıktıyı yine
+`runs/detect/` altına yazar.
 
 ## Sayısal sonuçlar nerede
 

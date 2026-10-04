@@ -2,9 +2,7 @@ datasets/*
 !datasets/.gitkeep
 models/*
 !models/.gitkeep
-# Egitim CIKTISI: proje verisiyle uretildi, veri seti olmadan
-# yeniden uretilemez. Takipte kalir (#12).
-!models/*.pt
+!models/README.md
 !models/sorting_bins/
 !models/sorting_bins/**/
 !models/sorting_bins/**/*.sdf

@@ -1,7 +1,7 @@
 # Repository Artifact Inventory
 
 This inventory separates source inputs, unique measurements and reproducible
-outputs. It reflects the tracked tree as of 2026-10-02.
+outputs. It reflects the tracked tree as of 2026-10-04.
 
 ## Current hygiene state
 
@@ -13,19 +13,21 @@ outputs. It reflects the tracked tree as of 2026-10-02.
 - Recorded measurements are allowlisted narrowly under `runs/`; raw capture
   streams and reproducible bulk outputs remain untracked.
 
-## Runtime model inventory
+## Runtime model policy
 
-| Path | Size (bytes) | SHA-256 | Status |
-| --- | ---: | --- | --- |
-| `src/arm_ml/models/ik_net.pt` | 2,149,349 | `bc06ecabd0c92af1c5dbafdd9a5b61ebf4635a5aeda18add622ae057fb718f4d` | Legacy experiment; package is outside the active build |
-| `src/arm_ml/models/ik_net_scripted.pt` | 2,170,153 | `2457e2ab1e6e9b5208a6778b0e8516fb2a0e4675daf73b061727fec615ba3c1c` | Legacy TorchScript experiment; package is outside the active build |
-| `src/arm_perception/models/yolo_arm.pt` | 6,240,810 | `c4514564dad70f4538609c3430b7e65ebd3ebee22dd2e0e8fde7e3dfd2ade87b` | Active perception input; redistribution terms must be checked before any open-source release |
+No trained model weights are distributed in the public repository. Expected
+local artifacts are documented without granting or implying redistribution
+rights:
 
-The repository-level license does not claim ownership of third-party model
-formats, base weights or trademarks. A model must have its upstream source,
-license, training command, dataset version, metrics, producing commit and
-target runtime recorded before it can be redistributed as an independently
-licensed release artifact.
+| Local path | Purpose | Public provisioning contract |
+| --- | --- | --- |
+| `src/arm_ml/models/ik_net.pt` | Legacy IK experiment checkpoint | [`src/arm_ml/models/README.md`](../src/arm_ml/models/README.md) |
+| `src/arm_ml/models/ik_net_scripted.pt` | Legacy TorchScript IK experiment | [`src/arm_ml/models/README.md`](../src/arm_ml/models/README.md) |
+| `src/arm_perception/models/yolo_arm.pt` | Active detector input | [`src/arm_perception/models/README.md`](../src/arm_perception/models/README.md) |
+
+These files are ignored by Git. A model may be published separately only after
+its upstream source, license, training command, dataset permission, metrics,
+producing commit, SHA-256 digest and target runtime have been recorded.
 
 ## Measurement and report policy
 
@@ -49,8 +51,8 @@ not valid provenance.
 # Must print nothing.
 git ls-files -ci --exclude-standard
 
-# Review tracked model identity and size.
-sha256sum src/arm_ml/models/*.pt src/arm_perception/models/*.pt
+# Confirm that model weights remain untracked.
+git ls-files '*.pt' '*.pth' '*.onnx'
 
 # Confirm repository links and baseline policy.
 ./scripts/verify_workspace.sh --quick

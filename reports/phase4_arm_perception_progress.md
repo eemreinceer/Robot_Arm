@@ -10,7 +10,8 @@
 - Kanonik sınıflar: `red_box`, `yellow_cylinder`, `blue_cube`.
 - Domain randomization: parlaklık `0.8x-1.2x`, HSV hue `+-10`, kamera roll `+-5 derece`; bbox affine dönüşümle birlikte güncellenir.
 - Dataset komutu varsayılan olarak temiz başlangıç yapar; yalnız `--append` verilirse mevcut veriye ekler.
-- `train_yolo`: YOLOv8 fine-tune, early stopping, test split validasyonu ve `models/yolo_arm.pt` çıktısı.
+- `train_yolo`: YOLOv8 fine-tune, early stopping, test split validasyonu ve
+  yerel `models/yolo_arm.pt` çıktısı. Public portfolio model ağırlığını dağıtmaz.
 - `perception_node`: `/camera/image`, `/camera/camera_info`, `/camera/points` -> YOLO bbox -> organized cloud foreground -> PCA 6DOF -> TF -> `/detected_objects` (`base_link`).
 - `/get_pick_pose`: nesne pozundan `grasp_link -> Link_6` ters offset'iyle Link_6 pick ve `+0.10 m` pre-pick üretir.
 - `autonomous_pick_node`: en yüksek confidence tespiti seçer, `/get_pick_pose` çağırır, `/pick_and_place` action goal gönderir, feedback/result sonrası döngüye döner.

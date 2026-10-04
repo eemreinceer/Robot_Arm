@@ -14,7 +14,8 @@
 - Model: `IKNet`, `7 -> 256 -> 512 -> 512 -> 256 -> 6`, BatchNorm, ReLU, Dropout, Tanh.
 - Loss: joint MSE + diferansiyellenebilir `Link_6` FK pozisyon reconstruction loss.
 - Training: AdamW, cosine LR scheduler, TensorBoard logging, early stopping, checkpoint resume destegi.
-- Export: `src/arm_ml/models/ik_net_scripted.pt` (`torch.jit.script`). Model ve dataset gitignored kalir.
+- Export: `src/arm_ml/models/ik_net_scripted.pt` (`torch.jit.script`). Model ve
+  dataset yerel artifact olarak kalır; public portfolio ağırlığı dağıtmaz.
 - `evaluate_ik` komutu eklendi; train/val/test splitlerinde FK reconstruction mm metrikleri uretir.
 - `/dl_ik_solve` servisi artik tahminle birlikte gercek FK reconstruction error degerini de dondurur.
 

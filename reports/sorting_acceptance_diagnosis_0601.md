@@ -20,7 +20,8 @@ kaynak darlığıydı — bugün çökmedi).
 
 ## Eğitim (sağlam)
 YOLOv8n, 80 epoch, test mAP50=0.995 / mAP50-95=0.9855. Model
-`src/arm_perception/models/yolo_arm.pt`. Bağımsız testte canlı kamera görüntüsünde
+yerel `src/arm_perception/models/yolo_arm.pt` artifact'iyle yürütüldü; ağırlık
+public repoda dağıtılmaz. Bağımsız testte canlı kamera görüntüsünde
 `red_box`'ı 0.94 conf ile buldu → model İYİ, sorun modelde değil.
 
 ## Sonda bulguları
