@@ -7,6 +7,7 @@ from types import SimpleNamespace
 import urllib.request
 
 from arm_perception.web_console import (
+    _asset_key,
     _memory_used_percent,
     _throttle_flags,
     ConsoleState,
@@ -346,3 +347,11 @@ def test_static_server_accepts_symlink_install_layout(tmp_path: Path):
     finally:
         server.shutdown()
         thread.join(timeout=2.0)
+
+
+def test_asset_key_rejects_path_and_header_injection():
+    assert _asset_key('assets/robot-arm.js') == 'assets/robot-arm.js'
+    assert _asset_key('../secret.txt') is None
+    assert _asset_key('assets/../../secret.txt') is None
+    assert _asset_key('asset\r\nX-Injected.html') is None
+    assert _asset_key('/absolute/path') is None

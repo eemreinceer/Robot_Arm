@@ -16,9 +16,8 @@ import hashlib
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-import mimetypes
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import platform
 import re
 import shutil
@@ -68,6 +67,56 @@ REPLAY_TOPICS = tuple(
     if topic not in ('/tf', '/tf_static')
 )
 MAX_REQUEST_BYTES = 64 * 1024
+SAFE_ASSET_SEGMENT = re.compile(r'^[A-Za-z0-9][A-Za-z0-9._-]*$')
+CONTENT_TYPES = {
+    '.css': 'text/css; charset=utf-8',
+    '.dae': 'model/vnd.collada+xml',
+    '.glb': 'model/gltf-binary',
+    '.gltf': 'model/gltf+json',
+    '.html': 'text/html; charset=utf-8',
+    '.jpeg': 'image/jpeg',
+    '.jpg': 'image/jpeg',
+    '.js': 'text/javascript; charset=utf-8',
+    '.json': 'application/json; charset=utf-8',
+    '.png': 'image/png',
+    '.stl': 'model/stl',
+    '.svg': 'image/svg+xml',
+    '.urdf': 'application/xml; charset=utf-8',
+    '.webp': 'image/webp',
+    '.xacro': 'application/xml; charset=utf-8',
+    '.yaml': 'application/yaml; charset=utf-8',
+    '.yml': 'application/yaml; charset=utf-8',
+}
+
+
+def _asset_key(value: str) -> Optional[str]:
+    """Return a normalized allow-listed relative asset key."""
+    parts = PurePosixPath(value).parts
+    if not parts or any(
+        part in ('.', '..') or SAFE_ASSET_SEGMENT.fullmatch(part) is None
+        for part in parts
+    ):
+        return None
+    return '/'.join(parts)
+
+
+def _content_type(name: str) -> str:
+    """Map a trusted suffix to a fixed response header value."""
+    suffix = Path(name).suffix.lower()
+    return CONTENT_TYPES.get(suffix, 'application/octet-stream')
+
+
+def _index_static_assets(root: Path) -> dict[str, tuple[bytes, str]]:
+    """Read trusted static assets once so requests never form filesystem paths."""
+    assets: dict[str, tuple[bytes, str]] = {}
+    if not root.is_dir():
+        return assets
+    for candidate in root.rglob('*'):
+        if not candidate.is_file():
+            continue
+        relative = candidate.relative_to(root).as_posix()
+        assets[relative] = (candidate.read_bytes(), _content_type(relative))
+    return assets
 WEBSOCKET_GUID = '258EAFA5-E914-47DA-95CA-C5AB0DC85B11'
 
 
@@ -890,9 +939,11 @@ def make_http_handler(
     state: ConsoleState,
     recordings: RecordingManager,
     web_root: Path,
-    asset_resolver: Callable[[str, str], Optional[Path]],
+    asset_resolver: Callable[[str, str], Optional[tuple[bytes, str]]],
 ):
     """Build the HTTP handler with explicit state dependencies for tests."""
+    web_assets = _index_static_assets(web_root)
+    index_asset = web_assets.get('index.html')
 
     class Handler(BaseHTTPRequestHandler):
         server_version = 'RobotArmConsole/1.0'
@@ -920,15 +971,15 @@ def make_http_handler(
             raw = self.rfile.read(length)
             return json.loads(raw.decode('utf-8')) if raw else {}
 
-        def _serve_file(self, path: Path, cache: bool = False) -> None:
-            if not path.is_file():
+        def _serve_asset(
+            self,
+            asset: Optional[tuple[bytes, str]],
+            cache: bool = False,
+        ) -> None:
+            if asset is None:
                 self.send_error(HTTPStatus.NOT_FOUND)
                 return
-            payload = path.read_bytes()
-            mime_type = (
-                mimetypes.guess_type(path.name)[0]
-                or 'application/octet-stream'
-            )
+            payload, mime_type = asset
             self.send_response(HTTPStatus.OK)
             self.send_header('Content-Type', mime_type)
             self.send_header('Content-Length', str(len(payload)))
@@ -1039,19 +1090,20 @@ def make_http_handler(
                 if resolved is None:
                     self.send_error(HTTPStatus.NOT_FOUND)
                 else:
-                    self._serve_file(resolved, cache=True)
+                    self._serve_asset(resolved, cache=True)
                 return
 
-            relative = 'index.html' if path == '/' else path.lstrip('/')
-            relative_path = Path(relative)
-            if relative_path.is_absolute() or '..' in relative_path.parts:
+            relative = (
+                'index.html' if path == '/' else _asset_key(path.lstrip('/'))
+            )
+            if relative is None:
                 self.send_error(HTTPStatus.NOT_FOUND)
                 return
-            candidate = web_root / relative_path
-            if candidate.is_file():
-                self._serve_file(candidate, cache='/assets/' in path)
+            asset = web_assets.get(relative)
+            if asset is not None:
+                self._serve_asset(asset, cache='/assets/' in path)
             else:
-                self._serve_file(web_root / 'index.html')
+                self._serve_asset(index_asset)
 
         def do_POST(self):
             try:
@@ -1157,6 +1209,13 @@ class WebConsoleNode(Node):
             ),
         )
         self.allowed_packages = set(self.get_parameter('asset_packages').value)
+        self._package_assets = {}
+        for package in self.allowed_packages:
+            try:
+                package_root = Path(get_package_share_directory(package))
+            except LookupError:
+                continue
+            self._package_assets[package] = _index_static_assets(package_root)
         self._bridge = CvBridge()
         self._last_compressed_at = None
         self._last_raw_encoded_at = None
@@ -1530,18 +1589,14 @@ class WebConsoleNode(Node):
 
         return wrapped
 
-    def _resolve_asset(self, package: str, relative: str) -> Optional[Path]:
-        if package not in self.allowed_packages:
+    def _resolve_asset(
+        self, package: str, relative: str
+    ) -> Optional[tuple[bytes, str]]:
+        package_assets = self._package_assets.get(package)
+        relative_key = _asset_key(relative)
+        if package_assets is None or relative_key is None:
             return None
-        try:
-            root = Path(get_package_share_directory(package))
-        except LookupError:
-            return None
-        relative_path = Path(relative)
-        if relative_path.is_absolute() or '..' in relative_path.parts:
-            return None
-        candidate = root / relative_path
-        return candidate if candidate.is_file() else None
+        return package_assets.get(relative_key)
 
     def destroy_node(self):
         self.http_server.shutdown()
