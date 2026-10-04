@@ -12,9 +12,8 @@ as different evidence classes.
 
 > **Hardware scope:** the project name follows the six-servo assembly. The
 > current physical model is a **5-axis manipulator plus a 1-DOF gripper**.
-> The office robot used during development was not personal property; this
-> repository documents the software and engineering work, not hardware
-> ownership.
+> This repository documents software, integration and recorded measurements;
+> it does not claim ownership of the physical hardware used to produce them.
 
 ## What this project demonstrates
 
@@ -63,7 +62,7 @@ These are recorded project measurements, not production guarantees.
 | Edge inference | YOLOv8n TensorRT FP16: 46.14 ms mean GPU compute on Jetson Nano | End-to-end PT → ONNX → TensorRT deployment path passed. [Report](reports/nano_e2b_tensorrt.md) |
 | Camera calibration | Free principal-point policy: 0.1254 px validation reprojection; provenance gap remains documented | Lower variance was rejected when it introduced a larger pose bias. [Analysis](docs/calibration_principal_point_policy.md) |
 | MCU fault visibility | Host silence detected after 32.1 ms; watchdog `E3` response observed after 7.6 ms in the recorded fault test | Timeout visibility is measured separately from actuator-safe-state policy. [Evidence](docs/watchdog_policy_proposal.md) |
-| CI baseline | Static checks, clean ROS 2 Jazzy build/tests, and native STM32/ESP32 tests | Current workflow: [repository-baseline.yml](.github/workflows/repository-baseline.yml) |
+| CI baseline | Static checks, clean ROS 2 Jazzy build/tests, native STM32/ESP32 tests, and web-console build/audit | Current workflow: [repository-baseline.yml](.github/workflows/repository-baseline.yml) |
 
 ## Design choices and trade-offs
 
@@ -96,15 +95,13 @@ These are recorded project measurements, not production guarantees.
 4. Compare IK approaches using the
    [accuracy-gated benchmark](src/arm_tests/benchmark_results/ik_comparison_report.md).
 5. Check the [CI workflow](.github/workflows/repository-baseline.yml),
-   [acceptance reports](reports/) and open issues for remaining risks.
+   [acceptance reports](reports/) and [current limits](#current-limits).
 
 ## Repository map
 
 | Path | Responsibility |
 | --- | --- |
 | [`src/arm_nodes/`](src/arm_nodes/) | Pick/place orchestration and analysis tools |
-| [`src/arm_kinematics/`](src/arm_kinematics/) | FK, Jacobian and DLS IK experiments |
-| [`src/arm_ml/`](src/arm_ml/) | PyTorch IK dataset, training, evaluation and inference |
 | [`src/arm_perception/`](src/arm_perception/) | Camera, YOLO, calibration and operator console |
 | [`src/arm_hardware/`](src/arm_hardware/) | `ros2_control` UART hardware interface |
 | [Robot description package](src/robot_arm_description/) | Robot model, calibration and control configuration |
@@ -112,6 +109,10 @@ These are recorded project measurements, not production guarantees.
 | [`deploy/pi5/`](deploy/pi5/) | Active Raspberry Pi 5 deployment surface |
 | [`data/`](data/), [`runs/`](runs/), [`reports/`](reports/) | Measurements, run artifacts and engineering conclusions |
 | [`scripts/`](scripts/) | Verification, calibration and diagnostic tools |
+
+The active and legacy ROS 2 packages are indexed in [`src/README.md`](src/README.md).
+Legacy IK, ML and Gazebo experiments remain reviewable but are excluded from
+the default workspace build.
 
 ## Verify locally
 
@@ -125,6 +126,12 @@ listed in [`docs/supported_versions.md`](docs/supported_versions.md).
 # Clean active-workspace ROS build/tests plus native firmware checks;
 # no physical robot, UART or Gazebo startup
 ./scripts/verify_workspace.sh --full
+
+# Operator-console build and dependency audit
+(
+  cd src/arm_perception/web/robot-arm-console
+  npm ci && npm run build && npm audit --audit-level=high
+)
 
 # Simulation must use the canonical launcher and be stopped after the run
 ./start_simulation.sh --basic
@@ -142,8 +149,9 @@ preflight and operator-controlled procedure. See
   closed-loop verification remains future work.
 - Some historical experiments target Jetson Nano; Raspberry Pi 5 is the active
   runtime target.
-- The physical office robot is not currently available for every hardware
-  reproduction step.
+- Physical hardware is not available for every reproduction step.
+- Trained model weights are not distributed; local provisioning and provenance
+  requirements are documented under each package's `models/` directory.
 - A successful simulation or mock test does not imply a successful physical
   grasp, calibrated accuracy or human-safe operation.
 
@@ -163,5 +171,8 @@ review and technical evaluation; reuse and redistribution are not granted.
 See [`LICENSE`](LICENSE). Identified third-party components remain subject to
 their own terms. Files under `src/arm_hardware/` carrying an Apache-2.0 notice
 retain that file-specific license.
+
+Security reports and disclosure expectations are documented in
+[`SECURITY.md`](SECURITY.md).
 
 Project owner: [Emre Inceer](https://github.com/eemreinceer)

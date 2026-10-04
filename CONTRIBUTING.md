@@ -1,66 +1,77 @@
-# Katkı Rehberi
+# Contributing
 
-Bu depo robotik yazılım, firmware ve fiziksel sistem kanıtlarını birlikte
-taşır. Bir değişikliğin kabul edilebilir olması için kodun çalışması kadar
-ölçüm sınıfı, güvenlik sınırı ve yeniden üretilebilirlik de açık olmalıdır.
+This repository combines robotics software, firmware and physical-system
+evidence. A change is acceptable only when its behavior, evidence class,
+safety boundary and reproduction path are clear.
 
-## Çalışmaya başlamadan önce
+## Before changing code
 
-1. Hedef branch'in güncel ve worktree'nin temiz olduğunu doğrulayın.
-2. Açık issue'larda aynı problem için arama yapın.
-3. Değiştireceğiniz paketin `package.xml`, build dosyaları, README ve testlerini
-   inceleyin.
-4. Fiziksel robot, servo rayı, UART veya firmware etkileniyorsa mevcut güvenlik
-   ve bring-up belgelerini okuyun.
+1. Confirm the target branch is current and the working tree is clean.
+2. Search existing issues for the same problem.
+3. Read the affected package's `package.xml`, build file, README and tests.
+4. If the change touches physical motion, servo power, UART or firmware, read
+   the relevant safety and bring-up documents first.
 
-## Değişiklik disiplini
+## Change discipline
 
-- Kapsamı küçük tutun; ilgisiz refactor veya dependency eklemeyin.
-- ROS 2 interface değişikliklerini publisher/subscriber/service/action
-  tüketicileriyle birlikte değerlendirin.
-- Simülasyon, mock test, donanımlı entegrasyon ve fiziksel ölçümü birbirinin
-  yerine kullanmayın.
-- Ölçüm iddiasında komut, ortam, sürüm, tarih ve artifact yolunu kaydedin.
-- Secret, credential, kişisel ağ adresi, yerel kullanıcı adı veya makineye özel
-  mutlak yol commit etmeyin.
+- Keep the scope small; avoid unrelated refactors and dependencies.
+- Evaluate ROS 2 interface changes with every publisher, subscriber, service
+  or action consumer.
+- Do not treat simulation, mock tests, hardware integration and physical
+  measurements as interchangeable evidence.
+- Record the command, environment, version, date and artifact path for a
+  measurement claim.
+- Never commit secrets, credentials, private network addresses, local user
+  names or machine-specific absolute paths.
+- Keep generated model weights local unless their provenance, dataset rights
+  and redistribution terms are documented.
 
-## Doğrulama
+## Verification
 
-En küçük ortak kapı:
+Run the smallest shared gate:
 
 ```bash
 ./scripts/verify_workspace.sh --quick
 ```
 
-ROS 2 paketleri veya native firmware değiştiyse:
+For ROS 2 packages or native firmware changes:
 
 ```bash
 ./scripts/verify_workspace.sh --full
 ```
 
-Ek olarak değişen paketin dar testlerini çalıştırın. Test başarısızlığını veya
-çalıştırılamayan fiziksel adımı teslim notunda açıkça belirtin.
+The web console also requires:
 
-## Commit ve pull request
+```bash
+cd src/arm_perception/web/robot-arm-console
+npm ci
+npm run build
+npm audit --audit-level=high
+```
 
-- Küçük ve mantıksal commitler kullanın.
-- Commit mesajında değişikliğin sonucunu açıklayın; yalnız dosya adını yazmayın.
-- Force-push ve history rewrite kullanmayın.
-- Pull request; problem, çözüm, risk, test sonucu ve geri alma yaklaşımını
-  içermelidir.
+Run narrower tests for the changed package. Report failures and physical steps
+that could not be executed instead of hiding them.
 
-## Simülasyon ve fiziksel güvenlik
+## Commits and pull requests
 
-- Simülasyon yalnız `./start_simulation.sh <mod>` ile açılır.
-- Aynı anda tek simülasyon çalışır ve iş sonunda bütün çocuk prosesler kapatılır.
-- Logdaki başarı metni fiziksel sim durumu değildir; pose verisi ve görsel durum
-  birlikte doğrulanır.
-- Robot hareketi, ray enerjisi, firmware flash veya kablolama değişikliği için
-  operatör kontrollü preflight ve erişilebilir fiziksel güç kesme yolu gerekir.
-- `/joint_states` açık çevrim komut yankısıysa ölçülmüş servo konumu değildir.
+- Prefer small, logically complete commits.
+- Describe the outcome in the commit message, not only the filename.
+- Avoid force-pushing shared work.
+- A pull request should state the problem, solution, risk, verification result
+  and rollback approach.
 
-## Tamamlanma ölçütü
+## Simulation and physical safety
 
-Bir katkı; kabul kriterlerini karşılıyor, ilgili testleri geçiyor,
-`git diff --check` temiz, dokümantasyon güncel ve fiziksel kanıt sınırı doğru
-ifade edilmişse teslim edilmiş sayılır.
+- Start simulation only through `./start_simulation.sh <mode>`.
+- Run one simulator instance at a time and stop all child processes afterward.
+- A success log is not proof of simulation state; compare pose data with the
+  rendered scene.
+- Physical motion, servo-rail power, firmware flashing and wiring changes
+  require an operator-controlled preflight and a reachable power cutoff.
+- If `/joint_states` is an open-loop command echo, it is not measured position.
+
+## Definition of done
+
+A contribution is complete when it satisfies its acceptance criteria, passes
+the relevant tests, has a clean `git diff --check`, updates documentation and
+states physical-evidence limitations accurately.

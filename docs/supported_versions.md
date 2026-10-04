@@ -1,81 +1,80 @@
-# Desteklenen Ortam ve Sürüm Matrisi
+# Supported environments and versions
 
-Bu belge geliştirme ve hedef ortam sözleşmesini kaydeder. Fiziksel kabul veya
-release bildirimi değildir.
+This document records the development and target-environment contract. It is
+not a physical-acceptance or release statement.
 
-## Geliştirme bilgisayarı
+## Development workstation
 
-| Bileşen | Desteklenen / doğrulanan değer | Durum |
+| Component | Supported or measured value | Status |
 | --- | --- | --- |
-| İşletim sistemi | Ubuntu 24.04 LTS | Aktif geliştirme hostu |
-| ROS 2 | Jazzy | Kanonik host dağıtımı |
-| Python | 3.12 | Host statik test ve ROS Python paketleri |
-| PlatformIO Core | 6.1.19 | Yerel native/firmware doğrulamasında ölçüldü |
-| ShellCheck | 0.9.0 | Yerel shell tabanında ölçüldü |
+| Operating system | Ubuntu 24.04 LTS | Active development host |
+| ROS 2 | Jazzy | Canonical host distribution |
+| Python | 3.12 | Static checks and ROS Python packages |
+| PlatformIO Core | 6.1.19 | Pinned in native firmware CI |
+| ShellCheck | 0.9.0 | Measured local baseline |
+| Node.js | 22 | Web-console CI baseline |
 
-## Raspberry Pi 5 hedefi (aktif)
+## Raspberry Pi 5 target — active
 
-2026-08-26'da cihaz üzerinde ölçüldü (`ssh pi5`).
+Measured on the device on 2026-08-26 (`ssh pi5`).
 
-| Bileşen | Ölçülen değer | Not |
+| Component | Measured value | Note |
 | --- | --- | --- |
-| İşletim sistemi | Ubuntu 24.04.4 LTS | Host ile aynı taban |
-| Çekirdek / mimari | 6.8.0-1061-raspi / `aarch64` | Raspberry Pi çekirdeği |
-| ROS 2 | **Jazzy** | Nano'nun aksine host ile **aynı** dağıtım; ayrı konteyner gerekmiyor |
-| Python | 3.12.3 | Host ile aynı |
-| OpenCV | 4.6.0 | Kamera node'unun GStreamer yolu bunu kullanıyor |
-| GStreamer | 1.24.2 | `libcamerasrc` üzerinden IMX219 |
-| libcamera (apt) | 0.2.0 | **Kullanılmıyor** — kamera node'u ile uyumsuz |
-| libcamera (yerel derleme) | **0.7.2+rpt20260817** | `/usr/local/lib/aarch64-linux-gnu`, unit içinde `GST_PLUGIN_PATH` ile açıkça seçiliyor |
-| colcon | kurulu | Cihaz üzerinde build mümkün |
+| Operating system | Ubuntu 24.04.4 LTS | Same base as the host |
+| Kernel / architecture | 6.8.0-1061-raspi / `aarch64` | Raspberry Pi kernel |
+| ROS 2 | **Jazzy** | Same distribution as the host; no separate container required |
+| Python | 3.12.3 | Same major/minor as the host |
+| OpenCV | 4.6.0 | Used by the camera node's GStreamer path |
+| GStreamer | 1.24.2 | IMX219 through `libcamerasrc` |
+| libcamera from apt | 0.2.0 | **Not used**; incompatible with the camera node |
+| locally built libcamera | **0.7.2+rpt20260817** | Selected through the unit's `GST_PLUGIN_PATH` |
+| colcon | installed | Device-side builds are supported |
 
-Kritik nokta: apt'nin libcamera 0.2.0'ı ile projenin derlediği 0.7.2 aynı
-sistemde yan yana duruyor. `robot-arm-camera.service` doğru olanı seçmek için
-`GST_PLUGIN_PATH` değişkenini unit içinde veriyor; bu satır kaldırılırsa
-kamera sessizce yanlış eklentiyle açılmaya çalışır.
+The apt libcamera 0.2.0 and locally built 0.7.2 coexist. The
+`robot-arm-camera.service` unit deliberately selects the local build. Removing
+that `GST_PLUGIN_PATH` can make the camera silently load the wrong plugin.
 
-Deploy sözleşmesi ve systemd unit kopyaları
-[`deploy/pi5/README.md`](../deploy/pi5/README.md) içindedir.
+The deployment contract and version-controlled systemd unit copies live in
+[`deploy/pi5/README.md`](../deploy/pi5/README.md).
 
-## Jetson Nano hedefi (EMEKLİ)
+## Jetson Nano target — retired
 
-> Nano 2026-08 itibarıyla emekli edildi; aktif hedef Raspberry Pi 5'tir.
-> Aşağıdaki tablo tarihsel kayıttır, yeni iş için taban alınmamalıdır.
+> Jetson Nano was retired as the active target in 2026-08. The following values
+> are retained as historical engineering evidence, not as a baseline for new
+> work.
 
-| Bileşen | Doğrulanmış değer | Not |
+| Component | Measured value | Note |
 | --- | --- | --- |
-| JetPack/L4T ailesi | JetPack 4.x uyumlu yüzey | Nano uyumluluğu korunmalı |
-| ROS 2 | Humble, konteyner | Jazzy install ağacı burada source edilmez |
-| Host Python | 3.6.9 | Nano'ya doğrudan giden scriptler bu grameri korur |
-| CUDA | 10.2.300 | 2026-07 ölçümü |
-| TensorRT | 8.2.1 / Python 8.2.1.8 | Hedef cihaz ölçümü |
-| Ultralytics export hostu | 8.4.75 | Laptop PT → ONNX adımı |
-| ONNX | 1.22.0, opset 12 | Nano TensorRT yolu için doğrulandı |
+| JetPack/L4T family | JetPack 4.x-compatible surface | Preserve only for historical reproduction |
+| ROS 2 | Humble in a container | Do not source a Jazzy install tree here |
+| Host Python | 3.6.9 | Scripts deployed directly to Nano preserve this grammar |
+| CUDA | 10.2.300 | Measured in 2026-07 |
+| TensorRT | 8.2.1 / Python 8.2.1.8 | Target-device measurement |
+| Ultralytics export host | 8.4.75 | Historical PT to ONNX export environment |
+| ONNX | 1.22.0, opset 12 | Historical Nano TensorRT path |
 
-Ayrıntılı Nano inference kanıtı
-[`reports/nano_e2b_tensorrt.md`](../reports/nano_e2b_tensorrt.md) ve deploy
-sözleşmesi [`deploy/nano/README.md`](../deploy/nano/README.md) içindedir.
+See [`reports/nano_e2b_tensorrt.md`](../reports/nano_e2b_tensorrt.md) and
+[`deploy/nano/README.md`](../deploy/nano/README.md) for the historical evidence.
 
-## Firmware hedefleri
+## Firmware targets
 
-| Ortam | Hedef | Framework | Doğrulama |
+| Environment | Target | Framework | Verification |
 | --- | --- | --- | --- |
-| `firmware/stm32_servo_ctrl` | `bluepill_f103c8` | Arduino / PlatformIO | Cihaz build + `native` protokol testleri |
-| `firmware/esp32_servo_ctrl` | `esp32dev` | Arduino / PlatformIO | Cihaz build + `native` hareket/protokol testleri |
+| `firmware/stm32_servo_ctrl` | `bluepill_f103c8` | Arduino / PlatformIO | Device build plus native protocol tests |
+| `firmware/esp32_servo_ctrl` | `esp32dev` | Arduino / PlatformIO | Device build plus native motion/protocol tests |
 
-PlatformIO platform paketleri `platformio.ini` içinde henüz kesin sürüme
-sabitlenmemiştir. Bu, tekrarlanabilir release öncesinde kapatılması gereken
-bilinçli bir boşluktur; CI tabanı şimdilik PlatformIO Core 6.1.19'u sabitler.
+PlatformIO Core is pinned in CI, but the platform packages in
+`platformio.ini` are not yet pinned. This is a documented reproducibility gap
+that must be closed before a versioned firmware release.
 
-## Model ve release durumu
+## Models and releases
 
-- Runtime modellerinin hash ve provenans durumu
-  [`repository_artifact_inventory.md`](repository_artifact_inventory.md)
-  dosyasında izlenir.
-- Projenin kullanıcı tarafından atanmış bir semantik release sürümü yoktur;
-  bu nedenle tahmini bir `VERSION` değeri eklenmemiştir.
-- Repository portfolio evaluation için "all rights reserved" koşullarıyla
-  yayınlanır; ayrıntılar kök [`LICENSE`](../LICENSE) dosyasındadır.
+- Trained model weights are not distributed. Provisioning and provenance rules
+  are documented in [`repository_artifact_inventory.md`](repository_artifact_inventory.md).
+- The project has no semantic release yet, so no inferred `VERSION` value is
+  published.
+- The repository is available for portfolio evaluation under the custom
+  evaluation-only terms in [`LICENSE`](../LICENSE).
 
-Bu matriste değişiklik yapılırken ölçüm tarihi, hedef cihaz ve üreten araç
-sürümü birlikte güncellenmelidir.
+When updating this matrix, record the measurement date, target device and tool
+version together.

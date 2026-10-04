@@ -79,7 +79,8 @@ in [`docs/real_control_chain_audit.md`](docs/real_control_chain_audit.md).
 
 The earlier `arm_description`, `arm_gazebo`, `arm_kinematics`, `arm_ml` and
 `arm_moveit_config` packages are retained as documented experiments and marked
-with `COLCON_IGNORE`. Their status and re-enablement conditions are recorded in
+with `COLCON_IGNORE`. They are not active dependencies. Their status and
+re-enablement conditions are recorded in [`src/README.md`](src/README.md) and
 [`src/LEGACY_6DOF.md`](src/LEGACY_6DOF.md).
 
 ## Simulation boundary
