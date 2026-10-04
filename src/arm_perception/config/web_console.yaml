@@ -1,0 +1,39 @@
+web_console:
+  ros__parameters:
+    # Fail-safe default: only the PC itself can connect. Set this to the robot
+    # LAN interface address when another local device must open the console.
+    bind_address: "127.0.0.1"
+    port: 8088
+    recordings_root: "/var/tmp/robot-arm-console/recordings"
+    minimum_free_gb: 5.0
+    compressed_image_topic: "/camera/image_raw/compressed"
+    # The gateway creates this high-bandwidth DDS reader lazily only while the
+    # compressed topic has no publisher, then destroys it when compressed is up.
+    raw_image_topic: "/camera/image_raw"
+    raw_image_max_fps: 15.0
+    raw_image_jpeg_quality: 82
+    compressed_preference_seconds: 1.0
+    camera_info_topic: "/camera/camera_info"
+    detections_2d_topic: "/detections_2d"
+    objects_topic: "/detected_objects"
+    joint_states_topic: "/joint_states"
+    arm_status_topic: "/arm_status"
+    # Read-only Linux/Pi telemetry. vcgencmd is optional on non-Pi hosts.
+    system_telemetry_interval_s: 5.0
+    asset_packages:
+      - "robot_arm_description"
+      - "arm_description"
+    # --- Ölçüm sağlamlığı sondaları (hepsi salt okunur) ---
+    # Boş bırakılırsa kimlik tespiti yapılmaz; launch dosyası paket
+    # share dizinini geçirir.
+    camera_config_dir: ""
+    measurement_registry: ""
+    # Kamera node'unun UYGULADIĞI flip'i parametre servisinden okur.
+    # Boş bırakılırsa flip sözleşmesi denetlenmez ve durum "unknown" kalır.
+    camera_node_name: "/csi_camera_node"
+    # Portu AÇMAZ, /proc üzerinden kimin tuttuğunu okur. Port açmak CP2102
+    # üzerinden ESP32'yi resetler ve motorluyken PWM'i keser.
+    serial_port_globs:
+      - "/dev/ttyUSB*"
+      - "/dev/ttyACM*"
+    thermal_window_s: 600.0

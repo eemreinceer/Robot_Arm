@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_arm_mock_hardware">
+  <xacro:arg name="calibration_file" default="/dev/null"/>
+  <link name="base_link"/>
+  <xacro:macro name="mock_joint" params="index parent">
+    <link name="link_${index}"/>
+    <joint name="joint_${index}" type="continuous">
+      <parent link="${parent}"/>
+      <child link="link_${index}"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+  </xacro:macro>
+  <xacro:mock_joint index="1" parent="base_link"/>
+  <xacro:mock_joint index="2" parent="link_1"/>
+  <xacro:mock_joint index="3" parent="link_2"/>
+  <xacro:mock_joint index="4" parent="link_3"/>
+  <xacro:mock_joint index="5" parent="link_4"/>
+  <xacro:mock_joint index="6" parent="link_5"/>
+
+  <ros2_control name="robot_arm_real_system" type="system">
+    <hardware>
+      <plugin>arm_hardware/STM32SystemInterface</plugin>
+      <param name="serial_device">/dev/ttyUSB0</param>
+      <param name="baud_rate">115200</param>
+      <param name="mock_serial">true</param>
+      <param name="command_rate_hz">50</param>
+      <param name="calibration_file">$(arg calibration_file)</param>
+    </hardware>
+    <xacro:macro name="hardware_joint" params="name">
+      <joint name="${name}">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+    </xacro:macro>
+    <xacro:hardware_joint name="joint_1"/>
+    <xacro:hardware_joint name="joint_2"/>
+    <xacro:hardware_joint name="joint_3"/>
+    <xacro:hardware_joint name="joint_4"/>
+    <xacro:hardware_joint name="joint_5"/>
+    <xacro:hardware_joint name="joint_6"/>
+  </ros2_control>
+</robot>

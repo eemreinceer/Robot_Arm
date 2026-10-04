@@ -1,0 +1,16 @@
+# ===================== GOAL =====================
+geometry_msgs/PoseStamped target_pose
+string planning_group   # "arm" veya "gripper"
+float32 speed_scale     # 0.1 - 1.0
+bool execute            # false = sadece planla, çalıştırma
+---
+# ==================== RESULT ====================
+bool success
+string message
+float32 planning_time
+float32 execution_time
+---
+# ================== FEEDBACK ===================
+float32 progress        # 0.0 - 1.0
+geometry_msgs/Pose current_pose
+string phase            # "planning" | "executing"

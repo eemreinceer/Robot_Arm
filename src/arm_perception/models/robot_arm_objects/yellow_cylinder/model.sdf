@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<sdf version="1.8">
+  <model name="yellow_cylinder">
+    <link name="link">
+      <inertial><mass>0.010</mass><inertia><ixx>9.0e-7</ixx><iyy>9.0e-7</iyy><izz>5.0e-7</izz></inertia></inertial>
+      <collision name="collision"><geometry><cylinder><radius>0.010</radius><length>0.025</length></cylinder></geometry><surface><friction><ode><mu>0.6</mu><mu2>0.6</mu2></ode></friction></surface></collision>
+      <visual name="visual"><geometry><cylinder><radius>0.010</radius><length>0.025</length></cylinder></geometry><material><ambient>0.8 0.8 0.1 1</ambient><diffuse>0.8 0.8 0.1 1</diffuse></material></visual>
+    </link>
+  </model>
+</sdf>

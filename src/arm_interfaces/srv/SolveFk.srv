@@ -1,0 +1,5 @@
+float64[6] joint_angles
+---
+geometry_msgs/PoseStamped tcp_pose
+bool success
+string message

@@ -1,0 +1,27 @@
+# TEMPLATE ONLY. Replace the homography after the camera mount is rigid and
+# calibrated against measured target-frame table points.
+#
+# EYE-IN-HAND (2026-07-26 kullanıcı teyidi): kamera KOLUN ÜZERİNDE. Bir
+# homografi yalnızca yakalandığı EKLEM POZUNDA geçerli — kol kımıldarsa
+# piksel→masa eşlemesi bozulur. Bu yüzden aşağıdaki iki alan ZORUNLU;
+# rgb_planar_detector_node bunlar olmadan başlamaz ve /joint_states bu pozdan
+# saparsa kareleri düşürür.
+#
+# ÖLÇÜLECEK (uydurulmayacak):
+#   1. Gözlem pozunu seç, kolu oraya götür, /joint_states'ten okunan GERÇEK
+#      değerleri observation_joint_positions'a yaz — komut değerlerini değil.
+#   2. Kol O POZDA dururken masadaki ölçülmüş noktalarla homografiyi çöz.
+#   3. joint_tolerance_rad'i ölçüyle seç: pozu tolerans kadar bozup
+#      projeksiyon hatasının ne kadar büyüdüğüne bak.
+image_to_target_plane_homography: [1.0, 0.0, 0.0,
+                                   0.0, 1.0, 0.0,
+                                   0.0, 0.0, 1.0]
+table_z_m: 0.0
+# TODO(ölçüm): gözlem pozundaki gerçek eklem açıları (rad). Boş = düğüm başlamaz.
+observation_joint_positions: {}
+# TODO(ölçüm): 0.02 rad yalnızca başlangıç değeri, doğrulanmadı.
+joint_tolerance_rad: 0.02
+object_dimensions_m:
+  red_box: [0.020, 0.020, 0.020]
+  yellow_cylinder: [0.020, 0.020, 0.025]
+  blue_cube: [0.020, 0.020, 0.020]

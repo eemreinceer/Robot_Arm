@@ -1,0 +1,56 @@
+{
+ "label": "50cm",
+ "frames_requested": 60,
+ "frames_used": 60,
+ "frames_rejected": 0,
+ "rejected_detail": {
+  "no_frame": 0,
+  "no_board": 0,
+  "high_reproj": 0
+ },
+ "translation_mm": {
+  "median": 0.5655477032981939,
+  "p90": 1.2655527856204645,
+  "max": 2.1414325912029173
+ },
+ "angular_deg": {
+  "median": 0.11408163152320427,
+  "p90": 0.2486339949743057,
+  "max": 0.2919110148862688
+ },
+ "translation_depth_mm": {
+  "median": 0.5501854876191485,
+  "p90": 1.251735225395073
+ },
+ "translation_lateral_mm": {
+  "median": 0.1258539081735498,
+  "p90": 0.2886257753704056
+ },
+ "reproj_px_median": 0.24144315719604492,
+ "board_pose_camera_frame": {
+  "translation_m": [
+   -0.018296338998840374,
+   -0.13920100620733708,
+   0.9499942876433587
+  ],
+  "rotation_matrix": [
+   [
+    0.9999890374080413,
+    -0.0013123506083895186,
+    -0.004494752453631247
+   ],
+   [
+    -0.0015291340939330115,
+    0.8157642829524876,
+    -0.5783824827983094
+   ],
+   [
+    0.004425699115567635,
+    0.5783830153063753,
+    0.8157533333014607
+   ]
+  ],
+  "note": "median translation and chordal-mean rotation over the accepted frames; this is the reference the scatter above is measured against"
+ },
+ "note": "arm stationary; perception noise only, no servo/FK contribution"
+}

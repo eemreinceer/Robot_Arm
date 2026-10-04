@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Pins CycloneDDS to the Nano's wired link to the PC.
+
+  Without this, a container that starts at boot binds whatever interface
+  happens to be up first. Measured on 2026-08-05: csi_camera_node and
+  mjpeg_bridge both advertised the VPN interface, while a process started
+  later in the SAME container advertised the wired eth0 address. The only
+  difference was start time: eth0 had no address yet at boot, and
+  Cyclone never rebinds. The PC saw zero publishers for four hours.
+-->
+<CycloneDDS xmlns="https://cdds.io/config">
+  <Domain id="any">
+    <General>
+      <Interfaces>
+        <NetworkInterface name="eth0" multicast="true"/>
+      </Interfaces>
+    </General>
+  </Domain>
+</CycloneDDS>

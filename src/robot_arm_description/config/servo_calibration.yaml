@@ -1,0 +1,180 @@
+# Robot Arm kol — servo kalibrasyon haritası (Faz 6, plan §3 "Nano tarafı eşleme")
+# rad→µs lineer eşleme + clamp arm_hardware::write() içinde uygulanır.
+#
+# A0 TEYİT (kullanıcı, 2026-07-04): 6 servo = URDF'teki 6 eklem, 1:1 eşleme.
+#   joint_6 = GRIPPER servosu (kol 5-DOF). Kanal sırası STM32 pin planıyla
+#   fiziksel doğrulamayla kesinleşir; kalan TODO'lar aşağıda:
+#
+# ✅ ÖLÇÜLDÜ (2026-07-14, tezgahta boşta servo, PA0/kanal 1):
+#   Servolar STANDART 180° — "360°" DEĞİL. Ölçüm: horn nötrde saat 12'ye takıldı,
+#   P500 → saat 3, P2500 → saat 9. Yani 500-2500µs = 180°, nötr tam ortada.
+#   Dolayısıyla aşağıdaki ±1.57 rad ↔ 500/2500µs eşlemesi DOĞRU ve
+#   zero_offset_rad=0.0 geçerli (nötr kayması yok).
+#   NOT: eski "servolar 360° modifiyeli" notu yanlıştı ve tehlikeliydi — o varsayımla
+#   min/max_us'u 1000/2000'e çekmek her eklemi 2× EKSİK sürerdi. Etiketlere değil
+#   ölçüme güven; satıcılar 180°/270°/continuous'un hepsine "360°" diyor.
+#   (Ayrı konu: elbow'daki servo gerçekten continuous rotation çıktı ve değiştirildi.)
+#
+# ⚠️ YUKARIDAKİ ✅ ZAYIFTI — 2026-07-15'te genişletilmiş ölçümle düzeltildi.
+#   O ölçüm TEK servoydu, boşta, PA0'da. Monte altı eklemi kapsamıyordu ve
+#   hunting planı (DOC-HUNT-05) bunu zaten uyarmıştı. 2026-07-15'te kol söküldü
+#   ve altı servo tezgahta tek tek geçirildi:
+#     - BEŞ servo: 500→2500 arasında TAM 6 saat = 180°. Aralık eşlemesi
+#       gerçek parçalarda DOĞRULANDI. ✅
+#     - joint_3 (elbow) servosu: CONTINUOUS ROTATION. 500 → bir yön, 2500 →
+#       ters yön, durmadan. Pinde 2500.7µs olduğu logic analyzer ile
+#       doğrulanmış haldeyken ölçüldü, yani sinyal kusuru değil.
+#       §7'de zaten bir kez continuous çıkıp değiştirilmişti; YERİNE TAKILAN DA
+#       continuous. Aynı eklem, ikinci kez → PARTİ KARIŞIK.
+#
+#   ⛔ TAKILACAK HER SERVO, TAKILMADAN ÖNCE TEZGAHTA TEST EDİLECEK:
+#      sabit 1500µs'de OTURUYORSA pozisyonel, DÖNÜYOR/SÜRÜNÜYORSA continuous.
+#      Ayırıcı soru "tutuyor mu" değil "OTURUYOR mu" — continuous servo da
+#      zorlamaya direnir, elle yoklamak yanıltır.
+#
+# ✅ zero_offset_rad ÖLÇÜLDÜ 2026-07-24 (altı kanal), monte kolda, kullanıcı
+#   jog ederek RViz saydam ghost (URDF sıfır pozu) modeline GÖZ KARARIYLA hizaladı
+#   (`scripts/find_zero_offset.py`; ham kayıt runs/zero_offset_20260724_*).
+#   Encoder yok → residüel = göz kararı hatası (birkaç derece); vizyon-encoder ile
+#   ileride inceltilecek. joint_3 bir kez düzeltildi (1.05 → 1.2403).
+#   NOT: bu ölçüm, servo sinyal harness'i DOĞRU kanal sırasına takıldıktan sonra
+#   alındı — 2026-07-24'te harness ters sırada bulunup düzeltilmişti.
+#
+#   - min/max_rad: ✅ ÖLÇÜLDÜ 2026-07-22, monte kolda, kullanıcı jog ederek
+#     (`scripts/find_joint_limits.py`, ham kayıt `runs/joint_limits_20260722_1006.yaml`).
+#     Değerler = ölçülen uç ∓ 0.05 rad güvenlik payı.
+#     DÜRÜSTLÜK NOTU — bu ölçümün ne olduğu ve NE OLMADIĞI:
+#       * joint_1/2/3/4 ve gripper: kaydedilen uçlar servonun KENDİ elektriksel
+#         ucuna (500/2500 µs = ±1.57) denk geldi. Kullanıcı beyanı: kol bu
+#         eklemlerde fiziksel olarak kendi sınırına dayandı, motorlar sağlıklı.
+#         Yani bu eklemlerde sınırı koyan ÇARPIŞMA değil, servo menzilidir.
+#       * joint_5: TEK istisna, + tarafı +0.91'de servo ucundan ÖNCE durdu →
+#         gerçek mekanik limit. Asimetrik yazıldı.
+#       * joint_3 ve joint_5 ham kayıtta min/max TERS girilmişti (min >= max);
+#         mekanik olarak tek anlamlı okuma olduğu için çevrildi.
+#     Araç o koşuda sınıra dayanmayı sessizce yapıyordu; düzeltildi (artık
+#     uyarıyor ve `at_software_clamp` diye işaretliyor).
+#   - CAD sıfır pozu eğri (export ofsetleri): zero_offset_rad alanı URDF sıfırı
+#     ile servo horn sıfırı arasındaki farkı yutar; kanal başına elle ölçülür.
+#
+# Alanlar: joint, min_rad, max_rad, min_us, max_us, zero_offset_rad, invert
+
+channels:
+  - channel: 1
+    joint: joint_1
+    # ÖLÇEK ÇAPASI — tezgahta ölçüldü, DEĞİŞTİRİLMEZ (500/2500 µs = 180°)
+    min_rad: -1.57
+    max_rad: 1.57
+    min_us: 500
+    max_us: 2500
+    # GÜVENLİK LİMİTİ — ölçüldü 2026-07-22 (servo ucu), 0.05 rad pay
+    limit_min_rad: -1.52
+    limit_max_rad: 1.52
+    max_velocity_rad_s: 0.4
+    zero_offset_rad: 0.0000   # ölçüldü 2026-07-24 (0.0°) — göz kararı, RViz ghost'a karşı
+    # YÖN ÖLÇÜLDÜ 2026-07-28 (monte kol, ray enerjili, PC'den JTC komutu):
+    # pozitif joint_1 = SAAT YÖNÜNÜN TERSİ (yukarıdan bakışta). invert:false
+    # bu davranışı üretiyor. Diğer beş eklemin yönü HÂLÂ ÖLÇÜLMEDİ.
+    invert: false
+  - channel: 2
+    joint: joint_2
+    # ÖLÇEK ÇAPASI — tezgahta ölçüldü, DEĞİŞTİRİLMEZ (500/2500 µs = 180°)
+    min_rad: -1.57
+    max_rad: 1.57
+    min_us: 500
+    max_us: 2500
+    # GÜVENLİK LİMİTİ — ölçüldü 2026-07-22 (servo ucu), 0.05 rad pay
+    limit_min_rad: -1.52
+    limit_max_rad: 1.52
+    max_velocity_rad_s: 0.4
+    zero_offset_rad: 0.6500   # ölçüldü 2026-07-24 (+37.2°) — göz kararı, RViz ghost'a karşı
+    invert: false
+  - channel: 3
+    joint: joint_3
+    # ÖLÇEK ÇAPASI — tezgahta ölçüldü, DEĞİŞTİRİLMEZ (500/2500 µs = 180°)
+    min_rad: -1.57
+    max_rad: 1.57
+    min_us: 500
+    max_us: 2500
+    # GÜVENLİK LİMİTİ — ölçüldü 2026-07-22 (kayıtta min/max ters girilmişti), 0.05 rad pay
+    limit_min_rad: -1.52
+    limit_max_rad: 1.52
+    max_velocity_rad_s: 0.4
+    zero_offset_rad: 1.2403   # ölçüldü 2026-07-24 (+71.1°, joint_3 düzeltilmiş) — ghost'a karşı
+    invert: false
+  - channel: 4
+    joint: joint_4
+    # ÖLÇEK ÇAPASI — tezgahta ölçüldü, DEĞİŞTİRİLMEZ (500/2500 µs = 180°)
+    min_rad: -1.57
+    max_rad: 1.57
+    min_us: 500
+    max_us: 2500
+    # GÜVENLİK LİMİTİ — ölçüldü 2026-07-22 (servo ucu), 0.05 rad pay
+    limit_min_rad: -1.52
+    limit_max_rad: 1.52
+    max_velocity_rad_s: 0.4
+    zero_offset_rad: -0.2000   # ölçüldü 2026-07-24 (−11.5°) — göz kararı, RViz ghost'a karşı
+    invert: false
+  - channel: 5
+    joint: joint_5
+    # ÖLÇÜLDÜ 2026-07-22 — ASİMETRİK. Kayıtta min/max ters girilmişti; ham
+    # değerler -1.570 ve +0.910. + tarafı servo ucundan ÖNCE duruyor, yani
+    # bu, koşudaki TEK gerçek mekanik limit ölçümü (diğerleri servo ucu).
+    # ÖLÇEK ÇAPASI — diğer kanallarla aynı, DEĞİŞTİRİLMEZ
+    min_rad: -1.57
+    max_rad: 1.57
+    min_us: 500
+    max_us: 2500
+    # GÜVENLİK LİMİTİ — + tarafı gerçek mekanik stop (ham +0.910, 0.05 pay)
+    limit_min_rad: -1.52
+    limit_max_rad: 0.86
+    max_velocity_rad_s: 0.4
+    zero_offset_rad: -0.1000   # ölçüldü 2026-07-24 (−5.7°) — göz kararı, RViz ghost'a karşı
+    invert: false
+  - channel: 6
+    joint: joint_6          # A0 TEYİT (2026-07-04): joint_6 = GRIPPER servosu
+    min_rad: -0.25          # URDF mekanik stroke ile aynı güvenlik sınırı
+    max_rad: 0.35
+    min_us: 500
+    max_us: 2500
+    max_velocity_rad_s: 0.4
+    zero_offset_rad: 0.0499   # ölçüldü 2026-07-24 (+2.9°) — gripper, göz kararı
+    invert: false
+
+# Eklem hızı tavanı — ArmHardware her eklemi bununla sınırlar.
+# 2026-07-22: koddaki 0.1 rad/s varsayılanı kalibrasyon jog'unu gereksiz
+# yavaşlatıyordu (0.86 rad'lık bir düzeltme ~17 s sürüyor). 0.4 rad/s ≈ 23°/s;
+# operatörün tepki verebileceği, kesme anahtarıyla yönetilebilir bir hız.
+# ÜST SINIR: darbe slew'i (max_delta_us_per_step=10 µs @ 50 Hz = 500 µs/s
+# ≈ 0.785 rad/s). Bunun üstüne çıkmak istenirse slew de birlikte artmalı,
+# yoksa hız tavanı yükselse de teslimat yetişmez ve JTC 0.12 rad takip
+# toleransını aşıp pozisyon tutmaya geçer.
+
+# Soft-start (plan §3): aktivasyonda bilinmeyen pozdan sıçramayı önler
+soft_start:
+  max_delta_us_per_step: 10
+  step_period_ms: 20
+
+# Faz 12 aktivasyon güvenliği (arm_hardware::ActivationSafety)
+activation_safety:
+  # KALİBRASYON TAMAMLANDI 2026-07-24: min/max_rad (2026-07-22) + zero_offset_rad
+  # (altı kanal, 2026-07-24, q=0 canlı round-trip ile ghost'a doğrulandı) ölçüldü.
+  # true olunca komisyon zarfı (± commissioning_range_rad) DEVRE DIŞI kalır;
+  # hedefleri sınırlayan tek şey artık limit_min/max_rad konum clamp'i olur.
+  # UYARI (encoder yok): sistem kolun GERÇEK pozisyonunu ölçmez. ARM anında
+  # kolun reference_positions'ta (q=0) olduğunu VARSAYAR. Kol elle oynatılıp
+  # öyle ARM edilirse ilk komut servoyu kendi hızıyla hedefe çeker (yumuşak
+  # değil) — ARM öncesi kol daima sıfır poza yakın olmalı.
+  calibration_complete: true
+  # KALİBRASYON FAZI DEĞERİ (2026-07-22, üçüncü ayar).
+  # Geçmiş: 0.3 → 0.6 → 1.6. İlk ikisi ölçümü FİİLEN engelledi:
+  #   joint_1 komut -0.860 → teslim -0.600 (sınırda kesildi)
+  #   joint_3 komut -0.740 → teslim -0.600 (aynı)
+  # Yani gerçek offsetler tahmin ettiğimden büyük (joint_1 ≥ 0.86 rad ≈ 49°,
+  # bir spline dişinin üç katı). Ölçmeden önce büyüklüğü bilemiyorduk.
+  # 1.6, ±1.52 konum clamp'inin üstünde olduğu için zarf pratikte hiç
+  # bağlamaz. Kalan korumaların hepsi yürürlükte: konum clamp'i,
+  # max_velocity_rad_s ve max_delta_us_per_step darbe slew'i.
+  # zero_offset yazılıp calibration_complete true olunca bu alan zaten
+  # devre dışı kalır (zarf yalnız kalibrasyon tamamlanmamışken uygulanır).
+  commissioning_range_rad: 1.6

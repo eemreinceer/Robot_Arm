@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <model name="bin_yellow">
+    <static>true</static>
+    <link name="bin_link">
+      <collision name="floor_collision"><pose>0 0 0.0075 0 0 0</pose><geometry><box><size>0.184 0.184 0.015</size></box></geometry></collision>
+      <visual name="floor_visual"><pose>0 0 0.0075 0 0 0</pose><geometry><box><size>0.184 0.184 0.015</size></box></geometry><material><ambient>0.55 0.55 0.08 1</ambient><diffuse>0.75 0.75 0.10 1</diffuse></material></visual>
+      <collision name="wall_n_collision"><pose>0 0.086 0.055 0 0 0</pose><geometry><box><size>0.184 0.012 0.08</size></box></geometry></collision>
+      <visual name="wall_n_visual"><pose>0 0.086 0.055 0 0 0</pose><geometry><box><size>0.184 0.012 0.08</size></box></geometry><material><ambient>0.55 0.55 0.08 1</ambient><diffuse>0.75 0.75 0.10 1</diffuse></material></visual>
+      <collision name="wall_s_collision"><pose>0 -0.086 0.055 0 0 0</pose><geometry><box><size>0.184 0.012 0.08</size></box></geometry></collision>
+      <visual name="wall_s_visual"><pose>0 -0.086 0.055 0 0 0</pose><geometry><box><size>0.184 0.012 0.08</size></box></geometry><material><ambient>0.55 0.55 0.08 1</ambient><diffuse>0.75 0.75 0.10 1</diffuse></material></visual>
+      <collision name="wall_e_collision"><pose>0.086 0 0.055 0 0 0</pose><geometry><box><size>0.012 0.16 0.08</size></box></geometry></collision>
+      <visual name="wall_e_visual"><pose>0.086 0 0.055 0 0 0</pose><geometry><box><size>0.012 0.16 0.08</size></box></geometry><material><ambient>0.55 0.55 0.08 1</ambient><diffuse>0.75 0.75 0.10 1</diffuse></material></visual>
+      <collision name="wall_w_collision"><pose>-0.086 0 0.055 0 0 0</pose><geometry><box><size>0.012 0.16 0.08</size></box></geometry></collision>
+      <visual name="wall_w_visual"><pose>-0.086 0 0.055 0 0 0</pose><geometry><box><size>0.012 0.16 0.08</size></box></geometry><material><ambient>0.55 0.55 0.08 1</ambient><diffuse>0.75 0.75 0.10 1</diffuse></material></visual>
+    </link>
+  </model>
+</sdf>

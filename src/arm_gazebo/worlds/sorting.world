@@ -1,0 +1,147 @@
+<?xml version="1.0" ?>
+<!--
+  SORTING WORLD (Faz 4B sınıf-bazlı sıralama — kullanıcı sahne yeniden tasarımı 2026-06-05)
+  Faz-1 pick_and_place.world'den AYRI tutuldu (o dosyaya dokunulmaz).
+  Sahne:
+    - robot_base_table : robotun ALTINDA durduğu masa (üst z=0.6, robot world (0.15,0,0.6)'da spawn).
+    - work_table       : robot masasına bitişik, x[0.40,0.95] y[±0.55], üst z=0.6.
+                         Kutular + nesneler sorting_bins.yaml ile yerleştirilir.
+    - camera_stand     : work_table dış arka köşesinde kalan statik taşıyıcı.
+                         RGB-D sensör URDF'tedir; bu model yalnız görsel/kolizyon standıdır.
+  Robot ve RGB-D kamera URDF'ten gelir (bu world'de YOK).
+-->
+<sdf version="1.9">
+  <world name="pick_and_place_world">
+
+    <!-- Physics -->
+    <!-- 2026-06-15 sim-speed:
+         - max_step_size 0.001 -> 0.002: halves physics work. Grasp is a weld
+           bridge (not friction) so it tolerates the bigger step; only object
+           settling/stacking is slightly less precise (checked in verify).
+         - real_time_factor 0 + real_time_update_rate 0: remove the real-time
+           throttle so the sim runs as fast as the CPU allows (>1x when free,
+           e.g. between perception frames). VERIFY with `gz stats`; if RTF still
+           caps at 1.0, raise real_time_factor to a large finite value instead. -->
+    <physics name="2ms" type="ignored">
+      <max_step_size>0.002</max_step_size>
+      <real_time_factor>0</real_time_factor>
+      <real_time_update_rate>0</real_time_update_rate>
+    </physics>
+
+    <!-- Plugins -->
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+    <!-- Işık -->
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+    </light>
+
+    <!-- Zemin -->
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><plane><normal>0 0 1</normal></plane></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><plane><normal>0 0 1</normal><size>20 20</size></plane></geometry>
+          <material><ambient>0.8 0.8 0.8 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Robot Tabanı Masası : robot bunun ÜZERİNDE durur (üst z=0.6).
+         2026-06-24: x 0→0.15 — robot masası work_table'a yapıştırıldı (15 cm boşluk
+         kapatıldı). Mavi küp bin (x=0.858) erişim sınırından (0.858 m) rahat bölgeye
+         (0.708 m) çekildi. URDF world_joint da (0,0,0.6)→(0.15,0,0.6) olarak güncellendi. -->
+    <model name="robot_base_table">
+      <static>true</static>
+      <pose>0.15 0 0.3 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.5 0.5 0.6</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.5 0.5 0.6</size></box></geometry>
+          <material>
+            <ambient>0.25 0.25 0.28 1</ambient>
+            <diffuse>0.35 0.35 0.40 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Çalışma Tezgahı : robot masasından 15 cm boşlukla. Üst z=0.6.
+         Footprint x[0.40,0.95] (merkez 0.675, derinlik 0.55), y[-0.55,0.55] (genişlik 1.10). -->
+    <model name="work_table">
+      <static>true</static>
+      <pose>0.675 0 0.3 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.55 1.1 0.6</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.55 1.1 0.6</size></box></geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Kamera Ayağı (2026-06-15 yeniden çizim): kamera URDF'te world (0.6, 0, 1.5)'te.
+         Eski direk x=1.05,y=-0.62'deydi → kamera havada, direğe de masaya da bağlı
+         görünmüyordu. Yeni tasarım L-konsol:
+         - POST: work_table köşesine (0.90,-0.50) oturur, z 0.60→1.50. Masaya basar,
+           robot erişiminin dışında (radial>1.0 m) → collision'lı kalabilir.
+         - BOOM (iki segment): post tepesinden kameranın TAM altına (0.6,0,1.5) uzanır.
+           Bu segmentler robotun overhead çalışma hacmine girdiği için VISUAL-ONLY
+           (collision YOK) → kol tam açılımda kirişe takılmaz. Sensör/extrinsics değişmez. -->
+    <model name="camera_stand">
+      <static>true</static>
+      <pose>0 0 0 0 0 0</pose>
+      <link name="link">
+        <!-- Dikey direk: work_table köşesinde (0.90,-0.50), masaya basar, z 0.60→1.50 -->
+        <visual name="post">
+          <pose>0.90 -0.50 1.05 0 0 0</pose>
+          <geometry><box><size>0.05 0.05 0.90</size></box></geometry>
+          <material>
+            <ambient>0.15 0.15 0.18 1</ambient>
+            <diffuse>0.2 0.2 0.25 1</diffuse>
+          </material>
+        </visual>
+        <collision name="post_col">
+          <pose>0.90 -0.50 1.05 0 0 0</pose>
+          <geometry><box><size>0.05 0.05 0.90</size></box></geometry>
+        </collision>
+        <!-- BOOM segment A (post tepesinden +y boyunca köşeye): VISUAL-ONLY -->
+        <visual name="boom_y">
+          <pose>0.90 -0.25 1.50 0 0 0</pose>
+          <geometry><box><size>0.05 0.54 0.05</size></box></geometry>
+          <material>
+            <ambient>0.15 0.15 0.18 1</ambient>
+            <diffuse>0.2 0.2 0.25 1</diffuse>
+          </material>
+        </visual>
+        <!-- BOOM segment B (köşeden -x boyunca kameranın altına 0.6,0,1.5): VISUAL-ONLY -->
+        <visual name="boom_x">
+          <pose>0.735 0.0 1.50 0 0 0</pose>
+          <geometry><box><size>0.37 0.05 0.05</size></box></geometry>
+          <material>
+            <ambient>0.15 0.15 0.18 1</ambient>
+            <diffuse>0.2 0.2 0.25 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>

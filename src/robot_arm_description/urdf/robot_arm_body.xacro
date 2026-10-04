@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ================================================================ -->
+  <!--  Robot Arm kol — ORTAK GÖVDE (linkler, eklemler, materyaller)         -->
+  <!--  Sim (robot_arm.urdf.xacro) ve real (robot_arm_real.urdf.xacro)    -->
+  <!--  varyantları bu dosyayı include eder. ros2_control BURADA YOK.   -->
+  <!-- ================================================================ -->
+
+  <!-- Hobi servoları (MG996R/SG90): tork ~1 Nm, sim'de pay bırakıldı.
+       2026-07-17: tüm eklemler REVOLUTE (kullanıcı teyidi). ±1.57 rad taslak
+       limit = servo_calibration.yaml yazılım clamp'i; ölçülen mekanik
+       limitler (find_joint_limits.py çıktısı) gelince eklem başına daralacak. -->
+  <xacro:property name="servo_effort" value="5.0"/>
+  <xacro:property name="servo_vel" value="3.0"/>
+
+  <material name="robot_arm_grey">
+    <color rgba="0.79216 0.81961 0.93333 1"/>
+  </material>
+  <material name="robot_arm_blue">
+    <color rgba="0.12157 0.2549 1 1"/>
+  </material>
+
+  <!-- Link makrosu: visual+collision aynı mesh (CAD'den), inertial CAD'den -->
+  <xacro:macro name="robot_arm_link" params="name material com_xyz mass ixx ixy ixz iyy iyz izz">
+    <link name="${name}">
+      <inertial>
+        <origin xyz="${com_xyz}" rpy="0 0 0"/>
+        <mass value="${mass}"/>
+        <inertia ixx="${ixx}" ixy="${ixy}" ixz="${ixz}" iyy="${iyy}" iyz="${iyz}" izz="${izz}"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://robot_arm_description/meshes/${name}.stl"/>
+        </geometry>
+        <material name="${material}"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://robot_arm_description/meshes/${name}.stl"/>
+        </geometry>
+      </collision>
+    </link>
+  </xacro:macro>
+
+  <!-- ==================== DÜNYA SABİTLEME ==================== -->
+  <link name="world"/>
+  <joint name="world_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
+
+  <!-- ==================== LINKLER ==================== -->
+  <xacro:robot_arm_link name="base_link" material="robot_arm_grey"
+    com_xyz="0.0001172 -3.0598E-09 0.018304" mass="0.096038"
+    ixx="0.00012799" ixy="-2.1831E-11" ixz="3.914E-06"
+    iyy="0.00013766" iyz="4.0544E-13" izz="0.00020798"/>
+
+  <xacro:robot_arm_link name="link_1" material="robot_arm_blue"
+    com_xyz="-0.0033772 -0.0043903 -0.0015797" mass="0.10191"
+    ixx="5.1509E-05" ixy="-2.9079E-06" ixz="4.9375E-06"
+    iyy="6.7062E-05" iyz="6.2102E-06" izz="6.0692E-05"/>
+
+  <xacro:robot_arm_link name="link_2" material="robot_arm_grey"
+    com_xyz="0.013834 -0.034495 -0.0020331" mass="0.098262"
+    ixx="0.00010641" ixy="2.5451E-05" ixz="2.6693E-07"
+    iyy="2.5145E-05" iyz="-3.1117E-08" izz="0.00011785"/>
+
+  <xacro:robot_arm_link name="link_3" material="robot_arm_grey"
+    com_xyz="-0.024318 -0.012624 -0.017225" mass="0.084146"
+    ixx="2.5357E-05" ixy="-1.9923E-05" ixz="-5.0466E-07"
+    iyy="5.3949E-05" iyz="-2.5796E-07" izz="6.4166E-05"/>
+
+  <xacro:robot_arm_link name="link_4" material="robot_arm_blue"
+    com_xyz="0.0032598 0.0052262 0.0090621" mass="0.023628"
+    ixx="4.5347E-06" ixy="-4.3992E-07" ixz="2.5392E-07"
+    iyy="5.501E-06" iyz="-5.1868E-07" izz="2.9871E-06"/>
+
+  <xacro:robot_arm_link name="link_5" material="robot_arm_blue"
+    com_xyz="0.013262 -0.0088243 -0.011785" mass="0.02285"
+    ixx="4.2901E-06" ixy="2.6038E-06" ixz="1.2489E-06"
+    iyy="7.4874E-06" iyz="-7.3813E-07" izz="7.6221E-06"/>
+
+
+  <!-- ==================== EKLEMLER ==================== -->
+  <!-- Origin xyz/rpy değerleri SW2URDF export'undan birebir alındı -->
+  <xacro:macro name="robot_arm_joint" params="name parent child xyz rpy lower:=-1.57 upper:=1.57">
+    <joint name="${name}" type="revolute">
+      <origin xyz="${xyz}" rpy="${rpy}"/>
+      <parent link="${parent}"/>
+      <child link="${child}"/>
+      <axis xyz="0 0 -1"/>
+      <limit lower="${lower}" upper="${upper}" effort="${servo_effort}" velocity="${servo_vel}"/>
+      <dynamics damping="0.05" friction="0.02"/>
+    </joint>
+  </xacro:macro>
+
+  <!-- lower/upper: ÖLÇÜLDÜ 2026-07-22 monte kolda (servo_calibration.yaml ile
+       birebir aynı; ham kayıt runs/joint_limits_20260722_1006.yaml).
+       joint_1-4 uçları servonun kendi menzili, joint_5'in + tarafı gerçek
+       mekanik stop. Ayrıntı ve dürüstlük notu kalibrasyon dosyasında. -->
+  <xacro:robot_arm_joint name="joint_1" parent="base_link" child="link_1"
+    xyz="0 0 0.057" rpy="0 0 0" lower="-1.52" upper="1.52"/>
+  <xacro:robot_arm_joint name="joint_2" parent="link_1" child="link_2"
+    xyz="-0.012979 -0.0064242 0.036276" rpy="-1.5708 0 0.17977"
+    lower="-1.52" upper="1.52"/>
+  <xacro:robot_arm_joint name="joint_3" parent="link_2" child="link_3"
+    xyz="0.035175 -0.11496 0.0022" rpy="0 0 0" lower="-1.52" upper="1.52"/>
+  <xacro:robot_arm_joint name="joint_4" parent="link_3" child="link_4"
+    xyz="-0.082205 -0.036372 -0.0107" rpy="1.5708 0.37973 -1.098"
+    lower="-1.52" upper="1.52"/>
+  <xacro:robot_arm_joint name="joint_5" parent="link_4" child="link_5"
+    xyz="-0.0027195 0.020778 0.02985" rpy="1.5708 -1.098 -2.7705"
+    lower="-1.52" upper="0.86"/>
+  <!-- ==================== GRIPPER (GERÇEK CAD mesh, dişli-parmak) ==================== -->
+  <!-- 2026-07-06: kullanıcı gerçek gripper'ı (robot_arm_urdf
+       export'undaki gripper_link1, tek parça) verdi. Bağlı-bileşen analiziyle
+       6 gövdeye ayrıldı: 2 dişli + 2 linkaj + 2 parmak. GERÇEK mesh, ekstra
+       geometri EKLENMEDİ. Model:
+         link_6 = TABAN (dişliler+linkajlar, gripper_base.stl) → link_5'e sabit.
+         joint_6       → finger_lower (comp5) pivot (-0.019,-0.023) etrafında Z.
+         joint_6_mirror→ finger_upper (comp0) pivot (-0.024, 0.014) etrafında Z.
+       Pivotlar parmakların iç delikleri (gripper_link1 native frame, metre).
+       İşaret: joint_6>0 = AÇIK, <0 = KAPALI (render doğrulandı: +0.2 açık gap
+       ~62mm, -0.15 kapalı ~13mm). Dişliler/linkajlar tabanda sabit (parmak
+       hareketinin görsel yaklaşımı; gerçek 4-bar döngü değil). palm_joint mount
+       orientasyonu GUI'de kullanıcı doğrulamasına açık. -->
+  <joint name="palm_joint" type="fixed">
+    <origin xyz="0.0373 -0.015771 -0.0229" rpy="1.5708 0.23854 2.3886"/>
+    <parent link="link_5"/>
+    <child link="link_6"/>
+  </joint>
+
+  <link name="link_6">
+    <inertial>
+      <origin xyz="-0.017 0.007 0" rpy="0 0 0"/>
+      <mass value="0.020"/>
+      <inertia ixx="6.0e-06" ixy="0" ixz="0" iyy="6.0e-06" iyz="0" izz="1.0e-05"/>
+    </inertial>
+    <visual>
+      <geometry><mesh filename="package://robot_arm_description/meshes/gripper_base.stl"/></geometry>
+      <material name="robot_arm_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.017 0.007 0" rpy="0 0 0"/>
+      <geometry><box size="0.058 0.069 0.017"/></geometry>
+    </collision>
+  </link>
+
+  <!-- Alt parmak (comp5) — joint_6 sürücü. Mesh pivota göre re-origined. -->
+  <link name="finger_lower">
+    <inertial>
+      <origin xyz="-0.029 0 0" rpy="0 0 0"/>
+      <mass value="0.006"/>
+      <inertia ixx="2.0e-07" ixy="0" ixz="0" iyy="2.5e-06" iyz="0" izz="2.5e-06"/>
+    </inertial>
+    <visual>
+      <geometry><mesh filename="package://robot_arm_description/meshes/gripper_finger_lower.stl"/></geometry>
+      <material name="robot_arm_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.029 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.066 0.016 0.0085"/></geometry>
+    </collision>
+  </link>
+
+  <!-- Üst parmak (comp0) — joint_6_mirror. -->
+  <link name="finger_upper">
+    <inertial>
+      <origin xyz="-0.031 0.012 0" rpy="0 0 0"/>
+      <mass value="0.008"/>
+      <inertia ixx="4.0e-07" ixy="0" ixz="0" iyy="3.0e-06" iyz="0" izz="3.0e-06"/>
+    </inertial>
+    <visual>
+      <geometry><mesh filename="package://robot_arm_description/meshes/gripper_finger_upper.stl"/></geometry>
+      <material name="robot_arm_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.031 0.012 0" rpy="0 0 0"/>
+      <geometry><box size="0.070 0.033 0.017"/></geometry>
+    </collision>
+  </link>
+
+  <!-- joint_6 = GRIPPER servosu → alt parmağı kendi pivotunda çevirir.
+       axis +Z: joint_6>0 = parmak AÇILIR (render doğrulandı). -->
+  <joint name="joint_6" type="revolute">
+    <origin xyz="-0.019 -0.023 0" rpy="0 0 0"/>
+    <parent link="link_6"/>
+    <child link="finger_lower"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.25" upper="0.35" effort="${servo_effort}" velocity="${servo_vel}"/>
+    <dynamics damping="0.05" friction="0.02"/>
+  </joint>
+
+  <!-- Üst parmak: joint_6'yı -1 çarpanla simetrik takip eder.
+       GERÇEK donanımda tek servo iki parmağı DİŞLİYLE sürer → real varyantta URDF
+       <mimic> (RSP TF için; encoder yok). SİM'de gz-sim mimic constraint
+       DESTEKLEMİYOR → joint_6_mirror ikinci SÜRÜCÜ eklem (node q/-q gönderir).
+       gripper_sim arg'ı ayrımı seçer. -->
+  <joint name="joint_6_mirror" type="revolute">
+    <origin xyz="-0.024 0.014 0" rpy="0 0 0"/>
+    <parent link="link_6"/>
+    <child link="finger_upper"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-0.35" upper="0.25" effort="${servo_effort}" velocity="${servo_vel}"/>
+    <xacro:unless value="$(arg gripper_sim)">
+      <mimic joint="joint_6" multiplier="-1.0" offset="0.0"/>
+    </xacro:unless>
+    <dynamics damping="0.05" friction="0.02"/>
+  </joint>
+
+  <!-- ==================== TCP / TOOL FRAME ==================== -->
+  <!-- A0 teyidi (kullanıcı, 2026-07-04): joint_6 = GRIPPER SERVOSU
+       (ekseni parmak yaklaşma yönüne dik = parmak pivotu). link_6 =
+       hareketli parmak takımı → TCP hareketli parmağa ASILMAZ (eski
+       koldaki tool_link dersinin aynısı). tool0 SON RİJİT link olan
+       link_5'e sabit; konum = joint_6@0 pozundaki kavrama merkezi
+       (link_6 frame [-0.082,0,-0.001]'in link_5'e transformu, STL
+       vertex analizi). z ekseni = yaklaşma yönü. -->
+  <link name="tool0"/>
+  <joint name="tool0_joint" type="fixed">
+    <origin xyz="0.09475 -0.07099 -0.00352" rpy="1.33226 0 0.8178"/>
+    <parent link="link_5"/>
+    <child link="tool0"/>
+  </joint>
+
+</robot>

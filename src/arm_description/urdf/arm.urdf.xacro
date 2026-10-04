@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="6dof_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ================================================================ -->
+  <!--  6DOF Robotic Arm — ROS2 XACRO                                   -->
+  <!--  Kaynak: SolidWorks URDF Export → ROS2 migration                 -->
+  <!--  Paket: arm_description                                           -->
+  <!-- ================================================================ -->
+
+  <!-- ==================== PARAMETRELER ==================== -->
+  <!-- pi xacro built-in, yeniden tanımlamaya gerek yok -->
+
+  <!-- Eklem limitleri (sim-only design limits) -->
+  <!-- j2/j3/j5: self-collision sweep ile türetildi (scratch/derive_joint_limits.py,
+       2026-05-30, diğer eklemler home@0, convex-hull, içe yuvarlandı). Asimetrikler
+       fiziksel katlanma kısıtlarını yansıtıyor. j1/j4/j6: çarpışma yok → tam ±pi. -->
+  <xacro:property name="joint1_lower" value="-3.14"/>
+  <xacro:property name="joint1_upper" value="3.14"/>
+  <xacro:property name="joint1_effort" value="50"/>
+  <xacro:property name="joint1_vel" value="1.0"/>
+
+  <xacro:property name="joint2_lower" value="-2.86"/>
+  <xacro:property name="joint2_upper" value="1.25"/>
+  <xacro:property name="joint2_effort" value="30"/>
+  <xacro:property name="joint2_vel" value="1.0"/>
+
+  <!-- joint3_lower -3.14 -> -3.30 (2026-06-06): some pick/place IK solutions
+       land joint_3 exactly on the old -3.14 self-collision bound. gz
+       enforce_command_limits then pins it there and OMPL CheckStartStateBounds
+       rejects the NEXT "home" plan ("start state out of bounds at joint_3"),
+       locking the arm and failing every remaining object (the old correct=4
+       ceiling). The URDF <limit> and the ros2_control command-interface min
+       MUST stay consistent (the joint_limiter_interface throws a runtime_error
+       and kills arm_controller if the joint exceeds the command limit), so BOTH
+       move to -3.30. The arm still rests at the IK value (~-3.14), now interior,
+       so home re-plans; MoveIt collision checking guards the extra 0.16 rad. -->
+  <!-- NOTE (2026-06-28): the sorting pick descent stall (~21mm high) was NOT a
+       torque problem (gravity on joint_2/3 is only ~6-11 Nm, well under these
+       30 Nm limits). Root cause was gz_ros2_control's soft default
+       position_proportional_gain=0.1 causing gravity droop; fixed in
+       arm_description/config/ros2_controllers.yaml (gain 0.1->5.0). Joint
+       efforts left at their original physical values. -->
+  <xacro:property name="joint3_lower" value="-3.30"/>
+  <xacro:property name="joint3_upper" value="0.94"/>
+  <xacro:property name="joint3_effort" value="30"/>
+  <xacro:property name="joint3_vel" value="1.0"/>
+
+  <xacro:property name="joint4_lower" value="-3.14"/>
+  <xacro:property name="joint4_upper" value="3.14"/>
+  <xacro:property name="joint4_effort" value="20"/>
+  <xacro:property name="joint4_vel" value="1.0"/>
+
+  <xacro:property name="joint5_lower" value="-2.44"/>
+  <xacro:property name="joint5_upper" value="2.33"/>
+  <xacro:property name="joint5_effort" value="20"/>
+  <xacro:property name="joint5_vel" value="1.0"/>
+
+  <xacro:property name="joint6_lower" value="-3.14"/>
+  <xacro:property name="joint6_upper" value="3.14"/>
+  <xacro:property name="joint6_effort" value="10"/>
+  <xacro:property name="joint6_vel" value="2.0"/>
+
+  <xacro:property name="gripper_effort" value="10"/>
+  <xacro:property name="gripper_vel" value="1.5"/>
+
+  <!-- Malzeme renkleri -->
+  <xacro:property name="color_base"    value="0.58824 0.58824 0.63137 1"/>
+  <xacro:property name="color_arm"     value="0.38039 0.47843 0.78824 1"/>
+  <xacro:property name="color_wrist"   value="1 1 1 1"/>
+  <xacro:property name="color_gripper" value="0.83922 0.83922 0.92157 1"/>
+
+  <!-- ==================== MATERYAL TANIMI ==================== -->
+  <material name="arm_blue">
+    <color rgba="${color_arm}"/>
+  </material>
+  <material name="arm_grey">
+    <color rgba="${color_base}"/>
+  </material>
+  <material name="arm_white">
+    <color rgba="${color_wrist}"/>
+  </material>
+  <material name="arm_light_grey">
+    <color rgba="${color_gripper}"/>
+  </material>
+
+  <!-- ================================================================ -->
+  <!--  LİNKLER                                                         -->
+  <!-- ================================================================ -->
+
+  <!-- WORLD ANCHOR — robotu Gazebo'da yer çekimine karşı sabitler.        -->
+  <!-- base_link world z=0.6'da çakılı. world_joint yaw=+90° (sola) → robotun ön -->
+  <!-- yüzü/parmakları work_table'a (world +x) bakar. 120°'den 90°'ye düşürüldü:  -->
+  <!-- 120°'de kolun dik-aşağı bırakış bölgesi masanın küçük köşesine sıkışıyordu -->
+  <!-- (red kutu erişilemez). 90° erişim bölgesini masayla örtüştürür (kullanıcı  -->
+  <!-- 2026-06-05). Kamera WORLD'e sabit (aşağı), base dönse de work_table üstünde.-->
+  <link name="world"/>
+  <joint name="world_joint" type="fixed">
+    <!-- 2026-06-24: x 0→0.15 — robot masası çalışma masasına yapıştırıldı.
+         sorting.world robot_base_table da (0.15,0,0.3) olarak güncellendi. -->
+    <origin xyz="0.15 0 0.6" rpy="0 0 1.5708"/>
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
+
+  <!-- BASE LINK -->
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.0014257 0.0014257 0.038711" rpy="0 0 0"/>
+      <mass value="5.7724"/>
+      <inertia ixx="0.036499" ixy="0.00079967" ixz="-4.1268E-05"
+               iyy="0.036499" iyz="-4.1268E-05" izz="0.066642"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/meshes/base_link.STL"/>
+      </geometry>
+      <material name="arm_grey"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/meshes/base_link.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- LINK 1 -->
+  <link name="Link_1">
+    <inertial>
+      <origin xyz="0.017589 0.054358 0.082921" rpy="0 0 0"/>
+      <mass value="2.3103"/>
+      <inertia ixx="0.022615" ixy="-0.0035612" ixz="-0.0028223"
+               iyy="0.013109" iyz="-0.0086397" izz="0.016236"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Link_1.STL"/>
+      </geometry>
+      <material name="arm_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Link_1.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- LINK 2 -->
+  <link name="Link_2">
+    <inertial>
+      <origin xyz="-0.012763 -0.11731 0.025739" rpy="0 0 0"/>
+      <mass value="0.84163"/>
+      <inertia ixx="0.012672" ixy="-0.00088413" ixz="2.7282E-05"
+               iyy="0.00060406" iyz="7.4106E-05" izz="0.012983"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Link_2.STL"/>
+      </geometry>
+      <material name="arm_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Link_2.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- LINK 3 -->
+  <link name="Link_3">
+    <inertial>
+      <origin xyz="-0.039486 0.033519 0.086164" rpy="0 0 0"/>
+      <mass value="1.2927"/>
+      <inertia ixx="0.0017704" ixy="-0.00032159" ixz="9.8732E-05"
+               iyy="0.0062554" iyz="-0.00011136" izz="0.0066493"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Link_3.STL"/>
+      </geometry>
+      <material name="arm_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Link_3.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- LINK 4 -->
+  <link name="Link_4">
+    <inertial>
+      <origin xyz="-7.3726E-06 3.7625E-07 0.074877" rpy="0 0 0"/>
+      <mass value="0.61716"/>
+      <inertia ixx="0.0020041" ixy="6.1519E-05" ixz="1.4069E-07"
+               iyy="0.0021139" iyz="-1.7016E-09" izz="0.00057314"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Link_4.STL"/>
+      </geometry>
+      <material name="arm_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Link_4.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- LINK 5 -->
+  <link name="Link_5">
+    <inertial>
+      <origin xyz="-0.041944 0.04217 0.0125" rpy="0 0 0"/>
+      <mass value="0.31757"/>
+      <inertia ixx="0.00027445" ixy="5.2255E-05" ixz="-6.4375E-19"
+               iyy="0.00027389" iyz="6.2003E-19" izz="0.00032932"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Link_5.STL"/>
+      </geometry>
+      <material name="arm_white"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Link_5.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- LINK 6 (Son eklem / bilek) -->
+  <link name="Link_6">
+    <inertial>
+      <origin xyz="-5.0238E-15 -2.3948E-13 0.0062845" rpy="0 0 0"/>
+      <mass value="0.076424"/>
+      <inertia ixx="3.78E-05" ixy="-1.2436E-06" ixz="1.6941E-21"
+               iyy="3.2271E-05" iyz="-3.5999E-21" izz="4.0169E-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Link_6.STL"/>
+      </geometry>
+      <material name="arm_white"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Link_6.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- GRİPPER LINK 1 -->
+  <link name="Gripper_link1">
+    <inertial>
+      <origin xyz="-0.054649 -0.0056051 0.008" rpy="0 0 0"/>
+      <mass value="0.038907"/>
+      <inertia ixx="5.0839E-06" ixy="-7.6725E-06" ixz="2.8481E-20"
+               iyy="4.5428E-05" iyz="9.3174E-21" izz="4.8631E-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Gripper_link1.STL"/>
+      </geometry>
+      <material name="arm_white"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Gripper_link1.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- GRİPPER LINK 2 -->
+  <link name="Gripper_link2">
+    <inertial>
+      <origin xyz="-0.050182 -0.022352 0.008" rpy="0 0 0"/>
+      <mass value="0.038907"/>
+      <inertia ixx="8.4615E-06" ixy="-1.3554E-05" ixz="2.9964E-20"
+               iyy="4.205E-05" iyz="1.1435E-20" izz="4.8631E-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Gripper_link2.STL"/>
+      </geometry>
+      <material name="arm_light_grey"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://arm_description/meshes/Gripper_link2.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- TOOL LINK — LEGACY, IK/TCP REFERANSI DEĞİLDİR.                    -->
+  <!--  Gripper_link1'e (HAREKETLİ parmak) bağlı; parmak açılıp kapandıkça -->
+  <!--  yeri değişir → IK'de kullanılamaz. Yalnızca eski tf2_echo workspace -->
+  <!--  kalibrasyonundan kalma. Gerçek sabit TCP = grasp_link (Link_6'nın   -->
+  <!--  child'ı, aşağıda). IK tip = Link_6 (flanş).                         -->
+  <link name="tool_link"/>
+
+  <!-- ================================================================ -->
+  <!--  EKLEMLERi                                                       -->
+  <!-- ================================================================ -->
+
+  <joint name="joint_1" type="revolute">
+    <origin xyz="0 0 0.084" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="Link_1"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="${joint1_lower}" upper="${joint1_upper}"
+           effort="${joint1_effort}" velocity="${joint1_vel}"/>
+    <dynamics damping="0.5" friction="0.1"/>
+  </joint>
+
+  <joint name="joint_2" type="revolute">
+    <origin xyz="0.11106 0.11837 0.16" rpy="-1.5708 0 1.2093"/>
+    <parent link="Link_1"/>
+    <child link="Link_2"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="${joint2_lower}" upper="${joint2_upper}"
+           effort="${joint2_effort}" velocity="${joint2_vel}"/>
+    <dynamics damping="0.5" friction="0.1"/>
+  </joint>
+
+  <joint name="joint_3" type="revolute">
+    <origin xyz="-0.019287 -0.29938 0.0020019" rpy="0 0 0"/>
+    <parent link="Link_2"/>
+    <child link="Link_3"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="${joint3_lower}" upper="${joint3_upper}"
+           effort="${joint3_effort}" velocity="${joint3_vel}"/>
+    <dynamics damping="0.5" friction="0.1"/>
+  </joint>
+
+  <joint name="joint_4" type="revolute">
+    <origin xyz="-0.22999 0.014126 0.088023" rpy="1.5708 1.5199 -1.4356"/>
+    <parent link="Link_3"/>
+    <child link="Link_4"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="${joint4_lower}" upper="${joint4_upper}"
+           effort="${joint4_effort}" velocity="${joint4_vel}"/>
+    <dynamics damping="0.3" friction="0.1"/>
+  </joint>
+
+  <joint name="joint_5" type="revolute">
+    <origin xyz="-0.011421 0.0051115 0.133" rpy="1.5707 0.74125 1.1495"/>
+    <parent link="Link_4"/>
+    <child link="Link_5"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="${joint5_lower}" upper="${joint5_upper}"
+           effort="${joint5_effort}" velocity="${joint5_vel}"/>
+    <dynamics damping="0.3" friction="0.1"/>
+  </joint>
+
+  <joint name="joint_6" type="revolute">
+    <origin xyz="-0.073341 0.073736 0.0125" rpy="-1.5708 -1.1641 0.78271"/>
+    <parent link="Link_5"/>
+    <child link="Link_6"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="${joint6_lower}" upper="${joint6_upper}"
+           effort="${joint6_effort}" velocity="${joint6_vel}"/>
+    <dynamics damping="0.1" friction="0.05"/>
+  </joint>
+
+  <!-- gripper_joint1: acik=-0.5736 rad, kapali=0.100 rad -->
+  <joint name="gripper_joint1" type="revolute">
+    <origin xyz="0.016384 0.038223 0.022892" rpy="-1.5708 1.0809 1.3594"/>
+    <parent link="Link_6"/>
+    <child link="Gripper_link1"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-0.5736" upper="0.100"
+           effort="${gripper_effort}" velocity="${gripper_vel}"/>
+    <dynamics damping="0.1" friction="0.05"/>
+  </joint>
+
+  <!-- gripper_joint2: kapali=-0.200 rad, acik=0.4736 rad.
+       Gazebo Harmonic mimic constraint'i bu modelde kapanma hareketini izletmiyor;
+       iki parmak gripper_controller tarafindan birlikte komutlanir. -->
+  <joint name="gripper_joint2" type="revolute">
+    <origin xyz="-0.00074056 -0.04158 0.022892" rpy="-1.5708 1.0809 1.3594"/>
+    <parent link="Link_6"/>
+    <child link="Gripper_link2"/>
+    <axis xyz="0 0 -1"/>
+    <limit lower="-0.200" upper="0.4736"
+           effort="${gripper_effort}" velocity="${gripper_vel}"/>
+    <dynamics damping="0.1" friction="0.05"/>
+  </joint>
+
+  <!-- Tool link — Gripper_link1'in ucuna sabit bağlı -->
+  <joint name="tool_joint" type="fixed">
+    <origin xyz="-0.09 0 0" rpy="0 0 0"/>
+    <parent link="Gripper_link1"/>
+    <child link="tool_link"/>
+  </joint>
+
+  <!-- ================================================================ -->
+  <!--  GRASP / TCP FRAME (2026-05-30)                                  -->
+  <!--  Sabit referans TCP — Link_6'nın child'ı, gripper hareketinden   -->
+  <!--  BAĞIMSIZ (tool_link hareketli parmağa bağlı olduğu için IK'de    -->
+  <!--  kullanılamıyor). Origin = gripper@0'da dondurulmuş tool_link     -->
+  <!--  pozu (scratch/compute_tcp.py). FK/IK/DL-IK hâlâ Link_6'da çalışır;-->
+  <!--  pick katmanı hedef pozu Link_6'ya bu offset ile dönüştürür.       -->
+  <!-- ================================================================ -->
+  <link name="grasp_link"/>
+  <joint name="grasp_joint" type="fixed">
+    <origin xyz="0.0075 -0.0032 0.1023" rpy="-1.5708 1.0809 1.3594"/>
+    <parent link="Link_6"/>
+    <child link="grasp_link"/>
+  </joint>
+
+  <!-- ================================================================ -->
+  <!--  FAZ 4 — SABİT RGB-D KAMERA (eye-to-hand, tepeden)               -->
+  <!--  Kamera WORLD'e sabit (base'e değil): world (0.6,0,1.5)'ten        -->
+  <!--  work_table merkezine (x≈0.6) tepeden bakar; camera_stand kol      -->
+  <!--  ucuyla hizalı. Base yaw +90° dönse de kamera yerinde kalır        -->
+  <!--  (sahne yeniden tasarımı + base rotasyonu 2026-06-05).             -->
+  <!--  çalışma tezgâhına (-Z) tepeden bakar. camera_link +X = optik     -->
+  <!--  eksen (aşağı). TF'yi robot_state_publisher otomatik yayınlar     -->
+  <!--  (tek seferlik kalibrasyon = bu fixed joint).                     -->
+  <!--  camera_optical_frame = REP-103 (z-ileri, x-sağ, y-aşağı);        -->
+  <!--  arm_perception detection/point-cloud projeksiyonu BUNU kullanır. -->
+  <!-- ================================================================ -->
+  <link name="camera_link">
+    <inertial>
+      <mass value="0.05"/>
+      <inertia ixx="1e-5" ixy="0" ixz="0" iyy="1e-5" iyz="0" izz="1e-5"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry><box size="0.03 0.10 0.03"/></geometry>
+      <material name="arm_grey"/>
+    </visual>
+  </link>
+  <joint name="camera_mount_joint" type="fixed">
+    <!-- WORLD'e sabit (base_link'e DEĞİL): eye-to-hand kamera fiziksel masa
+         ayağında. world (0.6,0,1.5)'ten work_table'a tepeden bakar; robot base'i
+         dönse bile yerinde kalır. base_link→camera TF world_joint ile sabit. -->
+    <origin xyz="0.6 0.0 1.5" rpy="0 1.5708 0"/>
+    <parent link="world"/>
+    <child link="camera_link"/>
+  </joint>
+
+  <link name="camera_optical_frame"/>
+  <joint name="camera_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708"/>
+    <parent link="camera_link"/>
+    <child link="camera_optical_frame"/>
+  </joint>
+
+  <!-- ================================================================ -->
+  <!--  ROS2 CONTROL — Gazebo Hardware Interface                        -->
+  <!-- ================================================================ -->
+  <ros2_control name="6dof_arm_system" type="system">
+    <hardware>
+      <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+    </hardware>
+
+    <joint name="joint_1">
+      <command_interface name="position">
+        <param name="min">${joint1_lower}</param>
+        <param name="max">${joint1_upper}</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <joint name="joint_2">
+      <command_interface name="position">
+        <param name="min">${joint2_lower}</param>
+        <param name="max">${joint2_upper}</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <joint name="joint_3">
+      <command_interface name="position">
+        <param name="min">${joint3_lower}</param>
+        <param name="max">${joint3_upper}</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <joint name="joint_4">
+      <command_interface name="position">
+        <param name="min">${joint4_lower}</param>
+        <param name="max">${joint4_upper}</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <joint name="joint_5">
+      <command_interface name="position">
+        <param name="min">${joint5_lower}</param>
+        <param name="max">${joint5_upper}</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <joint name="joint_6">
+      <command_interface name="position">
+        <param name="min">${joint6_lower}</param>
+        <param name="max">${joint6_upper}</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+
+    <joint name="gripper_joint1">
+      <command_interface name="position">
+        <param name="min">-0.5736</param>
+        <param name="max">0.100</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="gripper_joint2">
+      <command_interface name="position">
+        <param name="min">-0.200</param>
+        <param name="max">0.4736</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
+
+  <!-- ================================================================ -->
+  <!--  GAZEBO PROPERTIES                                               -->
+  <!-- ================================================================ -->
+
+  <gazebo reference="base_link">
+    <material>Gazebo/Grey</material>
+    <mu1>0.9</mu1>
+    <mu2>0.9</mu2>
+  </gazebo>
+
+  <gazebo reference="Link_1">
+    <material>Gazebo/Blue</material>
+    <mu1>0.5</mu1>
+    <mu2>0.5</mu2>
+  </gazebo>
+
+  <gazebo reference="Link_2">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="Link_3">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="Link_4">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="Link_5">
+    <material>Gazebo/White</material>
+  </gazebo>
+
+  <gazebo reference="Link_6">
+    <material>Gazebo/White</material>
+  </gazebo>
+
+  <gazebo reference="Gripper_link1">
+    <material>Gazebo/White</material>
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <gazebo reference="Gripper_link2">
+    <material>Gazebo/Grey</material>
+    <mu1>1.5</mu1>
+    <mu2>1.5</mu2>
+    <kp>1000000.0</kp>
+    <kd>1.0</kd>
+  </gazebo>
+
+  <!-- ================================================================ -->
+  <!--  FAZ 4 — gz RGB-D SENSÖR (rgbd_camera)                           -->
+  <!--  <topic>camera</topic> → gz yayınları:                            -->
+  <!--    /camera/image, /camera/depth_image, /camera/points,           -->
+  <!--    /camera/camera_info  (gz_bridge.yaml ile köprülenir)          -->
+  <!--  gz_frame_id = camera_optical_frame → mesaj header'ları REP-103.  -->
+  <!-- ================================================================ -->
+  <gazebo reference="camera_link">
+    <sensor name="rgbd_camera" type="rgbd_camera">
+      <always_on>1</always_on>
+      <!-- 30 -> 10 Hz (2026-06-15): RGB-D (rgb+depth+points) ogre2 render is the
+           single biggest CPU cost under load; perception runs fine at 10 Hz and
+           this frees the sim to keep RTF up. -->
+      <update_rate>10</update_rate>
+      <visualize>true</visualize>
+      <topic>camera</topic>
+      <gz_frame_id>camera_optical_frame</gz_frame_id>
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+        <image>
+          <width>640</width>
+          <height>480</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.1</near>
+          <far>5.0</far>
+        </clip>
+        <depth_camera>
+          <clip>
+            <near>0.1</near>
+            <far>5.0</far>
+          </clip>
+        </depth_camera>
+      </camera>
+    </sensor>
+  </gazebo>
+
+  <!-- gz_ros2_control plugin -->
+  <gazebo>
+    <plugin filename="gz_ros2_control-system"
+            name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+      <parameters>$(find arm_description)/config/ros2_controllers.yaml</parameters>
+    </plugin>
+  </gazebo>
+
+</robot>

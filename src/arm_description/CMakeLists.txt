@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.8)
+project(arm_description)
+
+find_package(ament_cmake REQUIRED)
+
+# Tüm kaynak dizinleri install et
+install(
+  DIRECTORY urdf meshes config launch
+  DESTINATION share/${PROJECT_NAME}
+)
+
+ament_package()

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>arm_nodes</name>
+  <version>0.1.0</version>
+  <description>Pick and place control nodes for the 6DOF robotic arm.</description>
+  <maintainer email="inceer22@gmail.com">Emre Inceer</maintainer>
+  <license>Proprietary</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>rclcpp_action</depend>
+  <depend>geometry_msgs</depend>
+  <depend>shape_msgs</depend>
+  <depend>control_msgs</depend>
+  <depend>moveit_core</depend>
+  <depend>moveit_msgs</depend>
+  <depend>moveit_ros_planning_interface</depend>
+  <depend>arm_interfaces</depend>
+  <depend>ompl</depend>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>ros2launch</exec_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <test_depend>ament_cmake_pytest</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

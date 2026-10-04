@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<library path="stm32_system_interface">
+  <class
+    name="arm_hardware/STM32SystemInterface"
+    type="arm_hardware::STM32SystemInterface"
+    base_class_type="hardware_interface::SystemInterface">
+    <description>Open-loop six-channel UART interface for the Robot Arm STM32 servo controller.</description>
+  </class>
+</library>

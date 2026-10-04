@@ -1,0 +1,20 @@
+# Robot Arm zero_offset ölçümü — 2026-07-24 16:34
+# zero_offset_rad = eklemin URDF sıfır pozuna oturduğu KOMUT değeri.
+# Sürücü pulse = f(q + zero_offset) uygular, yani bu değer doğrudan
+# servo_calibration.yaml'a yazılır.
+# NOT: encoder yok; hizalama GÖZLE yapıldı, RViz hayalet modeline karşı.
+joints:
+  joint_1:
+    zero_offset_rad: INCOMPLETE  # kaydedilmedi
+  joint_2:
+    zero_offset_rad: INCOMPLETE  # kaydedilmedi
+  joint_3:
+    zero_offset_rad: INCOMPLETE  # kaydedilmedi
+  joint_4:
+    zero_offset_rad: INCOMPLETE  # kaydedilmedi
+  joint_5:
+    zero_offset_rad: INCOMPLETE  # kaydedilmedi
+  joint_6:
+    zero_offset_rad: INCOMPLETE  # kaydedilmedi
+
+# --- servo_calibration.yaml için ---

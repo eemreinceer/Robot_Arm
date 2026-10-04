@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="robot_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ================================================================ -->
+  <!--  Robot Arm kol — GERÇEK DONANIM varyantı (Faz 6, Jetson Nano + STM32) -->
+  <!--  Sim varyantından tek fark: ros2_control hardware plugin'i.      -->
+  <!--  gz plugin'i YOK; gerçek donanım STM32SystemInterface kullanır.   -->
+  <!--  Kanal haritası A0 fiziksel sayımla kesinleşene kadar 6 eklem    -->
+  <!--  de komutlanabilir tutuluyor (bkz. faz6 plan revizyonu).         -->
+  <!-- ================================================================ -->
+
+  <!-- Gövde (linkler + eklemler) sim xacro'suyla ORTAK olmalı.
+       Şimdilik sim dosyasındaki gövdeyi include ediyoruz; gz plugin'i
+       ve sim ros2_control bloğu oraya taşınırsa bu include bozulmaz
+       diye gövde ayrı bir _macros.xacro'ya çıkarılabilir (TODO). -->
+  <!-- GERÇEK varyant: tek servo iki parmağı sürer → joint_6_mirror = URDF mimic
+       (RSP TF için; ikinci sürücü eklem YOK, STM32'ye gitmez). -->
+  <xacro:arg name="gripper_sim" default="false"/>
+  <xacro:include filename="$(find robot_arm_description)/urdf/robot_arm_body.xacro"/>
+
+  <!-- EYE-IN-HAND kamera. ÖNCESİNDE gerçek varyantta kamera frame'i HİÇ YOKTU
+       (sadece sim xacro'sunda vardı) → gerçek kolda camera_optical_frame TF
+       ağacına bağlı değildi. Vizyon-encoder / hand-eye işi için frame'in var
+       olması şart, ama montaj transformu ÖLÇÜLMEDİ: default 0 0 0 bir
+       PLACEHOLDER'dır, kalibrasyon değeri değil. Ölçüm gelene kadar
+       camera_optical_frame→base_link dönüşümünü kullanan hiçbir sonuca
+       güvenilmez. Ayrıntı: robot_arm_camera.xacro başı. -->
+  <xacro:arg name="camera_parent" default="link_5"/>
+  <xacro:arg name="camera_mount_xyz" default="0 0 0"/>
+  <xacro:arg name="camera_mount_rpy" default="0 0 0"/>
+  <xacro:include filename="$(find robot_arm_description)/urdf/robot_arm_camera.xacro"/>
+  <xacro:robot_arm_cameraera parent="$(arg camera_parent)"
+                     xyz="$(arg camera_mount_xyz)" rpy="$(arg camera_mount_rpy)"/>
+
+  <!-- Launch'tan geçirilebilir donanım argümanları (M3: mock_serial:=true) -->
+  <!-- Nano 40-pin header UART'i (pin 8 TX -> PA10, pin 10 RX -> PA9).
+       STM32'nin USB CDC'si bu GD32 klonunda calismiyor (her iki bulk endpoint
+       sonsuz NAK; usbmon ile dogrulandi) - bkz. firmware main.cpp basi. -->
+  <xacro:arg name="serial_device" default="/dev/ttyTHS1"/>
+  <xacro:arg name="baud_rate" default="115200"/>
+  <xacro:arg name="mock_serial" default="false"/>
+
+  <!-- ==================== ROS2 CONTROL (REAL) ==================== -->
+  <ros2_control name="robot_arm_real_system" type="system">
+    <hardware>
+      <plugin>arm_hardware/STM32SystemInterface</plugin>
+      <param name="serial_device">$(arg serial_device)</param>
+      <param name="baud_rate">$(arg baud_rate)</param>
+      <param name="mock_serial">$(arg mock_serial)</param>
+      <param name="calibration_file">$(find robot_arm_description)/config/servo_calibration.yaml</param>
+    </hardware>
+    <xacro:macro name="robot_arm_real_joint" params="name">
+      <joint name="${name}">
+        <command_interface name="position"/>
+        <!-- OPEN-LOOP: read() son komutu echo'lar (plan §0) -->
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+    </xacro:macro>
+    <xacro:robot_arm_real_joint name="joint_1"/>
+    <xacro:robot_arm_real_joint name="joint_2"/>
+    <xacro:robot_arm_real_joint name="joint_3"/>
+    <xacro:robot_arm_real_joint name="joint_4"/>
+    <xacro:robot_arm_real_joint name="joint_5"/>
+    <xacro:robot_arm_real_joint name="joint_6"/>
+
+    <!-- KOMUT ≠ ÖLÇÜM. Yukarıdaki `position` state'i encoder yokken write()'ın
+         teslim ettiği komutun echo'sudur; joint_state_broadcaster onu
+         /joint_states'e koyduğu anda aşağıdaki hiçbir tüketici echo ile ölçümü
+         ayırt edemez. Bu blok ayrımı ölçüm gelmeden ÖNCE mimariye yazar:
+
+           <joint>_position      teslim edilen komut (rad)
+           position_is_measured  1.0 yalnız gerçek sensörken; şu an 0.0
+
+         Manyetik encoder'lar takıldığında read() `position`'ı sensörden
+         doldurur ve bayrağı kaldırır. ros2_control'ün ÜSTÜNDE hiçbir şey
+         değişmez; ikisi ayrıştığı an aradaki fark bu kolda hiç görülmemiş olan
+         izleme hatasıdır. -->
+    <gpio name="commanded">
+      <state_interface name="joint_1_position"/>
+      <state_interface name="joint_2_position"/>
+      <state_interface name="joint_3_position"/>
+      <state_interface name="joint_4_position"/>
+      <state_interface name="joint_5_position"/>
+      <state_interface name="joint_6_position"/>
+      <state_interface name="position_is_measured"/>
+    </gpio>
+  </ros2_control>
+
+</robot>

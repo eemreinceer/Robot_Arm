@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="robot_arm">
+  <!-- A0 teyidi (2026-07-04): 6 servo = URDF'teki 6 eklem, joint_6 = GRIPPER.
+       Kol 5-DOF (joint_1..joint_5). Grup adı "arm" korunuyor (pick_place_node
+       bu adı bekliyor). IK tip = tool0 (link_5'e sabit kavrama merkezi;
+       hareketli parmak link_6'ya BAĞLI DEĞİL). -->
+  <group name="arm">
+    <chain base_link="base_link" tip_link="tool0"/>
+  </group>
+
+  <group name="gripper">
+    <joint name="joint_6"/>
+  </group>
+
+  <end_effector name="gripper" parent_link="link_5" group="gripper" parent_group="arm"/>
+
+  <group_state name="home" group="arm">
+    <joint name="joint_1" value="0.0"/>
+    <joint name="joint_2" value="0.0"/>
+    <joint name="joint_3" value="0.0"/>
+    <joint name="joint_4" value="0.0"/>
+    <joint name="joint_5" value="0.0"/>
+  </group_state>
+
+  <!-- Sim görsel testi (2026-07-04): joint_6 -yönü parmak takımını avuca
+       katlıyor (KAPAMA), +yön açıyor. Değerler yaklaşık — kesin stroke
+       gerçek servo kalibrasyonunda (A0 devamı) netleşir. -->
+  <!-- 2026-07-06: gerçek parmak mesh'i (65mm kavisli) — stroke küçüldü. joint_6>0
+       parmakları merkezden UZAKLAŞTIRIR (açar); <0 kapatır. Değerler previz +
+       2cm nesne kavramasına göre; kesin servo stroke kullanıcı ölçümüyle daralır. -->
+  <group_state name="open" group="gripper">
+    <joint name="joint_6" value="0.2"/>
+  </group_state>
+  <group_state name="closed" group="gripper">
+    <joint name="joint_6" value="-0.12"/>
+  </group_state>
+
+  <disable_collisions link1="base_link" link2="link_1" reason="Adjacent"/>
+  <disable_collisions link1="link_1" link2="link_2" reason="Adjacent"/>
+  <disable_collisions link1="link_2" link2="link_3" reason="Adjacent"/>
+  <disable_collisions link1="link_3" link2="link_4" reason="Adjacent"/>
+  <disable_collisions link1="link_4" link2="link_5" reason="Adjacent"/>
+  <disable_collisions link1="link_5" link2="link_6" reason="Adjacent"/>
+  <!-- CAD export pozunda (home=0) bitişik olmayan temaslar: STL collision
+       mesh'leri servo gövdeleri üzerinden mm mertebesinde kesişiyor
+       (2026-07-04 smoke incelemesi). Gerçek çarpışma sınırları A0'da
+       min/max_rad olarak tanımlanacak. -->
+  <disable_collisions link1="base_link" link2="link_2" reason="Never"/>
+  <disable_collisions link1="link_1" link2="link_3" reason="Never"/>
+  <disable_collisions link1="link_4" link2="link_6" reason="Never"/>
+  <!-- İki-parmak gripper (2026-07-05): parmaklar palm'a (link_6) bitişik,
+       birbirine ve wrist'e (link_5) yakın; kapanışta bunlar arası çarpışma
+       normaldir → planlamada devre dışı. Nesneyle temas planlanmıyor. -->
+  <disable_collisions link1="link_6" link2="finger_lower" reason="Adjacent"/>
+  <disable_collisions link1="link_6" link2="finger_upper" reason="Adjacent"/>
+  <disable_collisions link1="finger_lower" link2="finger_upper" reason="Default"/>
+  <disable_collisions link1="link_5" link2="finger_lower" reason="Never"/>
+  <disable_collisions link1="link_5" link2="finger_upper" reason="Never"/>
+  <disable_collisions link1="link_4" link2="finger_lower" reason="Never"/>
+  <disable_collisions link1="link_4" link2="finger_upper" reason="Never"/>
+</robot>

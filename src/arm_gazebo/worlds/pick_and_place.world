@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <world name="pick_and_place_world">
+
+    <!-- Physics -->
+    <!-- 2026-06-15 sim-speed (matches sorting.world): step 0.002 + no real-time
+         throttle (real_time_factor 0 / real_time_update_rate 0). Verify RTF via
+         `gz stats`; raise real_time_factor to a large finite value if it caps. -->
+    <physics name="2ms" type="ignored">
+      <max_step_size>0.002</max_step_size>
+      <real_time_factor>0</real_time_factor>
+      <real_time_update_rate>0</real_time_update_rate>
+    </physics>
+
+    <!-- Plugins -->
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+    <!-- Işık -->
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+    </light>
+
+    <!-- Zemin -->
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><plane><normal>0 0 1</normal></plane></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><plane><normal>0 0 1</normal><size>20 20</size></plane></geometry>
+          <material><ambient>0.8 0.8 0.8 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Çalışma Tezgahı -->
+    <model name="work_table">
+      <static>true</static>
+      <pose>0.5 0 0.3 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.6 1.2 0.6</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.6 1.2 0.6</size></box></geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Toplanacak Nesne (Kırmızı Kutu) -->
+    <include>
+      <uri>model://pick_object</uri>
+      <pose>0.3 0.0 0.65 0 0 0</pose>
+    </include>
+
+    <!-- Bırakılacak Tepsi -->
+    <include>
+      <uri>model://place_tray</uri>
+      <pose>0.45 0.25 0.61 0 0 0</pose>
+    </include>
+
+  </world>
+</sdf>

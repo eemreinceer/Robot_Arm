@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  Nano tarafi CycloneDDS ayari - HENUZ DENENMEDI (2026-07-14).
+
+  Bu, DDS kesfi icin siradaki adim. Robot hostunda ethernet, VPN ve container
+  arayuzleri bulunabilir. CycloneDDS yanlisini sectiyse PC'yi bulamaz. PC tarafini uc kez
+  ayarladim ama Nano tarafina hic dokunmadim - en olasi eksik bu.
+
+  ⚠️ UYGULAMAK LAUNCH RESTART ISTER -> `on_deactivate` cipe `S` gonderir -> tum PWM
+  kapanir -> kol coker. ONCE SERVO GUCUNU KES.
+
+  Kola dokunmayan teşhis sırası:
+    1. iki tarafta `ros2 daemon stop`, ROS_DOMAIN_ID=0 + ROS_LOCALHOST_ONLY=0 dogrula
+    2. ham multicast'i ayir: `ros2 multicast send` / `ros2 multicast receive`
+    3. iki tarafi karsilikli pinle (bu dosya + cyclonedds_pc.xml)
+    4. servo stack'ini DURDURMADAN `robot_arm_hw` icinde ayri `demo_nodes_cpp talker`
+       -> PC'de `ros2 topic echo /chatter`
+
+  Kullanim (robot_arm_hw konteynerinde):
+    export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+    export CYCLONEDDS_URI=file:///workspace/src/6DOF_Robotic_Arm/config/dds/cyclonedds_nano.xml
+-->
+<CycloneDDS xmlns="https://cdds.io/config">
+  <Domain id="any">
+    <General>
+      <Interfaces>
+        <NetworkInterface name="eth0"/>
+      </Interfaces>
+      <AllowMulticast>true</AllowMulticast>
+    </General>
+    <Discovery>
+      <Peers>
+        <Peer address="dev-workstation.local"/>
+      </Peers>
+    </Discovery>
+  </Domain>
+</CycloneDDS>

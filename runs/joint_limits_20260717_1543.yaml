@@ -1,0 +1,20 @@
+# Robot Arm eklem limit ölçümü — 2026-07-17 15:43
+# margin: 0.05 rad (soft = ölçülen ∓ margin)
+# NOT: encoder yok; değerler komut tahminidir, gözle doğrulanmıştır.
+joints:
+  joint_1:
+    measured: INCOMPLETE  # min ve/veya max kaydedilmedi
+  joint_2:
+    measured: INCOMPLETE  # min ve/veya max kaydedilmedi
+  joint_3:
+    measured: INCOMPLETE  # min ve/veya max kaydedilmedi
+  joint_4:
+    measured: INCOMPLETE  # min ve/veya max kaydedilmedi
+  joint_5:
+    measured: INCOMPLETE  # min ve/veya max kaydedilmedi
+  joint_6:
+    measured: INCOMPLETE  # min ve/veya max kaydedilmedi
+
+# --- servo_calibration.yaml için min/max_rad ---
+
+# --- URDF (robot_arm_body.xacro): continuous -> revolute ---

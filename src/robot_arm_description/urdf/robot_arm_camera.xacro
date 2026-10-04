@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ================================================================ -->
+  <!--  Robot Arm kamera — EYE-IN-HAND (kamera KOLUN ÜZERİNDE)               -->
+  <!--                                                                  -->
+  <!--  2026-07-26 KULLANICI TEYİDİ: IMX219 kola monte; gripper          -->
+  <!--  parmakları kamera görüntüsünde GÖRÜNÜYOR. Yani kamera SABİT      -->
+  <!--  DEĞİL — joint_1..joint_5 hareketiyle birlikte gezer.             -->
+  <!--                                                                  -->
+  <!--  Bu dosya öncesinde camera_link `world`e sabit bir joint ile      -->
+  <!--  (0,0,0.60) asılıydı ve yorumlar "eye-to-hand, workspace         -->
+  <!--  üzerinde ortalanmış" diyordu → URDF ile gerçeklik çelişiyordu.   -->
+  <!--  TF'e dayanan her şey (projeksiyon, hand-eye, vizyon-encoder)     -->
+  <!--  bu yüzden sessizce yanlış sonuç üretirdi.                        -->
+  <!--                                                                  -->
+  <!--  ⚠ MONTAJ TRANSFORMU ÖLÇÜLMEDİ (parent link → camera_link).       -->
+  <!--  Default xyz/rpy = 0 → kasten AŞİKÂR ŞEKİLDE YANLIŞ (kamera       -->
+  <!--  bileğin içinde). Uydurma bir "makul" sayı konmadı; bu projenin   -->
+  <!--  kuralı ölçmek; varsayım yerine ölçüm kullanılmalıdır.            -->
+  <!--  Ölçüm gelene kadar:                                             -->
+  <!--    * sim'deki kamera görüntüsü ANLAMSIZ,                          -->
+  <!--    * camera_optical_frame → base_link TF'i KULLANILAMAZ.          -->
+  <!--  Ölçüm/kalibrasyon sonucu launch'tan geçirilebilir:               -->
+  <!--    xacro ... camera_mount_xyz:="x y z" camera_mount_rpy:="r p y"  -->
+  <!--  ve kalıcı değer olarak bu argümanların default'una yazılır.       -->
+  <!-- ================================================================ -->
+
+  <!-- parent: kolun SON RİJİT linki. link_5 (tool0'ın da parent'ı) default;
+       kamera gripper taban plakasına vidalıysa link_6 kinematik olarak
+       ÖZDEŞ (palm_joint fixed) ve ölçümü kolaylaştırabilir. Hareketli
+       parmaklara (finger_lower/finger_upper) ASLA bağlanmaz. -->
+  <xacro:macro name="robot_arm_cameraera" params="parent xyz rpy">
+    <link name="camera_link">
+      <!-- ⚠ mass/inertia bu kamera KOL DIŞINDAYKEN yazıldı (0.05 kg).
+           Artık bileğin ucunda taşınıyor → hobi servo torku için ihmal
+           edilebilir değil. IMX219 kartı + kablo + mount TARTILMALI. -->
+      <inertial>
+        <mass value="0.05"/>
+        <inertia ixx="1e-5" ixy="0" ixz="0" iyy="1e-5" iyz="0" izz="1e-5"/>
+      </inertial>
+      <visual>
+        <geometry><box size="0.03 0.08 0.03"/></geometry>
+        <material name="robot_arm_grey"/>
+      </visual>
+    </link>
+
+    <joint name="camera_mount_joint" type="fixed">
+      <origin xyz="${xyz}" rpy="${rpy}"/>
+      <parent link="${parent}"/>
+      <child link="camera_link"/>
+    </joint>
+
+    <!-- REP-103 optik frame (z ileri, x sağ, y aşağı). Bu dönüş kamera
+         konvansiyonu, montaj ölçümü değil → sabit kalır. -->
+    <link name="camera_optical_frame"/>
+    <joint name="camera_optical_joint" type="fixed">
+      <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708"/>
+      <parent link="camera_link"/>
+      <child link="camera_optical_frame"/>
+    </joint>
+  </xacro:macro>
+
+</robot>

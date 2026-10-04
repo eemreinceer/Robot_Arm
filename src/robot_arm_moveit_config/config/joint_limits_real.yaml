@@ -1,0 +1,46 @@
+# Robot Arm GERÇEK DONANIM planlama limitleri (Faz 6 E4) — başlangıç ÇOK muhafazakâr.
+# Sim joint_limits.yaml KOPYALANMAZ: gerçek servolarda ilk koşular 0.5 rad/s
+# tavanla yapılır; kol fiziksel olarak doğrulandıkça kademeli yükseltilir.
+# TOTG zamanlaması bu değerlerle üretilir; URDF <limit velocity> (3.0) ve
+# controller katmanı her durumda üst sınır olarak kalır.
+#
+# 2026-07-22 ÖLÇÜM SONRASI DÜZELTME: eski 0.5-0.8 rad/s değerleri donanımın
+# gerçek teslimat tavanının ÇOK üstündeydi. arm_hardware her eklemi
+# max_velocity_rad_s (servo_calibration.yaml'da belirtilmezse 0.1 rad/s)
+# ile sınırlar. MoveIt bundan hızlı plan üretirse teslimat geri kalır,
+# joint_trajectory_controller 0.12 rad takip toleransını aşar ve
+# 'Holding position due to state tolerance violation' ile trajectory'yi
+# bırakır — kol yolun ortasında kalır. Bu davranış mock'ta bizzat üretildi.
+# 0.08 = tavanın altında güvenli pay. Donanım tavanı yükseltilirse burası
+# da birlikte yükseltilmeli; ikisi TEK BAŞINA değiştirilmemeli.
+joint_limits:
+  joint_1:
+    has_velocity_limits: true
+    max_velocity: 0.08
+    has_acceleration_limits: true
+    max_acceleration: 0.8
+  joint_2:
+    has_velocity_limits: true
+    max_velocity: 0.08
+    has_acceleration_limits: true
+    max_acceleration: 0.8
+  joint_3:
+    has_velocity_limits: true
+    max_velocity: 0.08
+    has_acceleration_limits: true
+    max_acceleration: 0.8
+  joint_4:
+    has_velocity_limits: true
+    max_velocity: 0.08
+    has_acceleration_limits: true
+    max_acceleration: 1.0
+  joint_5:
+    has_velocity_limits: true
+    max_velocity: 0.08
+    has_acceleration_limits: true
+    max_acceleration: 1.0
+  joint_6:
+    has_velocity_limits: true
+    max_velocity: 0.08
+    has_acceleration_limits: true
+    max_acceleration: 1.2

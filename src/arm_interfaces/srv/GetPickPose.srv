@@ -1,0 +1,8 @@
+# Nesnenin pick pozisyonunu hesapla
+string object_id
+string preferred_approach  # "top", "side", "auto"
+---
+bool success
+geometry_msgs/PoseStamped pick_pose
+geometry_msgs/PoseStamped pre_pick_pose  # 10cm üst
+string message

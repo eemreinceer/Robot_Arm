@@ -1,0 +1,44 @@
+# Physical q=0 witness frame, 2026-08-04
+#
+# Taken from the MJPEG bridge while the arm sat at physical q=0: the servos were
+# holding commanded q=0, the arm was supported, the rail was cut, and the arm did
+# not move (operator's direct observation). No motion was commanded to take this.
+#
+# The pink shapes in the top corners are the robot's own GRIPPERS. Camera and
+# gripper are both on the wrist, so their relative image position is fixed for a
+# fixed gripper command -- which makes the centroids below a standing witness for
+# camera-mount shift, the one 60 mm candidate that has only ever been checked by
+# hand. If they move at the same gripper command, the bracket moved.
+kind: hand_eye_q0_witness_frame
+created_utc: 2026-08-04
+frame: q0_frame_20260804.jpg
+image: {width: 640, height: 480, source_topic: /camera/image_raw, flip_method: 2}
+intrinsics: src/arm_perception/config/imx219_640x480.yaml
+board:
+  cols: 6
+  rows: 9
+  square_size_mm: 27.5
+  corners_detected: 54
+  corners_expected: 54
+  reprojection_px: 0.229
+  ordering_stable: true
+  ambiguous: false
+  distance_m: 0.6362
+  tvec_m: [0.0826, 0.0330, 0.6299]
+  corner_bbox_px: {x: [278, 426], y: [82, 274]}
+stale_geometry_check:
+  cols: 6
+  rows: 8
+  square_size_mm: 25.0
+  result: not detected        # the geometry gate refusing loudly, as designed
+gripper_witness:
+  # HSV pink blobs, area > 800 px, at gripper command joint_6 = -0.00048 rad
+  joint_6_rad: -0.00048
+  left:  {centroid_px: [93.3, 78.3],  area_px: 23376}
+  right: {centroid_px: [579.5, 164.4], area_px: 13477}
+  board_bbox_overlap_px: 0    # the grippers do not occlude the board
+notes:
+  - One pose observation, not a repeatability measurement.
+  - "Not comparable with the 2026-07-31 numbers: that needs the board and the
+     camera mount untouched since then, and the board was re-prepared today."
+  - The arm is limp now; any nudge breaks the correspondence to q=0.

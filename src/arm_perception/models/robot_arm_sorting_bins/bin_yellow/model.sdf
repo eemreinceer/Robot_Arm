@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<sdf version="1.8">
+  <model name="bin_yellow">
+    <static>true</static>
+    <link name="link">
+      <collision name="floor_collision"><pose>0 0 0.004 0 0 0</pose><geometry><box><size>0.09 0.09 0.008</size></box></geometry></collision>
+      <visual name="floor_visual"><pose>0 0 0.004 0 0 0</pose><geometry><box><size>0.09 0.09 0.008</size></box></geometry><material><ambient>0.55 0.5 0.05 1</ambient><diffuse>0.75 0.68 0.08 1</diffuse></material></visual>
+      <collision name="wall_n_collision"><pose>0 0.041 0.023 0 0 0</pose><geometry><box><size>0.09 0.008 0.03</size></box></geometry></collision>
+      <visual name="wall_n_visual"><pose>0 0.041 0.023 0 0 0</pose><geometry><box><size>0.09 0.008 0.03</size></box></geometry><material><ambient>0.55 0.5 0.05 1</ambient><diffuse>0.75 0.68 0.08 1</diffuse></material></visual>
+      <collision name="wall_s_collision"><pose>0 -0.041 0.023 0 0 0</pose><geometry><box><size>0.09 0.008 0.03</size></box></geometry></collision>
+      <visual name="wall_s_visual"><pose>0 -0.041 0.023 0 0 0</pose><geometry><box><size>0.09 0.008 0.03</size></box></geometry><material><ambient>0.55 0.5 0.05 1</ambient><diffuse>0.75 0.68 0.08 1</diffuse></material></visual>
+      <collision name="wall_e_collision"><pose>0.041 0 0.023 0 0 0</pose><geometry><box><size>0.008 0.074 0.03</size></box></geometry></collision>
+      <visual name="wall_e_visual"><pose>0.041 0 0.023 0 0 0</pose><geometry><box><size>0.008 0.074 0.03</size></box></geometry><material><ambient>0.55 0.5 0.05 1</ambient><diffuse>0.75 0.68 0.08 1</diffuse></material></visual>
+      <collision name="wall_w_collision"><pose>-0.041 0 0.023 0 0 0</pose><geometry><box><size>0.008 0.074 0.03</size></box></geometry></collision>
+      <visual name="wall_w_visual"><pose>-0.041 0 0.023 0 0 0</pose><geometry><box><size>0.008 0.074 0.03</size></box></geometry><material><ambient>0.55 0.5 0.05 1</ambient><diffuse>0.75 0.68 0.08 1</diffuse></material></visual>
+    </link>
+  </model>
+</sdf>

@@ -1,0 +1,25 @@
+[Unit]
+Description=Robot Arm Pi 5 IMX219 ROS 2 camera publisher
+StartLimitIntervalSec=120
+StartLimitBurst=10
+
+[Service]
+Type=simple
+Environment=ROS_DOMAIN_ID=0
+Environment=PYTHONUNBUFFERED=1
+Environment=ROBOT_ARM_RUNTIME_ROOT=/opt/robot_arm
+EnvironmentFile=-/etc/robot_arm/robot_arm.env
+# Pi 5 carries a project-preserved libcamera 0.7.x build under /usr/local.
+# Without this path GStreamer selects apt's incompatible 0.2.0 plugin.
+Environment=GST_PLUGIN_PATH=/usr/local/lib/aarch64-linux-gnu/gstreamer-1.0
+ExecStart=/bin/bash -c 'source /opt/ros/jazzy/setup.bash && source "$ROBOT_ARM_RUNTIME_ROOT/current/install/setup.bash" && exec "$ROBOT_ARM_RUNTIME_ROOT/current/install/arm_perception/lib/arm_perception/csi_camera_node" --ros-args -p backend:=libcamera -p flip_method:=0 -p output_width:=640 -p output_height:=480 -p frame_rate:=30 -p camera_info_file:="$ROBOT_ARM_RUNTIME_ROOT/current/install/arm_perception/share/arm_perception/config/imx219_640x480_pi5.yaml"'
+# The node is the tracked main process; no ros2-launch parent may die and leave
+# an untracked camera child behind. Always recover and clean the whole cgroup.
+Restart=always
+RestartSec=5
+TimeoutStopSec=15
+KillSignal=SIGINT
+KillMode=control-group
+
+[Install]
+WantedBy=default.target

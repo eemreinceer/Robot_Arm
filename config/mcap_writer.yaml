@@ -1,0 +1,8 @@
+# rosbag2 MCAP writer ayarları — `ros2 bag record --storage-config-file` ile.
+#
+# Chunk seviyesinde zstd. `--compression-mode file` yerine bu kullanılır:
+# dosya geçerli bir .mcap olarak kalır (Foxglove / `mcap` CLI açabilir), ama
+# sim görüntüleri sıkıştırıldığı için boyut ~440 MB yerine ~10 MB olur.
+compression: "Zstd"
+compressionLevel: "Default"
+chunkSize: 4194304

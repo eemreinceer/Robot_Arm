@@ -1,0 +1,12 @@
+board_type: charuco
+dictionary: DICT_5X5_100
+squares_x: 5
+squares_y: 7
+square_len_mm: 30.0
+marker_len_mm: 23.0
+board_width_mm: 150.0
+board_height_mm: 210.0
+n_charuco_corners: 24
+dpi: 300
+note: vision_encoder_node bu dosyayı okur. Baskı %100; kareyi cetvelle doğrula, sapıyorsa
+  square_len_mm'i ÖLÇÜLEN değere çek.

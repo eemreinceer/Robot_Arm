@@ -1,0 +1,60 @@
+# 2026-06-15 motion realism: per-joint velocity/acceleration hierarchy instead of
+# a flat 1.0 for every joint. A real arm moves the heavy proximal joints (base,
+# shoulder, elbow) slower and the light wrist joints faster; TOTG uses these
+# bounds to shape a smoother, more natural velocity profile. NOTE: steady-state
+# tracking was measured tight (joints hold home at ~1e-5 rad, no gravity sag), so
+# the gz position controller needs no PID change — realism is a profile matter.
+# Absolute pace is still scaled at runtime by pick_place_node speed_scale.
+#
+# 2026-06-18 KÖK FIX (jerky motion + descent stall): these planning velocities
+# MUST stay under the URDF <limit velocity> caps (joint_1..5 = 1.0, joint_6 = 2.0
+# rad/s), which the gz controller hard-enforces via enforce_command_limits. The
+# old values (up to 2.5) made MoveIt time trajectories faster than the controller
+# allows, so EVERY command above the cap was clamped ("Command ... out of limits"
+# for joint_1/4/5...). The arm then lagged behind its own plan (not smooth) and
+# the grasp descent stalled ~19 mm high -> grasp-pose guard rejected the pick
+# (blue cube lockup). Capped ~10% below the URDF limits so even at speed_scale 1.0
+# plus an acceleration transient the controller never has to clamp. Hierarchy
+# preserved (proximal slower, wrist faster). If faster motion is wanted, raise the
+# URDF <limit velocity> first, then these.
+joint_limits:
+  joint_1:
+    has_velocity_limits: true
+    max_velocity: 0.7
+    has_acceleration_limits: true
+    max_acceleration: 1.0
+  joint_2:
+    has_velocity_limits: true
+    max_velocity: 0.7
+    has_acceleration_limits: true
+    max_acceleration: 1.0
+  joint_3:
+    has_velocity_limits: true
+    max_velocity: 0.8
+    has_acceleration_limits: true
+    max_acceleration: 1.2
+  joint_4:
+    has_velocity_limits: true
+    max_velocity: 0.9
+    has_acceleration_limits: true
+    max_acceleration: 1.5
+  joint_5:
+    has_velocity_limits: true
+    max_velocity: 0.9
+    has_acceleration_limits: true
+    max_acceleration: 1.5
+  joint_6:
+    has_velocity_limits: true
+    max_velocity: 1.8
+    has_acceleration_limits: true
+    max_acceleration: 2.5
+  gripper_joint1:
+    has_velocity_limits: true
+    max_velocity: 1.5
+    has_acceleration_limits: true
+    max_acceleration: 2.0
+  gripper_joint2:
+    has_velocity_limits: true
+    max_velocity: 1.5
+    has_acceleration_limits: true
+    max_acceleration: 2.0

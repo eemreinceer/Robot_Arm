@@ -1,0 +1,84 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <world name="robot_arm_test_world">
+
+    <physics name="2ms" type="ignored">
+      <max_step_size>0.002</max_step_size>
+      <real_time_factor>0</real_time_factor>
+      <real_time_update_rate>0</real_time_update_rate>
+    </physics>
+
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+
+    <!-- Ortam ışığı: tek yönlü "sun"un <direction>'ı yok, SDF varsayılanı tam
+         aşağı (0,0,-1). Dikey yüzeylere ışık düşmüyordu ve kalibrasyon tahtası
+         tamamen siyah render ediliyordu — detektör hiçbir köşe bulamıyordu
+         (ölçüldü 2026-08-12). Ambient, yön bağımsız bir taban aydınlatma verir. -->
+    <scene>
+      <ambient>0.7 0.7 0.7 1</ambient>
+      <background>0.5 0.5 0.5</background>
+    </scene>
+
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+    </light>
+
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><plane><normal>0 0 1</normal></plane></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><plane><normal>0 0 1</normal><size>20 20</size></plane></geometry>
+          <material><ambient>0.8 0.8 0.8 1</ambient></material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Sabit gözlem kamerası: kol ~30cm, origin'e bakar -->
+    <model name="observer_camera">
+      <static>true</static>
+      <pose>0.45 -0.45 0.30 0 0.30 2.36</pose>
+      <link name="camera_link">
+        <sensor name="observer_cam" type="camera">
+          <always_on>1</always_on>
+          <update_rate>10</update_rate>
+          <topic>robot_arm_cameraera</topic>
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image><width>960</width><height>720</height></image>
+            <clip><near>0.05</near><far>10</far></clip>
+          </camera>
+        </sensor>
+      </link>
+    </model>
+
+    <!-- Hand-eye sim provası için kalibrasyon tahtası.
+         Model üretici: scripts/make_sim_checkerboard.py (6x9 iç köşe, 27.5 mm)
+         — gerçek tahtayla aynı geometri, böylece aynı detektör kapıları geçerli.
+
+         Poz TF'den ÖLÇÜLEREK seçildi, tahminle değil: q=0'da camera_optical_frame
+         `base_link` içinde (-0.1154, +0.0480, +0.2632)'de ve bakış ekseni
+         (-0.930, -0.367, 0). Tahta o eksen üzerinde 0.5 m ileriye kondu ve
+         normali kameraya döndürüldü (pitch +90° → normal +x, yaw 0.376 rad →
+         bakış eksenine hizala).
+
+         Bu ÇERÇEVELEME değeridir, kalibrasyon değil: kameranın tahtayı görmesini
+         sağlar. Provanın sınadığı şey tahtanın nerede olduğu değil, zincirin
+         launch'a verilen camera_mount transformunu geri bulup bulmadığıdır. -->
+    <include>
+      <uri>model://checkerboard_6x9_27p5mm</uri>
+      <name>hand_eye_board</name>
+      <pose>-0.5804 -0.1355 0.2632 0 1.5708 0.376</pose>
+    </include>
+
+  </world>
+</sdf>

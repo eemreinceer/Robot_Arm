@@ -1,0 +1,96 @@
+# ── ROS2 / colcon build artifacts ──────────────────────────────────────────
+build/
+install/
+log/
+
+# ── Python ──────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# ── ML / dataset artifacts (tracked via .gitkeep only) ──────────────────────
+*.pt
+*.pth
+*.onnx
+*.h5
+*.ckpt
+
+# ── Scratch / ad-hoc experiments (not part of the build) ────────────────────
+scratch/
+
+# ── Editor / OS ─────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Images and Videos
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.avi
+*.mkv
+
+# Egitilmis model istisnalari ilgili paketin kendi .gitignore'unda
+# tanimlidir (src/arm_perception/.gitignore, src/arm_ml/.gitignore).
+# Ic ice .gitignore ust dizindeki negasyonu ezdigi icin buraya
+# yazilan istisna hicbir sey yapmaz.
+
+# Olcum kosularinin ham ciktisi (kareler, JSON ornekleri, taramalar).
+# Buyuk ve yeniden uretilebilir; sayisal sonuclar ilgili rapora veya
+# machine-readable measurement registry kaydina yazilir. Ham veri makinede kalir.
+runs/**
+# Dizinleri geri al, yoksa asagidaki dosya negasyonlari calismaz.
+!runs/**/
+# Ozgun OLCUM dosyalari repoda kalir (bkz. #12): bunlar robot yeniden
+# kurulup olculmeden geri uretilemez. Beyaz liste DAR ve ACIK tutulur --
+# genis bir '!runs/**/*.json' kurali kosu ciktilarini da geri aliyor ve
+# git status'u kirletiyordu (2026-08-26'da daraltildi). Yeni bir olcum
+# dosyasi repoda duracaksa buraya ACIKCA eklenir.
+!runs/charuco_*.yaml
+!runs/joint_limits_*.yaml
+!runs/zero_offset_*.yaml
+!runs/imx219_640x480_20260818_v2.yaml
+!runs/calib_stability_*.json
+!runs/calib_20260722_1348/capture_meta.json
+!runs/hand_eye/noise_floor*.json
+!runs/hand_eye/pose_pool.json
+!runs/hand_eye/gated_samples.json
+!runs/hand_eye/pool_samples.json
+!runs/hand_eye/sim_samples.json
+!runs/hand_eye/q0_frame_*.yaml
+!runs/hand_eye/q0_frame_*.jpg
+!runs/**/README.md
+
+# Sirlar. Bu depoda takipteki dosyalarda token YOK (2026-08-12'de tarandi) ve
+# oyle kalmali: GitHub token'lari `gh auth login` veya bir credential helper
+# uzerinden tutulur, repo icinde dosyada DEGIL. Buradaki satirlar ikinci
+# savunma hatti — asil kural token'i hic repoya yazmamak.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+
+# Yerel gelistirme araci yapilandirmalari makineye ozeldir ve credential
+# tasiyabilir; `git add -A` ile kazara repoya girmemelidir.
+.agents/
+.codex/
+export.log
+
+# Egitim taban modelleri: upstream Ultralytics dagitimindan indirilir.
+# Bkz. README.md > "Egitim taban modelleri".
+yolov8n.pt
+yolo26n.pt
+
+# Rapor kaniti ve kaynak diyagramlar: teshis gorselleri ve belgenin girdisi
+# olan diyagramlar takipte kalir (#12). Render EDILMIS sayfa ciktilari
+# 2026-08-26'da cikarildi, bkz. reports/final_rapor/rendered_pdf_pages_KALDIRILDI.md
+!reports/**/*.png
+!reports/**/*.jpg
+# ...ama render edilmis sayfa ciktilari haric: kaynak DOCX'ten yeniden
+# uretilebilir, 2026-08-26'da takipten cikarildilar.
+reports/final_rapor/rendered_pdf_pages/

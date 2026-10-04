@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>arm_tests</name>
+  <version>1.0.0</version>
+  <description>Test and validation package for 6DOF robotic arm</description>
+  <maintainer email="inceer22@gmail.com">Emre Inceer</maintainer>
+  <license>Proprietary</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>rclpy</depend>
+  <depend>arm_interfaces</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>trajectory_msgs</depend>
+
+  <test_depend>ament_cmake_gtest</test_depend>
+  <test_depend>ament_cmake_pytest</test_depend>
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <test_depend>arm_bringup</test_depend>
+  <test_depend>arm_hardware</test_depend>
+  <test_depend>arm_nodes</test_depend>
+  <test_depend>arm_perception</test_depend>
+  <test_depend>controller_manager_msgs</test_depend>
+  <test_depend>launch_testing</test_depend>
+  <test_depend>launch_testing_ament_cmake</test_depend>
+  <test_depend>launch_testing_ros</test_depend>
+  <test_depend>robot_arm_description</test_depend>
+  <test_depend>robot_arm_moveit_config</test_depend>
+  <test_depend>xacro</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

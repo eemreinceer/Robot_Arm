@@ -1,0 +1,69 @@
+# Kritik sabitler ve NE ZAMAN olculdukleri.
+#
+# NEDEN VAR
+#   Bu projenin kurali "iddia != olcum". Kayitli uc "gercek" ve dokuz teori
+#   curudu; bir sayinin ne zaman olculdugu degerinin kendisi kadar onemli.
+#   Konsol bu defteri okuyup yaslari gosterir, boylece bayatlik gorunur olur.
+#
+# NASIL BAKILIR
+#   Sadece ARTIFACT'I OLAN olcumler buraya girer. "Hatirliyorum" ya da
+#   "muhtemelen soyleydi" buraya YAZILMAZ -- defterin degeri, icindeki her
+#   satirin bir dosyaya dayanmasindan gelir.
+#
+# GUNCELLEME
+#   Elle tutulur. Yeni bir olcum yapildiginda satiri ekleyen, olcumu yapandir.
+
+measurements:
+  - id: perception_floor
+    label: Algı tabanı (açısal)
+    value: p90 0.056°
+    measuredAt: '2026-08-21'
+    source: data/camera/perception_floor_pi5_20260821.json
+    note: >-
+      60 statik kare, Pi 5 uzerinde. Jetson'da 0.055 idi; artik ithal degil bu
+      platformda olculmus. Hand-eye hatasini belirleyen taban budur.
+
+  - id: camera_intrinsics
+    label: Kamera intrinsics (Pi 5)
+    value: fit RMS 0.328 px / doğrulama 0.127 px
+    measuredAt: '2026-08-21'
+    source: src/arm_perception/config/imx219_640x480_pi5.yaml
+    note: >-
+      64 fit + 16 bagimsiz dogrulama karesi, asal nokta goruntu merkezinde
+      cakili.
+
+  - id: calibration_uncertainty
+    label: Kalibrasyon belirsizliği
+    value: 2.2× taban (kapı 1.0×)
+    measuredAt: '2026-08-21'
+    source: scripts/calibration_stability.py
+    note: >-
+      KAPI GECILMEDI. Reprojeksiyon RMS'i bu sayiyi GOREMEZ; kalan tek test
+      edilmemis aday cozunurluk (640x480 -> 1640x1232).
+
+  - id: camera_frame_rate
+    label: Kamera kare hızı (Pi 5)
+    value: 29.9 Hz
+    measuredAt: '2026-08-21'
+    source: ros2 topic hz /camera/image_raw
+    note: >-
+      libcamera/PiSP yolunda, 640x480. Kodda "dogrulanmadi" notu vardi,
+      kapandi.
+
+  - id: joint_limits
+    label: Eklem limitleri
+    value: ölçüldü ve işlendi
+    measuredAt: '2026-07-22'
+    source: runs/joint_limits_20260722_1006.yaml
+    note: >-
+      runs/ git'te izlenmiyor; artifact yalnizca olcumu yapan makinede.
+      Tekrar kullanilacaksa once varligi dogrulanmali.
+
+  - id: zero_offset
+    label: Eklem sıfır ofsetleri
+    value: son koşu 2026-07-24
+    measuredAt: '2026-07-24'
+    source: runs/zero_offset_20260724_1650.yaml
+    note: >-
+      Ayni gun bes kosu var; hangisinin KABUL edildigi bu defterden
+      okunamiyor. Kullanmadan once dogrula.

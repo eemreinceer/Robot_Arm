@@ -1,0 +1,49 @@
+# DİKKAT: /joint_states KÖPRÜSÜ KALDIRILDI (2026-06-12).
+# gz_ros2_control kurulumunda /joint_states'in kanonik kaynağı
+# joint_state_broadcaster'dır. Bu köprü ikinci bir publisher ekliyordu →
+# iki publisher FARKLI QoS sunuyordu (biri TRANSIENT_LOCAL, biri VOLATILE),
+# robot_state_publisher karışık/düşen mesaj alıyordu ("A message was lost!!!")
+# ve TF aralıklı kırılıyordu. Tek kaynak = broadcaster (tüm 8 eklemi yayınlar).
+# (Gerekirse gz Model joint_state'i AYRI bir topic'e bridge edilebilir.)
+
+- ros_topic_name: "/clock"
+  gz_topic_name: "/clock"
+  ros_type_name: "rosgraph_msgs/msg/Clock"
+  gz_type_name: "gz.msgs.Clock"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/camera/image"
+  gz_topic_name: "/camera/image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/camera/depth/image_raw"
+  gz_topic_name: "/camera/depth_image"
+  ros_type_name: "sensor_msgs/msg/Image"
+  gz_type_name: "gz.msgs.Image"
+  direction: GZ_TO_ROS
+
+- ros_topic_name: "/camera/camera_info"
+  gz_topic_name: "/camera/camera_info"
+  ros_type_name: "sensor_msgs/msg/CameraInfo"
+  gz_type_name: "gz.msgs.CameraInfo"
+  direction: GZ_TO_ROS
+
+# FAZ 4 — RGB-D nokta bulutu (6DOF poz için PCA/düzlem fitting girdisi)
+- ros_topic_name: "/camera/points"
+  gz_topic_name: "/camera/points"
+  ros_type_name: "sensor_msgs/msg/PointCloud2"
+  gz_type_name: "gz.msgs.PointCloudPacked"
+  direction: GZ_TO_ROS
+
+# DIKKAT: /tf bridge'i yalnızca RSP TF yayınlamıyorsa aktif et.
+# Mevcut setup'ta robot_state_publisher TF'yi handle ediyor.
+# Bu satırları aktif etmeden önce test et:
+#
+# - ros_topic_name: "/tf"
+#   gz_topic_name: "/model/6dof_arm/tf"
+#   ros_type_name: "tf2_msgs/msg/TFMessage"
+#   gz_type_name: "gz.msgs.Pose_V"
+#   direction: GZ_TO_ROS
+

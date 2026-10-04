@@ -1,0 +1,12 @@
+# pick_ik global mod: ana koldaki kanıtlanmış ayarlar (seed-bağımsız çözüm,
+# 0.02s bütçe yalnız zor pozlarda harcanır — stop_on_valid true).
+# ⚠️ 5-DOF KOL (R1 kararı, 2026-07-04): joint_6 gripper olduğundan zincir
+# base_link→tool0 5 eklemlidir — keyfi 6D poz IK'sı ÇÖZÜLMEZ. Karar: hedefler
+# node seviyesinde top-down + yaw-toleranslı tanımlanır (plan R1 seçenek b);
+# tam-toleranslı 6D hedef gönderen çağrılar IK fail alır, bug değildir.
+arm:
+  kinematics_solver: pick_ik/PickIkPlugin
+  mode: global
+  kinematics_solver_timeout: 0.02
+  kinematics_solver_attempts: 3
+  position_only_ik: false

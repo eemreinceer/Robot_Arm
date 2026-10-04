@@ -1,0 +1,31 @@
+# TRUE top-down grasp orientations (Link_6 in base_link), MoveIt /compute_ik-verified.
+#
+# Object spawning is configured in world frame; detections arrive in base_link.
+# For world_joint yaw=+90 deg, base_link xy = (world_y, -world_x).
+# The world object zone x[0.45,0.47], y[0.15,0.18] maps to the base zone below.
+#
+# 2026-06-16: the previous quaternions were NOT top-down (gripper
+# approach axis was only ~14-37 deg off horizontal), so the gripper reached in
+# sideways and jammed against the table -> grasp guard rejected every pick.
+# Replaced with q=(1,0,0,0) = 180 deg about base-x = Link_6 +z pointing straight
+# DOWN. Verified reachable across the whole object zone via /compute_ik (grid
+# x[0.15,0.21] y[-0.47,-0.44], all OK). Selection is nearest-at_xy; all entries
+# are identical top-down so every object gets a clean vertical descent.
+# quaternion order: [x, y, z, w]
+#
+# 2026-06-24: robot base x 0→0.15 — base_link Y bileşeni +0.15 kaydı.
+# zone_base_link ve at_xy Y değerleri yeniden hesaplandı.
+zone_base_link:
+  x: [0.15, 0.21]
+  y: [-0.32, -0.29]
+grasp_orientations:
+  - at_xy: [0.1500, -0.3200]
+    quaternion: [1.0, 0.0, 0.0, 0.0]
+  - at_xy: [0.1500, -0.2900]
+    quaternion: [1.0, 0.0, 0.0, 0.0]
+  - at_xy: [0.1800, -0.3050]
+    quaternion: [1.0, 0.0, 0.0, 0.0]
+  - at_xy: [0.2100, -0.3200]
+    quaternion: [1.0, 0.0, 0.0, 0.0]
+  - at_xy: [0.2100, -0.2900]
+    quaternion: [1.0, 0.0, 0.0, 0.0]

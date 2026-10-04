@@ -1,0 +1,15 @@
+arm:
+  kinematics_solver: pick_ik/PickIkPlugin
+  # mode is global by default in pick_ik, but pin it explicitly: the seed for a
+  # pick query is the home state, far from the cross-workspace goal, so a
+  # seed-dependent 'local' (gradient-only) solve would spuriously fail. Global
+  # (memetic/evolutionary) finds a solution independent of the seed.
+  mode: global
+  # 0.005 -> 0.02 (2026-06-12): the memetic global solver (population 16) barely
+  # ran one generation in 5 ms and gave up early on hard/near-singular pick
+  # poses. stop_optimization_on_valid_solution is true, so reachable poses still
+  # return as soon as a solution is found — the larger budget is only spent on
+  # genuinely hard poses, where it lets the search actually converge.
+  kinematics_solver_timeout: 0.02
+  kinematics_solver_attempts: 3
+  position_only_ik: false

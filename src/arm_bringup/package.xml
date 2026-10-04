@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>arm_bringup</name>
+  <version>0.1.0</version>
+  <description>Launch orchestration for 6DOF arm system</description>
+  <maintainer email="inceer22@gmail.com">Emre Inceer</maintainer>
+  <license>Proprietary</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>arm_description</exec_depend>
+  <exec_depend>arm_moveit_config</exec_depend>
+  <exec_depend>arm_gazebo</exec_depend>
+  <exec_depend>arm_nodes</exec_depend>
+  <exec_depend>arm_kinematics</exec_depend>
+  <exec_depend>arm_perception</exec_depend>
+  <exec_depend>arm_interfaces</exec_depend>
+  <exec_depend>robot_arm_description</exec_depend>
+  <exec_depend>robot_arm_moveit_config</exec_depend>
+  <exec_depend>ros2launch</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

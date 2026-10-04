@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!-- ÜRETİLMİŞ DOSYA — scripts/make_sim_checkerboard.py. Elle düzenleme. -->
+<sdf version="1.9">
+  <model name="checkerboard_6x9_27p5mm">
+    <static>true</static>
+    <link name="link">
+      <!-- ÇÖZÜLMÜŞ (2026-08-12): yüzey bir süre DÜZ SİYAH render edildi ve
+           detektör hiç köşe bulamadı. Sebep aşağıdaki metalness'tı.
+           Eleme sırası kayda değer, çünkü üçü de yanlış adaydı: <plane> yerine
+           <box>, albedo_map'te model:// yerine göreli yol, sahneye ambient 0.7
+           (diğer yüzeyler değişti, tahta siyah kaldı). gz bu süre boyunca HİÇ
+           hata vermedi — model yüklendi, doku çözüldü, `-v 4` log'u temizdi.
+           Hata mesajının yokluğu materyalin sağlam olduğunun kanıtı değildi.
+           box, plane yerine bilinçli kaldı: plane'in UV'si yok, box'ta var.
+
+           ⚠ AÇIK OLAN BAŞKA: tahta artık 54/54 köşe veriyor, AMA
+           reprojection 14.53 px (gerçek
+           tahtada ~0.2 px) ve PnP mesafesi 0.2964 m iken dünyada 0.50 m'ye
+           konuldu. Yani doku ile fiziksel boyut arasındaki sözleşme henüz
+           doğrulanmadı; bu rig ŞU HÂLİYLE yer gerçeği kıyaslaması yapamaz.
+
+           ⚠ ÖLÇÜM TUZAĞI, sonraki kişi düşmesin: kayıtlı karede komşu köşe
+           aralıkları yatay 40.78 px / dikey 22.94 px (oran 0.563) ölçüldü ve
+           bu ilk bakışta "kareler gerilmiş" gibi duruyor. DEĞİL — tahta
+           kameraya göre eğik durduğu için perspektif kısalması tek başına bu
+           oranı üretebilir. Bu ölçüm doku gerilmesini perspektiften AYIRMIYOR.
+           Ayırmanın yolu tahtayı kameraya tam dik (face-on) getirip ölçmek. -->
+      <visual name="visual">
+        <geometry>
+          <box>
+            <!-- x/y BİLEREK TAKAS: gz doku u eksenini kutunun Y'sine, v'yi
+                 X'ine eşliyor. Doğal sırada (x=genişlik) yazılınca 9 karelik
+                 doku ekseni 0.330 m'ye, 12 karelik eksen 0.2475 m'ye yayılıyor
+                 → kareler 36.67 x 20.63 mm, oran 0.5625. Kayıtlı karede ölçülen
+                 köşe aralığı oranı 0.563 idi; üç hanede eşleşiyor. Takas ile
+                 her iki eksende de kare tam 27.5 mm olur. -->
+            <size>0.330000 0.247500 0.003000</size>
+          </box>
+        </geometry>
+        <material>
+          <!-- Klasik ışıksız-PBR fallback'i: ortam/IBL haritası olmayan bir
+               sahnede metalness yüksek kalırsa yüzey albedo'dan BAĞIMSIZ siyah
+               render edilir. Tahta mat kâğıttır; metalness 0, roughness 1. -->
+          <ambient>1 1 1 1</ambient>
+          <diffuse>1 1 1 1</diffuse>
+          <specular>0 0 0 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.0</metalness>
+              <roughness>1.0</roughness>
+              <!-- Göreli yol model:// ile DENENDİ, ikisi de siyah verdi
+                   (2026-08-12). Göreli hâli bırakıldı çünkü model dizinine
+                   bağlı ve GZ_SIM_RESOURCE_PATH'e bağımlı değil — ama bunun
+                   sorunu çözdüğü İDDİA EDİLMİYOR. Bkz. yukarıdaki açık sorun. -->
+              <albedo_map>materials/textures/checkerboard_6x9_27p5mm.png</albedo_map>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

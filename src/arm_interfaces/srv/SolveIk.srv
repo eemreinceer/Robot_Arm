@@ -1,0 +1,8 @@
+geometry_msgs/Pose target_pose
+float64[6] seed_angles
+string solver
+---
+float64[6] joint_angles
+bool success
+float64 position_error
+string message

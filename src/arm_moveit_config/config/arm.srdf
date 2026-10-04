@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="6dof_arm">
+  <group name="arm">
+    <joint name="joint_1"/>
+    <joint name="joint_2"/>
+    <joint name="joint_3"/>
+    <joint name="joint_4"/>
+    <joint name="joint_5"/>
+    <joint name="joint_6"/>
+  </group>
+
+  <group name="gripper">
+    <joint name="gripper_joint1"/>
+    <joint name="gripper_joint2"/>
+    <link name="tool_link"/>
+  </group>
+
+  <!-- Frame modeli (karışmasın):                                          -->
+  <!--   * IK tip      = Link_6   (flanş; tüm setPoseTarget/compute_ik buna) -->
+  <!--   * gerçek TCP  = grasp_link (Link_6'ya sabit; grasp/place burayı kullanır) -->
+  <!--   * tool_link   = LEGACY, hareketli parmağa bağlı — IK/TCP DEĞİL.     -->
+  <!-- end_effector'ın 'name'i sadece bir etiket; parent_link=Link_6 doğru   -->
+  <!-- (gripper Link_6'ya rijit bağlı). Çalışma davranışı 'name'e bağlı değil.-->
+  <end_effector name="tool_link" parent_link="Link_6" group="gripper" parent_group="arm"/>
+
+  <group_state name="home" group="arm">
+    <joint name="joint_1" value="0.0"/>
+    <joint name="joint_2" value="0.0"/>
+    <joint name="joint_3" value="0.0"/>
+    <joint name="joint_4" value="0.0"/>
+    <joint name="joint_5" value="0.0"/>
+    <joint name="joint_6" value="0.0"/>
+  </group_state>
+
+  <group_state name="open" group="gripper">
+    <joint name="gripper_joint1" value="-0.5736"/>
+    <joint name="gripper_joint2" value="0.4736"/>
+  </group_state>
+
+  <group_state name="closed" group="gripper">
+    <joint name="gripper_joint1" value="0.100"/>
+    <joint name="gripper_joint2" value="-0.200"/>
+  </group_state>
+
+  <disable_collisions link1="base_link" link2="Link_1" reason="Adjacent"/>
+  <disable_collisions link1="Link_1" link2="Link_2" reason="Adjacent"/>
+  <disable_collisions link1="Link_2" link2="Link_3" reason="Adjacent"/>
+  <disable_collisions link1="Link_3" link2="Link_4" reason="Adjacent"/>
+  <disable_collisions link1="Link_4" link2="Link_5" reason="Adjacent"/>
+  <disable_collisions link1="Link_5" link2="Link_6" reason="Adjacent"/>
+  <disable_collisions link1="Link_6" link2="Gripper_link1" reason="Adjacent"/>
+  <disable_collisions link1="Link_6" link2="Gripper_link2" reason="Adjacent"/>
+  <disable_collisions link1="Gripper_link1" link2="tool_link" reason="Adjacent"/>
+  <disable_collisions link1="Gripper_link1" link2="Gripper_link2" reason="Never"/>
+</robot>

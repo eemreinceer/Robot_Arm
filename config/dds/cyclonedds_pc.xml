@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  PC tarafi CycloneDDS ayari (gelistirme hostu <-> robot, dogrudan ethernet).
+
+  Neden gerekli: PC'de ethernet, Wi-Fi, VPN ve container arayuzleri var.
+  CycloneDDS varsayilan olarak "bulduğu ilk uygun" arayuzu
+  secer; yanlisini secerse Nano'yu asla bulamaz. Burada arayuz acikca pinlenir ve
+  ayrica unicast peer verilir, yani multicast hic calismasa bile kesif olmali.
+
+  DURUM (2026-07-14): bu ayarla da kesif OLMADI. Nano tarafi HIC yapilandirilmadi
+  (orada da birden fazla arayuz var) - siradaki adim o.
+
+  Kullanim:
+    export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+    export CYCLONEDDS_URI=file:///path/to/cyclonedds_pc.xml
+-->
+<CycloneDDS xmlns="https://cdds.io/config">
+  <Domain id="any">
+    <General>
+      <Interfaces>
+        <NetworkInterface name="enp55s0"/>
+      </Interfaces>
+      <AllowMulticast>true</AllowMulticast>
+    </General>
+    <Discovery>
+      <Peers>
+        <Peer address="robot-arm.local"/>
+      </Peers>
+    </Discovery>
+  </Domain>
+</CycloneDDS>

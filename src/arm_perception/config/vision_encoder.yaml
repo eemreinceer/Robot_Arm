@@ -1,0 +1,16 @@
+vision_encoder_node:
+  ros__parameters:
+    # Canonical physical target (2026-07-29): 7x10 squares, 6x9 inner
+    # corners. The print was scaled to 110%; ten squares measured 275 mm.
+    board_cols: 6
+    board_rows: 9
+    square_size_mm: 27.5
+
+    reproj_gate_px: 1.0
+    min_distance_m: 0.05
+    max_distance_m: 2.0
+    image_topic: /camera/image_raw
+    camera_info_topic: /camera/camera_info
+    observation_topic: /vision_encoder/observation
+    board_frame: vision_board
+    publish_tf: true

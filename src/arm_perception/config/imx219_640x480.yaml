@@ -1,0 +1,32 @@
+# Robot Arm camera intrinsics - IMX219
+# Fit: runs/calib_fit_20260722_174459 (25 frames)
+# Validation: runs/calib_validation_20260722_174708 (14 frames)
+# Fit RMS 0.1901 px | validation mean/max 0.1876/0.4655 px
+image_width: 640
+image_height: 480
+camera_name: imx219
+flip_method: 2
+square_size_mm: 25.000000
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [515.54200667, 0.00000000, 323.85962504, 0.00000000, 516.79436788, 246.33630246, 0.00000000, 0.00000000, 1.00000000]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [0.25818083, -0.75323445, -0.00210427, 0.00280841, 0.73072952]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1.00000000, 0.00000000, 0.00000000, 0.00000000, 1.00000000, 0.00000000, 0.00000000, 0.00000000, 1.00000000]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [515.54200667, 0.00000000, 323.85962504, 0.00000000, 0.00000000, 516.79436788, 246.33630246, 0.00000000, 0.00000000, 0.00000000, 1.00000000, 0.00000000]
+calibration_rms_px: 0.190099
+calibration_frames: 25
+validation_mean_rms_px: 0.187567
+validation_max_rms_px: 0.465510
+validation_frames: 14
+calibration_timestamp_utc: 2026-07-22T14:50:36.538419+00:00

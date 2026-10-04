@@ -1,0 +1,2 @@
+Eski 6DOF kol paketi -- robot_arm pivotundan (Faz 6) beri canli yolda kullanilmiyor.
+Varsayilan colcon build'in disinda; ayrintili gerekce ve geri acma: src/LEGACY_6DOF.md

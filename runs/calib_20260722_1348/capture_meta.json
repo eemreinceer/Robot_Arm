@@ -1,0 +1,14 @@
+{
+  "pattern_cols": 6,
+  "pattern_rows": 8,
+  "pattern_requested": [
+    6,
+    8
+  ],
+  "image_topic": "/camera/image_raw",
+  "accepted": 0,
+  "frames_seen": 67,
+  "image_width": 640,
+  "image_height": 480,
+  "covered_cells": []
+}

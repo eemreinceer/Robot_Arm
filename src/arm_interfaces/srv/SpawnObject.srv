@@ -1,0 +1,10 @@
+# Gazebo'ya nesne spawn et
+string object_name
+string model_type       # "box", "cylinder", "sphere"
+geometry_msgs/Pose pose
+float32[] dimensions    # [x, y, z]
+float32 mass
+---
+bool success
+string object_id
+string message

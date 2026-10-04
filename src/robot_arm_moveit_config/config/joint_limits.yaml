@@ -1,0 +1,36 @@
+# Robot Arm kol planlama limitleri. URDF <limit velocity> = 3.0 rad/s (hobi servo);
+# ana koldaki ders geçerli: planlama hızları URDF/controller tavanının ALTINDA
+# kalmalı yoksa gz/gerçek controller clamp'ler ve kol planın gerisinde kalır.
+# Küçük/hafif kol → tek tip limit yeterli; gerçek donanım limitleri Faz 6'da
+# joint_limits_real.yaml olarak ayrıca muhafazakâr yazılacak (plan E4).
+joint_limits:
+  joint_1:
+    has_velocity_limits: true
+    max_velocity: 1.5
+    has_acceleration_limits: true
+    max_acceleration: 2.0
+  joint_2:
+    has_velocity_limits: true
+    max_velocity: 1.5
+    has_acceleration_limits: true
+    max_acceleration: 2.0
+  joint_3:
+    has_velocity_limits: true
+    max_velocity: 1.5
+    has_acceleration_limits: true
+    max_acceleration: 2.0
+  joint_4:
+    has_velocity_limits: true
+    max_velocity: 2.0
+    has_acceleration_limits: true
+    max_acceleration: 3.0
+  joint_5:
+    has_velocity_limits: true
+    max_velocity: 2.0
+    has_acceleration_limits: true
+    max_acceleration: 3.0
+  joint_6:
+    has_velocity_limits: true
+    max_velocity: 2.0
+    has_acceleration_limits: true
+    max_acceleration: 3.0

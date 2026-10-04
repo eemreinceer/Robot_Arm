@@ -1,0 +1,95 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /RobotModel1
+        - /ZeroPoseGhost1
+        - /TF1
+      Splitter Ratio: 0.5
+    Tree Height: 700
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 0.1
+      Plane Cell Count: 20
+      Color: 160; 160; 164
+      Alpha: 0.5
+      Reference Frame: <Fixed Frame>
+    - Class: rviz_default_plugins/RobotModel
+      Name: RobotModel
+      Enabled: true
+      # robot_state_publisher bu topic'i TRANSIENT LOCAL yayinlar. RViz gec
+      # acilirsa varsayilan volatile QoS ile mesaji KACIRIR ve model hic
+      # yuklenmez -- bu proje bir kez bu tuzaga dustu (arm.rviz, 2026-06-23).
+      Description Source: Topic
+      Description Topic:
+        Value: /robot_description
+        Depth: 5
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+      Alpha: 1
+      Visual Enabled: true
+      Collision Enabled: false
+      TF Prefix: ""
+      Update Interval: 0
+    # URDF SIFIR POZU HAYALETI. Canli model /joint_states ile birlikte hareket
+    # eder, yani "RViz'e denk getir" derken sabit bir hedef gerekir. Bu display
+    # ref_ onekli TF agacini kullanir; onu besleyen ikinci robot_state_publisher
+    # sifir joint state alir ve HIC KIMILDAMAZ. Kol bunun ustune oturtulur.
+    - Class: rviz_default_plugins/RobotModel
+      Name: ZeroPoseGhost
+      Enabled: true
+      Description Source: Topic
+      Description Topic:
+        Value: /robot_description
+        Depth: 5
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+      Alpha: 0.3
+      Visual Enabled: true
+      Collision Enabled: false
+      TF Prefix: ref
+      Update Interval: 0
+    - Class: rviz_default_plugins/TF
+      Name: TF
+      Enabled: true
+      Show Names: true
+      Show Axes: true
+      Show Arrows: false
+      Marker Scale: 0.1
+      Update Interval: 0
+      Frame Timeout: 15
+  Global Options:
+    Background Color: 48; 48; 48
+    Fixed Frame: world
+    Frame Rate: 30
+  Tools:
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Name: Current View
+      Distance: 0.8
+      Focal Point:
+        X: -0.08
+        Y: 0
+        Z: 0.12
+      Pitch: 0.4
+      Yaw: 5.6
+      Target Frame: world
+      Near Clip Distance: 0.01
+    Saved: ~
+Window Geometry:
+  Displays:
+    collapsed: false
+  Height: 900
+  Width: 1400
+  QMainWindow State: ""

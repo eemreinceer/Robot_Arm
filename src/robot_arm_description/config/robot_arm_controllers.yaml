@@ -1,0 +1,81 @@
+# robot_arm — gz_ros2_control + JTC config
+# position_proportional_gain 1.0: ana kolda kanıtlanan değer (0.1 default droop
+# yapar, 5.0 hız limitine doyup titrer). Bkz. arm_description/config notları.
+gz_ros_control:
+  ros__parameters:
+    position_proportional_gain: 1.0
+
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    robot_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    robot_arm_gripper_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+# A0 (2026-07-04): joint_6 = gripper servosu → kol controller'ı 5 eklem
+robot_arm_controller:
+  ros__parameters:
+    # Position commands are closed by gz_ros2_control's P loop above. JTC
+    # `gains` are for velocity/effort adapters; adding them here would be inert.
+    # JTC owns only the trajectory and goal acceptance contract below.
+    joints:
+      - joint_1
+      - joint_2
+      - joint_3
+      - joint_4
+      - joint_5
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    open_loop_control: false
+    allow_integration_in_goal_trajectories: true
+    constraints:
+      goal_time: 1.0
+      stopped_velocity_tolerance: 0.05
+      # The pick FSM uses short reversal trajectories whose initial physics
+      # transient varies with pose. Jazzy JTC defines zero as "path tolerance
+      # not enforced"; final goal accuracy remains enforced at 0.03 rad.
+      joint_1: {trajectory: 0.0, goal: 0.03}
+      joint_2: {trajectory: 0.0, goal: 0.03}
+      joint_3: {trajectory: 0.0, goal: 0.03}
+      joint_4: {trajectory: 0.0, goal: 0.03}
+      joint_5: {trajectory: 0.0, goal: 0.03}
+
+robot_arm_gripper_controller:
+  ros__parameters:
+    # Same position-interface contract as the arm; tracking is enforced through
+    # state/goal tolerances, not a second host-side PID loop.
+    # SİM: joint_6 = sürücü parmak, joint_6_mirror = simetrik ikinci parmak.
+    # gz-sim mimic constraint desteklemediğinden ikinci parmak da AYRI sürülür;
+    # robot_arm_pick_place_node q ve -q gönderir. (Real controller yalnız joint_6.)
+    joints:
+      - joint_6
+      - joint_6_mirror
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    open_loop_control: false
+    allow_integration_in_goal_trajectories: true
+    constraints:
+      goal_time: 2.0
+      stopped_velocity_tolerance: 0.05
+      # Disable pose-dependent transient checks, but retain the measured 0.12
+      # rad final bound for the CAD finger model. Real hardware remains tighter.
+      joint_6: {trajectory: 0.0, goal: 0.12}
+      joint_6_mirror: {trajectory: 0.0, goal: 0.12}

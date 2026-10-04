@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="robot_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ================================================================ -->
+  <!--  Robot Arm küçük 6DOF robot kol — ROS2 XACRO                          -->
+  <!--  Kaynak: SolidWorks SW2URDF export (robot_arm_kucuk_robot_kol/)       -->
+  <!--  ROS2 migration + isim temizliği (2026-07-04)                    -->
+  <!--  NOT: Servolar 360° modifiyeli → tüm eklemler CONTINUOUS.        -->
+  <!--  NOT: Eklem origin rpy'leri CAD'in export pozundan geliyor;      -->
+  <!--       sıfır poz "düz kol" DEĞİL. Yeniden export ile düzelir.     -->
+  <!-- ================================================================ -->
+
+  <!-- SİM varyantı: finger_right ikinci SÜRÜCÜ eklem (gz-sim mimic desteklemiyor). -->
+  <xacro:arg name="gripper_sim" default="true"/>
+
+  <xacro:include filename="$(find robot_arm_description)/urdf/robot_arm_body.xacro"/>
+
+  <!-- EYE-IN-HAND kamera (2026-07-26 kullanıcı teyidi). Montaj transformu
+       HENÜZ ÖLÇÜLMEDİ → default 0, sim görüntüsü şu an anlamsız. Ayrıntı ve
+       ölçüm talimatı: robot_arm_camera.xacro başı. Topic/frame sözleşmesi
+       (camera_link, camera_optical_frame) korunuyor. -->
+  <xacro:arg name="camera_parent" default="link_5"/>
+  <xacro:arg name="camera_mount_xyz" default="0 0 0"/>
+  <xacro:arg name="camera_mount_rpy" default="0 0 0"/>
+  <xacro:include filename="$(find robot_arm_description)/urdf/robot_arm_camera.xacro"/>
+  <xacro:robot_arm_cameraera parent="$(arg camera_parent)"
+                     xyz="$(arg camera_mount_xyz)" rpy="$(arg camera_mount_rpy)"/>
+
+  <!-- ==================== ROS2 CONTROL ==================== -->
+  <ros2_control name="robot_arm_system" type="system">
+    <hardware>
+      <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+    </hardware>
+    <xacro:macro name="robot_arm_ctrl_joint" params="name">
+      <joint name="${name}">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+        <state_interface name="effort"/>
+      </joint>
+    </xacro:macro>
+    <xacro:robot_arm_ctrl_joint name="joint_1"/>
+    <xacro:robot_arm_ctrl_joint name="joint_2"/>
+    <xacro:robot_arm_ctrl_joint name="joint_3"/>
+    <xacro:robot_arm_ctrl_joint name="joint_4"/>
+    <xacro:robot_arm_ctrl_joint name="joint_5"/>
+    <xacro:robot_arm_ctrl_joint name="joint_6"/>
+    <!-- SİM: finger_right ayrı sürülür (gz mimic yok); real'de bu joint mimic. -->
+    <xacro:robot_arm_ctrl_joint name="joint_6_mirror"/>
+  </ros2_control>
+
+  <!-- Sensör artık BİLEĞE asılı (eye-in-hand) → görüntü kol hareketiyle
+       değişir. clip near=0.08 m: eye-in-hand'de nesne bu mesafenin altına
+       girebilir (yaklaşma anı) → kırpılır; montaj ölçüldükten sonra gerçek
+       çalışma mesafesine göre gözden geçir. -->
+  <gazebo reference="camera_link">
+    <sensor name="rgbd_camera" type="rgbd_camera">
+      <always_on>1</always_on>
+      <update_rate>10</update_rate>
+      <visualize>true</visualize>
+      <topic>camera</topic>
+      <gz_frame_id>camera_optical_frame</gz_frame_id>
+      <camera>
+        <horizontal_fov>1.047</horizontal_fov>
+        <image><width>640</width><height>480</height><format>R8G8B8</format></image>
+        <clip><near>0.08</near><far>2.0</far></clip>
+        <depth_camera><clip><near>0.08</near><far>2.0</far></clip></depth_camera>
+      </camera>
+    </sensor>
+  </gazebo>
+
+  <!-- gz_ros2_control plugin -->
+  <gazebo>
+    <plugin filename="gz_ros2_control-system"
+            name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+      <parameters>$(find robot_arm_description)/config/robot_arm_controllers.yaml</parameters>
+    </plugin>
+  </gazebo>
+
+</robot>

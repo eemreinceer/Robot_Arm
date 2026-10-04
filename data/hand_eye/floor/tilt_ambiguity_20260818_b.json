@@ -1,0 +1,6679 @@
+{
+ "frames": 661,
+ "missed": 0,
+ "ambiguous_ratio_threshold": 1.5,
+ "tilt_range_deg": [
+  3.622,
+  47.912
+ ],
+ "bands": [
+  {
+   "tilt_low": 2,
+   "tilt_high": 5,
+   "frames": 1,
+   "ratio_median": 2.369,
+   "rotation_gap_median_deg": 7.29,
+   "ambiguous_fraction": 0.0
+  },
+  {
+   "tilt_low": 5,
+   "tilt_high": 10,
+   "frames": 25,
+   "ratio_median": 2.452,
+   "rotation_gap_median_deg": 14.63,
+   "ambiguous_fraction": 0.48
+  },
+  {
+   "tilt_low": 10,
+   "tilt_high": 15,
+   "frames": 226,
+   "ratio_median": 5.951,
+   "rotation_gap_median_deg": 23.43,
+   "ambiguous_fraction": 0.0
+  },
+  {
+   "tilt_low": 15,
+   "tilt_high": 20,
+   "frames": 176,
+   "ratio_median": 14.201,
+   "rotation_gap_median_deg": 37.36,
+   "ambiguous_fraction": 0.0
+  },
+  {
+   "tilt_low": 20,
+   "tilt_high": 30,
+   "frames": 155,
+   "ratio_median": 22.58,
+   "rotation_gap_median_deg": 41.49,
+   "ambiguous_fraction": 0.0
+  },
+  {
+   "tilt_low": 30,
+   "tilt_high": 45,
+   "frames": 68,
+   "ratio_median": 27.159,
+   "rotation_gap_median_deg": 63.68,
+   "ambiguous_fraction": 0.0
+  },
+  {
+   "tilt_low": 45,
+   "tilt_high": 90,
+   "frames": 10,
+   "ratio_median": 31.886,
+   "rotation_gap_median_deg": 94.26,
+   "ambiguous_fraction": 0.0
+  }
+ ],
+ "records": [
+  {
+   "tilt_deg": 11.609,
+   "distance_m": 0.4961,
+   "reproj_best_px": 0.5101,
+   "solutions": 2,
+   "reproj_second_px": 2.8703,
+   "ratio": 5.6268,
+   "rotation_gap_deg": 23.088,
+   "translation_gap_mm": 51.38
+  },
+  {
+   "tilt_deg": 12.658,
+   "distance_m": 0.49,
+   "reproj_best_px": 0.5545,
+   "solutions": 2,
+   "reproj_second_px": 3.1072,
+   "ratio": 5.6032,
+   "rotation_gap_deg": 25.184,
+   "translation_gap_mm": 58.26
+  },
+  {
+   "tilt_deg": 13.107,
+   "distance_m": 0.4867,
+   "reproj_best_px": 0.4947,
+   "solutions": 2,
+   "reproj_second_px": 3.2724,
+   "ratio": 6.615,
+   "rotation_gap_deg": 26.108,
+   "translation_gap_mm": 60.87
+  },
+  {
+   "tilt_deg": 13.554,
+   "distance_m": 0.4849,
+   "reproj_best_px": 0.5061,
+   "solutions": 2,
+   "reproj_second_px": 3.3791,
+   "ratio": 6.6768,
+   "rotation_gap_deg": 27.006,
+   "translation_gap_mm": 62.93
+  },
+  {
+   "tilt_deg": 14.358,
+   "distance_m": 0.4829,
+   "reproj_best_px": 0.5036,
+   "solutions": 2,
+   "reproj_second_px": 3.538,
+   "ratio": 7.0253,
+   "rotation_gap_deg": 28.617,
+   "translation_gap_mm": 66.35
+  },
+  {
+   "tilt_deg": 15.348,
+   "distance_m": 0.4794,
+   "reproj_best_px": 0.4524,
+   "solutions": 2,
+   "reproj_second_px": 3.7971,
+   "ratio": 8.3942,
+   "rotation_gap_deg": 30.625,
+   "translation_gap_mm": 69.66
+  },
+  {
+   "tilt_deg": 16.361,
+   "distance_m": 0.4774,
+   "reproj_best_px": 0.4617,
+   "solutions": 2,
+   "reproj_second_px": 4.0174,
+   "ratio": 8.7006,
+   "rotation_gap_deg": 32.651,
+   "translation_gap_mm": 73.49
+  },
+  {
+   "tilt_deg": 18.281,
+   "distance_m": 0.4731,
+   "reproj_best_px": 0.4569,
+   "solutions": 2,
+   "reproj_second_px": 4.4776,
+   "ratio": 9.8008,
+   "rotation_gap_deg": 36.506,
+   "translation_gap_mm": 79.93
+  },
+  {
+   "tilt_deg": 19.156,
+   "distance_m": 0.4709,
+   "reproj_best_px": 0.4297,
+   "solutions": 2,
+   "reproj_second_px": 4.7328,
+   "ratio": 11.0139,
+   "rotation_gap_deg": 38.267,
+   "translation_gap_mm": 82.99
+  },
+  {
+   "tilt_deg": 20.251,
+   "distance_m": 0.4689,
+   "reproj_best_px": 0.446,
+   "solutions": 2,
+   "reproj_second_px": 4.9852,
+   "ratio": 11.1781,
+   "rotation_gap_deg": 40.459,
+   "translation_gap_mm": 86.62
+  },
+  {
+   "tilt_deg": 21.265,
+   "distance_m": 0.4668,
+   "reproj_best_px": 0.4037,
+   "solutions": 2,
+   "reproj_second_px": 5.2162,
+   "ratio": 12.9221,
+   "rotation_gap_deg": 42.493,
+   "translation_gap_mm": 89.59
+  },
+  {
+   "tilt_deg": 27.373,
+   "distance_m": 0.4579,
+   "reproj_best_px": 0.2612,
+   "solutions": 2,
+   "reproj_second_px": 6.6874,
+   "ratio": 25.6043,
+   "rotation_gap_deg": 54.749,
+   "translation_gap_mm": 104.82
+  },
+  {
+   "tilt_deg": 28.651,
+   "distance_m": 0.4563,
+   "reproj_best_px": 0.2375,
+   "solutions": 2,
+   "reproj_second_px": 6.9882,
+   "ratio": 29.4189,
+   "rotation_gap_deg": 57.306,
+   "translation_gap_mm": 108.71
+  },
+  {
+   "tilt_deg": 29.415,
+   "distance_m": 0.4558,
+   "reproj_best_px": 0.2213,
+   "solutions": 2,
+   "reproj_second_px": 7.1642,
+   "ratio": 32.3783,
+   "rotation_gap_deg": 58.84,
+   "translation_gap_mm": 110.09
+  },
+  {
+   "tilt_deg": 27.813,
+   "distance_m": 0.461,
+   "reproj_best_px": 0.2349,
+   "solutions": 2,
+   "reproj_second_px": 6.7053,
+   "ratio": 28.5409,
+   "rotation_gap_deg": 55.64,
+   "translation_gap_mm": 104.37
+  },
+  {
+   "tilt_deg": 27.759,
+   "distance_m": 0.4614,
+   "reproj_best_px": 0.2272,
+   "solutions": 2,
+   "reproj_second_px": 6.6744,
+   "ratio": 29.3783,
+   "rotation_gap_deg": 55.532,
+   "translation_gap_mm": 104.02
+  },
+  {
+   "tilt_deg": 27.681,
+   "distance_m": 0.4615,
+   "reproj_best_px": 0.2179,
+   "solutions": 2,
+   "reproj_second_px": 6.6176,
+   "ratio": 30.3704,
+   "rotation_gap_deg": 55.37,
+   "translation_gap_mm": 103.46
+  },
+  {
+   "tilt_deg": 22.38,
+   "distance_m": 0.4709,
+   "reproj_best_px": 0.2426,
+   "solutions": 2,
+   "reproj_second_px": 5.4162,
+   "ratio": 22.3228,
+   "rotation_gap_deg": 44.771,
+   "translation_gap_mm": 88.67
+  },
+  {
+   "tilt_deg": 21.327,
+   "distance_m": 0.4738,
+   "reproj_best_px": 0.2306,
+   "solutions": 2,
+   "reproj_second_px": 5.1069,
+   "ratio": 22.1489,
+   "rotation_gap_deg": 42.664,
+   "translation_gap_mm": 84.06
+  },
+  {
+   "tilt_deg": 16.539,
+   "distance_m": 0.4921,
+   "reproj_best_px": 0.2615,
+   "solutions": 2,
+   "reproj_second_px": 3.6706,
+   "ratio": 14.0347,
+   "rotation_gap_deg": 33.091,
+   "translation_gap_mm": 60.88
+  },
+  {
+   "tilt_deg": 12.833,
+   "distance_m": 0.5036,
+   "reproj_best_px": 0.2527,
+   "solutions": 2,
+   "reproj_second_px": 2.7672,
+   "ratio": 10.9487,
+   "rotation_gap_deg": 25.686,
+   "translation_gap_mm": 45.19
+  },
+  {
+   "tilt_deg": 6.08,
+   "distance_m": 0.5192,
+   "reproj_best_px": 0.3833,
+   "solutions": 2,
+   "reproj_second_px": 1.4927,
+   "ratio": 3.8942,
+   "rotation_gap_deg": 12.211,
+   "translation_gap_mm": 20.88
+  },
+  {
+   "tilt_deg": 6.235,
+   "distance_m": 0.5191,
+   "reproj_best_px": 0.3631,
+   "solutions": 2,
+   "reproj_second_px": 1.5093,
+   "ratio": 4.1571,
+   "rotation_gap_deg": 12.52,
+   "translation_gap_mm": 20.94
+  },
+  {
+   "tilt_deg": 5.505,
+   "distance_m": 0.5194,
+   "reproj_best_px": 0.4216,
+   "solutions": 2,
+   "reproj_second_px": 1.4107,
+   "ratio": 3.3462,
+   "rotation_gap_deg": 11.057,
+   "translation_gap_mm": 20.7
+  },
+  {
+   "tilt_deg": 5.579,
+   "distance_m": 0.52,
+   "reproj_best_px": 0.3994,
+   "solutions": 2,
+   "reproj_second_px": 1.3797,
+   "ratio": 3.4543,
+   "rotation_gap_deg": 11.197,
+   "translation_gap_mm": 21.05
+  },
+  {
+   "tilt_deg": 5.293,
+   "distance_m": 0.5204,
+   "reproj_best_px": 0.437,
+   "solutions": 2,
+   "reproj_second_px": 1.3158,
+   "ratio": 3.0108,
+   "rotation_gap_deg": 10.612,
+   "translation_gap_mm": 21.28
+  },
+  {
+   "tilt_deg": 3.622,
+   "distance_m": 0.5221,
+   "reproj_best_px": 0.4519,
+   "solutions": 2,
+   "reproj_second_px": 1.0708,
+   "ratio": 2.3694,
+   "rotation_gap_deg": 7.292,
+   "translation_gap_mm": 14.28
+  },
+  {
+   "tilt_deg": 6.041,
+   "distance_m": 0.5284,
+   "reproj_best_px": 0.8273,
+   "solutions": 2,
+   "reproj_second_px": 0.9038,
+   "ratio": 1.0925,
+   "rotation_gap_deg": 11.88,
+   "translation_gap_mm": 23.25
+  },
+  {
+   "tilt_deg": 6.416,
+   "distance_m": 0.5313,
+   "reproj_best_px": 0.8167,
+   "solutions": 2,
+   "reproj_second_px": 0.9182,
+   "ratio": 1.1242,
+   "rotation_gap_deg": 12.623,
+   "translation_gap_mm": 22.57
+  },
+  {
+   "tilt_deg": 7.041,
+   "distance_m": 0.5334,
+   "reproj_best_px": 0.8572,
+   "solutions": 2,
+   "reproj_second_px": 0.9529,
+   "ratio": 1.1117,
+   "rotation_gap_deg": 13.855,
+   "translation_gap_mm": 23.75
+  },
+  {
+   "tilt_deg": 7.589,
+   "distance_m": 0.5318,
+   "reproj_best_px": 0.9584,
+   "solutions": 2,
+   "reproj_second_px": 1.0092,
+   "ratio": 1.0529,
+   "rotation_gap_deg": 14.93,
+   "translation_gap_mm": 24.69
+  },
+  {
+   "tilt_deg": 7.379,
+   "distance_m": 0.532,
+   "reproj_best_px": 0.9371,
+   "solutions": 2,
+   "reproj_second_px": 0.9811,
+   "ratio": 1.047,
+   "rotation_gap_deg": 14.514,
+   "translation_gap_mm": 24.62
+  },
+  {
+   "tilt_deg": 7.037,
+   "distance_m": 0.532,
+   "reproj_best_px": 0.9026,
+   "solutions": 2,
+   "reproj_second_px": 0.9473,
+   "ratio": 1.0495,
+   "rotation_gap_deg": 13.839,
+   "translation_gap_mm": 24.68
+  },
+  {
+   "tilt_deg": 7.43,
+   "distance_m": 0.5307,
+   "reproj_best_px": 0.9056,
+   "solutions": 2,
+   "reproj_second_px": 1.0758,
+   "ratio": 1.1879,
+   "rotation_gap_deg": 14.628,
+   "translation_gap_mm": 26.79
+  },
+  {
+   "tilt_deg": 7.421,
+   "distance_m": 0.5298,
+   "reproj_best_px": 0.8926,
+   "solutions": 2,
+   "reproj_second_px": 1.0747,
+   "ratio": 1.204,
+   "rotation_gap_deg": 14.612,
+   "translation_gap_mm": 26.39
+  },
+  {
+   "tilt_deg": 7.297,
+   "distance_m": 0.5296,
+   "reproj_best_px": 0.8422,
+   "solutions": 2,
+   "reproj_second_px": 1.0946,
+   "ratio": 1.2997,
+   "rotation_gap_deg": 14.377,
+   "translation_gap_mm": 25.81
+  },
+  {
+   "tilt_deg": 7.479,
+   "distance_m": 0.5295,
+   "reproj_best_px": 0.8381,
+   "solutions": 2,
+   "reproj_second_px": 1.1366,
+   "ratio": 1.356,
+   "rotation_gap_deg": 14.739,
+   "translation_gap_mm": 27.65
+  },
+  {
+   "tilt_deg": 7.781,
+   "distance_m": 0.5293,
+   "reproj_best_px": 0.8563,
+   "solutions": 2,
+   "reproj_second_px": 1.1706,
+   "ratio": 1.3671,
+   "rotation_gap_deg": 15.335,
+   "translation_gap_mm": 27.92
+  },
+  {
+   "tilt_deg": 7.58,
+   "distance_m": 0.5293,
+   "reproj_best_px": 0.8318,
+   "solutions": 2,
+   "reproj_second_px": 1.1548,
+   "ratio": 1.3883,
+   "rotation_gap_deg": 14.94,
+   "translation_gap_mm": 28.15
+  },
+  {
+   "tilt_deg": 9.664,
+   "distance_m": 0.5275,
+   "reproj_best_px": 0.6384,
+   "solutions": 2,
+   "reproj_second_px": 1.8599,
+   "ratio": 2.9137,
+   "rotation_gap_deg": 19.172,
+   "translation_gap_mm": 28.36
+  },
+  {
+   "tilt_deg": 10.315,
+   "distance_m": 0.5263,
+   "reproj_best_px": 0.5881,
+   "solutions": 2,
+   "reproj_second_px": 2.0871,
+   "ratio": 3.5489,
+   "rotation_gap_deg": 20.501,
+   "translation_gap_mm": 27.16
+  },
+  {
+   "tilt_deg": 10.355,
+   "distance_m": 0.5253,
+   "reproj_best_px": 0.524,
+   "solutions": 2,
+   "reproj_second_px": 2.2159,
+   "ratio": 4.2289,
+   "rotation_gap_deg": 20.606,
+   "translation_gap_mm": 27.98
+  },
+  {
+   "tilt_deg": 10.535,
+   "distance_m": 0.525,
+   "reproj_best_px": 0.5212,
+   "solutions": 2,
+   "reproj_second_px": 2.2168,
+   "ratio": 4.2528,
+   "rotation_gap_deg": 20.962,
+   "translation_gap_mm": 26.63
+  },
+  {
+   "tilt_deg": 10.568,
+   "distance_m": 0.5248,
+   "reproj_best_px": 0.5154,
+   "solutions": 2,
+   "reproj_second_px": 2.2479,
+   "ratio": 4.3614,
+   "rotation_gap_deg": 21.03,
+   "translation_gap_mm": 27.54
+  },
+  {
+   "tilt_deg": 11.251,
+   "distance_m": 0.526,
+   "reproj_best_px": 0.5053,
+   "solutions": 2,
+   "reproj_second_px": 2.3822,
+   "ratio": 4.7147,
+   "rotation_gap_deg": 22.411,
+   "translation_gap_mm": 24.95
+  },
+  {
+   "tilt_deg": 11.563,
+   "distance_m": 0.5248,
+   "reproj_best_px": 0.4881,
+   "solutions": 2,
+   "reproj_second_px": 2.4688,
+   "ratio": 5.0583,
+   "rotation_gap_deg": 23.04,
+   "translation_gap_mm": 24.86
+  },
+  {
+   "tilt_deg": 11.497,
+   "distance_m": 0.5247,
+   "reproj_best_px": 0.4787,
+   "solutions": 2,
+   "reproj_second_px": 2.4745,
+   "ratio": 5.1692,
+   "rotation_gap_deg": 22.912,
+   "translation_gap_mm": 24.56
+  },
+  {
+   "tilt_deg": 11.218,
+   "distance_m": 0.5255,
+   "reproj_best_px": 0.5158,
+   "solutions": 2,
+   "reproj_second_px": 2.3836,
+   "ratio": 4.6211,
+   "rotation_gap_deg": 22.343,
+   "translation_gap_mm": 25.58
+  },
+  {
+   "tilt_deg": 11.236,
+   "distance_m": 0.5257,
+   "reproj_best_px": 0.5145,
+   "solutions": 2,
+   "reproj_second_px": 2.371,
+   "ratio": 4.6087,
+   "rotation_gap_deg": 22.381,
+   "translation_gap_mm": 24.31
+  },
+  {
+   "tilt_deg": 11.201,
+   "distance_m": 0.5261,
+   "reproj_best_px": 0.4812,
+   "solutions": 2,
+   "reproj_second_px": 2.3756,
+   "ratio": 4.9371,
+   "rotation_gap_deg": 22.317,
+   "translation_gap_mm": 23.62
+  },
+  {
+   "tilt_deg": 11.243,
+   "distance_m": 0.5261,
+   "reproj_best_px": 0.4944,
+   "solutions": 2,
+   "reproj_second_px": 2.39,
+   "ratio": 4.8342,
+   "rotation_gap_deg": 22.401,
+   "translation_gap_mm": 24.12
+  },
+  {
+   "tilt_deg": 11.115,
+   "distance_m": 0.5263,
+   "reproj_best_px": 0.4879,
+   "solutions": 2,
+   "reproj_second_px": 2.3784,
+   "ratio": 4.8747,
+   "rotation_gap_deg": 22.15,
+   "translation_gap_mm": 23.95
+  },
+  {
+   "tilt_deg": 11.35,
+   "distance_m": 0.5261,
+   "reproj_best_px": 0.4661,
+   "solutions": 2,
+   "reproj_second_px": 2.4048,
+   "ratio": 5.1593,
+   "rotation_gap_deg": 22.617,
+   "translation_gap_mm": 23.6
+  },
+  {
+   "tilt_deg": 11.467,
+   "distance_m": 0.5253,
+   "reproj_best_px": 0.5099,
+   "solutions": 2,
+   "reproj_second_px": 2.4327,
+   "ratio": 4.7705,
+   "rotation_gap_deg": 22.844,
+   "translation_gap_mm": 24.58
+  },
+  {
+   "tilt_deg": 11.397,
+   "distance_m": 0.5249,
+   "reproj_best_px": 0.4879,
+   "solutions": 2,
+   "reproj_second_px": 2.4652,
+   "ratio": 5.0526,
+   "rotation_gap_deg": 22.715,
+   "translation_gap_mm": 24.4
+  },
+  {
+   "tilt_deg": 11.424,
+   "distance_m": 0.5253,
+   "reproj_best_px": 0.5042,
+   "solutions": 2,
+   "reproj_second_px": 2.4317,
+   "ratio": 4.8229,
+   "rotation_gap_deg": 22.759,
+   "translation_gap_mm": 24.69
+  },
+  {
+   "tilt_deg": 11.324,
+   "distance_m": 0.5263,
+   "reproj_best_px": 0.4947,
+   "solutions": 2,
+   "reproj_second_px": 2.3864,
+   "ratio": 4.824,
+   "rotation_gap_deg": 22.561,
+   "translation_gap_mm": 23.59
+  },
+  {
+   "tilt_deg": 11.412,
+   "distance_m": 0.526,
+   "reproj_best_px": 0.5164,
+   "solutions": 2,
+   "reproj_second_px": 2.4282,
+   "ratio": 4.7019,
+   "rotation_gap_deg": 22.738,
+   "translation_gap_mm": 24.3
+  },
+  {
+   "tilt_deg": 11.174,
+   "distance_m": 0.526,
+   "reproj_best_px": 0.4813,
+   "solutions": 2,
+   "reproj_second_px": 2.4147,
+   "ratio": 5.0172,
+   "rotation_gap_deg": 22.273,
+   "translation_gap_mm": 23.92
+  },
+  {
+   "tilt_deg": 11.519,
+   "distance_m": 0.5259,
+   "reproj_best_px": 0.4573,
+   "solutions": 2,
+   "reproj_second_px": 2.4794,
+   "ratio": 5.4221,
+   "rotation_gap_deg": 22.963,
+   "translation_gap_mm": 23.76
+  },
+  {
+   "tilt_deg": 11.691,
+   "distance_m": 0.5255,
+   "reproj_best_px": 0.4662,
+   "solutions": 2,
+   "reproj_second_px": 2.5149,
+   "ratio": 5.3946,
+   "rotation_gap_deg": 23.31,
+   "translation_gap_mm": 23.38
+  },
+  {
+   "tilt_deg": 11.592,
+   "distance_m": 0.5253,
+   "reproj_best_px": 0.496,
+   "solutions": 2,
+   "reproj_second_px": 2.4975,
+   "ratio": 5.0356,
+   "rotation_gap_deg": 23.108,
+   "translation_gap_mm": 23.94
+  },
+  {
+   "tilt_deg": 11.447,
+   "distance_m": 0.5253,
+   "reproj_best_px": 0.4798,
+   "solutions": 2,
+   "reproj_second_px": 2.472,
+   "ratio": 5.1522,
+   "rotation_gap_deg": 22.819,
+   "translation_gap_mm": 24.11
+  },
+  {
+   "tilt_deg": 11.388,
+   "distance_m": 0.5261,
+   "reproj_best_px": 0.5304,
+   "solutions": 2,
+   "reproj_second_px": 2.4129,
+   "ratio": 4.5492,
+   "rotation_gap_deg": 22.683,
+   "translation_gap_mm": 25.5
+  },
+  {
+   "tilt_deg": 10.943,
+   "distance_m": 0.5266,
+   "reproj_best_px": 0.5032,
+   "solutions": 2,
+   "reproj_second_px": 2.2986,
+   "ratio": 4.568,
+   "rotation_gap_deg": 21.795,
+   "translation_gap_mm": 24.1
+  },
+  {
+   "tilt_deg": 10.764,
+   "distance_m": 0.5277,
+   "reproj_best_px": 0.5461,
+   "solutions": 2,
+   "reproj_second_px": 2.2547,
+   "ratio": 4.1289,
+   "rotation_gap_deg": 21.429,
+   "translation_gap_mm": 25.41
+  },
+  {
+   "tilt_deg": 10.419,
+   "distance_m": 0.5294,
+   "reproj_best_px": 0.5542,
+   "solutions": 2,
+   "reproj_second_px": 2.1205,
+   "ratio": 3.8266,
+   "rotation_gap_deg": 20.728,
+   "translation_gap_mm": 25.2
+  },
+  {
+   "tilt_deg": 10.94,
+   "distance_m": 0.5275,
+   "reproj_best_px": 0.527,
+   "solutions": 2,
+   "reproj_second_px": 2.2726,
+   "ratio": 4.3125,
+   "rotation_gap_deg": 21.782,
+   "translation_gap_mm": 24.48
+  },
+  {
+   "tilt_deg": 10.556,
+   "distance_m": 0.5291,
+   "reproj_best_px": 0.5844,
+   "solutions": 2,
+   "reproj_second_px": 2.1216,
+   "ratio": 3.6304,
+   "rotation_gap_deg": 20.991,
+   "translation_gap_mm": 26.0
+  },
+  {
+   "tilt_deg": 9.524,
+   "distance_m": 0.5327,
+   "reproj_best_px": 0.6045,
+   "solutions": 2,
+   "reproj_second_px": 1.832,
+   "ratio": 3.0307,
+   "rotation_gap_deg": 18.916,
+   "translation_gap_mm": 25.22
+  },
+  {
+   "tilt_deg": 10.398,
+   "distance_m": 0.5302,
+   "reproj_best_px": 0.5845,
+   "solutions": 2,
+   "reproj_second_px": 2.0639,
+   "ratio": 3.5313,
+   "rotation_gap_deg": 20.675,
+   "translation_gap_mm": 25.09
+  },
+  {
+   "tilt_deg": 10.148,
+   "distance_m": 0.5301,
+   "reproj_best_px": 0.5632,
+   "solutions": 2,
+   "reproj_second_px": 2.0472,
+   "ratio": 3.6348,
+   "rotation_gap_deg": 20.184,
+   "translation_gap_mm": 24.58
+  },
+  {
+   "tilt_deg": 10.478,
+   "distance_m": 0.5295,
+   "reproj_best_px": 0.5818,
+   "solutions": 2,
+   "reproj_second_px": 2.1177,
+   "ratio": 3.64,
+   "rotation_gap_deg": 20.841,
+   "translation_gap_mm": 25.5
+  },
+  {
+   "tilt_deg": 10.325,
+   "distance_m": 0.529,
+   "reproj_best_px": 0.5376,
+   "solutions": 2,
+   "reproj_second_px": 2.0967,
+   "ratio": 3.9,
+   "rotation_gap_deg": 20.545,
+   "translation_gap_mm": 23.37
+  },
+  {
+   "tilt_deg": 10.688,
+   "distance_m": 0.5285,
+   "reproj_best_px": 0.5346,
+   "solutions": 2,
+   "reproj_second_px": 2.18,
+   "ratio": 4.078,
+   "rotation_gap_deg": 21.273,
+   "translation_gap_mm": 23.75
+  },
+  {
+   "tilt_deg": 11.014,
+   "distance_m": 0.5278,
+   "reproj_best_px": 0.5467,
+   "solutions": 2,
+   "reproj_second_px": 2.2849,
+   "ratio": 4.1794,
+   "rotation_gap_deg": 21.923,
+   "translation_gap_mm": 25.95
+  },
+  {
+   "tilt_deg": 9.856,
+   "distance_m": 0.5309,
+   "reproj_best_px": 0.5481,
+   "solutions": 2,
+   "reproj_second_px": 1.9841,
+   "ratio": 3.6202,
+   "rotation_gap_deg": 19.603,
+   "translation_gap_mm": 24.1
+  },
+  {
+   "tilt_deg": 10.374,
+   "distance_m": 0.5297,
+   "reproj_best_px": 0.5607,
+   "solutions": 2,
+   "reproj_second_px": 2.096,
+   "ratio": 3.7381,
+   "rotation_gap_deg": 20.635,
+   "translation_gap_mm": 25.07
+  },
+  {
+   "tilt_deg": 10.401,
+   "distance_m": 0.5297,
+   "reproj_best_px": 0.5708,
+   "solutions": 2,
+   "reproj_second_px": 2.0955,
+   "ratio": 3.6711,
+   "rotation_gap_deg": 20.687,
+   "translation_gap_mm": 25.07
+  },
+  {
+   "tilt_deg": 10.169,
+   "distance_m": 0.5297,
+   "reproj_best_px": 0.4993,
+   "solutions": 2,
+   "reproj_second_px": 2.1032,
+   "ratio": 4.212,
+   "rotation_gap_deg": 20.247,
+   "translation_gap_mm": 22.93
+  },
+  {
+   "tilt_deg": 10.784,
+   "distance_m": 0.5291,
+   "reproj_best_px": 0.6,
+   "solutions": 2,
+   "reproj_second_px": 2.1709,
+   "ratio": 3.6183,
+   "rotation_gap_deg": 21.449,
+   "translation_gap_mm": 25.55
+  },
+  {
+   "tilt_deg": 10.537,
+   "distance_m": 0.5287,
+   "reproj_best_px": 0.5406,
+   "solutions": 2,
+   "reproj_second_px": 2.1725,
+   "ratio": 4.0184,
+   "rotation_gap_deg": 20.972,
+   "translation_gap_mm": 24.54
+  },
+  {
+   "tilt_deg": 10.825,
+   "distance_m": 0.5282,
+   "reproj_best_px": 0.5485,
+   "solutions": 2,
+   "reproj_second_px": 2.253,
+   "ratio": 4.1075,
+   "rotation_gap_deg": 21.552,
+   "translation_gap_mm": 24.59
+  },
+  {
+   "tilt_deg": 11.926,
+   "distance_m": 0.5244,
+   "reproj_best_px": 0.4538,
+   "solutions": 2,
+   "reproj_second_px": 2.5852,
+   "ratio": 5.6962,
+   "rotation_gap_deg": 23.78,
+   "translation_gap_mm": 24.2
+  },
+  {
+   "tilt_deg": 11.466,
+   "distance_m": 0.5259,
+   "reproj_best_px": 0.4962,
+   "solutions": 2,
+   "reproj_second_px": 2.4529,
+   "ratio": 4.9434,
+   "rotation_gap_deg": 22.846,
+   "translation_gap_mm": 25.46
+  },
+  {
+   "tilt_deg": 10.628,
+   "distance_m": 0.5278,
+   "reproj_best_px": 0.5115,
+   "solutions": 2,
+   "reproj_second_px": 2.2528,
+   "ratio": 4.4046,
+   "rotation_gap_deg": 21.167,
+   "translation_gap_mm": 24.4
+  },
+  {
+   "tilt_deg": 10.83,
+   "distance_m": 0.5284,
+   "reproj_best_px": 0.509,
+   "solutions": 2,
+   "reproj_second_px": 2.2295,
+   "ratio": 4.3798,
+   "rotation_gap_deg": 21.563,
+   "translation_gap_mm": 23.85
+  },
+  {
+   "tilt_deg": 10.813,
+   "distance_m": 0.5286,
+   "reproj_best_px": 0.5385,
+   "solutions": 2,
+   "reproj_second_px": 2.2154,
+   "ratio": 4.1141,
+   "rotation_gap_deg": 21.524,
+   "translation_gap_mm": 24.0
+  },
+  {
+   "tilt_deg": 10.758,
+   "distance_m": 0.5282,
+   "reproj_best_px": 0.5074,
+   "solutions": 2,
+   "reproj_second_px": 2.258,
+   "ratio": 4.4496,
+   "rotation_gap_deg": 21.426,
+   "translation_gap_mm": 24.15
+  },
+  {
+   "tilt_deg": 11.077,
+   "distance_m": 0.5268,
+   "reproj_best_px": 0.498,
+   "solutions": 2,
+   "reproj_second_px": 2.3468,
+   "ratio": 4.7126,
+   "rotation_gap_deg": 22.067,
+   "translation_gap_mm": 24.25
+  },
+  {
+   "tilt_deg": 11.021,
+   "distance_m": 0.5269,
+   "reproj_best_px": 0.4901,
+   "solutions": 2,
+   "reproj_second_px": 2.3452,
+   "ratio": 4.7851,
+   "rotation_gap_deg": 21.959,
+   "translation_gap_mm": 24.05
+  },
+  {
+   "tilt_deg": 11.218,
+   "distance_m": 0.5269,
+   "reproj_best_px": 0.4824,
+   "solutions": 2,
+   "reproj_second_px": 2.353,
+   "ratio": 4.8779,
+   "rotation_gap_deg": 22.352,
+   "translation_gap_mm": 22.8
+  },
+  {
+   "tilt_deg": 10.667,
+   "distance_m": 0.5288,
+   "reproj_best_px": 0.5343,
+   "solutions": 2,
+   "reproj_second_px": 2.1887,
+   "ratio": 4.0968,
+   "rotation_gap_deg": 21.234,
+   "translation_gap_mm": 23.82
+  },
+  {
+   "tilt_deg": 10.845,
+   "distance_m": 0.5284,
+   "reproj_best_px": 0.5348,
+   "solutions": 2,
+   "reproj_second_px": 2.2509,
+   "ratio": 4.2087,
+   "rotation_gap_deg": 21.592,
+   "translation_gap_mm": 25.01
+  },
+  {
+   "tilt_deg": 13.15,
+   "distance_m": 0.5222,
+   "reproj_best_px": 1.4694,
+   "solutions": 2,
+   "reproj_second_px": 2.7436,
+   "ratio": 1.8671,
+   "rotation_gap_deg": 26.124,
+   "translation_gap_mm": 23.75
+  },
+  {
+   "tilt_deg": 11.769,
+   "distance_m": 0.5248,
+   "reproj_best_px": 0.4715,
+   "solutions": 2,
+   "reproj_second_px": 2.56,
+   "ratio": 5.4295,
+   "rotation_gap_deg": 23.467,
+   "translation_gap_mm": 24.43
+  },
+  {
+   "tilt_deg": 11.985,
+   "distance_m": 0.5245,
+   "reproj_best_px": 0.4731,
+   "solutions": 2,
+   "reproj_second_px": 2.583,
+   "ratio": 5.4595,
+   "rotation_gap_deg": 23.892,
+   "translation_gap_mm": 24.88
+  },
+  {
+   "tilt_deg": 11.809,
+   "distance_m": 0.5248,
+   "reproj_best_px": 0.4612,
+   "solutions": 2,
+   "reproj_second_px": 2.5369,
+   "ratio": 5.501,
+   "rotation_gap_deg": 23.536,
+   "translation_gap_mm": 25.13
+  },
+  {
+   "tilt_deg": 10.877,
+   "distance_m": 0.527,
+   "reproj_best_px": 0.5432,
+   "solutions": 2,
+   "reproj_second_px": 2.275,
+   "ratio": 4.1885,
+   "rotation_gap_deg": 21.653,
+   "translation_gap_mm": 25.51
+  },
+  {
+   "tilt_deg": 10.428,
+   "distance_m": 0.5287,
+   "reproj_best_px": 0.5378,
+   "solutions": 2,
+   "reproj_second_px": 2.1414,
+   "ratio": 3.9817,
+   "rotation_gap_deg": 20.752,
+   "translation_gap_mm": 24.61
+  },
+  {
+   "tilt_deg": 9.237,
+   "distance_m": 0.5349,
+   "reproj_best_px": 0.6747,
+   "solutions": 2,
+   "reproj_second_px": 1.6545,
+   "ratio": 2.4521,
+   "rotation_gap_deg": 18.315,
+   "translation_gap_mm": 25.25
+  },
+  {
+   "tilt_deg": 8.988,
+   "distance_m": 0.5352,
+   "reproj_best_px": 0.6683,
+   "solutions": 2,
+   "reproj_second_px": 1.6449,
+   "ratio": 2.4614,
+   "rotation_gap_deg": 17.822,
+   "translation_gap_mm": 26.11
+  },
+  {
+   "tilt_deg": 9.214,
+   "distance_m": 0.5345,
+   "reproj_best_px": 0.6815,
+   "solutions": 2,
+   "reproj_second_px": 1.689,
+   "ratio": 2.4784,
+   "rotation_gap_deg": 18.271,
+   "translation_gap_mm": 26.65
+  },
+  {
+   "tilt_deg": 9.678,
+   "distance_m": 0.5331,
+   "reproj_best_px": 0.6504,
+   "solutions": 2,
+   "reproj_second_px": 1.8186,
+   "ratio": 2.7961,
+   "rotation_gap_deg": 19.207,
+   "translation_gap_mm": 26.45
+  },
+  {
+   "tilt_deg": 9.65,
+   "distance_m": 0.5334,
+   "reproj_best_px": 0.6373,
+   "solutions": 2,
+   "reproj_second_px": 1.7982,
+   "ratio": 2.8218,
+   "rotation_gap_deg": 19.157,
+   "translation_gap_mm": 24.6
+  },
+  {
+   "tilt_deg": 10.542,
+   "distance_m": 0.5298,
+   "reproj_best_px": 0.5789,
+   "solutions": 2,
+   "reproj_second_px": 2.1035,
+   "ratio": 3.6334,
+   "rotation_gap_deg": 20.964,
+   "translation_gap_mm": 25.45
+  },
+  {
+   "tilt_deg": 10.715,
+   "distance_m": 0.529,
+   "reproj_best_px": 0.5605,
+   "solutions": 2,
+   "reproj_second_px": 2.1736,
+   "ratio": 3.878,
+   "rotation_gap_deg": 21.319,
+   "translation_gap_mm": 25.19
+  },
+  {
+   "tilt_deg": 11.884,
+   "distance_m": 0.5257,
+   "reproj_best_px": 1.2014,
+   "solutions": 2,
+   "reproj_second_px": 2.4262,
+   "ratio": 2.0195,
+   "rotation_gap_deg": 23.614,
+   "translation_gap_mm": 22.32
+  },
+  {
+   "tilt_deg": 10.966,
+   "distance_m": 0.5276,
+   "reproj_best_px": 0.5386,
+   "solutions": 2,
+   "reproj_second_px": 2.2941,
+   "ratio": 4.2591,
+   "rotation_gap_deg": 21.835,
+   "translation_gap_mm": 24.99
+  },
+  {
+   "tilt_deg": 10.489,
+   "distance_m": 0.5294,
+   "reproj_best_px": 0.5634,
+   "solutions": 2,
+   "reproj_second_px": 2.1419,
+   "ratio": 3.8017,
+   "rotation_gap_deg": 20.868,
+   "translation_gap_mm": 25.61
+  },
+  {
+   "tilt_deg": 10.11,
+   "distance_m": 0.5305,
+   "reproj_best_px": 0.5528,
+   "solutions": 2,
+   "reproj_second_px": 2.0436,
+   "ratio": 3.6967,
+   "rotation_gap_deg": 20.106,
+   "translation_gap_mm": 25.36
+  },
+  {
+   "tilt_deg": 11.149,
+   "distance_m": 0.5276,
+   "reproj_best_px": 0.531,
+   "solutions": 2,
+   "reproj_second_px": 2.3392,
+   "ratio": 4.4053,
+   "rotation_gap_deg": 22.204,
+   "translation_gap_mm": 25.08
+  },
+  {
+   "tilt_deg": 11.148,
+   "distance_m": 0.5272,
+   "reproj_best_px": 0.5161,
+   "solutions": 2,
+   "reproj_second_px": 2.333,
+   "ratio": 4.5208,
+   "rotation_gap_deg": 22.201,
+   "translation_gap_mm": 24.65
+  },
+  {
+   "tilt_deg": 11.032,
+   "distance_m": 0.5274,
+   "reproj_best_px": 0.522,
+   "solutions": 2,
+   "reproj_second_px": 2.3054,
+   "ratio": 4.4168,
+   "rotation_gap_deg": 21.968,
+   "translation_gap_mm": 24.68
+  },
+  {
+   "tilt_deg": 11.039,
+   "distance_m": 0.5273,
+   "reproj_best_px": 0.497,
+   "solutions": 2,
+   "reproj_second_px": 2.3208,
+   "ratio": 4.6696,
+   "rotation_gap_deg": 21.988,
+   "translation_gap_mm": 24.41
+  },
+  {
+   "tilt_deg": 11.115,
+   "distance_m": 0.5268,
+   "reproj_best_px": 0.5194,
+   "solutions": 2,
+   "reproj_second_px": 2.3595,
+   "ratio": 4.5429,
+   "rotation_gap_deg": 22.14,
+   "translation_gap_mm": 25.36
+  },
+  {
+   "tilt_deg": 11.88,
+   "distance_m": 0.525,
+   "reproj_best_px": 0.5053,
+   "solutions": 2,
+   "reproj_second_px": 2.5308,
+   "ratio": 5.0089,
+   "rotation_gap_deg": 23.673,
+   "translation_gap_mm": 25.3
+  },
+  {
+   "tilt_deg": 11.776,
+   "distance_m": 0.5252,
+   "reproj_best_px": 0.4733,
+   "solutions": 2,
+   "reproj_second_px": 2.5287,
+   "ratio": 5.3422,
+   "rotation_gap_deg": 23.475,
+   "translation_gap_mm": 23.98
+  },
+  {
+   "tilt_deg": 11.342,
+   "distance_m": 0.5264,
+   "reproj_best_px": 0.4953,
+   "solutions": 2,
+   "reproj_second_px": 2.4127,
+   "ratio": 4.8717,
+   "rotation_gap_deg": 22.6,
+   "translation_gap_mm": 24.31
+  },
+  {
+   "tilt_deg": 11.792,
+   "distance_m": 0.5252,
+   "reproj_best_px": 0.4772,
+   "solutions": 2,
+   "reproj_second_px": 2.5397,
+   "ratio": 5.3216,
+   "rotation_gap_deg": 23.508,
+   "translation_gap_mm": 24.31
+  },
+  {
+   "tilt_deg": 12.104,
+   "distance_m": 0.5246,
+   "reproj_best_px": 0.4808,
+   "solutions": 2,
+   "reproj_second_px": 2.5974,
+   "ratio": 5.4027,
+   "rotation_gap_deg": 24.127,
+   "translation_gap_mm": 25.19
+  },
+  {
+   "tilt_deg": 11.906,
+   "distance_m": 0.5249,
+   "reproj_best_px": 0.4721,
+   "solutions": 2,
+   "reproj_second_px": 2.5483,
+   "ratio": 5.3979,
+   "rotation_gap_deg": 23.732,
+   "translation_gap_mm": 24.55
+  },
+  {
+   "tilt_deg": 12.142,
+   "distance_m": 0.5248,
+   "reproj_best_px": 0.489,
+   "solutions": 2,
+   "reproj_second_px": 2.5967,
+   "ratio": 5.3101,
+   "rotation_gap_deg": 24.2,
+   "translation_gap_mm": 25.14
+  },
+  {
+   "tilt_deg": 11.943,
+   "distance_m": 0.5248,
+   "reproj_best_px": 0.476,
+   "solutions": 2,
+   "reproj_second_px": 2.5638,
+   "ratio": 5.3861,
+   "rotation_gap_deg": 23.805,
+   "translation_gap_mm": 24.82
+  },
+  {
+   "tilt_deg": 12.167,
+   "distance_m": 0.5243,
+   "reproj_best_px": 0.465,
+   "solutions": 2,
+   "reproj_second_px": 2.621,
+   "ratio": 5.6369,
+   "rotation_gap_deg": 24.256,
+   "translation_gap_mm": 25.03
+  },
+  {
+   "tilt_deg": 11.802,
+   "distance_m": 0.5245,
+   "reproj_best_px": 0.4803,
+   "solutions": 2,
+   "reproj_second_px": 2.5815,
+   "ratio": 5.3747,
+   "rotation_gap_deg": 23.528,
+   "translation_gap_mm": 25.6
+  },
+  {
+   "tilt_deg": 11.86,
+   "distance_m": 0.5242,
+   "reproj_best_px": 0.439,
+   "solutions": 2,
+   "reproj_second_px": 2.59,
+   "ratio": 5.9004,
+   "rotation_gap_deg": 23.65,
+   "translation_gap_mm": 24.5
+  },
+  {
+   "tilt_deg": 11.986,
+   "distance_m": 0.5236,
+   "reproj_best_px": 0.4589,
+   "solutions": 2,
+   "reproj_second_px": 2.6405,
+   "ratio": 5.7543,
+   "rotation_gap_deg": 23.901,
+   "translation_gap_mm": 25.77
+  },
+  {
+   "tilt_deg": 12.347,
+   "distance_m": 0.5232,
+   "reproj_best_px": 0.4745,
+   "solutions": 2,
+   "reproj_second_px": 2.6813,
+   "ratio": 5.6502,
+   "rotation_gap_deg": 24.615,
+   "translation_gap_mm": 25.86
+  },
+  {
+   "tilt_deg": 12.478,
+   "distance_m": 0.5232,
+   "reproj_best_px": 0.4899,
+   "solutions": 2,
+   "reproj_second_px": 2.6746,
+   "ratio": 5.4594,
+   "rotation_gap_deg": 24.87,
+   "translation_gap_mm": 25.61
+  },
+  {
+   "tilt_deg": 12.268,
+   "distance_m": 0.5235,
+   "reproj_best_px": 0.4801,
+   "solutions": 2,
+   "reproj_second_px": 2.6499,
+   "ratio": 5.519,
+   "rotation_gap_deg": 24.455,
+   "translation_gap_mm": 25.83
+  },
+  {
+   "tilt_deg": 12.132,
+   "distance_m": 0.5237,
+   "reproj_best_px": 0.462,
+   "solutions": 2,
+   "reproj_second_px": 2.6537,
+   "ratio": 5.7444,
+   "rotation_gap_deg": 24.19,
+   "translation_gap_mm": 25.78
+  },
+  {
+   "tilt_deg": 12.323,
+   "distance_m": 0.5234,
+   "reproj_best_px": 0.4713,
+   "solutions": 2,
+   "reproj_second_px": 2.6661,
+   "ratio": 5.6562,
+   "rotation_gap_deg": 24.565,
+   "translation_gap_mm": 25.57
+  },
+  {
+   "tilt_deg": 12.153,
+   "distance_m": 0.5238,
+   "reproj_best_px": 0.477,
+   "solutions": 2,
+   "reproj_second_px": 2.6289,
+   "ratio": 5.5117,
+   "rotation_gap_deg": 24.225,
+   "translation_gap_mm": 25.68
+  },
+  {
+   "tilt_deg": 12.29,
+   "distance_m": 0.5236,
+   "reproj_best_px": 0.4924,
+   "solutions": 2,
+   "reproj_second_px": 2.6502,
+   "ratio": 5.3826,
+   "rotation_gap_deg": 24.497,
+   "translation_gap_mm": 25.65
+  },
+  {
+   "tilt_deg": 12.111,
+   "distance_m": 0.5239,
+   "reproj_best_px": 0.4517,
+   "solutions": 2,
+   "reproj_second_px": 2.6436,
+   "ratio": 5.8529,
+   "rotation_gap_deg": 24.15,
+   "translation_gap_mm": 25.22
+  },
+  {
+   "tilt_deg": 12.115,
+   "distance_m": 0.5236,
+   "reproj_best_px": 0.4415,
+   "solutions": 2,
+   "reproj_second_px": 2.6614,
+   "ratio": 6.0278,
+   "rotation_gap_deg": 24.163,
+   "translation_gap_mm": 25.1
+  },
+  {
+   "tilt_deg": 12.341,
+   "distance_m": 0.5234,
+   "reproj_best_px": 0.4483,
+   "solutions": 2,
+   "reproj_second_px": 2.6837,
+   "ratio": 5.9871,
+   "rotation_gap_deg": 24.609,
+   "translation_gap_mm": 24.77
+  },
+  {
+   "tilt_deg": 12.388,
+   "distance_m": 0.5233,
+   "reproj_best_px": 0.4571,
+   "solutions": 2,
+   "reproj_second_px": 2.7143,
+   "ratio": 5.9382,
+   "rotation_gap_deg": 24.706,
+   "translation_gap_mm": 25.18
+  },
+  {
+   "tilt_deg": 12.229,
+   "distance_m": 0.5233,
+   "reproj_best_px": 0.4518,
+   "solutions": 2,
+   "reproj_second_px": 2.669,
+   "ratio": 5.9078,
+   "rotation_gap_deg": 24.382,
+   "translation_gap_mm": 25.86
+  },
+  {
+   "tilt_deg": 12.331,
+   "distance_m": 0.5232,
+   "reproj_best_px": 0.4763,
+   "solutions": 2,
+   "reproj_second_px": 2.7035,
+   "ratio": 5.6764,
+   "rotation_gap_deg": 24.586,
+   "translation_gap_mm": 26.63
+  },
+  {
+   "tilt_deg": 13.959,
+   "distance_m": 0.5196,
+   "reproj_best_px": 1.3794,
+   "solutions": 2,
+   "reproj_second_px": 2.9733,
+   "ratio": 2.1555,
+   "rotation_gap_deg": 27.76,
+   "translation_gap_mm": 25.75
+  },
+  {
+   "tilt_deg": 12.221,
+   "distance_m": 0.5235,
+   "reproj_best_px": 0.4369,
+   "solutions": 2,
+   "reproj_second_px": 2.6658,
+   "ratio": 6.1014,
+   "rotation_gap_deg": 24.372,
+   "translation_gap_mm": 24.63
+  },
+  {
+   "tilt_deg": 12.28,
+   "distance_m": 0.5232,
+   "reproj_best_px": 0.4615,
+   "solutions": 2,
+   "reproj_second_px": 2.7081,
+   "ratio": 5.8682,
+   "rotation_gap_deg": 24.489,
+   "translation_gap_mm": 25.88
+  },
+  {
+   "tilt_deg": 12.518,
+   "distance_m": 0.523,
+   "reproj_best_px": 0.4362,
+   "solutions": 2,
+   "reproj_second_px": 2.7398,
+   "ratio": 6.2815,
+   "rotation_gap_deg": 24.967,
+   "translation_gap_mm": 25.31
+  },
+  {
+   "tilt_deg": 12.404,
+   "distance_m": 0.523,
+   "reproj_best_px": 0.4575,
+   "solutions": 2,
+   "reproj_second_px": 2.7165,
+   "ratio": 5.9381,
+   "rotation_gap_deg": 24.736,
+   "translation_gap_mm": 25.81
+  },
+  {
+   "tilt_deg": 12.366,
+   "distance_m": 0.5231,
+   "reproj_best_px": 0.4403,
+   "solutions": 2,
+   "reproj_second_px": 2.7232,
+   "ratio": 6.1848,
+   "rotation_gap_deg": 24.664,
+   "translation_gap_mm": 25.65
+  },
+  {
+   "tilt_deg": 12.644,
+   "distance_m": 0.5229,
+   "reproj_best_px": 0.4611,
+   "solutions": 2,
+   "reproj_second_px": 2.7778,
+   "ratio": 6.0245,
+   "rotation_gap_deg": 25.216,
+   "translation_gap_mm": 26.31
+  },
+  {
+   "tilt_deg": 12.545,
+   "distance_m": 0.523,
+   "reproj_best_px": 0.4565,
+   "solutions": 2,
+   "reproj_second_px": 2.7619,
+   "ratio": 6.0499,
+   "rotation_gap_deg": 25.019,
+   "translation_gap_mm": 26.29
+  },
+  {
+   "tilt_deg": 12.683,
+   "distance_m": 0.5228,
+   "reproj_best_px": 0.4564,
+   "solutions": 2,
+   "reproj_second_px": 2.7665,
+   "ratio": 6.0623,
+   "rotation_gap_deg": 25.29,
+   "translation_gap_mm": 26.41
+  },
+  {
+   "tilt_deg": 12.396,
+   "distance_m": 0.523,
+   "reproj_best_px": 0.4264,
+   "solutions": 2,
+   "reproj_second_px": 2.7549,
+   "ratio": 6.4614,
+   "rotation_gap_deg": 24.728,
+   "translation_gap_mm": 25.66
+  },
+  {
+   "tilt_deg": 12.455,
+   "distance_m": 0.5229,
+   "reproj_best_px": 0.4357,
+   "solutions": 2,
+   "reproj_second_px": 2.7465,
+   "ratio": 6.3037,
+   "rotation_gap_deg": 24.841,
+   "translation_gap_mm": 25.93
+  },
+  {
+   "tilt_deg": 12.756,
+   "distance_m": 0.5218,
+   "reproj_best_px": 0.4444,
+   "solutions": 2,
+   "reproj_second_px": 2.8014,
+   "ratio": 6.3042,
+   "rotation_gap_deg": 25.437,
+   "translation_gap_mm": 26.62
+  },
+  {
+   "tilt_deg": 12.896,
+   "distance_m": 0.5217,
+   "reproj_best_px": 0.4444,
+   "solutions": 2,
+   "reproj_second_px": 2.8338,
+   "ratio": 6.376,
+   "rotation_gap_deg": 25.719,
+   "translation_gap_mm": 26.27
+  },
+  {
+   "tilt_deg": 12.682,
+   "distance_m": 0.5215,
+   "reproj_best_px": 0.4738,
+   "solutions": 2,
+   "reproj_second_px": 2.826,
+   "ratio": 5.9646,
+   "rotation_gap_deg": 25.291,
+   "translation_gap_mm": 28.06
+  },
+  {
+   "tilt_deg": 12.959,
+   "distance_m": 0.5216,
+   "reproj_best_px": 0.46,
+   "solutions": 2,
+   "reproj_second_px": 2.8301,
+   "ratio": 6.1517,
+   "rotation_gap_deg": 25.84,
+   "translation_gap_mm": 26.66
+  },
+  {
+   "tilt_deg": 12.866,
+   "distance_m": 0.5214,
+   "reproj_best_px": 0.4393,
+   "solutions": 2,
+   "reproj_second_px": 2.8365,
+   "ratio": 6.4569,
+   "rotation_gap_deg": 25.663,
+   "translation_gap_mm": 26.1
+  },
+  {
+   "tilt_deg": 12.76,
+   "distance_m": 0.5217,
+   "reproj_best_px": 0.4319,
+   "solutions": 2,
+   "reproj_second_px": 2.8129,
+   "ratio": 6.5134,
+   "rotation_gap_deg": 25.452,
+   "translation_gap_mm": 25.59
+  },
+  {
+   "tilt_deg": 12.865,
+   "distance_m": 0.5215,
+   "reproj_best_px": 0.4427,
+   "solutions": 2,
+   "reproj_second_px": 2.8496,
+   "ratio": 6.4376,
+   "rotation_gap_deg": 25.662,
+   "translation_gap_mm": 26.45
+  },
+  {
+   "tilt_deg": 12.854,
+   "distance_m": 0.5217,
+   "reproj_best_px": 0.4356,
+   "solutions": 2,
+   "reproj_second_px": 2.8481,
+   "ratio": 6.5384,
+   "rotation_gap_deg": 25.642,
+   "translation_gap_mm": 26.18
+  },
+  {
+   "tilt_deg": 12.826,
+   "distance_m": 0.5219,
+   "reproj_best_px": 0.4501,
+   "solutions": 2,
+   "reproj_second_px": 2.8451,
+   "ratio": 6.3205,
+   "rotation_gap_deg": 25.584,
+   "translation_gap_mm": 26.72
+  },
+  {
+   "tilt_deg": 13.026,
+   "distance_m": 0.5216,
+   "reproj_best_px": 0.4089,
+   "solutions": 2,
+   "reproj_second_px": 2.8896,
+   "ratio": 7.0665,
+   "rotation_gap_deg": 25.991,
+   "translation_gap_mm": 25.58
+  },
+  {
+   "tilt_deg": 13.209,
+   "distance_m": 0.5213,
+   "reproj_best_px": 0.4564,
+   "solutions": 2,
+   "reproj_second_px": 2.8856,
+   "ratio": 6.3225,
+   "rotation_gap_deg": 26.343,
+   "translation_gap_mm": 26.16
+  },
+  {
+   "tilt_deg": 13.121,
+   "distance_m": 0.5211,
+   "reproj_best_px": 0.4614,
+   "solutions": 2,
+   "reproj_second_px": 2.8969,
+   "ratio": 6.2787,
+   "rotation_gap_deg": 26.171,
+   "translation_gap_mm": 26.36
+  },
+  {
+   "tilt_deg": 13.007,
+   "distance_m": 0.5215,
+   "reproj_best_px": 0.4357,
+   "solutions": 2,
+   "reproj_second_px": 2.8675,
+   "ratio": 6.5819,
+   "rotation_gap_deg": 25.948,
+   "translation_gap_mm": 25.72
+  },
+  {
+   "tilt_deg": 13.136,
+   "distance_m": 0.5214,
+   "reproj_best_px": 0.4611,
+   "solutions": 2,
+   "reproj_second_px": 2.9092,
+   "ratio": 6.3096,
+   "rotation_gap_deg": 26.204,
+   "translation_gap_mm": 26.69
+  },
+  {
+   "tilt_deg": 13.058,
+   "distance_m": 0.5218,
+   "reproj_best_px": 0.4495,
+   "solutions": 2,
+   "reproj_second_px": 2.8695,
+   "ratio": 6.3841,
+   "rotation_gap_deg": 26.046,
+   "translation_gap_mm": 25.92
+  },
+  {
+   "tilt_deg": 13.154,
+   "distance_m": 0.5215,
+   "reproj_best_px": 0.4414,
+   "solutions": 2,
+   "reproj_second_px": 2.9093,
+   "ratio": 6.5917,
+   "rotation_gap_deg": 26.24,
+   "translation_gap_mm": 26.51
+  },
+  {
+   "tilt_deg": 13.157,
+   "distance_m": 0.521,
+   "reproj_best_px": 0.434,
+   "solutions": 2,
+   "reproj_second_px": 2.9284,
+   "ratio": 6.7477,
+   "rotation_gap_deg": 26.251,
+   "translation_gap_mm": 26.26
+  },
+  {
+   "tilt_deg": 13.177,
+   "distance_m": 0.5213,
+   "reproj_best_px": 0.4293,
+   "solutions": 2,
+   "reproj_second_px": 2.9229,
+   "ratio": 6.808,
+   "rotation_gap_deg": 26.291,
+   "translation_gap_mm": 25.97
+  },
+  {
+   "tilt_deg": 13.211,
+   "distance_m": 0.5212,
+   "reproj_best_px": 0.4559,
+   "solutions": 2,
+   "reproj_second_px": 2.9088,
+   "ratio": 6.3804,
+   "rotation_gap_deg": 26.35,
+   "translation_gap_mm": 26.51
+  },
+  {
+   "tilt_deg": 13.396,
+   "distance_m": 0.5211,
+   "reproj_best_px": 0.4551,
+   "solutions": 2,
+   "reproj_second_px": 2.9505,
+   "ratio": 6.4826,
+   "rotation_gap_deg": 26.722,
+   "translation_gap_mm": 26.59
+  },
+  {
+   "tilt_deg": 13.316,
+   "distance_m": 0.5211,
+   "reproj_best_px": 0.4567,
+   "solutions": 2,
+   "reproj_second_px": 2.9298,
+   "ratio": 6.4145,
+   "rotation_gap_deg": 26.559,
+   "translation_gap_mm": 26.58
+  },
+  {
+   "tilt_deg": 13.186,
+   "distance_m": 0.5214,
+   "reproj_best_px": 0.4451,
+   "solutions": 2,
+   "reproj_second_px": 2.9298,
+   "ratio": 6.5819,
+   "rotation_gap_deg": 26.306,
+   "translation_gap_mm": 26.72
+  },
+  {
+   "tilt_deg": 13.359,
+   "distance_m": 0.5213,
+   "reproj_best_px": 0.4409,
+   "solutions": 2,
+   "reproj_second_px": 2.9598,
+   "ratio": 6.7125,
+   "rotation_gap_deg": 26.651,
+   "translation_gap_mm": 27.03
+  },
+  {
+   "tilt_deg": 13.521,
+   "distance_m": 0.5211,
+   "reproj_best_px": 0.4206,
+   "solutions": 2,
+   "reproj_second_px": 2.9659,
+   "ratio": 7.0507,
+   "rotation_gap_deg": 26.976,
+   "translation_gap_mm": 25.2
+  },
+  {
+   "tilt_deg": 13.68,
+   "distance_m": 0.5212,
+   "reproj_best_px": 0.4243,
+   "solutions": 2,
+   "reproj_second_px": 3.0109,
+   "ratio": 7.0954,
+   "rotation_gap_deg": 27.297,
+   "translation_gap_mm": 25.52
+  },
+  {
+   "tilt_deg": 14.505,
+   "distance_m": 0.521,
+   "reproj_best_px": 0.448,
+   "solutions": 2,
+   "reproj_second_px": 3.1579,
+   "ratio": 7.0484,
+   "rotation_gap_deg": 28.944,
+   "translation_gap_mm": 25.63
+  },
+  {
+   "tilt_deg": 14.681,
+   "distance_m": 0.52,
+   "reproj_best_px": 0.4021,
+   "solutions": 2,
+   "reproj_second_px": 3.2615,
+   "ratio": 8.1118,
+   "rotation_gap_deg": 29.312,
+   "translation_gap_mm": 25.09
+  },
+  {
+   "tilt_deg": 14.869,
+   "distance_m": 0.5196,
+   "reproj_best_px": 0.4101,
+   "solutions": 2,
+   "reproj_second_px": 3.3378,
+   "ratio": 8.14,
+   "rotation_gap_deg": 29.695,
+   "translation_gap_mm": 25.51
+  },
+  {
+   "tilt_deg": 14.862,
+   "distance_m": 0.5196,
+   "reproj_best_px": 0.4056,
+   "solutions": 2,
+   "reproj_second_px": 3.3031,
+   "ratio": 8.1431,
+   "rotation_gap_deg": 29.675,
+   "translation_gap_mm": 24.8
+  },
+  {
+   "tilt_deg": 15.479,
+   "distance_m": 0.5185,
+   "reproj_best_px": 0.3875,
+   "solutions": 2,
+   "reproj_second_px": 3.4461,
+   "ratio": 8.894,
+   "rotation_gap_deg": 30.913,
+   "translation_gap_mm": 25.11
+  },
+  {
+   "tilt_deg": 14.486,
+   "distance_m": 0.5206,
+   "reproj_best_px": 0.3871,
+   "solutions": 2,
+   "reproj_second_px": 3.2166,
+   "ratio": 8.3089,
+   "rotation_gap_deg": 28.925,
+   "translation_gap_mm": 24.44
+  },
+  {
+   "tilt_deg": 14.426,
+   "distance_m": 0.5206,
+   "reproj_best_px": 0.3757,
+   "solutions": 2,
+   "reproj_second_px": 3.2011,
+   "ratio": 8.5207,
+   "rotation_gap_deg": 28.802,
+   "translation_gap_mm": 24.96
+  },
+  {
+   "tilt_deg": 14.815,
+   "distance_m": 0.5198,
+   "reproj_best_px": 0.4158,
+   "solutions": 2,
+   "reproj_second_px": 3.2941,
+   "ratio": 7.9226,
+   "rotation_gap_deg": 29.577,
+   "translation_gap_mm": 25.94
+  },
+  {
+   "tilt_deg": 12.876,
+   "distance_m": 0.5248,
+   "reproj_best_px": 0.4394,
+   "solutions": 2,
+   "reproj_second_px": 2.7724,
+   "ratio": 6.3092,
+   "rotation_gap_deg": 25.68,
+   "translation_gap_mm": 25.02
+  },
+  {
+   "tilt_deg": 11.822,
+   "distance_m": 0.5271,
+   "reproj_best_px": 0.4794,
+   "solutions": 2,
+   "reproj_second_px": 2.5303,
+   "ratio": 5.2778,
+   "rotation_gap_deg": 23.567,
+   "translation_gap_mm": 24.75
+  },
+  {
+   "tilt_deg": 11.795,
+   "distance_m": 0.5271,
+   "reproj_best_px": 0.4472,
+   "solutions": 2,
+   "reproj_second_px": 2.5951,
+   "ratio": 5.8037,
+   "rotation_gap_deg": 23.53,
+   "translation_gap_mm": 24.68
+  },
+  {
+   "tilt_deg": 15.656,
+   "distance_m": 0.5171,
+   "reproj_best_px": 0.3907,
+   "solutions": 2,
+   "reproj_second_px": 3.5669,
+   "ratio": 9.129,
+   "rotation_gap_deg": 31.269,
+   "translation_gap_mm": 27.73
+  },
+  {
+   "tilt_deg": 16.362,
+   "distance_m": 0.5152,
+   "reproj_best_px": 0.3787,
+   "solutions": 2,
+   "reproj_second_px": 3.7761,
+   "ratio": 9.9706,
+   "rotation_gap_deg": 32.691,
+   "translation_gap_mm": 28.12
+  },
+  {
+   "tilt_deg": 17.239,
+   "distance_m": 0.5135,
+   "reproj_best_px": 0.3775,
+   "solutions": 2,
+   "reproj_second_px": 3.9621,
+   "ratio": 10.4956,
+   "rotation_gap_deg": 34.439,
+   "translation_gap_mm": 29.61
+  },
+  {
+   "tilt_deg": 16.99,
+   "distance_m": 0.5139,
+   "reproj_best_px": 0.349,
+   "solutions": 2,
+   "reproj_second_px": 3.9343,
+   "ratio": 11.2719,
+   "rotation_gap_deg": 33.949,
+   "translation_gap_mm": 29.18
+  },
+  {
+   "tilt_deg": 17.158,
+   "distance_m": 0.5137,
+   "reproj_best_px": 0.3562,
+   "solutions": 2,
+   "reproj_second_px": 3.9484,
+   "ratio": 11.084,
+   "rotation_gap_deg": 34.281,
+   "translation_gap_mm": 29.08
+  },
+  {
+   "tilt_deg": 17.988,
+   "distance_m": 0.5119,
+   "reproj_best_px": 0.3432,
+   "solutions": 2,
+   "reproj_second_px": 4.1519,
+   "ratio": 12.0989,
+   "rotation_gap_deg": 35.943,
+   "translation_gap_mm": 29.97
+  },
+  {
+   "tilt_deg": 17.515,
+   "distance_m": 0.5122,
+   "reproj_best_px": 0.3577,
+   "solutions": 2,
+   "reproj_second_px": 4.0817,
+   "ratio": 11.4124,
+   "rotation_gap_deg": 34.999,
+   "translation_gap_mm": 30.63
+  },
+  {
+   "tilt_deg": 17.626,
+   "distance_m": 0.5122,
+   "reproj_best_px": 0.3663,
+   "solutions": 2,
+   "reproj_second_px": 4.0778,
+   "ratio": 11.1332,
+   "rotation_gap_deg": 35.213,
+   "translation_gap_mm": 30.9
+  },
+  {
+   "tilt_deg": 17.754,
+   "distance_m": 0.5116,
+   "reproj_best_px": 0.3494,
+   "solutions": 2,
+   "reproj_second_px": 4.1469,
+   "ratio": 11.867,
+   "rotation_gap_deg": 35.479,
+   "translation_gap_mm": 31.0
+  },
+  {
+   "tilt_deg": 19.093,
+   "distance_m": 0.5081,
+   "reproj_best_px": 0.3281,
+   "solutions": 2,
+   "reproj_second_px": 4.5135,
+   "ratio": 13.7583,
+   "rotation_gap_deg": 38.161,
+   "translation_gap_mm": 33.14
+  },
+  {
+   "tilt_deg": 19.269,
+   "distance_m": 0.5078,
+   "reproj_best_px": 0.3379,
+   "solutions": 2,
+   "reproj_second_px": 4.5243,
+   "ratio": 13.3901,
+   "rotation_gap_deg": 38.51,
+   "translation_gap_mm": 32.27
+  },
+  {
+   "tilt_deg": 19.084,
+   "distance_m": 0.5081,
+   "reproj_best_px": 0.3279,
+   "solutions": 2,
+   "reproj_second_px": 4.5062,
+   "ratio": 13.7407,
+   "rotation_gap_deg": 38.147,
+   "translation_gap_mm": 32.22
+  },
+  {
+   "tilt_deg": 19.297,
+   "distance_m": 0.5079,
+   "reproj_best_px": 0.3295,
+   "solutions": 2,
+   "reproj_second_px": 4.5128,
+   "ratio": 13.6971,
+   "rotation_gap_deg": 38.563,
+   "translation_gap_mm": 32.6
+  },
+  {
+   "tilt_deg": 19.15,
+   "distance_m": 0.5079,
+   "reproj_best_px": 0.3311,
+   "solutions": 2,
+   "reproj_second_px": 4.5234,
+   "ratio": 13.6605,
+   "rotation_gap_deg": 38.277,
+   "translation_gap_mm": 32.39
+  },
+  {
+   "tilt_deg": 19.335,
+   "distance_m": 0.5078,
+   "reproj_best_px": 0.3172,
+   "solutions": 2,
+   "reproj_second_px": 4.5425,
+   "ratio": 14.3193,
+   "rotation_gap_deg": 38.644,
+   "translation_gap_mm": 32.52
+  },
+  {
+   "tilt_deg": 19.279,
+   "distance_m": 0.5078,
+   "reproj_best_px": 0.3298,
+   "solutions": 2,
+   "reproj_second_px": 4.542,
+   "ratio": 13.7732,
+   "rotation_gap_deg": 38.533,
+   "translation_gap_mm": 32.61
+  },
+  {
+   "tilt_deg": 19.498,
+   "distance_m": 0.5078,
+   "reproj_best_px": 0.33,
+   "solutions": 2,
+   "reproj_second_px": 4.5885,
+   "ratio": 13.9059,
+   "rotation_gap_deg": 38.97,
+   "translation_gap_mm": 33.16
+  },
+  {
+   "tilt_deg": 18.975,
+   "distance_m": 0.5085,
+   "reproj_best_px": 0.3228,
+   "solutions": 2,
+   "reproj_second_px": 4.4876,
+   "ratio": 13.901,
+   "rotation_gap_deg": 37.931,
+   "translation_gap_mm": 32.2
+  },
+  {
+   "tilt_deg": 19.07,
+   "distance_m": 0.5084,
+   "reproj_best_px": 0.3377,
+   "solutions": 2,
+   "reproj_second_px": 4.4865,
+   "ratio": 13.2848,
+   "rotation_gap_deg": 38.111,
+   "translation_gap_mm": 33.13
+  },
+  {
+   "tilt_deg": 18.693,
+   "distance_m": 0.5093,
+   "reproj_best_px": 0.3383,
+   "solutions": 2,
+   "reproj_second_px": 4.3847,
+   "ratio": 12.959,
+   "rotation_gap_deg": 37.357,
+   "translation_gap_mm": 32.54
+  },
+  {
+   "tilt_deg": 19.466,
+   "distance_m": 0.5076,
+   "reproj_best_px": 0.3323,
+   "solutions": 2,
+   "reproj_second_px": 4.5778,
+   "ratio": 13.7751,
+   "rotation_gap_deg": 38.903,
+   "translation_gap_mm": 33.44
+  },
+  {
+   "tilt_deg": 18.745,
+   "distance_m": 0.5093,
+   "reproj_best_px": 0.3348,
+   "solutions": 2,
+   "reproj_second_px": 4.4531,
+   "ratio": 13.3015,
+   "rotation_gap_deg": 37.472,
+   "translation_gap_mm": 32.81
+  },
+  {
+   "tilt_deg": 19.592,
+   "distance_m": 0.5072,
+   "reproj_best_px": 0.3683,
+   "solutions": 2,
+   "reproj_second_px": 4.6171,
+   "ratio": 12.5351,
+   "rotation_gap_deg": 39.155,
+   "translation_gap_mm": 33.75
+  },
+  {
+   "tilt_deg": 19.604,
+   "distance_m": 0.5073,
+   "reproj_best_px": 0.3164,
+   "solutions": 2,
+   "reproj_second_px": 4.6247,
+   "ratio": 14.6173,
+   "rotation_gap_deg": 39.186,
+   "translation_gap_mm": 33.12
+  },
+  {
+   "tilt_deg": 19.505,
+   "distance_m": 0.5075,
+   "reproj_best_px": 0.3385,
+   "solutions": 2,
+   "reproj_second_px": 4.6091,
+   "ratio": 13.6156,
+   "rotation_gap_deg": 38.986,
+   "translation_gap_mm": 33.77
+  },
+  {
+   "tilt_deg": 18.118,
+   "distance_m": 0.5105,
+   "reproj_best_px": 0.3181,
+   "solutions": 2,
+   "reproj_second_px": 4.3103,
+   "ratio": 13.5483,
+   "rotation_gap_deg": 36.221,
+   "translation_gap_mm": 31.78
+  },
+  {
+   "tilt_deg": 18.987,
+   "distance_m": 0.5086,
+   "reproj_best_px": 0.3241,
+   "solutions": 2,
+   "reproj_second_px": 4.4976,
+   "ratio": 13.8753,
+   "rotation_gap_deg": 37.954,
+   "translation_gap_mm": 32.83
+  },
+  {
+   "tilt_deg": 19.31,
+   "distance_m": 0.5079,
+   "reproj_best_px": 0.3304,
+   "solutions": 2,
+   "reproj_second_px": 4.5519,
+   "ratio": 13.7756,
+   "rotation_gap_deg": 38.593,
+   "translation_gap_mm": 33.41
+  },
+  {
+   "tilt_deg": 18.459,
+   "distance_m": 0.509,
+   "reproj_best_px": 0.3543,
+   "solutions": 2,
+   "reproj_second_px": 4.3762,
+   "ratio": 12.352,
+   "rotation_gap_deg": 36.89,
+   "translation_gap_mm": 33.82
+  },
+  {
+   "tilt_deg": 18.362,
+   "distance_m": 0.5094,
+   "reproj_best_px": 0.3326,
+   "solutions": 2,
+   "reproj_second_px": 4.3542,
+   "ratio": 13.0923,
+   "rotation_gap_deg": 36.697,
+   "translation_gap_mm": 33.58
+  },
+  {
+   "tilt_deg": 18.35,
+   "distance_m": 0.5087,
+   "reproj_best_px": 0.3246,
+   "solutions": 2,
+   "reproj_second_px": 4.3738,
+   "ratio": 13.4726,
+   "rotation_gap_deg": 36.678,
+   "translation_gap_mm": 33.23
+  },
+  {
+   "tilt_deg": 19.057,
+   "distance_m": 0.5079,
+   "reproj_best_px": 0.3195,
+   "solutions": 2,
+   "reproj_second_px": 4.5018,
+   "ratio": 14.0916,
+   "rotation_gap_deg": 38.089,
+   "translation_gap_mm": 32.98
+  },
+  {
+   "tilt_deg": 18.795,
+   "distance_m": 0.5085,
+   "reproj_best_px": 0.338,
+   "solutions": 2,
+   "reproj_second_px": 4.4286,
+   "ratio": 13.1031,
+   "rotation_gap_deg": 37.56,
+   "translation_gap_mm": 33.41
+  },
+  {
+   "tilt_deg": 19.279,
+   "distance_m": 0.5075,
+   "reproj_best_px": 0.357,
+   "solutions": 2,
+   "reproj_second_px": 4.5545,
+   "ratio": 12.7594,
+   "rotation_gap_deg": 38.529,
+   "translation_gap_mm": 33.91
+  },
+  {
+   "tilt_deg": 19.269,
+   "distance_m": 0.5073,
+   "reproj_best_px": 0.329,
+   "solutions": 2,
+   "reproj_second_px": 4.5503,
+   "ratio": 13.8294,
+   "rotation_gap_deg": 38.51,
+   "translation_gap_mm": 33.58
+  },
+  {
+   "tilt_deg": 19.427,
+   "distance_m": 0.5074,
+   "reproj_best_px": 0.3354,
+   "solutions": 2,
+   "reproj_second_px": 4.5798,
+   "ratio": 13.6565,
+   "rotation_gap_deg": 38.828,
+   "translation_gap_mm": 33.17
+  },
+  {
+   "tilt_deg": 19.543,
+   "distance_m": 0.5072,
+   "reproj_best_px": 0.3181,
+   "solutions": 2,
+   "reproj_second_px": 4.6112,
+   "ratio": 14.4976,
+   "rotation_gap_deg": 39.062,
+   "translation_gap_mm": 33.28
+  },
+  {
+   "tilt_deg": 19.583,
+   "distance_m": 0.5073,
+   "reproj_best_px": 0.3454,
+   "solutions": 2,
+   "reproj_second_px": 4.6156,
+   "ratio": 13.3614,
+   "rotation_gap_deg": 39.14,
+   "translation_gap_mm": 33.32
+  },
+  {
+   "tilt_deg": 19.593,
+   "distance_m": 0.5071,
+   "reproj_best_px": 0.3267,
+   "solutions": 2,
+   "reproj_second_px": 4.5986,
+   "ratio": 14.077,
+   "rotation_gap_deg": 39.158,
+   "translation_gap_mm": 32.77
+  },
+  {
+   "tilt_deg": 19.739,
+   "distance_m": 0.5075,
+   "reproj_best_px": 0.3397,
+   "solutions": 2,
+   "reproj_second_px": 4.6236,
+   "ratio": 13.6111,
+   "rotation_gap_deg": 39.449,
+   "translation_gap_mm": 33.49
+  },
+  {
+   "tilt_deg": 19.545,
+   "distance_m": 0.5077,
+   "reproj_best_px": 0.3532,
+   "solutions": 2,
+   "reproj_second_px": 4.6018,
+   "ratio": 13.0284,
+   "rotation_gap_deg": 39.067,
+   "translation_gap_mm": 32.61
+  },
+  {
+   "tilt_deg": 19.663,
+   "distance_m": 0.5074,
+   "reproj_best_px": 0.3492,
+   "solutions": 2,
+   "reproj_second_px": 4.6267,
+   "ratio": 13.2479,
+   "rotation_gap_deg": 39.3,
+   "translation_gap_mm": 33.08
+  },
+  {
+   "tilt_deg": 19.834,
+   "distance_m": 0.507,
+   "reproj_best_px": 0.3446,
+   "solutions": 2,
+   "reproj_second_px": 4.6613,
+   "ratio": 13.5274,
+   "rotation_gap_deg": 39.643,
+   "translation_gap_mm": 33.06
+  },
+  {
+   "tilt_deg": 19.546,
+   "distance_m": 0.5075,
+   "reproj_best_px": 0.339,
+   "solutions": 2,
+   "reproj_second_px": 4.6052,
+   "ratio": 13.5829,
+   "rotation_gap_deg": 39.068,
+   "translation_gap_mm": 32.93
+  },
+  {
+   "tilt_deg": 19.676,
+   "distance_m": 0.5076,
+   "reproj_best_px": 0.3312,
+   "solutions": 2,
+   "reproj_second_px": 4.6148,
+   "ratio": 13.9338,
+   "rotation_gap_deg": 39.327,
+   "translation_gap_mm": 32.59
+  },
+  {
+   "tilt_deg": 19.742,
+   "distance_m": 0.5078,
+   "reproj_best_px": 0.3227,
+   "solutions": 2,
+   "reproj_second_px": 4.6223,
+   "ratio": 14.3247,
+   "rotation_gap_deg": 39.461,
+   "translation_gap_mm": 32.05
+  },
+  {
+   "tilt_deg": 19.648,
+   "distance_m": 0.5077,
+   "reproj_best_px": 0.3258,
+   "solutions": 2,
+   "reproj_second_px": 4.6125,
+   "ratio": 14.1573,
+   "rotation_gap_deg": 39.273,
+   "translation_gap_mm": 32.58
+  },
+  {
+   "tilt_deg": 20.016,
+   "distance_m": 0.5041,
+   "reproj_best_px": 0.3284,
+   "solutions": 2,
+   "reproj_second_px": 4.785,
+   "ratio": 14.5705,
+   "rotation_gap_deg": 40.004,
+   "translation_gap_mm": 35.72
+  },
+  {
+   "tilt_deg": 19.98,
+   "distance_m": 0.5031,
+   "reproj_best_px": 0.3403,
+   "solutions": 2,
+   "reproj_second_px": 4.8484,
+   "ratio": 14.2455,
+   "rotation_gap_deg": 39.934,
+   "translation_gap_mm": 37.88
+  },
+  {
+   "tilt_deg": 19.873,
+   "distance_m": 0.5014,
+   "reproj_best_px": 0.3243,
+   "solutions": 2,
+   "reproj_second_px": 4.8881,
+   "ratio": 15.0725,
+   "rotation_gap_deg": 39.722,
+   "translation_gap_mm": 39.03
+  },
+  {
+   "tilt_deg": 18.871,
+   "distance_m": 0.4981,
+   "reproj_best_px": 0.3265,
+   "solutions": 2,
+   "reproj_second_px": 4.8087,
+   "ratio": 14.7266,
+   "rotation_gap_deg": 37.702,
+   "translation_gap_mm": 44.96
+  },
+  {
+   "tilt_deg": 14.512,
+   "distance_m": 0.4983,
+   "reproj_best_px": 0.3437,
+   "solutions": 2,
+   "reproj_second_px": 3.774,
+   "ratio": 10.9809,
+   "rotation_gap_deg": 28.948,
+   "translation_gap_mm": 45.6
+  },
+  {
+   "tilt_deg": 14.58,
+   "distance_m": 0.4973,
+   "reproj_best_px": 0.3669,
+   "solutions": 2,
+   "reproj_second_px": 3.8063,
+   "ratio": 10.3728,
+   "rotation_gap_deg": 29.079,
+   "translation_gap_mm": 46.84
+  },
+  {
+   "tilt_deg": 14.589,
+   "distance_m": 0.4968,
+   "reproj_best_px": 0.4375,
+   "solutions": 2,
+   "reproj_second_px": 3.7133,
+   "ratio": 8.4872,
+   "rotation_gap_deg": 29.073,
+   "translation_gap_mm": 46.24
+  },
+  {
+   "tilt_deg": 14.224,
+   "distance_m": 0.4978,
+   "reproj_best_px": 0.4655,
+   "solutions": 2,
+   "reproj_second_px": 3.5717,
+   "ratio": 7.673,
+   "rotation_gap_deg": 28.335,
+   "translation_gap_mm": 45.22
+  },
+  {
+   "tilt_deg": 12.86,
+   "distance_m": 0.5026,
+   "reproj_best_px": 0.5088,
+   "solutions": 2,
+   "reproj_second_px": 3.1335,
+   "ratio": 6.1589,
+   "rotation_gap_deg": 25.59,
+   "translation_gap_mm": 47.1
+  },
+  {
+   "tilt_deg": 15.673,
+   "distance_m": 0.5096,
+   "reproj_best_px": 0.276,
+   "solutions": 2,
+   "reproj_second_px": 3.8678,
+   "ratio": 14.0162,
+   "rotation_gap_deg": 31.334,
+   "translation_gap_mm": 73.4
+  },
+  {
+   "tilt_deg": 18.404,
+   "distance_m": 0.5121,
+   "reproj_best_px": 0.2532,
+   "solutions": 2,
+   "reproj_second_px": 4.2152,
+   "ratio": 16.6483,
+   "rotation_gap_deg": 36.812,
+   "translation_gap_mm": 83.06
+  },
+  {
+   "tilt_deg": 23.033,
+   "distance_m": 0.5134,
+   "reproj_best_px": 0.2416,
+   "solutions": 2,
+   "reproj_second_px": 4.7933,
+   "ratio": 19.8423,
+   "rotation_gap_deg": 46.077,
+   "translation_gap_mm": 95.25
+  },
+  {
+   "tilt_deg": 24.443,
+   "distance_m": 0.5135,
+   "reproj_best_px": 0.2548,
+   "solutions": 2,
+   "reproj_second_px": 4.9675,
+   "ratio": 19.4921,
+   "rotation_gap_deg": 48.897,
+   "translation_gap_mm": 98.23
+  },
+  {
+   "tilt_deg": 27.227,
+   "distance_m": 0.5113,
+   "reproj_best_px": 0.2369,
+   "solutions": 2,
+   "reproj_second_px": 5.4682,
+   "ratio": 23.0848,
+   "rotation_gap_deg": 54.468,
+   "translation_gap_mm": 108.25
+  },
+  {
+   "tilt_deg": 27.997,
+   "distance_m": 0.5112,
+   "reproj_best_px": 0.2402,
+   "solutions": 2,
+   "reproj_second_px": 5.6032,
+   "ratio": 23.3314,
+   "rotation_gap_deg": 56.01,
+   "translation_gap_mm": 110.98
+  },
+  {
+   "tilt_deg": 28.56,
+   "distance_m": 0.5112,
+   "reproj_best_px": 0.2392,
+   "solutions": 2,
+   "reproj_second_px": 5.682,
+   "ratio": 23.7573,
+   "rotation_gap_deg": 57.137,
+   "translation_gap_mm": 112.38
+  },
+  {
+   "tilt_deg": 29.776,
+   "distance_m": 0.5103,
+   "reproj_best_px": 0.2296,
+   "solutions": 2,
+   "reproj_second_px": 5.8481,
+   "ratio": 25.472,
+   "rotation_gap_deg": 59.564,
+   "translation_gap_mm": 115.85
+  },
+  {
+   "tilt_deg": 30.114,
+   "distance_m": 0.5098,
+   "reproj_best_px": 0.2085,
+   "solutions": 2,
+   "reproj_second_px": 5.9044,
+   "ratio": 28.3217,
+   "rotation_gap_deg": 60.242,
+   "translation_gap_mm": 116.37
+  },
+  {
+   "tilt_deg": 30.418,
+   "distance_m": 0.5091,
+   "reproj_best_px": 0.224,
+   "solutions": 2,
+   "reproj_second_px": 5.9448,
+   "ratio": 26.5379,
+   "rotation_gap_deg": 60.846,
+   "translation_gap_mm": 117.09
+  },
+  {
+   "tilt_deg": 30.675,
+   "distance_m": 0.5088,
+   "reproj_best_px": 0.2252,
+   "solutions": 2,
+   "reproj_second_px": 5.9989,
+   "ratio": 26.638,
+   "rotation_gap_deg": 61.362,
+   "translation_gap_mm": 117.79
+  },
+  {
+   "tilt_deg": 31.127,
+   "distance_m": 0.5081,
+   "reproj_best_px": 0.2331,
+   "solutions": 2,
+   "reproj_second_px": 6.0755,
+   "ratio": 26.061,
+   "rotation_gap_deg": 62.266,
+   "translation_gap_mm": 119.2
+  },
+  {
+   "tilt_deg": 32.358,
+   "distance_m": 0.507,
+   "reproj_best_px": 0.2212,
+   "solutions": 2,
+   "reproj_second_px": 6.2832,
+   "ratio": 28.4072,
+   "rotation_gap_deg": 64.729,
+   "translation_gap_mm": 122.53
+  },
+  {
+   "tilt_deg": 33.1,
+   "distance_m": 0.5069,
+   "reproj_best_px": 0.2477,
+   "solutions": 2,
+   "reproj_second_px": 6.4064,
+   "ratio": 25.8681,
+   "rotation_gap_deg": 66.214,
+   "translation_gap_mm": 124.87
+  },
+  {
+   "tilt_deg": 33.956,
+   "distance_m": 0.5062,
+   "reproj_best_px": 0.2418,
+   "solutions": 2,
+   "reproj_second_px": 6.528,
+   "ratio": 26.9978,
+   "rotation_gap_deg": 67.926,
+   "translation_gap_mm": 126.83
+  },
+  {
+   "tilt_deg": 34.799,
+   "distance_m": 0.5051,
+   "reproj_best_px": 0.2381,
+   "solutions": 2,
+   "reproj_second_px": 6.6857,
+   "ratio": 28.074,
+   "rotation_gap_deg": 69.614,
+   "translation_gap_mm": 129.17
+  },
+  {
+   "tilt_deg": 35.573,
+   "distance_m": 0.505,
+   "reproj_best_px": 0.2348,
+   "solutions": 2,
+   "reproj_second_px": 6.7853,
+   "ratio": 28.9012,
+   "rotation_gap_deg": 71.163,
+   "translation_gap_mm": 130.65
+  },
+  {
+   "tilt_deg": 36.384,
+   "distance_m": 0.5041,
+   "reproj_best_px": 0.2651,
+   "solutions": 2,
+   "reproj_second_px": 6.9235,
+   "ratio": 26.1206,
+   "rotation_gap_deg": 72.785,
+   "translation_gap_mm": 132.76
+  },
+  {
+   "tilt_deg": 37.729,
+   "distance_m": 0.5026,
+   "reproj_best_px": 0.2414,
+   "solutions": 2,
+   "reproj_second_px": 7.1046,
+   "ratio": 29.4278,
+   "rotation_gap_deg": 75.47,
+   "translation_gap_mm": 136.02
+  },
+  {
+   "tilt_deg": 39.344,
+   "distance_m": 0.4995,
+   "reproj_best_px": 0.2471,
+   "solutions": 2,
+   "reproj_second_px": 7.4207,
+   "ratio": 30.0344,
+   "rotation_gap_deg": 78.705,
+   "translation_gap_mm": 139.41
+  },
+  {
+   "tilt_deg": 41.586,
+   "distance_m": 0.496,
+   "reproj_best_px": 0.2384,
+   "solutions": 2,
+   "reproj_second_px": 7.8104,
+   "ratio": 32.7576,
+   "rotation_gap_deg": 83.188,
+   "translation_gap_mm": 146.32
+  },
+  {
+   "tilt_deg": 42.653,
+   "distance_m": 0.4948,
+   "reproj_best_px": 0.2451,
+   "solutions": 2,
+   "reproj_second_px": 7.9887,
+   "ratio": 32.5896,
+   "rotation_gap_deg": 85.324,
+   "translation_gap_mm": 149.79
+  },
+  {
+   "tilt_deg": 43.733,
+   "distance_m": 0.4942,
+   "reproj_best_px": 0.2596,
+   "solutions": 2,
+   "reproj_second_px": 8.1366,
+   "ratio": 31.3391,
+   "rotation_gap_deg": 87.485,
+   "translation_gap_mm": 153.08
+  },
+  {
+   "tilt_deg": 44.828,
+   "distance_m": 0.4937,
+   "reproj_best_px": 0.2631,
+   "solutions": 2,
+   "reproj_second_px": 8.2731,
+   "ratio": 31.4392,
+   "rotation_gap_deg": 89.675,
+   "translation_gap_mm": 156.46
+  },
+  {
+   "tilt_deg": 45.698,
+   "distance_m": 0.4931,
+   "reproj_best_px": 0.2586,
+   "solutions": 2,
+   "reproj_second_px": 8.3719,
+   "ratio": 32.3718,
+   "rotation_gap_deg": 91.413,
+   "translation_gap_mm": 158.94
+  },
+  {
+   "tilt_deg": 46.32,
+   "distance_m": 0.4925,
+   "reproj_best_px": 0.2629,
+   "solutions": 2,
+   "reproj_second_px": 8.4637,
+   "ratio": 32.1891,
+   "rotation_gap_deg": 92.657,
+   "translation_gap_mm": 160.18
+  },
+  {
+   "tilt_deg": 46.785,
+   "distance_m": 0.4921,
+   "reproj_best_px": 0.2804,
+   "solutions": 2,
+   "reproj_second_px": 8.5292,
+   "ratio": 30.423,
+   "rotation_gap_deg": 93.587,
+   "translation_gap_mm": 160.91
+  },
+  {
+   "tilt_deg": 47.462,
+   "distance_m": 0.4922,
+   "reproj_best_px": 0.2562,
+   "solutions": 2,
+   "reproj_second_px": 8.5957,
+   "ratio": 33.5468,
+   "rotation_gap_deg": 94.941,
+   "translation_gap_mm": 161.12
+  },
+  {
+   "tilt_deg": 47.683,
+   "distance_m": 0.4927,
+   "reproj_best_px": 0.2801,
+   "solutions": 2,
+   "reproj_second_px": 8.5983,
+   "ratio": 30.6952,
+   "rotation_gap_deg": 95.382,
+   "translation_gap_mm": 161.05
+  },
+  {
+   "tilt_deg": 47.911,
+   "distance_m": 0.4921,
+   "reproj_best_px": 0.2592,
+   "solutions": 2,
+   "reproj_second_px": 8.6566,
+   "ratio": 33.3983,
+   "rotation_gap_deg": 95.84,
+   "translation_gap_mm": 161.34
+  },
+  {
+   "tilt_deg": 47.912,
+   "distance_m": 0.4911,
+   "reproj_best_px": 0.2597,
+   "solutions": 2,
+   "reproj_second_px": 8.6872,
+   "ratio": 33.4525,
+   "rotation_gap_deg": 95.84,
+   "translation_gap_mm": 162.52
+  },
+  {
+   "tilt_deg": 47.524,
+   "distance_m": 0.4911,
+   "reproj_best_px": 0.2743,
+   "solutions": 2,
+   "reproj_second_px": 8.6619,
+   "ratio": 31.5819,
+   "rotation_gap_deg": 95.066,
+   "translation_gap_mm": 162.12
+  },
+  {
+   "tilt_deg": 46.09,
+   "distance_m": 0.4908,
+   "reproj_best_px": 0.3168,
+   "solutions": 2,
+   "reproj_second_px": 8.5731,
+   "ratio": 27.0604,
+   "rotation_gap_deg": 92.205,
+   "translation_gap_mm": 159.16
+  },
+  {
+   "tilt_deg": 45.295,
+   "distance_m": 0.4908,
+   "reproj_best_px": 0.3055,
+   "solutions": 2,
+   "reproj_second_px": 8.4569,
+   "ratio": 27.6784,
+   "rotation_gap_deg": 90.613,
+   "translation_gap_mm": 157.53
+  },
+  {
+   "tilt_deg": 44.611,
+   "distance_m": 0.4909,
+   "reproj_best_px": 0.2912,
+   "solutions": 2,
+   "reproj_second_px": 8.3781,
+   "ratio": 28.7735,
+   "rotation_gap_deg": 89.245,
+   "translation_gap_mm": 155.9
+  },
+  {
+   "tilt_deg": 43.145,
+   "distance_m": 0.4909,
+   "reproj_best_px": 0.2799,
+   "solutions": 2,
+   "reproj_second_px": 8.1808,
+   "ratio": 29.2257,
+   "rotation_gap_deg": 86.308,
+   "translation_gap_mm": 152.97
+  },
+  {
+   "tilt_deg": 42.477,
+   "distance_m": 0.4905,
+   "reproj_best_px": 0.2977,
+   "solutions": 2,
+   "reproj_second_px": 8.1447,
+   "ratio": 27.3579,
+   "rotation_gap_deg": 84.976,
+   "translation_gap_mm": 151.79
+  },
+  {
+   "tilt_deg": 41.714,
+   "distance_m": 0.4907,
+   "reproj_best_px": 0.3038,
+   "solutions": 2,
+   "reproj_second_px": 8.0728,
+   "ratio": 26.572,
+   "rotation_gap_deg": 83.454,
+   "translation_gap_mm": 150.51
+  },
+  {
+   "tilt_deg": 40.955,
+   "distance_m": 0.4903,
+   "reproj_best_px": 0.3127,
+   "solutions": 2,
+   "reproj_second_px": 7.9854,
+   "ratio": 25.5373,
+   "rotation_gap_deg": 81.932,
+   "translation_gap_mm": 149.71
+  },
+  {
+   "tilt_deg": 40.123,
+   "distance_m": 0.4904,
+   "reproj_best_px": 0.3021,
+   "solutions": 2,
+   "reproj_second_px": 7.8747,
+   "ratio": 26.0708,
+   "rotation_gap_deg": 80.268,
+   "translation_gap_mm": 148.41
+  },
+  {
+   "tilt_deg": 39.173,
+   "distance_m": 0.4902,
+   "reproj_best_px": 0.2847,
+   "solutions": 2,
+   "reproj_second_px": 7.7777,
+   "ratio": 27.3206,
+   "rotation_gap_deg": 78.369,
+   "translation_gap_mm": 146.92
+  },
+  {
+   "tilt_deg": 36.785,
+   "distance_m": 0.4889,
+   "reproj_best_px": 0.2883,
+   "solutions": 2,
+   "reproj_second_px": 7.5359,
+   "ratio": 26.1353,
+   "rotation_gap_deg": 73.594,
+   "translation_gap_mm": 141.42
+  },
+  {
+   "tilt_deg": 35.547,
+   "distance_m": 0.4879,
+   "reproj_best_px": 0.2778,
+   "solutions": 2,
+   "reproj_second_px": 7.4092,
+   "ratio": 26.6668,
+   "rotation_gap_deg": 71.118,
+   "translation_gap_mm": 138.45
+  },
+  {
+   "tilt_deg": 34.308,
+   "distance_m": 0.4861,
+   "reproj_best_px": 0.2997,
+   "solutions": 2,
+   "reproj_second_px": 7.2907,
+   "ratio": 24.3252,
+   "rotation_gap_deg": 68.635,
+   "translation_gap_mm": 135.84
+  },
+  {
+   "tilt_deg": 33.172,
+   "distance_m": 0.4846,
+   "reproj_best_px": 0.2909,
+   "solutions": 2,
+   "reproj_second_px": 7.209,
+   "ratio": 24.7829,
+   "rotation_gap_deg": 66.364,
+   "translation_gap_mm": 133.86
+  },
+  {
+   "tilt_deg": 32.198,
+   "distance_m": 0.4829,
+   "reproj_best_px": 0.2724,
+   "solutions": 2,
+   "reproj_second_px": 7.1235,
+   "ratio": 26.1461,
+   "rotation_gap_deg": 64.409,
+   "translation_gap_mm": 132.53
+  },
+  {
+   "tilt_deg": 30.565,
+   "distance_m": 0.4791,
+   "reproj_best_px": 0.258,
+   "solutions": 2,
+   "reproj_second_px": 7.1128,
+   "ratio": 27.5689,
+   "rotation_gap_deg": 61.14,
+   "translation_gap_mm": 131.24
+  },
+  {
+   "tilt_deg": 29.7,
+   "distance_m": 0.4775,
+   "reproj_best_px": 0.2808,
+   "solutions": 2,
+   "reproj_second_px": 7.0936,
+   "ratio": 25.2578,
+   "rotation_gap_deg": 59.407,
+   "translation_gap_mm": 130.08
+  },
+  {
+   "tilt_deg": 28.744,
+   "distance_m": 0.476,
+   "reproj_best_px": 0.2792,
+   "solutions": 2,
+   "reproj_second_px": 7.0564,
+   "ratio": 25.2714,
+   "rotation_gap_deg": 57.497,
+   "translation_gap_mm": 127.71
+  },
+  {
+   "tilt_deg": 27.608,
+   "distance_m": 0.4752,
+   "reproj_best_px": 0.251,
+   "solutions": 2,
+   "reproj_second_px": 6.9227,
+   "ratio": 27.583,
+   "rotation_gap_deg": 55.224,
+   "translation_gap_mm": 123.92
+  },
+  {
+   "tilt_deg": 26.234,
+   "distance_m": 0.4746,
+   "reproj_best_px": 0.2481,
+   "solutions": 2,
+   "reproj_second_px": 6.6846,
+   "ratio": 26.9426,
+   "rotation_gap_deg": 52.472,
+   "translation_gap_mm": 118.67
+  },
+  {
+   "tilt_deg": 24.78,
+   "distance_m": 0.4739,
+   "reproj_best_px": 0.2278,
+   "solutions": 2,
+   "reproj_second_px": 6.4481,
+   "ratio": 28.3104,
+   "rotation_gap_deg": 49.567,
+   "translation_gap_mm": 112.82
+  },
+  {
+   "tilt_deg": 23.452,
+   "distance_m": 0.4732,
+   "reproj_best_px": 0.2502,
+   "solutions": 2,
+   "reproj_second_px": 6.1864,
+   "ratio": 24.7272,
+   "rotation_gap_deg": 46.904,
+   "translation_gap_mm": 107.35
+  },
+  {
+   "tilt_deg": 22.329,
+   "distance_m": 0.4723,
+   "reproj_best_px": 0.215,
+   "solutions": 2,
+   "reproj_second_px": 5.9561,
+   "ratio": 27.6986,
+   "rotation_gap_deg": 44.651,
+   "translation_gap_mm": 102.65
+  },
+  {
+   "tilt_deg": 21.056,
+   "distance_m": 0.471,
+   "reproj_best_px": 0.2157,
+   "solutions": 2,
+   "reproj_second_px": 5.7326,
+   "ratio": 26.577,
+   "rotation_gap_deg": 42.103,
+   "translation_gap_mm": 97.36
+  },
+  {
+   "tilt_deg": 19.744,
+   "distance_m": 0.4696,
+   "reproj_best_px": 0.2292,
+   "solutions": 2,
+   "reproj_second_px": 5.4997,
+   "ratio": 23.9946,
+   "rotation_gap_deg": 39.48,
+   "translation_gap_mm": 91.8
+  },
+  {
+   "tilt_deg": 18.878,
+   "distance_m": 0.4674,
+   "reproj_best_px": 0.2441,
+   "solutions": 2,
+   "reproj_second_px": 5.3652,
+   "ratio": 21.9822,
+   "rotation_gap_deg": 37.737,
+   "translation_gap_mm": 88.29
+  },
+  {
+   "tilt_deg": 18.286,
+   "distance_m": 0.4651,
+   "reproj_best_px": 0.2617,
+   "solutions": 2,
+   "reproj_second_px": 5.2659,
+   "ratio": 20.1193,
+   "rotation_gap_deg": 36.538,
+   "translation_gap_mm": 85.78
+  },
+  {
+   "tilt_deg": 17.808,
+   "distance_m": 0.4627,
+   "reproj_best_px": 0.2889,
+   "solutions": 2,
+   "reproj_second_px": 5.2176,
+   "ratio": 18.0574,
+   "rotation_gap_deg": 35.575,
+   "translation_gap_mm": 83.69
+  },
+  {
+   "tilt_deg": 16.956,
+   "distance_m": 0.4609,
+   "reproj_best_px": 0.257,
+   "solutions": 2,
+   "reproj_second_px": 5.0516,
+   "ratio": 19.6546,
+   "rotation_gap_deg": 33.871,
+   "translation_gap_mm": 79.75
+  },
+  {
+   "tilt_deg": 16.696,
+   "distance_m": 0.4586,
+   "reproj_best_px": 0.3242,
+   "solutions": 2,
+   "reproj_second_px": 5.0046,
+   "ratio": 15.4389,
+   "rotation_gap_deg": 33.333,
+   "translation_gap_mm": 78.43
+  },
+  {
+   "tilt_deg": 16.445,
+   "distance_m": 0.4567,
+   "reproj_best_px": 0.3559,
+   "solutions": 2,
+   "reproj_second_px": 4.9653,
+   "ratio": 13.9521,
+   "rotation_gap_deg": 32.82,
+   "translation_gap_mm": 77.14
+  },
+  {
+   "tilt_deg": 16.08,
+   "distance_m": 0.4551,
+   "reproj_best_px": 0.3439,
+   "solutions": 2,
+   "reproj_second_px": 4.9333,
+   "ratio": 14.3438,
+   "rotation_gap_deg": 32.088,
+   "translation_gap_mm": 75.3
+  },
+  {
+   "tilt_deg": 15.7,
+   "distance_m": 0.4543,
+   "reproj_best_px": 0.2929,
+   "solutions": 2,
+   "reproj_second_px": 4.872,
+   "ratio": 16.6323,
+   "rotation_gap_deg": 31.337,
+   "translation_gap_mm": 73.57
+  },
+  {
+   "tilt_deg": 15.601,
+   "distance_m": 0.4539,
+   "reproj_best_px": 0.3297,
+   "solutions": 2,
+   "reproj_second_px": 4.8536,
+   "ratio": 14.7202,
+   "rotation_gap_deg": 31.13,
+   "translation_gap_mm": 72.87
+  },
+  {
+   "tilt_deg": 15.435,
+   "distance_m": 0.454,
+   "reproj_best_px": 0.4139,
+   "solutions": 2,
+   "reproj_second_px": 4.7526,
+   "ratio": 11.4838,
+   "rotation_gap_deg": 30.773,
+   "translation_gap_mm": 71.54
+  },
+  {
+   "tilt_deg": 14.643,
+   "distance_m": 0.456,
+   "reproj_best_px": 0.5101,
+   "solutions": 2,
+   "reproj_second_px": 4.3955,
+   "ratio": 8.6172,
+   "rotation_gap_deg": 29.16,
+   "translation_gap_mm": 66.96
+  },
+  {
+   "tilt_deg": 14.647,
+   "distance_m": 0.4565,
+   "reproj_best_px": 0.5589,
+   "solutions": 2,
+   "reproj_second_px": 4.3455,
+   "ratio": 7.7748,
+   "rotation_gap_deg": 29.154,
+   "translation_gap_mm": 66.47
+  },
+  {
+   "tilt_deg": 14.088,
+   "distance_m": 0.4555,
+   "reproj_best_px": 0.4582,
+   "solutions": 2,
+   "reproj_second_px": 4.4008,
+   "ratio": 9.6048,
+   "rotation_gap_deg": 28.069,
+   "translation_gap_mm": 62.37
+  },
+  {
+   "tilt_deg": 14.98,
+   "distance_m": 0.4552,
+   "reproj_best_px": 0.4293,
+   "solutions": 2,
+   "reproj_second_px": 4.7344,
+   "ratio": 11.0276,
+   "rotation_gap_deg": 29.859,
+   "translation_gap_mm": 65.63
+  },
+  {
+   "tilt_deg": 15.067,
+   "distance_m": 0.451,
+   "reproj_best_px": 0.4081,
+   "solutions": 2,
+   "reproj_second_px": 4.8815,
+   "ratio": 11.9613,
+   "rotation_gap_deg": 30.037,
+   "translation_gap_mm": 66.04
+  },
+  {
+   "tilt_deg": 15.211,
+   "distance_m": 0.4518,
+   "reproj_best_px": 0.415,
+   "solutions": 2,
+   "reproj_second_px": 4.925,
+   "ratio": 11.8685,
+   "rotation_gap_deg": 30.324,
+   "translation_gap_mm": 65.8
+  },
+  {
+   "tilt_deg": 16.211,
+   "distance_m": 0.4515,
+   "reproj_best_px": 0.3796,
+   "solutions": 2,
+   "reproj_second_px": 5.285,
+   "ratio": 13.921,
+   "rotation_gap_deg": 32.332,
+   "translation_gap_mm": 70.21
+  },
+  {
+   "tilt_deg": 15.899,
+   "distance_m": 0.4514,
+   "reproj_best_px": 0.3578,
+   "solutions": 2,
+   "reproj_second_px": 5.2143,
+   "ratio": 14.5739,
+   "rotation_gap_deg": 31.715,
+   "translation_gap_mm": 68.83
+  },
+  {
+   "tilt_deg": 15.958,
+   "distance_m": 0.4508,
+   "reproj_best_px": 0.3741,
+   "solutions": 2,
+   "reproj_second_px": 5.2351,
+   "ratio": 13.9955,
+   "rotation_gap_deg": 31.827,
+   "translation_gap_mm": 68.73
+  },
+  {
+   "tilt_deg": 16.263,
+   "distance_m": 0.4509,
+   "reproj_best_px": 0.3613,
+   "solutions": 2,
+   "reproj_second_px": 5.3327,
+   "ratio": 14.76,
+   "rotation_gap_deg": 32.44,
+   "translation_gap_mm": 70.41
+  },
+  {
+   "tilt_deg": 16.621,
+   "distance_m": 0.4512,
+   "reproj_best_px": 0.4208,
+   "solutions": 2,
+   "reproj_second_px": 5.3757,
+   "ratio": 12.7755,
+   "rotation_gap_deg": 33.137,
+   "translation_gap_mm": 71.91
+  },
+  {
+   "tilt_deg": 16.428,
+   "distance_m": 0.4508,
+   "reproj_best_px": 0.3382,
+   "solutions": 2,
+   "reproj_second_px": 5.4214,
+   "ratio": 16.0323,
+   "rotation_gap_deg": 32.778,
+   "translation_gap_mm": 71.08
+  },
+  {
+   "tilt_deg": 16.492,
+   "distance_m": 0.4513,
+   "reproj_best_px": 0.348,
+   "solutions": 2,
+   "reproj_second_px": 5.4122,
+   "ratio": 15.5509,
+   "rotation_gap_deg": 32.899,
+   "translation_gap_mm": 71.09
+  },
+  {
+   "tilt_deg": 16.529,
+   "distance_m": 0.4513,
+   "reproj_best_px": 0.3779,
+   "solutions": 2,
+   "reproj_second_px": 5.3929,
+   "ratio": 14.2698,
+   "rotation_gap_deg": 32.966,
+   "translation_gap_mm": 71.25
+  },
+  {
+   "tilt_deg": 16.561,
+   "distance_m": 0.4516,
+   "reproj_best_px": 0.3925,
+   "solutions": 2,
+   "reproj_second_px": 5.3863,
+   "ratio": 13.7244,
+   "rotation_gap_deg": 33.028,
+   "translation_gap_mm": 71.48
+  },
+  {
+   "tilt_deg": 16.528,
+   "distance_m": 0.4514,
+   "reproj_best_px": 0.359,
+   "solutions": 2,
+   "reproj_second_px": 5.4089,
+   "ratio": 15.0673,
+   "rotation_gap_deg": 32.97,
+   "translation_gap_mm": 71.64
+  },
+  {
+   "tilt_deg": 17.502,
+   "distance_m": 0.4494,
+   "reproj_best_px": 0.4154,
+   "solutions": 2,
+   "reproj_second_px": 5.7256,
+   "ratio": 13.7822,
+   "rotation_gap_deg": 34.904,
+   "translation_gap_mm": 75.41
+  },
+  {
+   "tilt_deg": 19.718,
+   "distance_m": 0.4429,
+   "reproj_best_px": 0.371,
+   "solutions": 2,
+   "reproj_second_px": 6.7086,
+   "ratio": 18.0829,
+   "rotation_gap_deg": 39.352,
+   "translation_gap_mm": 83.6
+  },
+  {
+   "tilt_deg": 20.173,
+   "distance_m": 0.4419,
+   "reproj_best_px": 0.37,
+   "solutions": 2,
+   "reproj_second_px": 6.8937,
+   "ratio": 18.6317,
+   "rotation_gap_deg": 40.262,
+   "translation_gap_mm": 85.51
+  },
+  {
+   "tilt_deg": 20.131,
+   "distance_m": 0.4421,
+   "reproj_best_px": 0.3184,
+   "solutions": 2,
+   "reproj_second_px": 6.9354,
+   "ratio": 21.7849,
+   "rotation_gap_deg": 40.193,
+   "translation_gap_mm": 85.14
+  },
+  {
+   "tilt_deg": 19.533,
+   "distance_m": 0.4433,
+   "reproj_best_px": 0.2911,
+   "solutions": 2,
+   "reproj_second_px": 6.708,
+   "ratio": 23.0427,
+   "rotation_gap_deg": 39.001,
+   "translation_gap_mm": 83.23
+  },
+  {
+   "tilt_deg": 18.558,
+   "distance_m": 0.4445,
+   "reproj_best_px": 0.2844,
+   "solutions": 2,
+   "reproj_second_px": 6.3816,
+   "ratio": 22.4357,
+   "rotation_gap_deg": 37.057,
+   "translation_gap_mm": 77.84
+  },
+  {
+   "tilt_deg": 19.458,
+   "distance_m": 0.4464,
+   "reproj_best_px": 0.5645,
+   "solutions": 2,
+   "reproj_second_px": 6.2752,
+   "ratio": 11.116,
+   "rotation_gap_deg": 38.772,
+   "translation_gap_mm": 75.27
+  },
+  {
+   "tilt_deg": 22.48,
+   "distance_m": 0.4493,
+   "reproj_best_px": 0.4368,
+   "solutions": 2,
+   "reproj_second_px": 7.2798,
+   "ratio": 16.6645,
+   "rotation_gap_deg": 44.86,
+   "translation_gap_mm": 83.79
+  },
+  {
+   "tilt_deg": 21.267,
+   "distance_m": 0.4599,
+   "reproj_best_px": 0.3283,
+   "solutions": 2,
+   "reproj_second_px": 6.7246,
+   "ratio": 20.4833,
+   "rotation_gap_deg": 42.479,
+   "translation_gap_mm": 75.18
+  },
+  {
+   "tilt_deg": 20.556,
+   "distance_m": 0.462,
+   "reproj_best_px": 0.2454,
+   "solutions": 2,
+   "reproj_second_px": 6.5014,
+   "ratio": 26.4928,
+   "rotation_gap_deg": 41.072,
+   "translation_gap_mm": 72.21
+  },
+  {
+   "tilt_deg": 19.974,
+   "distance_m": 0.4652,
+   "reproj_best_px": 0.282,
+   "solutions": 2,
+   "reproj_second_px": 6.2417,
+   "ratio": 22.1316,
+   "rotation_gap_deg": 39.897,
+   "translation_gap_mm": 74.32
+  },
+  {
+   "tilt_deg": 20.81,
+   "distance_m": 0.4667,
+   "reproj_best_px": 0.276,
+   "solutions": 2,
+   "reproj_second_px": 6.4578,
+   "ratio": 23.3947,
+   "rotation_gap_deg": 41.566,
+   "translation_gap_mm": 81.41
+  },
+  {
+   "tilt_deg": 21.022,
+   "distance_m": 0.4672,
+   "reproj_best_px": 0.2832,
+   "solutions": 2,
+   "reproj_second_px": 6.5147,
+   "ratio": 23.0067,
+   "rotation_gap_deg": 41.99,
+   "translation_gap_mm": 82.65
+  },
+  {
+   "tilt_deg": 21.542,
+   "distance_m": 0.4679,
+   "reproj_best_px": 0.2823,
+   "solutions": 2,
+   "reproj_second_px": 6.637,
+   "ratio": 23.5142,
+   "rotation_gap_deg": 43.029,
+   "translation_gap_mm": 86.96
+  },
+  {
+   "tilt_deg": 21.542,
+   "distance_m": 0.4674,
+   "reproj_best_px": 0.2396,
+   "solutions": 2,
+   "reproj_second_px": 6.6846,
+   "ratio": 27.8979,
+   "rotation_gap_deg": 43.039,
+   "translation_gap_mm": 88.74
+  },
+  {
+   "tilt_deg": 21.708,
+   "distance_m": 0.467,
+   "reproj_best_px": 0.2243,
+   "solutions": 2,
+   "reproj_second_px": 6.7527,
+   "ratio": 30.1033,
+   "rotation_gap_deg": 43.374,
+   "translation_gap_mm": 89.87
+  },
+  {
+   "tilt_deg": 22.228,
+   "distance_m": 0.4644,
+   "reproj_best_px": 0.2537,
+   "solutions": 2,
+   "reproj_second_px": 6.9644,
+   "ratio": 27.4545,
+   "rotation_gap_deg": 44.409,
+   "translation_gap_mm": 91.25
+  },
+  {
+   "tilt_deg": 23.587,
+   "distance_m": 0.4634,
+   "reproj_best_px": 0.2466,
+   "solutions": 2,
+   "reproj_second_px": 7.4237,
+   "ratio": 30.1088,
+   "rotation_gap_deg": 47.133,
+   "translation_gap_mm": 97.05
+  },
+  {
+   "tilt_deg": 23.767,
+   "distance_m": 0.4612,
+   "reproj_best_px": 0.2539,
+   "solutions": 2,
+   "reproj_second_px": 7.5486,
+   "ratio": 29.734,
+   "rotation_gap_deg": 47.495,
+   "translation_gap_mm": 99.24
+  },
+  {
+   "tilt_deg": 25.315,
+   "distance_m": 0.4572,
+   "reproj_best_px": 0.2565,
+   "solutions": 2,
+   "reproj_second_px": 8.0108,
+   "ratio": 31.2309,
+   "rotation_gap_deg": 50.588,
+   "translation_gap_mm": 112.44
+  },
+  {
+   "tilt_deg": 27.211,
+   "distance_m": 0.4506,
+   "reproj_best_px": 0.1851,
+   "solutions": 2,
+   "reproj_second_px": 8.6512,
+   "ratio": 46.7502,
+   "rotation_gap_deg": 54.402,
+   "translation_gap_mm": 125.39
+  },
+  {
+   "tilt_deg": 28.177,
+   "distance_m": 0.4495,
+   "reproj_best_px": 0.2165,
+   "solutions": 2,
+   "reproj_second_px": 9.1012,
+   "ratio": 42.0401,
+   "rotation_gap_deg": 56.344,
+   "translation_gap_mm": 128.9
+  },
+  {
+   "tilt_deg": 26.311,
+   "distance_m": 0.4538,
+   "reproj_best_px": 0.2009,
+   "solutions": 2,
+   "reproj_second_px": 8.4776,
+   "ratio": 42.1954,
+   "rotation_gap_deg": 52.605,
+   "translation_gap_mm": 118.49
+  },
+  {
+   "tilt_deg": 26.166,
+   "distance_m": 0.4552,
+   "reproj_best_px": 0.201,
+   "solutions": 2,
+   "reproj_second_px": 8.433,
+   "ratio": 41.9631,
+   "rotation_gap_deg": 52.312,
+   "translation_gap_mm": 116.21
+  },
+  {
+   "tilt_deg": 26.041,
+   "distance_m": 0.4553,
+   "reproj_best_px": 0.194,
+   "solutions": 2,
+   "reproj_second_px": 8.4251,
+   "ratio": 43.4337,
+   "rotation_gap_deg": 52.067,
+   "translation_gap_mm": 115.27
+  },
+  {
+   "tilt_deg": 25.801,
+   "distance_m": 0.456,
+   "reproj_best_px": 0.1806,
+   "solutions": 2,
+   "reproj_second_px": 8.3273,
+   "ratio": 46.104,
+   "rotation_gap_deg": 51.581,
+   "translation_gap_mm": 113.45
+  },
+  {
+   "tilt_deg": 25.804,
+   "distance_m": 0.4563,
+   "reproj_best_px": 0.1987,
+   "solutions": 2,
+   "reproj_second_px": 8.3277,
+   "ratio": 41.9036,
+   "rotation_gap_deg": 51.588,
+   "translation_gap_mm": 113.02
+  },
+  {
+   "tilt_deg": 25.615,
+   "distance_m": 0.4566,
+   "reproj_best_px": 0.1952,
+   "solutions": 2,
+   "reproj_second_px": 8.2813,
+   "ratio": 42.4324,
+   "rotation_gap_deg": 51.212,
+   "translation_gap_mm": 111.9
+  },
+  {
+   "tilt_deg": 25.387,
+   "distance_m": 0.4596,
+   "reproj_best_px": 0.1999,
+   "solutions": 2,
+   "reproj_second_px": 8.1432,
+   "ratio": 40.7452,
+   "rotation_gap_deg": 50.755,
+   "translation_gap_mm": 108.72
+  },
+  {
+   "tilt_deg": 24.854,
+   "distance_m": 0.4616,
+   "reproj_best_px": 0.1868,
+   "solutions": 2,
+   "reproj_second_px": 7.9295,
+   "ratio": 42.4453,
+   "rotation_gap_deg": 49.686,
+   "translation_gap_mm": 104.82
+  },
+  {
+   "tilt_deg": 24.688,
+   "distance_m": 0.4623,
+   "reproj_best_px": 0.1947,
+   "solutions": 2,
+   "reproj_second_px": 7.8668,
+   "ratio": 40.4098,
+   "rotation_gap_deg": 49.358,
+   "translation_gap_mm": 104.38
+  },
+  {
+   "tilt_deg": 24.445,
+   "distance_m": 0.4613,
+   "reproj_best_px": 0.2007,
+   "solutions": 2,
+   "reproj_second_px": 7.804,
+   "ratio": 38.8853,
+   "rotation_gap_deg": 48.867,
+   "translation_gap_mm": 103.75
+  },
+  {
+   "tilt_deg": 24.294,
+   "distance_m": 0.4611,
+   "reproj_best_px": 0.1879,
+   "solutions": 2,
+   "reproj_second_px": 7.7704,
+   "ratio": 41.3452,
+   "rotation_gap_deg": 48.567,
+   "translation_gap_mm": 103.25
+  },
+  {
+   "tilt_deg": 24.788,
+   "distance_m": 0.4593,
+   "reproj_best_px": 0.2033,
+   "solutions": 2,
+   "reproj_second_px": 7.9524,
+   "ratio": 39.1091,
+   "rotation_gap_deg": 49.55,
+   "translation_gap_mm": 106.22
+  },
+  {
+   "tilt_deg": 24.755,
+   "distance_m": 0.459,
+   "reproj_best_px": 0.2129,
+   "solutions": 2,
+   "reproj_second_px": 7.9561,
+   "ratio": 37.3657,
+   "rotation_gap_deg": 49.486,
+   "translation_gap_mm": 106.07
+  },
+  {
+   "tilt_deg": 24.847,
+   "distance_m": 0.4588,
+   "reproj_best_px": 0.2068,
+   "solutions": 2,
+   "reproj_second_px": 7.9652,
+   "ratio": 38.5102,
+   "rotation_gap_deg": 49.664,
+   "translation_gap_mm": 106.4
+  },
+  {
+   "tilt_deg": 24.951,
+   "distance_m": 0.4584,
+   "reproj_best_px": 0.2072,
+   "solutions": 2,
+   "reproj_second_px": 8.0199,
+   "ratio": 38.7035,
+   "rotation_gap_deg": 49.877,
+   "translation_gap_mm": 107.37
+  },
+  {
+   "tilt_deg": 25.31,
+   "distance_m": 0.4567,
+   "reproj_best_px": 0.2042,
+   "solutions": 2,
+   "reproj_second_px": 8.1599,
+   "ratio": 39.9542,
+   "rotation_gap_deg": 50.594,
+   "translation_gap_mm": 110.04
+  },
+  {
+   "tilt_deg": 25.325,
+   "distance_m": 0.4548,
+   "reproj_best_px": 0.1798,
+   "solutions": 2,
+   "reproj_second_px": 8.2095,
+   "ratio": 45.6619,
+   "rotation_gap_deg": 50.627,
+   "translation_gap_mm": 111.85
+  },
+  {
+   "tilt_deg": 25.485,
+   "distance_m": 0.4549,
+   "reproj_best_px": 0.1914,
+   "solutions": 2,
+   "reproj_second_px": 8.2252,
+   "ratio": 42.9802,
+   "rotation_gap_deg": 50.941,
+   "translation_gap_mm": 112.52
+  },
+  {
+   "tilt_deg": 25.961,
+   "distance_m": 0.4538,
+   "reproj_best_px": 0.2071,
+   "solutions": 2,
+   "reproj_second_px": 8.3527,
+   "ratio": 40.3377,
+   "rotation_gap_deg": 51.889,
+   "translation_gap_mm": 115.82
+  },
+  {
+   "tilt_deg": 26.144,
+   "distance_m": 0.4525,
+   "reproj_best_px": 0.2032,
+   "solutions": 2,
+   "reproj_second_px": 8.4251,
+   "ratio": 41.4549,
+   "rotation_gap_deg": 52.259,
+   "translation_gap_mm": 117.67
+  },
+  {
+   "tilt_deg": 26.33,
+   "distance_m": 0.4518,
+   "reproj_best_px": 0.1871,
+   "solutions": 2,
+   "reproj_second_px": 8.4777,
+   "ratio": 45.2991,
+   "rotation_gap_deg": 52.632,
+   "translation_gap_mm": 119.22
+  },
+  {
+   "tilt_deg": 26.446,
+   "distance_m": 0.4509,
+   "reproj_best_px": 0.1977,
+   "solutions": 2,
+   "reproj_second_px": 8.5399,
+   "ratio": 43.2017,
+   "rotation_gap_deg": 52.873,
+   "translation_gap_mm": 120.61
+  },
+  {
+   "tilt_deg": 26.777,
+   "distance_m": 0.4511,
+   "reproj_best_px": 0.2113,
+   "solutions": 2,
+   "reproj_second_px": 8.6002,
+   "ratio": 40.7004,
+   "rotation_gap_deg": 53.536,
+   "translation_gap_mm": 122.45
+  },
+  {
+   "tilt_deg": 27.334,
+   "distance_m": 0.4508,
+   "reproj_best_px": 0.2034,
+   "solutions": 2,
+   "reproj_second_px": 8.6876,
+   "ratio": 42.7209,
+   "rotation_gap_deg": 54.65,
+   "translation_gap_mm": 125.87
+  },
+  {
+   "tilt_deg": 27.556,
+   "distance_m": 0.4506,
+   "reproj_best_px": 0.1955,
+   "solutions": 2,
+   "reproj_second_px": 8.7466,
+   "ratio": 44.7339,
+   "rotation_gap_deg": 55.096,
+   "translation_gap_mm": 127.16
+  },
+  {
+   "tilt_deg": 31.305,
+   "distance_m": 0.441,
+   "reproj_best_px": 0.2175,
+   "solutions": 2,
+   "reproj_second_px": 9.5828,
+   "ratio": 44.0617,
+   "rotation_gap_deg": 62.599,
+   "translation_gap_mm": 145.22
+  },
+  {
+   "tilt_deg": 31.623,
+   "distance_m": 0.4404,
+   "reproj_best_px": 0.2233,
+   "solutions": 2,
+   "reproj_second_px": 9.7138,
+   "ratio": 43.4966,
+   "rotation_gap_deg": 63.245,
+   "translation_gap_mm": 146.67
+  },
+  {
+   "tilt_deg": 31.676,
+   "distance_m": 0.4403,
+   "reproj_best_px": 0.2091,
+   "solutions": 2,
+   "reproj_second_px": 9.7128,
+   "ratio": 46.4614,
+   "rotation_gap_deg": 63.348,
+   "translation_gap_mm": 146.86
+  },
+  {
+   "tilt_deg": 31.637,
+   "distance_m": 0.441,
+   "reproj_best_px": 0.228,
+   "solutions": 2,
+   "reproj_second_px": 9.6162,
+   "ratio": 42.1737,
+   "rotation_gap_deg": 63.263,
+   "translation_gap_mm": 146.53
+  },
+  {
+   "tilt_deg": 31.545,
+   "distance_m": 0.4421,
+   "reproj_best_px": 0.217,
+   "solutions": 2,
+   "reproj_second_px": 9.5669,
+   "ratio": 44.081,
+   "rotation_gap_deg": 63.083,
+   "translation_gap_mm": 146.17
+  },
+  {
+   "tilt_deg": 32.009,
+   "distance_m": 0.4417,
+   "reproj_best_px": 0.2033,
+   "solutions": 2,
+   "reproj_second_px": 9.7004,
+   "ratio": 47.7152,
+   "rotation_gap_deg": 64.016,
+   "translation_gap_mm": 148.21
+  },
+  {
+   "tilt_deg": 32.007,
+   "distance_m": 0.4417,
+   "reproj_best_px": 0.2189,
+   "solutions": 2,
+   "reproj_second_px": 9.6075,
+   "ratio": 43.8828,
+   "rotation_gap_deg": 64.009,
+   "translation_gap_mm": 147.87
+  },
+  {
+   "tilt_deg": 30.851,
+   "distance_m": 0.4449,
+   "reproj_best_px": 0.233,
+   "solutions": 2,
+   "reproj_second_px": 9.4641,
+   "ratio": 40.6147,
+   "rotation_gap_deg": 61.695,
+   "translation_gap_mm": 143.43
+  },
+  {
+   "tilt_deg": 29.163,
+   "distance_m": 0.4505,
+   "reproj_best_px": 0.2199,
+   "solutions": 2,
+   "reproj_second_px": 9.0783,
+   "ratio": 41.2866,
+   "rotation_gap_deg": 58.317,
+   "translation_gap_mm": 135.25
+  },
+  {
+   "tilt_deg": 28.124,
+   "distance_m": 0.4558,
+   "reproj_best_px": 0.2026,
+   "solutions": 2,
+   "reproj_second_px": 8.7311,
+   "ratio": 43.1024,
+   "rotation_gap_deg": 56.237,
+   "translation_gap_mm": 129.38
+  },
+  {
+   "tilt_deg": 27.136,
+   "distance_m": 0.4624,
+   "reproj_best_px": 0.1964,
+   "solutions": 2,
+   "reproj_second_px": 8.3544,
+   "ratio": 42.5378,
+   "rotation_gap_deg": 54.256,
+   "translation_gap_mm": 122.26
+  },
+  {
+   "tilt_deg": 24.405,
+   "distance_m": 0.4712,
+   "reproj_best_px": 0.1868,
+   "solutions": 2,
+   "reproj_second_px": 7.3679,
+   "ratio": 39.4334,
+   "rotation_gap_deg": 48.787,
+   "translation_gap_mm": 106.78
+  },
+  {
+   "tilt_deg": 24.156,
+   "distance_m": 0.4743,
+   "reproj_best_px": 0.2013,
+   "solutions": 2,
+   "reproj_second_px": 7.2187,
+   "ratio": 35.8536,
+   "rotation_gap_deg": 48.287,
+   "translation_gap_mm": 104.12
+  },
+  {
+   "tilt_deg": 24.079,
+   "distance_m": 0.4796,
+   "reproj_best_px": 0.2177,
+   "solutions": 2,
+   "reproj_second_px": 7.0237,
+   "ratio": 32.2656,
+   "rotation_gap_deg": 48.125,
+   "translation_gap_mm": 100.45
+  },
+  {
+   "tilt_deg": 24.019,
+   "distance_m": 0.4806,
+   "reproj_best_px": 0.1968,
+   "solutions": 2,
+   "reproj_second_px": 7.001,
+   "ratio": 35.5687,
+   "rotation_gap_deg": 48.011,
+   "translation_gap_mm": 100.0
+  },
+  {
+   "tilt_deg": 24.062,
+   "distance_m": 0.4806,
+   "reproj_best_px": 0.1911,
+   "solutions": 2,
+   "reproj_second_px": 7.0065,
+   "ratio": 36.6572,
+   "rotation_gap_deg": 48.096,
+   "translation_gap_mm": 99.86
+  },
+  {
+   "tilt_deg": 20.938,
+   "distance_m": 0.4934,
+   "reproj_best_px": 0.2551,
+   "solutions": 2,
+   "reproj_second_px": 5.7828,
+   "ratio": 22.6701,
+   "rotation_gap_deg": 41.837,
+   "translation_gap_mm": 78.59
+  },
+  {
+   "tilt_deg": 19.49,
+   "distance_m": 0.4955,
+   "reproj_best_px": 0.257,
+   "solutions": 2,
+   "reproj_second_px": 5.3281,
+   "ratio": 20.7302,
+   "rotation_gap_deg": 38.933,
+   "translation_gap_mm": 72.86
+  },
+  {
+   "tilt_deg": 19.195,
+   "distance_m": 0.4961,
+   "reproj_best_px": 0.2749,
+   "solutions": 2,
+   "reproj_second_px": 5.2149,
+   "ratio": 18.9696,
+   "rotation_gap_deg": 38.34,
+   "translation_gap_mm": 70.84
+  },
+  {
+   "tilt_deg": 17.252,
+   "distance_m": 0.4973,
+   "reproj_best_px": 0.211,
+   "solutions": 2,
+   "reproj_second_px": 4.7524,
+   "ratio": 22.5184,
+   "rotation_gap_deg": 34.473,
+   "translation_gap_mm": 63.72
+  },
+  {
+   "tilt_deg": 16.218,
+   "distance_m": 0.4963,
+   "reproj_best_px": 0.253,
+   "solutions": 2,
+   "reproj_second_px": 4.4783,
+   "ratio": 17.6996,
+   "rotation_gap_deg": 32.398,
+   "translation_gap_mm": 61.14
+  },
+  {
+   "tilt_deg": 14.956,
+   "distance_m": 0.4971,
+   "reproj_best_px": 0.2618,
+   "solutions": 2,
+   "reproj_second_px": 4.0777,
+   "ratio": 15.5786,
+   "rotation_gap_deg": 29.863,
+   "translation_gap_mm": 56.68
+  },
+  {
+   "tilt_deg": 14.572,
+   "distance_m": 0.4989,
+   "reproj_best_px": 0.2526,
+   "solutions": 2,
+   "reproj_second_px": 3.9318,
+   "ratio": 15.5653,
+   "rotation_gap_deg": 29.09,
+   "translation_gap_mm": 55.7
+  },
+  {
+   "tilt_deg": 15.331,
+   "distance_m": 0.4992,
+   "reproj_best_px": 0.3274,
+   "solutions": 2,
+   "reproj_second_px": 4.0452,
+   "ratio": 12.3544,
+   "rotation_gap_deg": 30.582,
+   "translation_gap_mm": 61.36
+  },
+  {
+   "tilt_deg": 15.533,
+   "distance_m": 0.4985,
+   "reproj_best_px": 0.3338,
+   "solutions": 2,
+   "reproj_second_px": 4.1173,
+   "ratio": 12.3356,
+   "rotation_gap_deg": 30.987,
+   "translation_gap_mm": 62.65
+  },
+  {
+   "tilt_deg": 15.628,
+   "distance_m": 0.4981,
+   "reproj_best_px": 0.367,
+   "solutions": 2,
+   "reproj_second_px": 4.1255,
+   "ratio": 11.2399,
+   "rotation_gap_deg": 31.171,
+   "translation_gap_mm": 62.89
+  },
+  {
+   "tilt_deg": 15.801,
+   "distance_m": 0.4968,
+   "reproj_best_px": 0.3394,
+   "solutions": 2,
+   "reproj_second_px": 4.2167,
+   "ratio": 12.4258,
+   "rotation_gap_deg": 31.522,
+   "translation_gap_mm": 64.12
+  },
+  {
+   "tilt_deg": 16.022,
+   "distance_m": 0.4963,
+   "reproj_best_px": 0.3621,
+   "solutions": 2,
+   "reproj_second_px": 4.2536,
+   "ratio": 11.7462,
+   "rotation_gap_deg": 31.956,
+   "translation_gap_mm": 64.98
+  },
+  {
+   "tilt_deg": 15.927,
+   "distance_m": 0.4965,
+   "reproj_best_px": 0.3506,
+   "solutions": 2,
+   "reproj_second_px": 4.2295,
+   "ratio": 12.0634,
+   "rotation_gap_deg": 31.769,
+   "translation_gap_mm": 64.65
+  },
+  {
+   "tilt_deg": 15.762,
+   "distance_m": 0.4963,
+   "reproj_best_px": 0.3406,
+   "solutions": 2,
+   "reproj_second_px": 4.2102,
+   "ratio": 12.3621,
+   "rotation_gap_deg": 31.443,
+   "translation_gap_mm": 63.63
+  },
+  {
+   "tilt_deg": 15.502,
+   "distance_m": 0.4965,
+   "reproj_best_px": 0.3016,
+   "solutions": 2,
+   "reproj_second_px": 4.1775,
+   "ratio": 13.851,
+   "rotation_gap_deg": 30.934,
+   "translation_gap_mm": 62.76
+  },
+  {
+   "tilt_deg": 15.647,
+   "distance_m": 0.4963,
+   "reproj_best_px": 0.3481,
+   "solutions": 2,
+   "reproj_second_px": 4.1627,
+   "ratio": 11.9583,
+   "rotation_gap_deg": 31.209,
+   "translation_gap_mm": 63.7
+  },
+  {
+   "tilt_deg": 15.606,
+   "distance_m": 0.4966,
+   "reproj_best_px": 0.3364,
+   "solutions": 2,
+   "reproj_second_px": 4.1586,
+   "ratio": 12.3623,
+   "rotation_gap_deg": 31.13,
+   "translation_gap_mm": 63.86
+  },
+  {
+   "tilt_deg": 15.897,
+   "distance_m": 0.4974,
+   "reproj_best_px": 0.3684,
+   "solutions": 2,
+   "reproj_second_px": 4.1897,
+   "ratio": 11.3741,
+   "rotation_gap_deg": 31.703,
+   "translation_gap_mm": 65.69
+  },
+  {
+   "tilt_deg": 15.693,
+   "distance_m": 0.4977,
+   "reproj_best_px": 0.3038,
+   "solutions": 2,
+   "reproj_second_px": 4.1972,
+   "ratio": 13.8144,
+   "rotation_gap_deg": 31.314,
+   "translation_gap_mm": 64.93
+  },
+  {
+   "tilt_deg": 14.973,
+   "distance_m": 0.4985,
+   "reproj_best_px": 0.367,
+   "solutions": 2,
+   "reproj_second_px": 3.9216,
+   "ratio": 10.686,
+   "rotation_gap_deg": 29.857,
+   "translation_gap_mm": 63.09
+  },
+  {
+   "tilt_deg": 15.123,
+   "distance_m": 0.4967,
+   "reproj_best_px": 0.3868,
+   "solutions": 2,
+   "reproj_second_px": 3.976,
+   "ratio": 10.2789,
+   "rotation_gap_deg": 30.153,
+   "translation_gap_mm": 64.61
+  },
+  {
+   "tilt_deg": 15.107,
+   "distance_m": 0.4961,
+   "reproj_best_px": 0.3535,
+   "solutions": 2,
+   "reproj_second_px": 4.0057,
+   "ratio": 11.3308,
+   "rotation_gap_deg": 30.13,
+   "translation_gap_mm": 65.51
+  },
+  {
+   "tilt_deg": 14.855,
+   "distance_m": 0.4959,
+   "reproj_best_px": 0.3195,
+   "solutions": 2,
+   "reproj_second_px": 3.9805,
+   "ratio": 12.4567,
+   "rotation_gap_deg": 29.637,
+   "translation_gap_mm": 64.74
+  },
+  {
+   "tilt_deg": 15.601,
+   "distance_m": 0.4948,
+   "reproj_best_px": 0.3476,
+   "solutions": 2,
+   "reproj_second_px": 4.1732,
+   "ratio": 12.0072,
+   "rotation_gap_deg": 31.124,
+   "translation_gap_mm": 68.27
+  },
+  {
+   "tilt_deg": 15.572,
+   "distance_m": 0.495,
+   "reproj_best_px": 0.3338,
+   "solutions": 2,
+   "reproj_second_px": 4.1721,
+   "ratio": 12.5005,
+   "rotation_gap_deg": 31.067,
+   "translation_gap_mm": 68.18
+  },
+  {
+   "tilt_deg": 15.919,
+   "distance_m": 0.4944,
+   "reproj_best_px": 0.3726,
+   "solutions": 2,
+   "reproj_second_px": 4.232,
+   "ratio": 11.3587,
+   "rotation_gap_deg": 31.75,
+   "translation_gap_mm": 69.63
+  },
+  {
+   "tilt_deg": 15.93,
+   "distance_m": 0.4944,
+   "reproj_best_px": 0.3276,
+   "solutions": 2,
+   "reproj_second_px": 4.2876,
+   "ratio": 13.0865,
+   "rotation_gap_deg": 31.783,
+   "translation_gap_mm": 69.53
+  },
+  {
+   "tilt_deg": 16.152,
+   "distance_m": 0.4941,
+   "reproj_best_px": 0.3313,
+   "solutions": 2,
+   "reproj_second_px": 4.3372,
+   "ratio": 13.0917,
+   "rotation_gap_deg": 32.224,
+   "translation_gap_mm": 70.71
+  },
+  {
+   "tilt_deg": 16.044,
+   "distance_m": 0.4943,
+   "reproj_best_px": 0.3275,
+   "solutions": 2,
+   "reproj_second_px": 4.3244,
+   "ratio": 13.2038,
+   "rotation_gap_deg": 32.014,
+   "translation_gap_mm": 70.29
+  },
+  {
+   "tilt_deg": 16.396,
+   "distance_m": 0.4938,
+   "reproj_best_px": 0.3308,
+   "solutions": 2,
+   "reproj_second_px": 4.4059,
+   "ratio": 13.3199,
+   "rotation_gap_deg": 32.713,
+   "translation_gap_mm": 72.18
+  },
+  {
+   "tilt_deg": 16.24,
+   "distance_m": 0.4936,
+   "reproj_best_px": 0.3076,
+   "solutions": 2,
+   "reproj_second_px": 4.3971,
+   "ratio": 14.2953,
+   "rotation_gap_deg": 32.411,
+   "translation_gap_mm": 71.93
+  },
+  {
+   "tilt_deg": 15.779,
+   "distance_m": 0.4939,
+   "reproj_best_px": 0.3404,
+   "solutions": 2,
+   "reproj_second_px": 4.2422,
+   "ratio": 12.463,
+   "rotation_gap_deg": 31.483,
+   "translation_gap_mm": 70.09
+  },
+  {
+   "tilt_deg": 15.851,
+   "distance_m": 0.4935,
+   "reproj_best_px": 0.3164,
+   "solutions": 2,
+   "reproj_second_px": 4.281,
+   "ratio": 13.5325,
+   "rotation_gap_deg": 31.635,
+   "translation_gap_mm": 70.95
+  },
+  {
+   "tilt_deg": 15.993,
+   "distance_m": 0.4936,
+   "reproj_best_px": 0.3431,
+   "solutions": 2,
+   "reproj_second_px": 4.2992,
+   "ratio": 12.5298,
+   "rotation_gap_deg": 31.911,
+   "translation_gap_mm": 71.11
+  },
+  {
+   "tilt_deg": 15.649,
+   "distance_m": 0.4938,
+   "reproj_best_px": 0.3315,
+   "solutions": 2,
+   "reproj_second_px": 4.2176,
+   "ratio": 12.7242,
+   "rotation_gap_deg": 31.228,
+   "translation_gap_mm": 69.85
+  },
+  {
+   "tilt_deg": 15.523,
+   "distance_m": 0.494,
+   "reproj_best_px": 0.3504,
+   "solutions": 2,
+   "reproj_second_px": 4.1536,
+   "ratio": 11.8528,
+   "rotation_gap_deg": 30.968,
+   "translation_gap_mm": 69.07
+  },
+  {
+   "tilt_deg": 18.479,
+   "distance_m": 0.4932,
+   "reproj_best_px": 0.342,
+   "solutions": 2,
+   "reproj_second_px": 4.9743,
+   "ratio": 14.5432,
+   "rotation_gap_deg": 36.882,
+   "translation_gap_mm": 81.63
+  },
+  {
+   "tilt_deg": 17.803,
+   "distance_m": 0.4947,
+   "reproj_best_px": 0.266,
+   "solutions": 2,
+   "reproj_second_px": 4.8075,
+   "ratio": 18.0745,
+   "rotation_gap_deg": 35.55,
+   "translation_gap_mm": 79.96
+  },
+  {
+   "tilt_deg": 18.327,
+   "distance_m": 0.4928,
+   "reproj_best_px": 0.2984,
+   "solutions": 2,
+   "reproj_second_px": 4.959,
+   "ratio": 16.6189,
+   "rotation_gap_deg": 36.592,
+   "translation_gap_mm": 82.46
+  },
+  {
+   "tilt_deg": 18.132,
+   "distance_m": 0.4931,
+   "reproj_best_px": 0.2844,
+   "solutions": 2,
+   "reproj_second_px": 4.9412,
+   "ratio": 17.3732,
+   "rotation_gap_deg": 36.211,
+   "translation_gap_mm": 81.59
+  },
+  {
+   "tilt_deg": 18.307,
+   "distance_m": 0.493,
+   "reproj_best_px": 0.3128,
+   "solutions": 2,
+   "reproj_second_px": 4.934,
+   "ratio": 15.7722,
+   "rotation_gap_deg": 36.548,
+   "translation_gap_mm": 82.29
+  },
+  {
+   "tilt_deg": 18.401,
+   "distance_m": 0.493,
+   "reproj_best_px": 0.3275,
+   "solutions": 2,
+   "reproj_second_px": 4.9402,
+   "ratio": 15.0828,
+   "rotation_gap_deg": 36.731,
+   "translation_gap_mm": 82.58
+  },
+  {
+   "tilt_deg": 18.33,
+   "distance_m": 0.4932,
+   "reproj_best_px": 0.3152,
+   "solutions": 2,
+   "reproj_second_px": 4.9244,
+   "ratio": 15.6255,
+   "rotation_gap_deg": 36.592,
+   "translation_gap_mm": 82.45
+  },
+  {
+   "tilt_deg": 18.283,
+   "distance_m": 0.4933,
+   "reproj_best_px": 0.2962,
+   "solutions": 2,
+   "reproj_second_px": 4.9385,
+   "ratio": 16.6716,
+   "rotation_gap_deg": 36.504,
+   "translation_gap_mm": 82.26
+  },
+  {
+   "tilt_deg": 18.272,
+   "distance_m": 0.4932,
+   "reproj_best_px": 0.2987,
+   "solutions": 2,
+   "reproj_second_px": 4.9205,
+   "ratio": 16.4744,
+   "rotation_gap_deg": 36.479,
+   "translation_gap_mm": 82.25
+  },
+  {
+   "tilt_deg": 18.297,
+   "distance_m": 0.493,
+   "reproj_best_px": 0.3088,
+   "solutions": 2,
+   "reproj_second_px": 4.9228,
+   "ratio": 15.9421,
+   "rotation_gap_deg": 36.528,
+   "translation_gap_mm": 82.42
+  },
+  {
+   "tilt_deg": 18.409,
+   "distance_m": 0.4928,
+   "reproj_best_px": 0.3092,
+   "solutions": 2,
+   "reproj_second_px": 4.9699,
+   "ratio": 16.074,
+   "rotation_gap_deg": 36.754,
+   "translation_gap_mm": 83.02
+  },
+  {
+   "tilt_deg": 18.706,
+   "distance_m": 0.4924,
+   "reproj_best_px": 0.2893,
+   "solutions": 2,
+   "reproj_second_px": 5.0809,
+   "ratio": 17.5601,
+   "rotation_gap_deg": 37.356,
+   "translation_gap_mm": 84.44
+  },
+  {
+   "tilt_deg": 18.837,
+   "distance_m": 0.4923,
+   "reproj_best_px": 0.2707,
+   "solutions": 2,
+   "reproj_second_px": 5.1346,
+   "ratio": 18.9688,
+   "rotation_gap_deg": 37.619,
+   "translation_gap_mm": 84.7
+  },
+  {
+   "tilt_deg": 19.013,
+   "distance_m": 0.4917,
+   "reproj_best_px": 0.2562,
+   "solutions": 2,
+   "reproj_second_px": 5.1964,
+   "ratio": 20.2787,
+   "rotation_gap_deg": 37.974,
+   "translation_gap_mm": 85.96
+  },
+  {
+   "tilt_deg": 18.968,
+   "distance_m": 0.4918,
+   "reproj_best_px": 0.2601,
+   "solutions": 2,
+   "reproj_second_px": 5.1747,
+   "ratio": 19.8966,
+   "rotation_gap_deg": 37.886,
+   "translation_gap_mm": 86.16
+  },
+  {
+   "tilt_deg": 19.216,
+   "distance_m": 0.4917,
+   "reproj_best_px": 0.2787,
+   "solutions": 2,
+   "reproj_second_px": 5.2052,
+   "ratio": 18.6768,
+   "rotation_gap_deg": 38.378,
+   "translation_gap_mm": 87.72
+  },
+  {
+   "tilt_deg": 19.129,
+   "distance_m": 0.4921,
+   "reproj_best_px": 0.2621,
+   "solutions": 2,
+   "reproj_second_px": 5.175,
+   "ratio": 19.743,
+   "rotation_gap_deg": 38.202,
+   "translation_gap_mm": 87.16
+  },
+  {
+   "tilt_deg": 19.992,
+   "distance_m": 0.4882,
+   "reproj_best_px": 0.2673,
+   "solutions": 2,
+   "reproj_second_px": 5.5602,
+   "ratio": 20.7974,
+   "rotation_gap_deg": 39.941,
+   "translation_gap_mm": 90.77
+  },
+  {
+   "tilt_deg": 19.863,
+   "distance_m": 0.4886,
+   "reproj_best_px": 0.2617,
+   "solutions": 2,
+   "reproj_second_px": 5.5063,
+   "ratio": 21.0407,
+   "rotation_gap_deg": 39.682,
+   "translation_gap_mm": 90.34
+  },
+  {
+   "tilt_deg": 19.903,
+   "distance_m": 0.4885,
+   "reproj_best_px": 0.2813,
+   "solutions": 2,
+   "reproj_second_px": 5.5092,
+   "ratio": 19.5869,
+   "rotation_gap_deg": 39.76,
+   "translation_gap_mm": 90.61
+  },
+  {
+   "tilt_deg": 20.078,
+   "distance_m": 0.4881,
+   "reproj_best_px": 0.2754,
+   "solutions": 2,
+   "reproj_second_px": 5.5455,
+   "ratio": 20.1395,
+   "rotation_gap_deg": 40.105,
+   "translation_gap_mm": 91.43
+  },
+  {
+   "tilt_deg": 20.26,
+   "distance_m": 0.4871,
+   "reproj_best_px": 0.2788,
+   "solutions": 2,
+   "reproj_second_px": 5.6358,
+   "ratio": 20.2167,
+   "rotation_gap_deg": 40.472,
+   "translation_gap_mm": 92.11
+  },
+  {
+   "tilt_deg": 20.503,
+   "distance_m": 0.4864,
+   "reproj_best_px": 0.2486,
+   "solutions": 2,
+   "reproj_second_px": 5.73,
+   "ratio": 23.0523,
+   "rotation_gap_deg": 40.962,
+   "translation_gap_mm": 93.39
+  },
+  {
+   "tilt_deg": 19.76,
+   "distance_m": 0.4884,
+   "reproj_best_px": 0.2579,
+   "solutions": 2,
+   "reproj_second_px": 5.4818,
+   "ratio": 21.2558,
+   "rotation_gap_deg": 39.478,
+   "translation_gap_mm": 90.49
+  },
+  {
+   "tilt_deg": 19.908,
+   "distance_m": 0.4882,
+   "reproj_best_px": 0.2709,
+   "solutions": 2,
+   "reproj_second_px": 5.4783,
+   "ratio": 20.2221,
+   "rotation_gap_deg": 39.767,
+   "translation_gap_mm": 91.22
+  },
+  {
+   "tilt_deg": 20.002,
+   "distance_m": 0.488,
+   "reproj_best_px": 0.2457,
+   "solutions": 2,
+   "reproj_second_px": 5.5488,
+   "ratio": 22.58,
+   "rotation_gap_deg": 39.959,
+   "translation_gap_mm": 91.24
+  },
+  {
+   "tilt_deg": 20.195,
+   "distance_m": 0.4881,
+   "reproj_best_px": 0.2481,
+   "solutions": 2,
+   "reproj_second_px": 5.6203,
+   "ratio": 22.6523,
+   "rotation_gap_deg": 40.347,
+   "translation_gap_mm": 91.7
+  },
+  {
+   "tilt_deg": 20.1,
+   "distance_m": 0.4884,
+   "reproj_best_px": 0.254,
+   "solutions": 2,
+   "reproj_second_px": 5.5647,
+   "ratio": 21.9075,
+   "rotation_gap_deg": 40.152,
+   "translation_gap_mm": 91.34
+  },
+  {
+   "tilt_deg": 19.844,
+   "distance_m": 0.4892,
+   "reproj_best_px": 0.2602,
+   "solutions": 2,
+   "reproj_second_px": 5.4741,
+   "ratio": 21.039,
+   "rotation_gap_deg": 39.639,
+   "translation_gap_mm": 90.14
+  },
+  {
+   "tilt_deg": 19.811,
+   "distance_m": 0.4896,
+   "reproj_best_px": 0.2807,
+   "solutions": 2,
+   "reproj_second_px": 5.4316,
+   "ratio": 19.35,
+   "rotation_gap_deg": 39.567,
+   "translation_gap_mm": 90.06
+  },
+  {
+   "tilt_deg": 19.765,
+   "distance_m": 0.4898,
+   "reproj_best_px": 0.2374,
+   "solutions": 2,
+   "reproj_second_px": 5.4861,
+   "ratio": 23.1108,
+   "rotation_gap_deg": 39.493,
+   "translation_gap_mm": 89.83
+  },
+  {
+   "tilt_deg": 19.986,
+   "distance_m": 0.4894,
+   "reproj_best_px": 0.2796,
+   "solutions": 2,
+   "reproj_second_px": 5.5281,
+   "ratio": 19.7703,
+   "rotation_gap_deg": 39.923,
+   "translation_gap_mm": 90.36
+  },
+  {
+   "tilt_deg": 19.944,
+   "distance_m": 0.4897,
+   "reproj_best_px": 0.277,
+   "solutions": 2,
+   "reproj_second_px": 5.5125,
+   "ratio": 19.9015,
+   "rotation_gap_deg": 39.842,
+   "translation_gap_mm": 90.26
+  },
+  {
+   "tilt_deg": 19.868,
+   "distance_m": 0.4902,
+   "reproj_best_px": 0.2844,
+   "solutions": 2,
+   "reproj_second_px": 5.4752,
+   "ratio": 19.2529,
+   "rotation_gap_deg": 39.685,
+   "translation_gap_mm": 89.56
+  },
+  {
+   "tilt_deg": 20.106,
+   "distance_m": 0.4896,
+   "reproj_best_px": 0.2755,
+   "solutions": 2,
+   "reproj_second_px": 5.574,
+   "ratio": 20.2341,
+   "rotation_gap_deg": 40.166,
+   "translation_gap_mm": 90.33
+  },
+  {
+   "tilt_deg": 20.117,
+   "distance_m": 0.4895,
+   "reproj_best_px": 0.2512,
+   "solutions": 2,
+   "reproj_second_px": 5.5924,
+   "ratio": 22.2622,
+   "rotation_gap_deg": 40.191,
+   "translation_gap_mm": 90.41
+  },
+  {
+   "tilt_deg": 20.119,
+   "distance_m": 0.4901,
+   "reproj_best_px": 0.2635,
+   "solutions": 2,
+   "reproj_second_px": 5.556,
+   "ratio": 21.0823,
+   "rotation_gap_deg": 40.191,
+   "translation_gap_mm": 90.54
+  },
+  {
+   "tilt_deg": 20.282,
+   "distance_m": 0.4896,
+   "reproj_best_px": 0.2627,
+   "solutions": 2,
+   "reproj_second_px": 5.6337,
+   "ratio": 21.449,
+   "rotation_gap_deg": 40.52,
+   "translation_gap_mm": 90.96
+  },
+  {
+   "tilt_deg": 20.486,
+   "distance_m": 0.4892,
+   "reproj_best_px": 0.275,
+   "solutions": 2,
+   "reproj_second_px": 5.6727,
+   "ratio": 20.6297,
+   "rotation_gap_deg": 40.921,
+   "translation_gap_mm": 91.74
+  },
+  {
+   "tilt_deg": 20.301,
+   "distance_m": 0.4892,
+   "reproj_best_px": 0.2783,
+   "solutions": 2,
+   "reproj_second_px": 5.6272,
+   "ratio": 20.2178,
+   "rotation_gap_deg": 40.551,
+   "translation_gap_mm": 91.03
+  },
+  {
+   "tilt_deg": 19.936,
+   "distance_m": 0.4897,
+   "reproj_best_px": 0.2565,
+   "solutions": 2,
+   "reproj_second_px": 5.5383,
+   "ratio": 21.5894,
+   "rotation_gap_deg": 39.83,
+   "translation_gap_mm": 89.97
+  },
+  {
+   "tilt_deg": 20.565,
+   "distance_m": 0.4889,
+   "reproj_best_px": 0.2829,
+   "solutions": 2,
+   "reproj_second_px": 5.6853,
+   "ratio": 20.0998,
+   "rotation_gap_deg": 41.076,
+   "translation_gap_mm": 92.17
+  },
+  {
+   "tilt_deg": 20.708,
+   "distance_m": 0.4888,
+   "reproj_best_px": 0.3013,
+   "solutions": 2,
+   "reproj_second_px": 5.6861,
+   "ratio": 18.869,
+   "rotation_gap_deg": 41.354,
+   "translation_gap_mm": 93.2
+  },
+  {
+   "tilt_deg": 20.825,
+   "distance_m": 0.4863,
+   "reproj_best_px": 0.2348,
+   "solutions": 2,
+   "reproj_second_px": 5.8461,
+   "ratio": 24.8959,
+   "rotation_gap_deg": 41.612,
+   "translation_gap_mm": 94.77
+  },
+  {
+   "tilt_deg": 20.683,
+   "distance_m": 0.4865,
+   "reproj_best_px": 0.2719,
+   "solutions": 2,
+   "reproj_second_px": 5.7744,
+   "ratio": 21.2401,
+   "rotation_gap_deg": 41.318,
+   "translation_gap_mm": 93.87
+  },
+  {
+   "tilt_deg": 20.609,
+   "distance_m": 0.4866,
+   "reproj_best_px": 0.253,
+   "solutions": 2,
+   "reproj_second_px": 5.7823,
+   "ratio": 22.8551,
+   "rotation_gap_deg": 41.176,
+   "translation_gap_mm": 93.38
+  },
+  {
+   "tilt_deg": 20.523,
+   "distance_m": 0.4866,
+   "reproj_best_px": 0.2298,
+   "solutions": 2,
+   "reproj_second_px": 5.7946,
+   "ratio": 25.2177,
+   "rotation_gap_deg": 41.012,
+   "translation_gap_mm": 93.12
+  },
+  {
+   "tilt_deg": 20.625,
+   "distance_m": 0.4877,
+   "reproj_best_px": 0.2842,
+   "solutions": 2,
+   "reproj_second_px": 5.7074,
+   "ratio": 20.0836,
+   "rotation_gap_deg": 41.199,
+   "translation_gap_mm": 93.77
+  },
+  {
+   "tilt_deg": 20.539,
+   "distance_m": 0.4873,
+   "reproj_best_px": 0.2515,
+   "solutions": 2,
+   "reproj_second_px": 5.7553,
+   "ratio": 22.8836,
+   "rotation_gap_deg": 41.038,
+   "translation_gap_mm": 93.24
+  },
+  {
+   "tilt_deg": 20.559,
+   "distance_m": 0.4877,
+   "reproj_best_px": 0.2643,
+   "solutions": 2,
+   "reproj_second_px": 5.7209,
+   "ratio": 21.6454,
+   "rotation_gap_deg": 41.072,
+   "translation_gap_mm": 93.26
+  },
+  {
+   "tilt_deg": 20.344,
+   "distance_m": 0.4882,
+   "reproj_best_px": 0.2473,
+   "solutions": 2,
+   "reproj_second_px": 5.6681,
+   "ratio": 22.9208,
+   "rotation_gap_deg": 40.651,
+   "translation_gap_mm": 92.87
+  },
+  {
+   "tilt_deg": 20.68,
+   "distance_m": 0.4875,
+   "reproj_best_px": 0.2841,
+   "solutions": 2,
+   "reproj_second_px": 5.7336,
+   "ratio": 20.1791,
+   "rotation_gap_deg": 41.304,
+   "translation_gap_mm": 93.21
+  },
+  {
+   "tilt_deg": 20.127,
+   "distance_m": 0.4894,
+   "reproj_best_px": 0.2468,
+   "solutions": 2,
+   "reproj_second_px": 5.5733,
+   "ratio": 22.5812,
+   "rotation_gap_deg": 40.215,
+   "translation_gap_mm": 91.92
+  },
+  {
+   "tilt_deg": 20.166,
+   "distance_m": 0.4883,
+   "reproj_best_px": 0.2705,
+   "solutions": 2,
+   "reproj_second_px": 5.6169,
+   "ratio": 20.765,
+   "rotation_gap_deg": 40.291,
+   "translation_gap_mm": 91.79
+  },
+  {
+   "tilt_deg": 19.818,
+   "distance_m": 0.4898,
+   "reproj_best_px": 0.2681,
+   "solutions": 2,
+   "reproj_second_px": 5.4723,
+   "ratio": 20.4145,
+   "rotation_gap_deg": 39.592,
+   "translation_gap_mm": 90.45
+  },
+  {
+   "tilt_deg": 19.791,
+   "distance_m": 0.4896,
+   "reproj_best_px": 0.2632,
+   "solutions": 2,
+   "reproj_second_px": 5.4698,
+   "ratio": 20.7813,
+   "rotation_gap_deg": 39.538,
+   "translation_gap_mm": 90.24
+  },
+  {
+   "tilt_deg": 20.057,
+   "distance_m": 0.4886,
+   "reproj_best_px": 0.2511,
+   "solutions": 2,
+   "reproj_second_px": 5.5704,
+   "ratio": 22.1801,
+   "rotation_gap_deg": 40.071,
+   "translation_gap_mm": 91.37
+  },
+  {
+   "tilt_deg": 20.228,
+   "distance_m": 0.4883,
+   "reproj_best_px": 0.257,
+   "solutions": 2,
+   "reproj_second_px": 5.601,
+   "ratio": 21.7905,
+   "rotation_gap_deg": 40.408,
+   "translation_gap_mm": 92.08
+  },
+  {
+   "tilt_deg": 20.31,
+   "distance_m": 0.488,
+   "reproj_best_px": 0.2859,
+   "solutions": 2,
+   "reproj_second_px": 5.6085,
+   "ratio": 19.6197,
+   "rotation_gap_deg": 40.566,
+   "translation_gap_mm": 92.42
+  },
+  {
+   "tilt_deg": 20.348,
+   "distance_m": 0.4876,
+   "reproj_best_px": 0.2737,
+   "solutions": 2,
+   "reproj_second_px": 5.6411,
+   "ratio": 20.6082,
+   "rotation_gap_deg": 40.643,
+   "translation_gap_mm": 92.48
+  },
+  {
+   "tilt_deg": 20.027,
+   "distance_m": 0.4887,
+   "reproj_best_px": 0.2488,
+   "solutions": 2,
+   "reproj_second_px": 5.5981,
+   "ratio": 22.4966,
+   "rotation_gap_deg": 40.013,
+   "translation_gap_mm": 90.41
+  },
+  {
+   "tilt_deg": 20.243,
+   "distance_m": 0.4884,
+   "reproj_best_px": 0.267,
+   "solutions": 2,
+   "reproj_second_px": 5.6407,
+   "ratio": 21.1299,
+   "rotation_gap_deg": 40.44,
+   "translation_gap_mm": 91.4
+  },
+  {
+   "tilt_deg": 20.159,
+   "distance_m": 0.4886,
+   "reproj_best_px": 0.2416,
+   "solutions": 2,
+   "reproj_second_px": 5.6269,
+   "ratio": 23.2898,
+   "rotation_gap_deg": 40.277,
+   "translation_gap_mm": 91.28
+  },
+  {
+   "tilt_deg": 19.883,
+   "distance_m": 0.4892,
+   "reproj_best_px": 0.2576,
+   "solutions": 2,
+   "reproj_second_px": 5.5158,
+   "ratio": 21.4133,
+   "rotation_gap_deg": 39.72,
+   "translation_gap_mm": 90.12
+  },
+  {
+   "tilt_deg": 19.904,
+   "distance_m": 0.489,
+   "reproj_best_px": 0.2647,
+   "solutions": 2,
+   "reproj_second_px": 5.5139,
+   "ratio": 20.8342,
+   "rotation_gap_deg": 39.761,
+   "translation_gap_mm": 90.43
+  },
+  {
+   "tilt_deg": 19.956,
+   "distance_m": 0.4892,
+   "reproj_best_px": 0.2795,
+   "solutions": 2,
+   "reproj_second_px": 5.5113,
+   "ratio": 19.7192,
+   "rotation_gap_deg": 39.862,
+   "translation_gap_mm": 90.6
+  },
+  {
+   "tilt_deg": 20.066,
+   "distance_m": 0.4889,
+   "reproj_best_px": 0.276,
+   "solutions": 2,
+   "reproj_second_px": 5.56,
+   "ratio": 20.1414,
+   "rotation_gap_deg": 40.082,
+   "translation_gap_mm": 90.77
+  },
+  {
+   "tilt_deg": 20.167,
+   "distance_m": 0.4887,
+   "reproj_best_px": 0.2611,
+   "solutions": 2,
+   "reproj_second_px": 5.6084,
+   "ratio": 21.476,
+   "rotation_gap_deg": 40.287,
+   "translation_gap_mm": 91.03
+  },
+  {
+   "tilt_deg": 19.904,
+   "distance_m": 0.4893,
+   "reproj_best_px": 0.2693,
+   "solutions": 2,
+   "reproj_second_px": 5.4994,
+   "ratio": 20.4206,
+   "rotation_gap_deg": 39.759,
+   "translation_gap_mm": 90.34
+  },
+  {
+   "tilt_deg": 20.026,
+   "distance_m": 0.4891,
+   "reproj_best_px": 0.2699,
+   "solutions": 2,
+   "reproj_second_px": 5.551,
+   "ratio": 20.5635,
+   "rotation_gap_deg": 40.003,
+   "translation_gap_mm": 90.59
+  },
+  {
+   "tilt_deg": 20.135,
+   "distance_m": 0.4885,
+   "reproj_best_px": 0.2594,
+   "solutions": 2,
+   "reproj_second_px": 5.5978,
+   "ratio": 21.5822,
+   "rotation_gap_deg": 40.221,
+   "translation_gap_mm": 90.96
+  },
+  {
+   "tilt_deg": 19.951,
+   "distance_m": 0.4893,
+   "reproj_best_px": 0.2608,
+   "solutions": 2,
+   "reproj_second_px": 5.5441,
+   "ratio": 21.2553,
+   "rotation_gap_deg": 39.857,
+   "translation_gap_mm": 90.09
+  },
+  {
+   "tilt_deg": 20.196,
+   "distance_m": 0.4889,
+   "reproj_best_px": 0.2589,
+   "solutions": 2,
+   "reproj_second_px": 5.6152,
+   "ratio": 21.6871,
+   "rotation_gap_deg": 40.347,
+   "translation_gap_mm": 91.25
+  },
+  {
+   "tilt_deg": 20.3,
+   "distance_m": 0.4885,
+   "reproj_best_px": 0.2438,
+   "solutions": 2,
+   "reproj_second_px": 5.6717,
+   "ratio": 23.2606,
+   "rotation_gap_deg": 40.558,
+   "translation_gap_mm": 91.7
+  },
+  {
+   "tilt_deg": 20.536,
+   "distance_m": 0.4878,
+   "reproj_best_px": 0.2668,
+   "solutions": 2,
+   "reproj_second_px": 5.7199,
+   "ratio": 21.4373,
+   "rotation_gap_deg": 41.02,
+   "translation_gap_mm": 92.5
+  },
+  {
+   "tilt_deg": 20.374,
+   "distance_m": 0.4879,
+   "reproj_best_px": 0.2521,
+   "solutions": 2,
+   "reproj_second_px": 5.694,
+   "ratio": 22.5851,
+   "rotation_gap_deg": 40.701,
+   "translation_gap_mm": 91.78
+  },
+  {
+   "tilt_deg": 19.525,
+   "distance_m": 0.4903,
+   "reproj_best_px": 0.2618,
+   "solutions": 2,
+   "reproj_second_px": 5.3515,
+   "ratio": 20.4386,
+   "rotation_gap_deg": 39.0,
+   "translation_gap_mm": 89.03
+  },
+  {
+   "tilt_deg": 19.796,
+   "distance_m": 0.4899,
+   "reproj_best_px": 0.2692,
+   "solutions": 2,
+   "reproj_second_px": 5.4413,
+   "ratio": 20.2154,
+   "rotation_gap_deg": 39.543,
+   "translation_gap_mm": 90.22
+  },
+  {
+   "tilt_deg": 19.725,
+   "distance_m": 0.4901,
+   "reproj_best_px": 0.2586,
+   "solutions": 2,
+   "reproj_second_px": 5.4011,
+   "ratio": 20.8883,
+   "rotation_gap_deg": 39.4,
+   "translation_gap_mm": 90.16
+  },
+  {
+   "tilt_deg": 19.093,
+   "distance_m": 0.4929,
+   "reproj_best_px": 0.268,
+   "solutions": 2,
+   "reproj_second_px": 5.1368,
+   "ratio": 19.1693,
+   "rotation_gap_deg": 38.134,
+   "translation_gap_mm": 87.71
+  },
+  {
+   "tilt_deg": 19.341,
+   "distance_m": 0.4925,
+   "reproj_best_px": 0.2503,
+   "solutions": 2,
+   "reproj_second_px": 5.251,
+   "ratio": 20.975,
+   "rotation_gap_deg": 38.636,
+   "translation_gap_mm": 88.52
+  },
+  {
+   "tilt_deg": 20.209,
+   "distance_m": 0.4895,
+   "reproj_best_px": 0.2644,
+   "solutions": 2,
+   "reproj_second_px": 5.5658,
+   "ratio": 21.0539,
+   "rotation_gap_deg": 40.367,
+   "translation_gap_mm": 91.77
+  },
+  {
+   "tilt_deg": 20.327,
+   "distance_m": 0.4894,
+   "reproj_best_px": 0.2763,
+   "solutions": 2,
+   "reproj_second_px": 5.5816,
+   "ratio": 20.1982,
+   "rotation_gap_deg": 40.597,
+   "translation_gap_mm": 92.12
+  },
+  {
+   "tilt_deg": 20.13,
+   "distance_m": 0.49,
+   "reproj_best_px": 0.2714,
+   "solutions": 2,
+   "reproj_second_px": 5.5295,
+   "ratio": 20.3772,
+   "rotation_gap_deg": 40.208,
+   "translation_gap_mm": 91.3
+  },
+  {
+   "tilt_deg": 19.821,
+   "distance_m": 0.4913,
+   "reproj_best_px": 0.2566,
+   "solutions": 2,
+   "reproj_second_px": 5.4039,
+   "ratio": 21.0612,
+   "rotation_gap_deg": 39.588,
+   "translation_gap_mm": 90.13
+  },
+  {
+   "tilt_deg": 19.594,
+   "distance_m": 0.4924,
+   "reproj_best_px": 0.2683,
+   "solutions": 2,
+   "reproj_second_px": 5.2921,
+   "ratio": 19.725,
+   "rotation_gap_deg": 39.133,
+   "translation_gap_mm": 89.6
+  },
+  {
+   "tilt_deg": 19.448,
+   "distance_m": 0.4925,
+   "reproj_best_px": 0.2642,
+   "solutions": 2,
+   "reproj_second_px": 5.2692,
+   "ratio": 19.9411,
+   "rotation_gap_deg": 38.844,
+   "translation_gap_mm": 88.82
+  },
+  {
+   "tilt_deg": 19.822,
+   "distance_m": 0.4911,
+   "reproj_best_px": 0.2368,
+   "solutions": 2,
+   "reproj_second_px": 5.4593,
+   "ratio": 23.0557,
+   "rotation_gap_deg": 39.601,
+   "translation_gap_mm": 90.01
+  },
+  {
+   "tilt_deg": 20.087,
+   "distance_m": 0.4907,
+   "reproj_best_px": 0.26,
+   "solutions": 2,
+   "reproj_second_px": 5.536,
+   "ratio": 21.2957,
+   "rotation_gap_deg": 40.128,
+   "translation_gap_mm": 90.88
+  },
+  {
+   "tilt_deg": 20.318,
+   "distance_m": 0.4903,
+   "reproj_best_px": 0.2607,
+   "solutions": 2,
+   "reproj_second_px": 5.5971,
+   "ratio": 21.473,
+   "rotation_gap_deg": 40.587,
+   "translation_gap_mm": 91.94
+  },
+  {
+   "tilt_deg": 20.419,
+   "distance_m": 0.4898,
+   "reproj_best_px": 0.2786,
+   "solutions": 2,
+   "reproj_second_px": 5.6034,
+   "ratio": 20.1123,
+   "rotation_gap_deg": 40.783,
+   "translation_gap_mm": 92.4
+  },
+  {
+   "tilt_deg": 20.44,
+   "distance_m": 0.4893,
+   "reproj_best_px": 0.2684,
+   "solutions": 2,
+   "reproj_second_px": 5.6529,
+   "ratio": 21.0615,
+   "rotation_gap_deg": 40.829,
+   "translation_gap_mm": 92.24
+  },
+  {
+   "tilt_deg": 20.562,
+   "distance_m": 0.4895,
+   "reproj_best_px": 0.2574,
+   "solutions": 2,
+   "reproj_second_px": 5.6751,
+   "ratio": 22.049,
+   "rotation_gap_deg": 41.072,
+   "translation_gap_mm": 92.76
+  },
+  {
+   "tilt_deg": 20.241,
+   "distance_m": 0.4897,
+   "reproj_best_px": 0.2807,
+   "solutions": 2,
+   "reproj_second_px": 5.5774,
+   "ratio": 19.8678,
+   "rotation_gap_deg": 40.43,
+   "translation_gap_mm": 91.6
+  },
+  {
+   "tilt_deg": 20.098,
+   "distance_m": 0.4896,
+   "reproj_best_px": 0.2717,
+   "solutions": 2,
+   "reproj_second_px": 5.5386,
+   "ratio": 20.3863,
+   "rotation_gap_deg": 40.145,
+   "translation_gap_mm": 91.22
+  },
+  {
+   "tilt_deg": 20.148,
+   "distance_m": 0.4892,
+   "reproj_best_px": 0.2509,
+   "solutions": 2,
+   "reproj_second_px": 5.5833,
+   "ratio": 22.2557,
+   "rotation_gap_deg": 40.25,
+   "translation_gap_mm": 91.37
+  },
+  {
+   "tilt_deg": 20.186,
+   "distance_m": 0.4895,
+   "reproj_best_px": 0.2577,
+   "solutions": 2,
+   "reproj_second_px": 5.573,
+   "ratio": 21.6275,
+   "rotation_gap_deg": 40.324,
+   "translation_gap_mm": 91.75
+  },
+  {
+   "tilt_deg": 20.315,
+   "distance_m": 0.4891,
+   "reproj_best_px": 0.2868,
+   "solutions": 2,
+   "reproj_second_px": 5.5924,
+   "ratio": 19.4991,
+   "rotation_gap_deg": 40.572,
+   "translation_gap_mm": 91.74
+  },
+  {
+   "tilt_deg": 20.305,
+   "distance_m": 0.4893,
+   "reproj_best_px": 0.2719,
+   "solutions": 2,
+   "reproj_second_px": 5.5975,
+   "ratio": 20.5885,
+   "rotation_gap_deg": 40.558,
+   "translation_gap_mm": 92.02
+  },
+  {
+   "tilt_deg": 20.201,
+   "distance_m": 0.4896,
+   "reproj_best_px": 0.2564,
+   "solutions": 2,
+   "reproj_second_px": 5.5724,
+   "ratio": 21.7359,
+   "rotation_gap_deg": 40.352,
+   "translation_gap_mm": 91.68
+  },
+  {
+   "tilt_deg": 20.036,
+   "distance_m": 0.4901,
+   "reproj_best_px": 0.2544,
+   "solutions": 2,
+   "reproj_second_px": 5.5424,
+   "ratio": 21.7849,
+   "rotation_gap_deg": 40.029,
+   "translation_gap_mm": 90.91
+  },
+  {
+   "tilt_deg": 20.046,
+   "distance_m": 0.4907,
+   "reproj_best_px": 0.2661,
+   "solutions": 2,
+   "reproj_second_px": 5.484,
+   "ratio": 20.6071,
+   "rotation_gap_deg": 40.041,
+   "translation_gap_mm": 91.18
+  },
+  {
+   "tilt_deg": 19.917,
+   "distance_m": 0.4908,
+   "reproj_best_px": 0.2619,
+   "solutions": 2,
+   "reproj_second_px": 5.4894,
+   "ratio": 20.9591,
+   "rotation_gap_deg": 39.791,
+   "translation_gap_mm": 90.43
+  },
+  {
+   "tilt_deg": 19.881,
+   "distance_m": 0.492,
+   "reproj_best_px": 0.2756,
+   "solutions": 2,
+   "reproj_second_px": 5.3906,
+   "ratio": 19.5582,
+   "rotation_gap_deg": 39.706,
+   "translation_gap_mm": 90.41
+  },
+  {
+   "tilt_deg": 19.937,
+   "distance_m": 0.4922,
+   "reproj_best_px": 0.2711,
+   "solutions": 2,
+   "reproj_second_px": 5.3946,
+   "ratio": 19.8958,
+   "rotation_gap_deg": 39.819,
+   "translation_gap_mm": 90.85
+  },
+  {
+   "tilt_deg": 19.578,
+   "distance_m": 0.493,
+   "reproj_best_px": 0.2506,
+   "solutions": 2,
+   "reproj_second_px": 5.3126,
+   "ratio": 21.1997,
+   "rotation_gap_deg": 39.11,
+   "translation_gap_mm": 89.48
+  },
+  {
+   "tilt_deg": 19.235,
+   "distance_m": 0.4942,
+   "reproj_best_px": 0.2477,
+   "solutions": 2,
+   "reproj_second_px": 5.1685,
+   "ratio": 20.863,
+   "rotation_gap_deg": 38.421,
+   "translation_gap_mm": 88.21
+  },
+  {
+   "tilt_deg": 20.081,
+   "distance_m": 0.4913,
+   "reproj_best_px": 0.2696,
+   "solutions": 2,
+   "reproj_second_px": 5.4808,
+   "ratio": 20.3287,
+   "rotation_gap_deg": 40.107,
+   "translation_gap_mm": 90.87
+  },
+  {
+   "tilt_deg": 19.324,
+   "distance_m": 0.4946,
+   "reproj_best_px": 0.2759,
+   "solutions": 2,
+   "reproj_second_px": 5.1846,
+   "ratio": 18.794,
+   "rotation_gap_deg": 38.594,
+   "translation_gap_mm": 88.11
+  },
+  {
+   "tilt_deg": 20.636,
+   "distance_m": 0.4898,
+   "reproj_best_px": 0.2771,
+   "solutions": 2,
+   "reproj_second_px": 5.673,
+   "ratio": 20.4704,
+   "rotation_gap_deg": 41.215,
+   "translation_gap_mm": 92.73
+  },
+  {
+   "tilt_deg": 20.157,
+   "distance_m": 0.4913,
+   "reproj_best_px": 0.2698,
+   "solutions": 2,
+   "reproj_second_px": 5.5117,
+   "ratio": 20.4311,
+   "rotation_gap_deg": 40.262,
+   "translation_gap_mm": 91.21
+  },
+  {
+   "tilt_deg": 19.928,
+   "distance_m": 0.4922,
+   "reproj_best_px": 0.2582,
+   "solutions": 2,
+   "reproj_second_px": 5.4327,
+   "ratio": 21.0426,
+   "rotation_gap_deg": 39.808,
+   "translation_gap_mm": 90.5
+  },
+  {
+   "tilt_deg": 20.041,
+   "distance_m": 0.492,
+   "reproj_best_px": 0.2752,
+   "solutions": 2,
+   "reproj_second_px": 5.4453,
+   "ratio": 19.7867,
+   "rotation_gap_deg": 40.028,
+   "translation_gap_mm": 90.95
+  },
+  {
+   "tilt_deg": 20.762,
+   "distance_m": 0.4892,
+   "reproj_best_px": 0.238,
+   "solutions": 2,
+   "reproj_second_px": 5.8024,
+   "ratio": 24.378,
+   "rotation_gap_deg": 41.483,
+   "translation_gap_mm": 92.94
+  },
+  {
+   "tilt_deg": 19.807,
+   "distance_m": 0.4923,
+   "reproj_best_px": 0.2471,
+   "solutions": 2,
+   "reproj_second_px": 5.4069,
+   "ratio": 21.8817,
+   "rotation_gap_deg": 39.567,
+   "translation_gap_mm": 90.07
+  },
+  {
+   "tilt_deg": 20.066,
+   "distance_m": 0.4914,
+   "reproj_best_px": 0.2522,
+   "solutions": 2,
+   "reproj_second_px": 5.4834,
+   "ratio": 21.7411,
+   "rotation_gap_deg": 40.079,
+   "translation_gap_mm": 90.93
+  },
+  {
+   "tilt_deg": 20.173,
+   "distance_m": 0.4906,
+   "reproj_best_px": 0.2728,
+   "solutions": 2,
+   "reproj_second_px": 5.5215,
+   "ratio": 20.2372,
+   "rotation_gap_deg": 40.292,
+   "translation_gap_mm": 91.32
+  },
+  {
+   "tilt_deg": 20.21,
+   "distance_m": 0.4911,
+   "reproj_best_px": 0.2802,
+   "solutions": 2,
+   "reproj_second_px": 5.5472,
+   "ratio": 19.7969,
+   "rotation_gap_deg": 40.365,
+   "translation_gap_mm": 90.62
+  },
+  {
+   "tilt_deg": 20.253,
+   "distance_m": 0.4918,
+   "reproj_best_px": 0.2911,
+   "solutions": 2,
+   "reproj_second_px": 5.5669,
+   "ratio": 19.1265,
+   "rotation_gap_deg": 40.449,
+   "translation_gap_mm": 89.23
+  },
+  {
+   "tilt_deg": 20.288,
+   "distance_m": 0.4917,
+   "reproj_best_px": 0.2741,
+   "solutions": 2,
+   "reproj_second_px": 5.5992,
+   "ratio": 20.4315,
+   "rotation_gap_deg": 40.523,
+   "translation_gap_mm": 88.84
+  },
+  {
+   "tilt_deg": 20.715,
+   "distance_m": 0.4909,
+   "reproj_best_px": 0.2578,
+   "solutions": 2,
+   "reproj_second_px": 5.8001,
+   "ratio": 22.4983,
+   "rotation_gap_deg": 41.388,
+   "translation_gap_mm": 88.89
+  },
+  {
+   "tilt_deg": 20.597,
+   "distance_m": 0.4914,
+   "reproj_best_px": 0.2699,
+   "solutions": 2,
+   "reproj_second_px": 5.7502,
+   "ratio": 21.305,
+   "rotation_gap_deg": 41.151,
+   "translation_gap_mm": 88.49
+  },
+  {
+   "tilt_deg": 19.714,
+   "distance_m": 0.4936,
+   "reproj_best_px": 0.2445,
+   "solutions": 2,
+   "reproj_second_px": 5.459,
+   "ratio": 22.3228,
+   "rotation_gap_deg": 39.382,
+   "translation_gap_mm": 84.13
+  },
+  {
+   "tilt_deg": 20.503,
+   "distance_m": 0.4919,
+   "reproj_best_px": 0.2878,
+   "solutions": 2,
+   "reproj_second_px": 5.6636,
+   "ratio": 19.6773,
+   "rotation_gap_deg": 40.949,
+   "translation_gap_mm": 86.34
+  },
+  {
+   "tilt_deg": 20.724,
+   "distance_m": 0.4915,
+   "reproj_best_px": 0.3254,
+   "solutions": 2,
+   "reproj_second_px": 5.7154,
+   "ratio": 17.5636,
+   "rotation_gap_deg": 41.386,
+   "translation_gap_mm": 87.06
+  },
+  {
+   "tilt_deg": 20.949,
+   "distance_m": 0.4908,
+   "reproj_best_px": 0.3018,
+   "solutions": 2,
+   "reproj_second_px": 5.7974,
+   "ratio": 19.209,
+   "rotation_gap_deg": 41.838,
+   "translation_gap_mm": 87.97
+  },
+  {
+   "tilt_deg": 21.22,
+   "distance_m": 0.4899,
+   "reproj_best_px": 0.3029,
+   "solutions": 2,
+   "reproj_second_px": 5.8805,
+   "ratio": 19.4165,
+   "rotation_gap_deg": 42.378,
+   "translation_gap_mm": 89.06
+  },
+  {
+   "tilt_deg": 21.466,
+   "distance_m": 0.4882,
+   "reproj_best_px": 0.255,
+   "solutions": 2,
+   "reproj_second_px": 6.0307,
+   "ratio": 23.6512,
+   "rotation_gap_deg": 42.881,
+   "translation_gap_mm": 90.35
+  },
+  {
+   "tilt_deg": 20.773,
+   "distance_m": 0.4887,
+   "reproj_best_px": 0.2713,
+   "solutions": 2,
+   "reproj_second_px": 5.7914,
+   "ratio": 21.3482,
+   "rotation_gap_deg": 41.489,
+   "translation_gap_mm": 89.46
+  },
+  {
+   "tilt_deg": 20.726,
+   "distance_m": 0.4888,
+   "reproj_best_px": 0.2597,
+   "solutions": 2,
+   "reproj_second_px": 5.795,
+   "ratio": 22.3168,
+   "rotation_gap_deg": 41.399,
+   "translation_gap_mm": 89.38
+  },
+  {
+   "tilt_deg": 20.709,
+   "distance_m": 0.49,
+   "reproj_best_px": 0.2899,
+   "solutions": 2,
+   "reproj_second_px": 5.7317,
+   "ratio": 19.7696,
+   "rotation_gap_deg": 41.356,
+   "translation_gap_mm": 88.36
+  },
+  {
+   "tilt_deg": 18.156,
+   "distance_m": 0.4974,
+   "reproj_best_px": 0.2821,
+   "solutions": 2,
+   "reproj_second_px": 4.888,
+   "ratio": 17.3284,
+   "rotation_gap_deg": 36.255,
+   "translation_gap_mm": 79.02
+  },
+  {
+   "tilt_deg": 17.493,
+   "distance_m": 0.501,
+   "reproj_best_px": 0.3302,
+   "solutions": 2,
+   "reproj_second_px": 4.5817,
+   "ratio": 13.8763,
+   "rotation_gap_deg": 34.912,
+   "translation_gap_mm": 75.71
+  },
+  {
+   "tilt_deg": 12.256,
+   "distance_m": 0.5248,
+   "reproj_best_px": 0.3645,
+   "solutions": 2,
+   "reproj_second_px": 2.8065,
+   "ratio": 7.699,
+   "rotation_gap_deg": 24.425,
+   "translation_gap_mm": 53.22
+  },
+  {
+   "tilt_deg": 11.732,
+   "distance_m": 0.5258,
+   "reproj_best_px": 0.4357,
+   "solutions": 2,
+   "reproj_second_px": 2.6058,
+   "ratio": 5.9803,
+   "rotation_gap_deg": 23.361,
+   "translation_gap_mm": 50.96
+  },
+  {
+   "tilt_deg": 12.134,
+   "distance_m": 0.5262,
+   "reproj_best_px": 0.4214,
+   "solutions": 2,
+   "reproj_second_px": 2.7064,
+   "ratio": 6.422,
+   "rotation_gap_deg": 24.166,
+   "translation_gap_mm": 52.63
+  },
+  {
+   "tilt_deg": 11.768,
+   "distance_m": 0.5268,
+   "reproj_best_px": 0.4129,
+   "solutions": 2,
+   "reproj_second_px": 2.6245,
+   "ratio": 6.357,
+   "rotation_gap_deg": 23.439,
+   "translation_gap_mm": 51.18
+  },
+  {
+   "tilt_deg": 11.892,
+   "distance_m": 0.5268,
+   "reproj_best_px": 0.4009,
+   "solutions": 2,
+   "reproj_second_px": 2.6641,
+   "ratio": 6.6459,
+   "rotation_gap_deg": 23.691,
+   "translation_gap_mm": 52.05
+  },
+  {
+   "tilt_deg": 11.907,
+   "distance_m": 0.5266,
+   "reproj_best_px": 0.3808,
+   "solutions": 2,
+   "reproj_second_px": 2.6875,
+   "ratio": 7.0566,
+   "rotation_gap_deg": 23.723,
+   "translation_gap_mm": 51.84
+  },
+  {
+   "tilt_deg": 11.799,
+   "distance_m": 0.5267,
+   "reproj_best_px": 0.3944,
+   "solutions": 2,
+   "reproj_second_px": 2.6608,
+   "ratio": 6.7473,
+   "rotation_gap_deg": 23.506,
+   "translation_gap_mm": 51.24
+  },
+  {
+   "tilt_deg": 11.814,
+   "distance_m": 0.5269,
+   "reproj_best_px": 0.3923,
+   "solutions": 2,
+   "reproj_second_px": 2.6447,
+   "ratio": 6.7419,
+   "rotation_gap_deg": 23.536,
+   "translation_gap_mm": 51.79
+  },
+  {
+   "tilt_deg": 11.852,
+   "distance_m": 0.5266,
+   "reproj_best_px": 0.4061,
+   "solutions": 2,
+   "reproj_second_px": 2.6534,
+   "ratio": 6.5334,
+   "rotation_gap_deg": 23.606,
+   "translation_gap_mm": 51.26
+  },
+  {
+   "tilt_deg": 11.697,
+   "distance_m": 0.5268,
+   "reproj_best_px": 0.3704,
+   "solutions": 2,
+   "reproj_second_px": 2.643,
+   "ratio": 7.1356,
+   "rotation_gap_deg": 23.304,
+   "translation_gap_mm": 50.51
+  },
+  {
+   "tilt_deg": 11.724,
+   "distance_m": 0.5271,
+   "reproj_best_px": 0.4,
+   "solutions": 2,
+   "reproj_second_px": 2.6208,
+   "ratio": 6.5523,
+   "rotation_gap_deg": 23.351,
+   "translation_gap_mm": 50.57
+  },
+  {
+   "tilt_deg": 11.577,
+   "distance_m": 0.5274,
+   "reproj_best_px": 0.3978,
+   "solutions": 2,
+   "reproj_second_px": 2.5811,
+   "ratio": 6.4878,
+   "rotation_gap_deg": 23.061,
+   "translation_gap_mm": 50.6
+  },
+  {
+   "tilt_deg": 11.449,
+   "distance_m": 0.5277,
+   "reproj_best_px": 0.3939,
+   "solutions": 2,
+   "reproj_second_px": 2.5647,
+   "ratio": 6.5109,
+   "rotation_gap_deg": 22.806,
+   "translation_gap_mm": 49.47
+  },
+  {
+   "tilt_deg": 11.424,
+   "distance_m": 0.5275,
+   "reproj_best_px": 0.3811,
+   "solutions": 2,
+   "reproj_second_px": 2.5673,
+   "ratio": 6.7359,
+   "rotation_gap_deg": 22.757,
+   "translation_gap_mm": 49.33
+  },
+  {
+   "tilt_deg": 11.613,
+   "distance_m": 0.5271,
+   "reproj_best_px": 0.4069,
+   "solutions": 2,
+   "reproj_second_px": 2.6103,
+   "ratio": 6.4146,
+   "rotation_gap_deg": 23.133,
+   "translation_gap_mm": 50.21
+  },
+  {
+   "tilt_deg": 11.524,
+   "distance_m": 0.5274,
+   "reproj_best_px": 0.3815,
+   "solutions": 2,
+   "reproj_second_px": 2.5714,
+   "ratio": 6.7402,
+   "rotation_gap_deg": 22.956,
+   "translation_gap_mm": 50.53
+  },
+  {
+   "tilt_deg": 11.486,
+   "distance_m": 0.527,
+   "reproj_best_px": 0.3774,
+   "solutions": 2,
+   "reproj_second_px": 2.5862,
+   "ratio": 6.8532,
+   "rotation_gap_deg": 22.883,
+   "translation_gap_mm": 50.07
+  },
+  {
+   "tilt_deg": 11.575,
+   "distance_m": 0.5268,
+   "reproj_best_px": 0.4219,
+   "solutions": 2,
+   "reproj_second_px": 2.5922,
+   "ratio": 6.1445,
+   "rotation_gap_deg": 23.053,
+   "translation_gap_mm": 49.95
+  },
+  {
+   "tilt_deg": 11.871,
+   "distance_m": 0.5258,
+   "reproj_best_px": 0.411,
+   "solutions": 2,
+   "reproj_second_px": 2.6623,
+   "ratio": 6.478,
+   "rotation_gap_deg": 23.643,
+   "translation_gap_mm": 51.45
+  },
+  {
+   "tilt_deg": 12.164,
+   "distance_m": 0.5253,
+   "reproj_best_px": 0.4137,
+   "solutions": 2,
+   "reproj_second_px": 2.7275,
+   "ratio": 6.5937,
+   "rotation_gap_deg": 24.226,
+   "translation_gap_mm": 52.78
+  },
+  {
+   "tilt_deg": 11.743,
+   "distance_m": 0.5258,
+   "reproj_best_px": 0.4132,
+   "solutions": 2,
+   "reproj_second_px": 2.6337,
+   "ratio": 6.3745,
+   "rotation_gap_deg": 23.387,
+   "translation_gap_mm": 50.92
+  },
+  {
+   "tilt_deg": 11.677,
+   "distance_m": 0.526,
+   "reproj_best_px": 0.4115,
+   "solutions": 2,
+   "reproj_second_px": 2.6104,
+   "ratio": 6.3436,
+   "rotation_gap_deg": 23.255,
+   "translation_gap_mm": 50.66
+  },
+  {
+   "tilt_deg": 11.811,
+   "distance_m": 0.526,
+   "reproj_best_px": 0.4006,
+   "solutions": 2,
+   "reproj_second_px": 2.6555,
+   "ratio": 6.6287,
+   "rotation_gap_deg": 23.526,
+   "translation_gap_mm": 51.34
+  },
+  {
+   "tilt_deg": 11.901,
+   "distance_m": 0.526,
+   "reproj_best_px": 0.401,
+   "solutions": 2,
+   "reproj_second_px": 2.6751,
+   "ratio": 6.6716,
+   "rotation_gap_deg": 23.706,
+   "translation_gap_mm": 51.65
+  },
+  {
+   "tilt_deg": 11.973,
+   "distance_m": 0.5259,
+   "reproj_best_px": 0.4036,
+   "solutions": 2,
+   "reproj_second_px": 2.6875,
+   "ratio": 6.6595,
+   "rotation_gap_deg": 23.849,
+   "translation_gap_mm": 52.25
+  },
+  {
+   "tilt_deg": 11.806,
+   "distance_m": 0.526,
+   "reproj_best_px": 0.4002,
+   "solutions": 2,
+   "reproj_second_px": 2.6616,
+   "ratio": 6.6509,
+   "rotation_gap_deg": 23.516,
+   "translation_gap_mm": 51.08
+  },
+  {
+   "tilt_deg": 11.979,
+   "distance_m": 0.5257,
+   "reproj_best_px": 0.4174,
+   "solutions": 2,
+   "reproj_second_px": 2.6867,
+   "ratio": 6.4364,
+   "rotation_gap_deg": 23.858,
+   "translation_gap_mm": 51.74
+  },
+  {
+   "tilt_deg": 11.716,
+   "distance_m": 0.526,
+   "reproj_best_px": 0.4133,
+   "solutions": 2,
+   "reproj_second_px": 2.6266,
+   "ratio": 6.3546,
+   "rotation_gap_deg": 23.334,
+   "translation_gap_mm": 50.78
+  },
+  {
+   "tilt_deg": 11.835,
+   "distance_m": 0.5262,
+   "reproj_best_px": 0.3982,
+   "solutions": 2,
+   "reproj_second_px": 2.6661,
+   "ratio": 6.6962,
+   "rotation_gap_deg": 23.575,
+   "translation_gap_mm": 51.25
+  },
+  {
+   "tilt_deg": 11.753,
+   "distance_m": 0.5261,
+   "reproj_best_px": 0.4015,
+   "solutions": 2,
+   "reproj_second_px": 2.642,
+   "ratio": 6.5802,
+   "rotation_gap_deg": 23.41,
+   "translation_gap_mm": 50.84
+  },
+  {
+   "tilt_deg": 11.782,
+   "distance_m": 0.526,
+   "reproj_best_px": 0.4129,
+   "solutions": 2,
+   "reproj_second_px": 2.6392,
+   "ratio": 6.3923,
+   "rotation_gap_deg": 23.467,
+   "translation_gap_mm": 51.25
+  },
+  {
+   "tilt_deg": 11.758,
+   "distance_m": 0.526,
+   "reproj_best_px": 0.3963,
+   "solutions": 2,
+   "reproj_second_px": 2.6652,
+   "ratio": 6.7254,
+   "rotation_gap_deg": 23.425,
+   "translation_gap_mm": 50.79
+  },
+  {
+   "tilt_deg": 11.753,
+   "distance_m": 0.5261,
+   "reproj_best_px": 0.4046,
+   "solutions": 2,
+   "reproj_second_px": 2.6346,
+   "ratio": 6.5111,
+   "rotation_gap_deg": 23.409,
+   "translation_gap_mm": 51.05
+  },
+  {
+   "tilt_deg": 11.69,
+   "distance_m": 0.5263,
+   "reproj_best_px": 0.4115,
+   "solutions": 2,
+   "reproj_second_px": 2.6112,
+   "ratio": 6.3459,
+   "rotation_gap_deg": 23.282,
+   "translation_gap_mm": 51.09
+  },
+  {
+   "tilt_deg": 10.478,
+   "distance_m": 0.5302,
+   "reproj_best_px": 0.4021,
+   "solutions": 2,
+   "reproj_second_px": 2.296,
+   "ratio": 5.71,
+   "rotation_gap_deg": 20.873,
+   "translation_gap_mm": 46.93
+  },
+  {
+   "tilt_deg": 10.165,
+   "distance_m": 0.5313,
+   "reproj_best_px": 0.3581,
+   "solutions": 2,
+   "reproj_second_px": 2.2137,
+   "ratio": 6.1827,
+   "rotation_gap_deg": 20.255,
+   "translation_gap_mm": 46.12
+  },
+  {
+   "tilt_deg": 11.26,
+   "distance_m": 0.5279,
+   "reproj_best_px": 0.4031,
+   "solutions": 2,
+   "reproj_second_px": 2.4869,
+   "ratio": 6.1691,
+   "rotation_gap_deg": 22.431,
+   "translation_gap_mm": 50.43
+  },
+  {
+   "tilt_deg": 10.29,
+   "distance_m": 0.5308,
+   "reproj_best_px": 0.3946,
+   "solutions": 2,
+   "reproj_second_px": 2.2264,
+   "ratio": 5.6422,
+   "rotation_gap_deg": 20.5,
+   "translation_gap_mm": 46.7
+  },
+  {
+   "tilt_deg": 10.754,
+   "distance_m": 0.5293,
+   "reproj_best_px": 0.4016,
+   "solutions": 2,
+   "reproj_second_px": 2.3537,
+   "ratio": 5.8605,
+   "rotation_gap_deg": 21.423,
+   "translation_gap_mm": 48.43
+  },
+  {
+   "tilt_deg": 11.111,
+   "distance_m": 0.528,
+   "reproj_best_px": 0.3799,
+   "solutions": 2,
+   "reproj_second_px": 2.4695,
+   "ratio": 6.5008,
+   "rotation_gap_deg": 22.136,
+   "translation_gap_mm": 49.61
+  },
+  {
+   "tilt_deg": 10.353,
+   "distance_m": 0.5316,
+   "reproj_best_px": 0.4025,
+   "solutions": 2,
+   "reproj_second_px": 2.2517,
+   "ratio": 5.5936,
+   "rotation_gap_deg": 20.624,
+   "translation_gap_mm": 46.49
+  },
+  {
+   "tilt_deg": 10.895,
+   "distance_m": 0.5306,
+   "reproj_best_px": 0.4487,
+   "solutions": 2,
+   "reproj_second_px": 2.3359,
+   "ratio": 5.2055,
+   "rotation_gap_deg": 21.688,
+   "translation_gap_mm": 48.34
+  },
+  {
+   "tilt_deg": 10.743,
+   "distance_m": 0.5303,
+   "reproj_best_px": 0.42,
+   "solutions": 2,
+   "reproj_second_px": 2.3365,
+   "ratio": 5.5631,
+   "rotation_gap_deg": 21.394,
+   "translation_gap_mm": 47.66
+  },
+  {
+   "tilt_deg": 10.696,
+   "distance_m": 0.5307,
+   "reproj_best_px": 0.3766,
+   "solutions": 2,
+   "reproj_second_px": 2.3567,
+   "ratio": 6.2574,
+   "rotation_gap_deg": 21.31,
+   "translation_gap_mm": 47.67
+  },
+  {
+   "tilt_deg": 11.277,
+   "distance_m": 0.5293,
+   "reproj_best_px": 0.4168,
+   "solutions": 2,
+   "reproj_second_px": 2.4595,
+   "ratio": 5.9002,
+   "rotation_gap_deg": 22.457,
+   "translation_gap_mm": 49.79
+  },
+  {
+   "tilt_deg": 11.54,
+   "distance_m": 0.5278,
+   "reproj_best_px": 0.4182,
+   "solutions": 2,
+   "reproj_second_px": 2.5624,
+   "ratio": 6.1278,
+   "rotation_gap_deg": 22.983,
+   "translation_gap_mm": 50.08
+  },
+  {
+   "tilt_deg": 11.091,
+   "distance_m": 0.5298,
+   "reproj_best_px": 0.4061,
+   "solutions": 2,
+   "reproj_second_px": 2.4285,
+   "ratio": 5.9794,
+   "rotation_gap_deg": 22.089,
+   "translation_gap_mm": 48.91
+  },
+  {
+   "tilt_deg": 10.36,
+   "distance_m": 0.532,
+   "reproj_best_px": 0.3708,
+   "solutions": 2,
+   "reproj_second_px": 2.2697,
+   "ratio": 6.1207,
+   "rotation_gap_deg": 20.64,
+   "translation_gap_mm": 46.28
+  },
+  {
+   "tilt_deg": 10.643,
+   "distance_m": 0.5312,
+   "reproj_best_px": 0.3948,
+   "solutions": 2,
+   "reproj_second_px": 2.3276,
+   "ratio": 5.8953,
+   "rotation_gap_deg": 21.199,
+   "translation_gap_mm": 47.24
+  },
+  {
+   "tilt_deg": 11.096,
+   "distance_m": 0.5302,
+   "reproj_best_px": 0.4025,
+   "solutions": 2,
+   "reproj_second_px": 2.4307,
+   "ratio": 6.0383,
+   "rotation_gap_deg": 22.1,
+   "translation_gap_mm": 48.92
+  },
+  {
+   "tilt_deg": 11.325,
+   "distance_m": 0.5284,
+   "reproj_best_px": 0.3947,
+   "solutions": 2,
+   "reproj_second_px": 2.5172,
+   "ratio": 6.3771,
+   "rotation_gap_deg": 22.559,
+   "translation_gap_mm": 49.68
+  },
+  {
+   "tilt_deg": 11.648,
+   "distance_m": 0.5271,
+   "reproj_best_px": 0.4108,
+   "solutions": 2,
+   "reproj_second_px": 2.5829,
+   "ratio": 6.2878,
+   "rotation_gap_deg": 23.198,
+   "translation_gap_mm": 50.91
+  },
+  {
+   "tilt_deg": 11.298,
+   "distance_m": 0.5277,
+   "reproj_best_px": 0.3904,
+   "solutions": 2,
+   "reproj_second_px": 2.517,
+   "ratio": 6.4476,
+   "rotation_gap_deg": 22.507,
+   "translation_gap_mm": 49.87
+  },
+  {
+   "tilt_deg": 11.584,
+   "distance_m": 0.527,
+   "reproj_best_px": 0.3702,
+   "solutions": 2,
+   "reproj_second_px": 2.5872,
+   "ratio": 6.9894,
+   "rotation_gap_deg": 23.08,
+   "translation_gap_mm": 51.6
+  },
+  {
+   "tilt_deg": 11.447,
+   "distance_m": 0.5269,
+   "reproj_best_px": 0.4052,
+   "solutions": 2,
+   "reproj_second_px": 2.5497,
+   "ratio": 6.292,
+   "rotation_gap_deg": 22.8,
+   "translation_gap_mm": 50.38
+  },
+  {
+   "tilt_deg": 10.907,
+   "distance_m": 0.5291,
+   "reproj_best_px": 0.4035,
+   "solutions": 2,
+   "reproj_second_px": 2.3952,
+   "ratio": 5.9356,
+   "rotation_gap_deg": 21.726,
+   "translation_gap_mm": 48.72
+  },
+  {
+   "tilt_deg": 10.785,
+   "distance_m": 0.5294,
+   "reproj_best_px": 0.408,
+   "solutions": 2,
+   "reproj_second_px": 2.3554,
+   "ratio": 5.7727,
+   "rotation_gap_deg": 21.481,
+   "translation_gap_mm": 48.31
+  },
+  {
+   "tilt_deg": 10.683,
+   "distance_m": 0.5296,
+   "reproj_best_px": 0.3992,
+   "solutions": 2,
+   "reproj_second_px": 2.3502,
+   "ratio": 5.8877,
+   "rotation_gap_deg": 21.283,
+   "translation_gap_mm": 47.97
+  },
+  {
+   "tilt_deg": 11.109,
+   "distance_m": 0.5282,
+   "reproj_best_px": 0.4062,
+   "solutions": 2,
+   "reproj_second_px": 2.4572,
+   "ratio": 6.0494,
+   "rotation_gap_deg": 22.128,
+   "translation_gap_mm": 49.27
+  },
+  {
+   "tilt_deg": 10.812,
+   "distance_m": 0.5303,
+   "reproj_best_px": 0.4332,
+   "solutions": 2,
+   "reproj_second_px": 2.3263,
+   "ratio": 5.3694,
+   "rotation_gap_deg": 21.528,
+   "translation_gap_mm": 48.38
+  },
+  {
+   "tilt_deg": 10.888,
+   "distance_m": 0.53,
+   "reproj_best_px": 0.4194,
+   "solutions": 2,
+   "reproj_second_px": 2.3661,
+   "ratio": 5.6417,
+   "rotation_gap_deg": 21.683,
+   "translation_gap_mm": 48.5
+  },
+  {
+   "tilt_deg": 10.52,
+   "distance_m": 0.5317,
+   "reproj_best_px": 0.4226,
+   "solutions": 2,
+   "reproj_second_px": 2.2763,
+   "ratio": 5.3858,
+   "rotation_gap_deg": 20.95,
+   "translation_gap_mm": 46.89
+  },
+  {
+   "tilt_deg": 11.475,
+   "distance_m": 0.5286,
+   "reproj_best_px": 0.4135,
+   "solutions": 2,
+   "reproj_second_px": 2.5252,
+   "ratio": 6.1076,
+   "rotation_gap_deg": 22.854,
+   "translation_gap_mm": 50.68
+  },
+  {
+   "tilt_deg": 11.448,
+   "distance_m": 0.5288,
+   "reproj_best_px": 0.4199,
+   "solutions": 2,
+   "reproj_second_px": 2.5231,
+   "ratio": 6.0092,
+   "rotation_gap_deg": 22.799,
+   "translation_gap_mm": 50.16
+  },
+  {
+   "tilt_deg": 11.755,
+   "distance_m": 0.5275,
+   "reproj_best_px": 0.4026,
+   "solutions": 2,
+   "reproj_second_px": 2.5934,
+   "ratio": 6.441,
+   "rotation_gap_deg": 23.415,
+   "translation_gap_mm": 52.48
+  },
+  {
+   "tilt_deg": 11.906,
+   "distance_m": 0.527,
+   "reproj_best_px": 0.4238,
+   "solutions": 2,
+   "reproj_second_px": 2.6284,
+   "ratio": 6.2014,
+   "rotation_gap_deg": 23.715,
+   "translation_gap_mm": 53.08
+  },
+  {
+   "tilt_deg": 13.406,
+   "distance_m": 0.5104,
+   "reproj_best_px": 0.3148,
+   "solutions": 2,
+   "reproj_second_px": 3.2417,
+   "ratio": 10.2965,
+   "rotation_gap_deg": 26.761,
+   "translation_gap_mm": 62.11
+  },
+  {
+   "tilt_deg": 16.306,
+   "distance_m": 0.5,
+   "reproj_best_px": 0.3036,
+   "solutions": 2,
+   "reproj_second_px": 3.7586,
+   "ratio": 12.3807,
+   "rotation_gap_deg": 32.584,
+   "translation_gap_mm": 72.8
+  },
+  {
+   "tilt_deg": 18.226,
+   "distance_m": 0.4918,
+   "reproj_best_px": 0.2574,
+   "solutions": 2,
+   "reproj_second_px": 4.296,
+   "ratio": 16.6925,
+   "rotation_gap_deg": 36.432,
+   "translation_gap_mm": 80.56
+  },
+  {
+   "tilt_deg": 23.752,
+   "distance_m": 0.4827,
+   "reproj_best_px": 0.2934,
+   "solutions": 2,
+   "reproj_second_px": 5.215,
+   "ratio": 17.7728,
+   "rotation_gap_deg": 47.491,
+   "translation_gap_mm": 91.55
+  },
+  {
+   "tilt_deg": 27.696,
+   "distance_m": 0.476,
+   "reproj_best_px": 0.2879,
+   "solutions": 2,
+   "reproj_second_px": 6.0288,
+   "ratio": 20.9441,
+   "rotation_gap_deg": 55.382,
+   "translation_gap_mm": 100.48
+  },
+  {
+   "tilt_deg": 29.459,
+   "distance_m": 0.4722,
+   "reproj_best_px": 0.326,
+   "solutions": 2,
+   "reproj_second_px": 6.4372,
+   "ratio": 19.7465,
+   "rotation_gap_deg": 58.909,
+   "translation_gap_mm": 104.16
+  },
+  {
+   "tilt_deg": 32.039,
+   "distance_m": 0.4631,
+   "reproj_best_px": 0.3137,
+   "solutions": 2,
+   "reproj_second_px": 7.1643,
+   "ratio": 22.8408,
+   "rotation_gap_deg": 64.075,
+   "translation_gap_mm": 107.79
+  },
+  {
+   "tilt_deg": 33.193,
+   "distance_m": 0.4574,
+   "reproj_best_px": 0.234,
+   "solutions": 2,
+   "reproj_second_px": 7.5541,
+   "ratio": 32.2821,
+   "rotation_gap_deg": 66.389,
+   "translation_gap_mm": 103.57
+  },
+  {
+   "tilt_deg": 34.695,
+   "distance_m": 0.4551,
+   "reproj_best_px": 0.195,
+   "solutions": 2,
+   "reproj_second_px": 8.0445,
+   "ratio": 41.2434,
+   "rotation_gap_deg": 69.404,
+   "translation_gap_mm": 112.9
+  },
+  {
+   "tilt_deg": 35.055,
+   "distance_m": 0.4752,
+   "reproj_best_px": 0.3361,
+   "solutions": 2,
+   "reproj_second_px": 7.4636,
+   "ratio": 22.2083,
+   "rotation_gap_deg": 70.119,
+   "translation_gap_mm": 125.21
+  },
+  {
+   "tilt_deg": 34.9,
+   "distance_m": 0.4848,
+   "reproj_best_px": 0.2461,
+   "solutions": 2,
+   "reproj_second_px": 7.1453,
+   "ratio": 29.0373,
+   "rotation_gap_deg": 69.815,
+   "translation_gap_mm": 122.29
+  },
+  {
+   "tilt_deg": 34.547,
+   "distance_m": 0.4872,
+   "reproj_best_px": 0.2641,
+   "solutions": 2,
+   "reproj_second_px": 6.9884,
+   "ratio": 26.4625,
+   "rotation_gap_deg": 69.107,
+   "translation_gap_mm": 119.52
+  },
+  {
+   "tilt_deg": 33.887,
+   "distance_m": 0.4914,
+   "reproj_best_px": 0.2503,
+   "solutions": 2,
+   "reproj_second_px": 6.7302,
+   "ratio": 26.8882,
+   "rotation_gap_deg": 67.782,
+   "translation_gap_mm": 116.14
+  },
+  {
+   "tilt_deg": 32.555,
+   "distance_m": 0.4926,
+   "reproj_best_px": 0.2321,
+   "solutions": 2,
+   "reproj_second_px": 6.5432,
+   "ratio": 28.1939,
+   "rotation_gap_deg": 65.122,
+   "translation_gap_mm": 115.64
+  },
+  {
+   "tilt_deg": 31.523,
+   "distance_m": 0.495,
+   "reproj_best_px": 0.2659,
+   "solutions": 2,
+   "reproj_second_px": 6.3205,
+   "ratio": 23.7685,
+   "rotation_gap_deg": 63.055,
+   "translation_gap_mm": 114.88
+  },
+  {
+   "tilt_deg": 31.34,
+   "distance_m": 0.4947,
+   "reproj_best_px": 0.2399,
+   "solutions": 2,
+   "reproj_second_px": 6.3284,
+   "ratio": 26.3803,
+   "rotation_gap_deg": 62.689,
+   "translation_gap_mm": 116.24
+  },
+  {
+   "tilt_deg": 30.612,
+   "distance_m": 0.4959,
+   "reproj_best_px": 0.2424,
+   "solutions": 2,
+   "reproj_second_px": 6.1823,
+   "ratio": 25.5076,
+   "rotation_gap_deg": 61.232,
+   "translation_gap_mm": 114.0
+  },
+  {
+   "tilt_deg": 30.585,
+   "distance_m": 0.4964,
+   "reproj_best_px": 0.2409,
+   "solutions": 2,
+   "reproj_second_px": 6.1343,
+   "ratio": 25.4625,
+   "rotation_gap_deg": 61.174,
+   "translation_gap_mm": 113.55
+  },
+  {
+   "tilt_deg": 30.489,
+   "distance_m": 0.4974,
+   "reproj_best_px": 0.2424,
+   "solutions": 2,
+   "reproj_second_px": 6.0892,
+   "ratio": 25.1251,
+   "rotation_gap_deg": 60.982,
+   "translation_gap_mm": 112.73
+  },
+  {
+   "tilt_deg": 30.514,
+   "distance_m": 0.4976,
+   "reproj_best_px": 0.2336,
+   "solutions": 2,
+   "reproj_second_px": 6.0925,
+   "ratio": 26.0762,
+   "rotation_gap_deg": 61.034,
+   "translation_gap_mm": 112.69
+  },
+  {
+   "tilt_deg": 30.948,
+   "distance_m": 0.4951,
+   "reproj_best_px": 0.2274,
+   "solutions": 2,
+   "reproj_second_px": 6.2458,
+   "ratio": 27.4626,
+   "rotation_gap_deg": 61.902,
+   "translation_gap_mm": 115.48
+  },
+  {
+   "tilt_deg": 30.553,
+   "distance_m": 0.496,
+   "reproj_best_px": 0.2477,
+   "solutions": 2,
+   "reproj_second_px": 6.1541,
+   "ratio": 24.8408,
+   "rotation_gap_deg": 61.11,
+   "translation_gap_mm": 114.54
+  },
+  {
+   "tilt_deg": 30.553,
+   "distance_m": 0.4959,
+   "reproj_best_px": 0.2357,
+   "solutions": 2,
+   "reproj_second_px": 6.1646,
+   "ratio": 26.1523,
+   "rotation_gap_deg": 61.11,
+   "translation_gap_mm": 115.14
+  },
+  {
+   "tilt_deg": 30.496,
+   "distance_m": 0.4958,
+   "reproj_best_px": 0.239,
+   "solutions": 2,
+   "reproj_second_px": 6.1431,
+   "ratio": 25.7082,
+   "rotation_gap_deg": 60.994,
+   "translation_gap_mm": 114.95
+  },
+  {
+   "tilt_deg": 30.292,
+   "distance_m": 0.4958,
+   "reproj_best_px": 0.2316,
+   "solutions": 2,
+   "reproj_second_px": 6.1448,
+   "ratio": 26.537,
+   "rotation_gap_deg": 60.59,
+   "translation_gap_mm": 114.69
+  },
+  {
+   "tilt_deg": 30.353,
+   "distance_m": 0.4958,
+   "reproj_best_px": 0.2379,
+   "solutions": 2,
+   "reproj_second_px": 6.1471,
+   "ratio": 25.839,
+   "rotation_gap_deg": 60.71,
+   "translation_gap_mm": 114.88
+  },
+  {
+   "tilt_deg": 30.383,
+   "distance_m": 0.4955,
+   "reproj_best_px": 0.2302,
+   "solutions": 2,
+   "reproj_second_px": 6.1668,
+   "ratio": 26.7884,
+   "rotation_gap_deg": 60.773,
+   "translation_gap_mm": 114.84
+  },
+  {
+   "tilt_deg": 31.393,
+   "distance_m": 0.494,
+   "reproj_best_px": 0.2449,
+   "solutions": 2,
+   "reproj_second_px": 6.3169,
+   "ratio": 25.7954,
+   "rotation_gap_deg": 62.784,
+   "translation_gap_mm": 117.93
+  },
+  {
+   "tilt_deg": 31.14,
+   "distance_m": 0.4927,
+   "reproj_best_px": 0.228,
+   "solutions": 2,
+   "reproj_second_px": 6.3887,
+   "ratio": 28.0169,
+   "rotation_gap_deg": 62.288,
+   "translation_gap_mm": 118.77
+  },
+  {
+   "tilt_deg": 30.894,
+   "distance_m": 0.4931,
+   "reproj_best_px": 0.2307,
+   "solutions": 2,
+   "reproj_second_px": 6.3413,
+   "ratio": 27.485,
+   "rotation_gap_deg": 61.796,
+   "translation_gap_mm": 117.96
+  },
+  {
+   "tilt_deg": 30.46,
+   "distance_m": 0.4939,
+   "reproj_best_px": 0.2267,
+   "solutions": 2,
+   "reproj_second_px": 6.2339,
+   "ratio": 27.4931,
+   "rotation_gap_deg": 60.922,
+   "translation_gap_mm": 117.24
+  },
+  {
+   "tilt_deg": 30.389,
+   "distance_m": 0.4965,
+   "reproj_best_px": 0.2221,
+   "solutions": 2,
+   "reproj_second_px": 6.0976,
+   "ratio": 27.459,
+   "rotation_gap_deg": 60.775,
+   "translation_gap_mm": 115.47
+  },
+  {
+   "tilt_deg": 30.23,
+   "distance_m": 0.4968,
+   "reproj_best_px": 0.2341,
+   "solutions": 2,
+   "reproj_second_px": 6.0924,
+   "ratio": 26.0213,
+   "rotation_gap_deg": 60.46,
+   "translation_gap_mm": 115.0
+  },
+  {
+   "tilt_deg": 30.159,
+   "distance_m": 0.4966,
+   "reproj_best_px": 0.2197,
+   "solutions": 2,
+   "reproj_second_px": 6.1013,
+   "ratio": 27.7736,
+   "rotation_gap_deg": 60.32,
+   "translation_gap_mm": 115.24
+  },
+  {
+   "tilt_deg": 30.219,
+   "distance_m": 0.4958,
+   "reproj_best_px": 0.2214,
+   "solutions": 2,
+   "reproj_second_px": 6.1489,
+   "ratio": 27.7665,
+   "rotation_gap_deg": 60.439,
+   "translation_gap_mm": 116.95
+  },
+  {
+   "tilt_deg": 30.544,
+   "distance_m": 0.495,
+   "reproj_best_px": 0.2408,
+   "solutions": 2,
+   "reproj_second_px": 6.2411,
+   "ratio": 25.9172,
+   "rotation_gap_deg": 61.093,
+   "translation_gap_mm": 117.52
+  },
+  {
+   "tilt_deg": 30.428,
+   "distance_m": 0.4951,
+   "reproj_best_px": 0.2373,
+   "solutions": 2,
+   "reproj_second_px": 6.2288,
+   "ratio": 26.246,
+   "rotation_gap_deg": 60.866,
+   "translation_gap_mm": 116.73
+  }
+ ]
+}

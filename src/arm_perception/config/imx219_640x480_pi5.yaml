@@ -1,0 +1,47 @@
+# Robot Arm kamera intrinsics — imx219
+# Fit: calib_pi5_fit_merged_20260821 (64 kare)
+# Validation: calib_pi5_val_20260821 (16 kare)
+# Fit RMS 0.3280 px | validation mean/max 0.1267/0.1788 px
+# ASAL NOKTA GORUNTU MERKEZINDE CAKILI (320, 240) -- serbest birakmak
+# kalibrasyon belirsizligini 2.2x'ten 4.0x'e cikariyor, dogrulugu ise
+# degistirmiyor (2026-08-21 calibration stability olcumu).
+image_width: 640
+image_height: 480
+camera_name: imx219
+flip_method: 0
+square_size_mm: 27.500000
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [499.45010752, 0.00000000, 320.00000000, 0.00000000, 496.90696666, 240.00000000, 0.00000000, 0.00000000, 1.00000000]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [0.17578767, -0.36876241, -0.00318606, -0.00049782, 0.14929414]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1.00000000, 0.00000000, 0.00000000, 0.00000000, 1.00000000, 0.00000000, 0.00000000, 0.00000000, 1.00000000]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [499.45010752, 0.00000000, 320.00000000, 0.00000000, 0.00000000, 496.90696666, 240.00000000, 0.00000000, 0.00000000, 0.00000000, 1.00000000, 0.00000000]
+calibration_rms_px: 0.327951
+calibration_frames: 64
+validation_mean_rms_px: 0.126736
+validation_max_rms_px: 0.178815
+validation_frames: 16
+principal_point_policy: fixed_image_center
+# Kabul metrigi (reprojeksiyon RMS) kalibrasyonun KENDI belirsizligini goremez;
+# bu projede ayni tuzaga dort kez dusuldu. Asagidaki alanlar dashboard'un
+# "kamera saglikli" derken NE KADAR saglikli oldugunu soyleyebilmesi icin var.
+# Olcum: scripts/calibration_stability.py, 12 bootstrap cekilisi, yayilim
+# BAGIMSIZ dogrulama kareleri uzerinde (2026-08-21).
+pose_spread_median_deg: 0.122
+perception_floor_p90_deg: 0.056
+perception_floor_source: data/camera/perception_floor_pi5_20260821.json
+uncertainty_ratio: 2.2
+uncertainty_gate_max: 1.0
+uncertainty_measured_utc: 2026-08-21
+calibration_timestamp_utc: 2026-08-21T14:52:27.225084+00:00

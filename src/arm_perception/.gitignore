@@ -1,0 +1,19 @@
+datasets/*
+!datasets/.gitkeep
+models/*
+!models/.gitkeep
+# Egitim CIKTISI: proje verisiyle uretildi, veri seti olmadan
+# yeniden uretilemez. Takipte kalir (#12).
+!models/*.pt
+!models/sorting_bins/
+!models/sorting_bins/**/
+!models/sorting_bins/**/*.sdf
+!models/robot_arm_sorting_bins/
+!models/robot_arm_sorting_bins/**/
+!models/robot_arm_sorting_bins/**/*.sdf
+!models/robot_arm_objects/
+!models/robot_arm_objects/**/
+!models/robot_arm_objects/**/*.sdf
+runs/
+__pycache__/
+*.pyc

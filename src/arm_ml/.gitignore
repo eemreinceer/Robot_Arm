@@ -1,0 +1,12 @@
+data/*.h5
+data/*.npz
+data/*.csv
+models/*.pt
+# IK agi ve TorchScript surumu runtime girdisi; takipte kalir (#12).
+!models/ik_net.pt
+!models/ik_net_scripted.pt
+models/*.pth
+models/*.onnx
+__pycache__/
+*.pyc
+runs/

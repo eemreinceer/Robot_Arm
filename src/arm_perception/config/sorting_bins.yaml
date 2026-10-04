@@ -1,0 +1,58 @@
+workspace:
+  # 2026-06-24: base_world_xyz x 0.0→0.15 — robot çalışma masasına yapıştırıldı.
+  base_world_xyz: [0.15, 0.0, 0.6]
+  table_world_z: 0.6
+  max_horizontal_reach_m: 0.95
+  object_zone_world:
+    x: [0.45, 0.47]
+    y: [0.15, 0.18]
+  minimum_object_spacing_m: 0.075
+
+# drop_link6_* is the /pick_and_place Link_6 target in base_link.
+# Bin centers are placed on the redesigned work_table:
+# - red/yellow outer footprints are aligned to the two robot-side table corners.
+# - blue sits on the far edge opposite the robot.
+# Work table bounds from arm_gazebo/worlds/sorting.world are x[0.40,0.95],
+# y[-0.55,0.55]. Bin outer footprint is 0.184 m, so corner-aligned centers are
+# inset by 0.092 m from the table edges.
+# Values are re-derived for world_joint yaw=+90 deg in joint space: each ik_seed
+# is a real, in-limit joint config whose FK puts Link_6 EXACTLY over the bin
+# centre with its +Z axis pointing straight world-down. The drop is therefore
+# reachable by construction and the pre-place (10 cm up in world Z) lies along
+# the same tool axis -> a clean vertical descent that lowers the held object
+# straight into the bin centre. Link_6 world z = 0.746 -> object releases ~0.646
+# (bin floor 0.600, inner height 0.080), so it drops inside the open bin top.
+#
+# 2026-06-24: robot base x 0→0.15 — base_link frame y bileşeni +0.15 kaydı.
+# drop_link6_xyz y değerleri yeniden hesaplandı:
+#   base_link_y = -(world_x - 0.15)  [eski: -(world_x - 0.0)]
+bins:
+  red_box:
+    model_name: bin_red
+    # Robot-side left corner; outer bin corner is aligned with work_table
+    # min-x/min-y.
+    spawn_world_xyz: [0.492000, -0.458000, 0.600000]
+    drop_link6_xyz: [-0.465500, -0.345200, 0.147300]
+    drop_link6_quaternion: [1.00000000, 0.00000000, 0.00000000, 0.00000000]
+    ik_seed: [0.425200, 0.972400, -0.544400, -0.370400, 1.236400, -0.343000]
+    inner_size_xyz: [0.16, 0.16, 0.08]
+
+  yellow_cylinder:
+    model_name: bin_yellow
+    # Robot-side right corner; outer bin corner is aligned with work_table
+    # min-x/max-y.
+    spawn_world_xyz: [0.492000, 0.458000, 0.600000]
+    drop_link6_xyz: [0.454353, -0.334707, 0.147300]
+    drop_link6_quaternion: [0.72815764, -0.68540967, 0.00000000, 0.00000000]
+    ik_seed: [-2.690672, -0.954188, -2.706779, -0.370283, -0.957686, -1.948445]
+    inner_size_xyz: [0.16, 0.16, 0.08]
+
+  blue_cube:
+    model_name: bin_blue
+    # Far edge opposite the robot; centered on y and inset from work_table max-x.
+    spawn_world_xyz: [0.858000, 0.000000, 0.600000]
+    drop_link6_xyz: [-0.008053, -0.706721, 0.142300]
+    drop_link6_quaternion: [0.96095443, -0.27670670, 0.00000000, 0.00000000]
+    ik_seed: [-2.102936, -0.918158, -2.769525, -0.370280, -0.930970, -2.310309]
+    inner_size_xyz: [0.16, 0.16, 0.08]
+

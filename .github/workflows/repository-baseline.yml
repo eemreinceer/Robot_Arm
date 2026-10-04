@@ -1,0 +1,63 @@
+name: Repository baseline
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: repository-baseline-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Install static tools
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+      - name: Verify repository baseline
+        run: ./scripts/verify_workspace.sh --ci
+
+  ros-jazzy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    container:
+      image: ubuntu:noble
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Set up ROS 2 Jazzy
+        uses: ros-tooling/setup-ros@0.7.19
+        with:
+          required-ros-distributions: jazzy
+      - name: Install workspace dependencies
+        shell: bash
+        run: |
+          rosdep update
+          rosdep install --from-paths src --ignore-src --rosdistro jazzy -r -y \
+            --skip-keys "arm_description arm_gazebo arm_kinematics arm_ml arm_moveit_config"
+      - name: Clean build and test active ROS 2 packages
+        shell: bash
+        run: ./scripts/verify_workspace.sh --ros
+
+  firmware-native:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Install pinned PlatformIO Core
+        run: |
+          python3 -m venv .venv-ci
+          .venv-ci/bin/pip install --disable-pip-version-check platformio==6.1.19
+      - name: STM32 protocol native tests
+        run: .venv-ci/bin/pio test -d firmware/stm32_servo_ctrl -e native
+      - name: ESP32 motion and protocol native tests
+        run: .venv-ci/bin/pio test -d firmware/esp32_servo_ctrl -e native

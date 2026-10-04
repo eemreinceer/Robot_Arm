@@ -1,0 +1,45 @@
+planning_pipelines:
+  pipeline_names:
+    - ompl
+
+default_planning_pipeline: ompl
+
+ompl:
+  planning_plugins:
+    - ompl_interface/OMPLPlanner
+  request_adapters:
+    # OMPL determinism is handled by the ompl_seed_preload library (LD_PRELOAD in
+    # move_group.launch.py), which pins the seed at process start BEFORE OMPL
+    # creates any RNG. A request adapter cannot do this: by the time it runs OMPL
+    # has already started its RNG and setSeed is rejected ("generation already
+    # started"), so per-request reseeding here was a no-op.
+    - default_planning_request_adapters/ResolveConstraintFrames
+    - default_planning_request_adapters/ValidateWorkspaceBounds
+    - default_planning_request_adapters/CheckStartStateBounds
+    - default_planning_request_adapters/CheckStartStateCollision
+  response_adapters:
+    - default_planning_response_adapters/AddTimeOptimalParameterization
+    - default_planning_response_adapters/ValidateSolution
+    - default_planning_response_adapters/DisplayMotionPath
+  # 1.5 -> 0.25 (2026-06-18): planning velocities are now under the URDF/controller
+  # caps, so a >1 rad bounds absorber would hide a real controller/state problem
+  # before sorting verification. 0.25 rad still tolerates small low-RTF settling but
+  # fails fast on deterministic branch/limit mistakes.
+  start_state_max_bounds_error: 0.25
+
+  planner_configs:
+    RRTConnectkConfigDefault:
+      type: geometric::RRTConnect
+      range: 0.0
+
+  arm:
+    default_planner_config: RRTConnectkConfigDefault
+    planner_configs:
+      - RRTConnectkConfigDefault
+    projection_evaluator: joints(joint_1,joint_2)
+    longest_valid_segment_fraction: 0.005
+
+  gripper:
+    default_planner_config: RRTConnectkConfigDefault
+    planner_configs:
+      - RRTConnectkConfigDefault

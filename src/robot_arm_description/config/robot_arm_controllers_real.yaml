@@ -1,0 +1,83 @@
+# Robot Arm kol — GERÇEK DONANIM controller config (Jetson Nano, Humble)
+# gz_ros_control bölümü BİLEREK YOK: position_proportional_gain yalnız sim'e
+# aittir (faz6 plan §1). update_rate 50 Hz: UART protokolü maks 50 Hz komut
+# hızıyla uyumlu (plan §3).
+controller_manager:
+  ros__parameters:
+    update_rate: 50  # Hz
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    robot_arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    robot_arm_gripper_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+# A0 (2026-07-04): joint_6 = gripper servosu → kol controller'ı 5 eklem
+robot_arm_controller:
+  ros__parameters:
+    # RC servos close their own internal position loop. With no encoder feedback,
+    # host-side PID gains would claim information the system does not possess.
+    joints:
+      - joint_1
+      - joint_2
+      - joint_3
+      - joint_4
+      - joint_5
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 50.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    # Encoder yoktur; hardware state, clamp + PWM slew sonrasında gerçekten
+    # gönderilen komutun tahminidir. Deprecated open_loop_control kullanılmaz.
+    open_loop_control: false
+    interpolate_from_desired_state: true
+    allow_integration_in_goal_trajectories: true
+    constraints:
+      goal_time: 2.0
+      # ⚠ BU KAPI ŞU AN ETKİSİZ, ölçüm gelene kadar öyle kalacak.
+      # arm_hardware::read() `velocity_states_`i her döngüde 0.0 dolduruyor
+      # (encoder yok, hız türetilmiyor), dolayısıyla JTC'nin "hedefte durdu mu"
+      # kontrolü her koşulda geçiyor. Değer BİLEREK bırakıldı: encoder'lar
+      # takılıp read() gerçek hız yayınlamaya başladığında kapı kendiliğinden
+      # anlam kazanır. Silinirse o gün kimse geri koymayı hatırlamaz.
+      stopped_velocity_tolerance: 0.05
+      joint_1: {trajectory: 0.12, goal: 0.05}
+      joint_2: {trajectory: 0.12, goal: 0.05}
+      joint_3: {trajectory: 0.12, goal: 0.05}
+      joint_4: {trajectory: 0.12, goal: 0.05}
+      joint_5: {trajectory: 0.12, goal: 0.05}
+
+robot_arm_gripper_controller:
+  ros__parameters:
+    # Real gripper is also open-loop at the host; only its delivered PWM estimate
+    # participates in the JTC trajectory/goal acceptance contract.
+    joints:
+      - joint_6
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 50.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    open_loop_control: false
+    interpolate_from_desired_state: true
+    allow_integration_in_goal_trajectories: true
+    constraints:
+      goal_time: 2.0
+      # ⚠ BU KAPI ŞU AN ETKİSİZ, ölçüm gelene kadar öyle kalacak.
+      # arm_hardware::read() `velocity_states_`i her döngüde 0.0 dolduruyor
+      # (encoder yok, hız türetilmiyor), dolayısıyla JTC'nin "hedefte durdu mu"
+      # kontrolü her koşulda geçiyor. Değer BİLEREK bırakıldı: encoder'lar
+      # takılıp read() gerçek hız yayınlamaya başladığında kapı kendiliğinden
+      # anlam kazanır. Silinirse o gün kimse geri koymayı hatırlamaz.
+      stopped_velocity_tolerance: 0.05
+      joint_6: {trajectory: 0.08, goal: 0.03}

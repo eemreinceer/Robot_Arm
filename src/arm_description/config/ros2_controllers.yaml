@@ -1,0 +1,70 @@
+# KÖK FIX (2026-06-28): pick descent ~21mm hedefin yukarısında takılıyordu.
+# Canlı /arm_controller/controller_state teşhisi: yerçekimi yükü altında her eklem
+# küçük steady-state pozisyon hatası veriyor (en kötü joint_3 ~0.08 rad → 21mm TCP).
+# Kök neden gz_ros2_control'ün pozisyon-only komut arabirimi:
+# joint_velocity = position_proportional_gain * (cmd - actual). DEFAULT 0.1 ÇOK
+# YUMUŞAK → yerçekimine karşı düzeltme hızı minik → droop. Tork DEĞİL (yerçekimi
+# ~6-11Nm, effort limitleri 30Nm; doygunluk imkânsız).
+# DEĞER SEÇİMİ: 0.1 droop→21mm (guard fail). 5.0 droop'u sildi AMA vel_cmd=P*hata
+# çok büyüyüp hız limitine (±1.0) doyarak limit-cycle salınımı (titreme/judder)
+# yaptı (eklem hızı saniyede ~170 kez işaret değiştirdi). 1.0: droop ~1/P modeline
+# göre ~5mm (guard 20mm'nin çok altında) ve 5× daha az agresif → kararlı, titreme yok.
+# ÖNEMLİ: bu param plugin'in KENDİ node'u `gz_ros_control` tarafından okunur —
+# `controller_manager` altında DEĞİL.
+gz_ros_control:
+  ros__parameters:
+    position_proportional_gain: 1.0
+
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+    # KÖK FIX (2026-06-06): joint komut limitlerini ZORLA. Default false olduğundan
+    # gz "Enforcing command limits is disabled" deyip kolu limit ötesine taşıyordu →
+    # "Start state out of bounds" → sorting pick flaky. true ile komut limit dışına
+    # çıkınca limite KISTIRILIR → kol asla sınır-dışı olmaz, planlama güvenilir.
+    enforce_command_limits: true
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    gripper_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+arm_controller:
+  ros__parameters:
+    joints:
+      - joint_1
+      - joint_2
+      - joint_3
+      - joint_4
+      - joint_5
+      - joint_6
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    open_loop_control: false
+    allow_integration_in_goal_trajectories: true
+
+gripper_controller:
+  ros__parameters:
+    joints:
+      - gripper_joint1
+      - gripper_joint2
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 100.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    open_loop_control: false
+    allow_integration_in_goal_trajectories: true

@@ -1,0 +1,43 @@
+{
+ "label": "duz",
+ "frames_requested": 60,
+ "frames_used": 60,
+ "frames_rejected": 0,
+ "translation_mm": {
+  "median": 0.7287711505650958,
+  "p90": 1.3128975848422957,
+  "max": 1.878167285526582
+ },
+ "angular_deg": {
+  "median": 0.10691199262578088,
+  "p90": 0.22005713290411527,
+  "max": 0.30698052798504705
+ },
+ "reproj_px_median": 0.2416413575410843,
+ "board_pose_camera_frame": {
+  "translation_m": [
+   0.09465977614245019,
+   0.17634310509960438,
+   1.0982316330189454
+  ],
+  "rotation_matrix": [
+   [
+    -0.9966188598992839,
+    0.05742668519193105,
+    -0.058762436308569456
+   ],
+   [
+    -0.020900413286612674,
+    -0.8688529437003164,
+    -0.49462888608303396
+   ],
+   [
+    -0.0794608130936288,
+    -0.49172831731674915,
+    0.8671154716249376
+   ]
+  ],
+  "note": "median translation and chordal-mean rotation over the accepted frames; this is the reference the scatter above is measured against"
+ },
+ "note": "arm stationary; perception noise only, no servo/FK contribution"
+}

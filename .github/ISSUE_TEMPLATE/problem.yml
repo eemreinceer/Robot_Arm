@@ -1,0 +1,69 @@
+name: Sorun kaydı
+description: Kod, simülasyon, donanım veya süreç problemini kanıt ve kabul kriterleriyle kaydet
+title: "[Sorun] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem tanımı
+      description: Beklenen ve gerçekleşen davranışı kısa, ölçülebilir biçimde yazın.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Kanıt ve tekrar üretim
+      description: Komutları, artifact yollarını, ölçümleri ve tekrar üretim adımlarını ekleyin.
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence_class
+    attributes:
+      label: Kanıt sınıfı
+      options:
+        - Fiziksel ölçüm
+        - Donanımlı entegrasyon testi
+        - Simülasyon
+        - Yazılım testi veya statik inceleme
+        - Henüz doğrulanmadı
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Etki ve risk
+      description: Kullanıcı, güvenlik, robot, veri veya geliştirme akışı üzerindeki etkiyi yazın.
+    validations:
+      required: true
+  - type: input
+    id: owner
+    attributes:
+      label: Sorumlu alan ve dal
+      placeholder: "arm_perception — feature/calibration-stability"
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Kapanış ve kabul kriterleri
+      description: Issue'nun kapanması için gerekli ölçülebilir sonuçları ve testleri yazın.
+    validations:
+      required: true
+  - type: textarea
+    id: safe_state
+    attributes:
+      label: Fiziksel güvenli durum
+      description: Donanım yoksa "Donanım kullanılmadı" yazın; varsa ray, hareket ve stop durumunu belirtin.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Kontrol
+      options:
+        - label: Açık issue'larda aynı problem için arama yapıldı.
+          required: true
+        - label: Gizli bilgi, parola veya erişim anahtarı eklenmedi.
+          required: true
+        - label: Komut yankısı, simülasyon sonucu ve fiziksel kanıt birbirine karıştırılmadı.
+          required: true

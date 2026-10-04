@@ -1,0 +1,18 @@
+# ===================== GOAL =====================
+geometry_msgs/Pose pick_pose
+geometry_msgs/Pose place_pose
+string object_id
+float32 speed_scale     # 0.1 - 1.0 (1.0 = tam hız)
+bool return_home        # işlem sonrası home'a dön?
+---
+# ==================== RESULT ====================
+bool success
+string message
+float32 execution_time  # saniye cinsinden
+---
+# ================== FEEDBACK ===================
+string current_phase
+# "moving_to_pre_pick" | "approaching_pick" | "grasping"
+# "lifting" | "moving_to_place" | "placing" | "retreating"
+float32 progress        # 0.0 - 1.0
+geometry_msgs/Pose current_pose
