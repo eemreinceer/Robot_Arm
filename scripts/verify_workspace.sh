@@ -35,8 +35,10 @@ list_source_files() {
 required_files=(
   README.md
   CONTRIBUTING.md
+  SECURITY.md
   docs/supported_versions.md
   docs/repository_artifact_inventory.md
+  src/README.md
 )
 
 for path in "${required_files[@]}"; do
@@ -99,8 +101,10 @@ PY
 python3 scripts/check_markdown_links.py \
   README.md \
   CONTRIBUTING.md \
+  SECURITY.md \
   docs/supported_versions.md \
-  docs/repository_artifact_inventory.md
+  docs/repository_artifact_inventory.md \
+  src/README.md
 
 if grep -nE '(^|[[:space:]])(ros2 launch|nohup)([[:space:]]|$)' \
   launch_phase3_test.sh launch_phase4_test.sh; then
@@ -108,10 +112,23 @@ if grep -nE '(^|[[:space:]])(ros2 launch|nohup)([[:space:]]|$)' \
   exit 1
 fi
 
-if grep -n 'ROBOTKOL/6DOF_Robotic_Arm' \
+if grep -nE 'ROBOT[K]OL[/]|[/]home[/][^/]+[/]Robot_Arm' \
   launch_phase3_test.sh launch_phase4_test.sh; then
   echo "retired entry points still contain the stale absolute workspace path" >&2
   exit 1
+fi
+
+if [[ "$git_metadata_available" == true ]]; then
+  legacy_repo_pattern='6DOF[_]Robotic[_]Arm'
+  if git -C "$repo_root" grep -nE "$legacy_repo_pattern" -- .; then
+    echo "stale pre-portfolio repository identifier is still tracked" >&2
+    exit 1
+  fi
+
+  if git -C "$repo_root" ls-files '*.pt' '*.pth' '*.onnx' | grep -q .; then
+    echo "generated model weights must not be tracked in the public repository" >&2
+    exit 1
+  fi
 fi
 
 if [[ "$git_metadata_available" == true ]]; then

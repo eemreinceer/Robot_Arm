@@ -61,3 +61,25 @@ jobs:
         run: .venv-ci/bin/pio test -d firmware/stm32_servo_ctrl -e native
       - name: ESP32 motion and protocol native tests
         run: .venv-ci/bin/pio test -d firmware/esp32_servo_ctrl -e native
+
+  web-console:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: src/arm_perception/web/robot-arm-console
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: src/arm_perception/web/robot-arm-console/package-lock.json
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Build operator console
+        run: npm run build
+      - name: Audit dependencies
+        run: npm audit --audit-level=high
